@@ -506,7 +506,8 @@ input:focus-visible {
 }
 
 .form-message.success {
-  color: var(--color-gold);
+  color: #7a5f2e;
+  font-weight: 500;
 }
 
 .form-message.error {
