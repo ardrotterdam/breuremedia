@@ -5,7 +5,7 @@
 > Bij twijfel wint dit document van snelheid.
 
 **Doelgroep:** developers, designers en Cursor-agents die werken aan
-`breure-media.com` — de site, e-mails, social assets en alles wat onder de
+`breuremedia.com` — de site, e-mails, social assets en alles wat onder de
 uitgeverij-vlag valt.
 
 ---

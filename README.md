@@ -14,13 +14,17 @@ python -m http.server 8000
 
 Open [http://localhost:8000](http://localhost:8000) in your browser.
 
+## Production
+
+https://breuremedia.com
+
 ## Repository
 
 https://github.com/ardrotterdam/breure-media.com.git
 
 ## Deployment status
 
-Not yet publicly deployed.
+Production domain: https://breuremedia.com
 
 ## Project structure
 
