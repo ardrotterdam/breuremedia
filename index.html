@@ -75,30 +75,34 @@
   <main>
 
     <section class="hero" id="boek">
-      <div class="container hero-inner">
-        <div class="hero-cover">
-          <img
-            class="book-cover"
-            src="assets/schaduwen-over-domburg-cover.webp"
-            alt="Boekomslag van Schaduwen over Domburg door Ard Breure"
-            width="400"
-            height="600"
-            loading="eager"
-            fetchpriority="high"
-          >
-        </div>
-        <div class="hero-content">
-          <p class="hero-eyebrow">Een literaire thriller</p>
-          <h1 class="hero-title">Schaduwen over Domburg</h1>
-          <p class="hero-author">Ard Breure</p>
-          <p class="hero-description">
-            Een literaire thriller over stilte, spanning en de keuzes die mensen blijven achtervolgen.
-          </p>
-          <div class="hero-meta">
-            <span class="hero-price">€29,95</span>
-            <span class="hero-format">Verschijningsdatum en uitvoering volgen.</span>
+      <div class="hero-layout">
+        <div class="hero-cover-pane">
+          <div class="hero-cover-inner">
+            <img
+              class="book-cover"
+              src="assets/schaduwen-over-domburg-cover.webp"
+              alt="Boekomslag van Schaduwen over Domburg door Ard Breure"
+              width="400"
+              height="600"
+              loading="eager"
+              fetchpriority="high"
+            >
           </div>
-          <button class="btn btn-primary" id="order-btn">Bestel het boek</button>
+        </div>
+        <div class="hero-content-pane">
+          <div class="hero-content">
+            <p class="hero-eyebrow">Een literaire thriller</p>
+            <h1 class="hero-title">Schaduwen over Domburg</h1>
+            <p class="hero-author">Ard Breure</p>
+            <p class="hero-description">
+              Een literaire thriller over stilte, spanning en de keuzes die mensen blijven achtervolgen.
+            </p>
+            <div class="hero-meta">
+              <span class="hero-price">€29,95</span>
+              <span class="hero-format">Verschijningsdatum en uitvoering volgen.</span>
+            </div>
+            <button class="btn btn-primary" id="order-btn">Bestel het boek</button>
+          </div>
         </div>
       </div>
     </section>
@@ -112,26 +116,26 @@
             Ard Breure is de auteur van <em>Schaduwen over Domburg</em>.
           </p>
           <p>
-            Zijn werk verschijnt onder de vlag van Breure Media — een uitgeverij
-            die gelooft in boeken die blijven nazinderen, lang nadat de laatste
-            pagina is omgeslagen.
+            Zijn werk verschijnt onder de vlag van Breure Media — een label
+            voor boeken die blijven nazinderen, lang nadat de laatste pagina
+            is omgeslagen.
           </p>
         </div>
-        <div class="author-accent" aria-hidden="true">
+        <aside class="author-accent" aria-label="Motto">
           <blockquote>
             &ldquo;Verhalen die de stilte doorbreken.&rdquo;
           </blockquote>
-        </div>
+        </aside>
       </div>
     </section>
 
     <section class="newsletter" id="nieuwsbrief">
       <div class="container newsletter-inner">
-        <p class="section-eyebrow">Blijf op de hoogte</p>
-        <h2 class="section-title">Schrijf je in voor onze nieuwsbrief</h2>
+        <hr class="editorial-rule" aria-hidden="true">
+        <p class="section-eyebrow">Berichten uit Breure Media</p>
+        <h2 class="section-title">Nieuwe verhalen beginnen in stilte.</h2>
         <p class="newsletter-description">
-          Ontvang het laatste nieuws over nieuwe titels, auteurs en exclusieve
-          voorpublicaties van Breure Media.
+          Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder project verschijnt.
         </p>
         <form class="newsletter-form" id="newsletter-form" novalidate>
           <div class="form-group">
@@ -155,21 +159,17 @@
   </main>
 
   <footer class="site-footer" id="contact">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo">Breure Media</span>
-        <p class="footer-tagline">Uitgeverij van literaire thrillers</p>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact</h3>
+    <div class="container footer-colophon">
+      <hr class="editorial-rule editorial-rule--footer" aria-hidden="true">
+      <p class="footer-brand-name">Breure Media</p>
+      <p class="footer-tagline">Onafhankelijk label voor boeken en oorspronkelijke verhalen.</p>
+      <div class="footer-details">
         <p>
-          <a href="mailto:info@breuremedia.nl">info@breuremedia.nl</a>
+          <a href="mailto:info@breuremedia.com">info@breuremedia.com</a>
         </p>
         <p>Nederland</p>
       </div>
-      <div class="footer-legal">
-        <p>&copy; 2026 Breure Media. Alle rechten voorbehouden.</p>
-      </div>
+      <p class="footer-legal">&copy; 2026 Breure Media. Alle rechten voorbehouden.</p>
     </div>
   </footer>
 
