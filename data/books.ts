@@ -55,7 +55,7 @@ export const books: Book[] = [
     currency: "EUR",
     language: "nl",
     formatNote:
-      "Nu in eindredactie. Meld je aan voor de nieuwsbrief voor verschijningsdatum, prijs en een exclusieve voorpublicatie.",
+      "Nu in eindredactie. Teken vooraf in en ontvang als eerste bericht over verschijning, prijs en een exclusieve voorpublicatie.",
     setting: "Domburg, Zeeland — Nederlandse kust",
     themes: [
       "Stilte en spanning",
