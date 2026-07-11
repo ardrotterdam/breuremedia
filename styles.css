@@ -399,6 +399,17 @@ button {
   color: #a04040;
 }
 
+.form-message.info {
+  color: var(--color-text-muted);
+}
+
+.form-privacy {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
 /* Footer */
 
 .site-footer {
@@ -418,7 +429,8 @@ button {
 .footer-tagline {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--color-warm-white-muted);
+  opacity: 0.85;
 }
 
 .footer-contact h3 {
@@ -445,7 +457,8 @@ button {
 
 .footer-legal p {
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: var(--color-warm-white-muted);
+  opacity: 0.85;
 }
 
 /* Responsive */

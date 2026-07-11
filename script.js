@@ -45,7 +45,7 @@ function initNewsletterForm() {
     const emailInput = form.querySelector('#email');
     const email = emailInput.value.trim();
 
-    message.classList.remove('success', 'error');
+    message.classList.remove('success', 'error', 'info');
 
     if (!email || !isValidEmail(email)) {
       message.textContent = 'Voer een geldig e-mailadres in.';
@@ -54,8 +54,8 @@ function initNewsletterForm() {
       return;
     }
 
-    message.textContent = 'Bedankt! U bent ingeschreven voor de nieuwsbrief.';
-    message.classList.add('success');
+    message.textContent = 'De nieuwsbrief is nog niet actief. Uw e-mailadres is niet opgeslagen.';
+    message.classList.add('info');
     form.reset();
   });
 }
