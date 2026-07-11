@@ -20,7 +20,7 @@ https://breuremedia.com
 
 ## Repository
 
-https://github.com/ardrotterdam/breuremedia.com.git
+https://github.com/ardrotterdam/breuremedia.git
 
 ## Deployment status
 
