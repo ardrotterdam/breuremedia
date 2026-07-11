@@ -18,6 +18,7 @@ export interface Book {
   priceFormatted: string;
   currency: string;
   language: string;
+  format: string;
   formatNote: string;
   setting: string;
   themes: string[];
@@ -54,6 +55,7 @@ export const books: Book[] = [
     priceFormatted: "€29,95",
     currency: "EUR",
     language: "nl",
+    format: "Paperback",
     formatNote:
       "Nu in eindredactie. Teken vooraf in en ontvang als eerste bericht over verschijning, prijs en een exclusieve voorpublicatie.",
     setting: "Domburg, Zeeland — Nederlandse kust",

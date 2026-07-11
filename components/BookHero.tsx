@@ -34,6 +34,9 @@ export function BookHero({ book, priority = false }: BookHeroProps) {
               <span className="hero-price">{book.priceFormatted}</span>
               <span className="hero-format">{book.formatNote}</span>
             </div>
+            <p className="hero-format">
+              {book.format} · {book.priceFormatted}
+            </p>
             <OrderButton />
           </div>
         </div>
