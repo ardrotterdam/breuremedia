@@ -30,11 +30,6 @@ export function BookHero({ book, priority = false }: BookHeroProps) {
             <h1 className="hero-title">{book.title}</h1>
             <p className="hero-author">{book.author}</p>
             <p className="hero-tagline">{book.tagline}</p>
-            {book.longDescription.map((paragraph) => (
-              <p key={paragraph} className="hero-description">
-                {paragraph}
-              </p>
-            ))}
             <div className="hero-meta">
               <span className="hero-price">{book.priceFormatted}</span>
               <span className="hero-format">{book.formatNote}</span>

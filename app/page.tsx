@@ -21,6 +21,19 @@ export default function HomePage() {
     <main>
       <BookHero book={featuredBook} priority />
 
+      <section className="synopsis" aria-labelledby="synopsis-heading">
+        <div className="container synopsis-inner">
+          <hr className="editorial-rule" aria-hidden="true" />
+          <p className="section-eyebrow">Over het boek</p>
+          <h2 id="synopsis-heading" className="section-title">
+            Een oude schuld die terugkomt met de vloed.
+          </h2>
+          {featuredBook.longDescription.map((paragraph) => (
+            <p key={paragraph} className="synopsis-paragraph">{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
       <section className="author" aria-labelledby="home-author-heading">
         <div className="container author-inner">
           <div className="author-text">
