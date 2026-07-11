@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Een literaire thriller over stilte, spanning en de keuzes die mensen blijven achtervolgen.">
+  <title>Schaduwen over Domburg | Ard Breure | Breure Media</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Breure Media</a>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="#boek">Het boek</a>
+        <a href="#auteur">Auteur</a>
+        <a href="#nieuwsbrief">Nieuwsbrief</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="boek">
+      <div class="container hero-inner">
+        <div class="hero-cover">
+          <img
+            class="book-cover"
+            src="assets/schaduwen-over-domburg-cover.webp"
+            alt="Boekomslag van Schaduwen over Domburg door Ard Breure"
+            width="400"
+            height="600"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Een literaire thriller</p>
+          <h1 class="hero-title">Schaduwen over Domburg</h1>
+          <p class="hero-author">Ard Breure</p>
+          <p class="hero-description">
+            Een literaire thriller over stilte, spanning en de keuzes die mensen blijven achtervolgen.
+          </p>
+          <div class="hero-meta">
+            <span class="hero-price">€29,95</span>
+            <span class="hero-format">Verschijningsdatum en uitvoering volgen.</span>
+          </div>
+          <button class="btn btn-primary" id="order-btn">Bestel het boek</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="author" id="auteur">
+      <div class="container author-inner">
+        <div class="author-text">
+          <p class="section-eyebrow">Over de auteur</p>
+          <h2 class="section-title">Ard Breure</h2>
+          <p>
+            Ard Breure is de auteur van <em>Schaduwen over Domburg</em>.
+          </p>
+          <p>
+            Zijn werk verschijnt onder de vlag van Breure Media — een uitgeverij
+            die gelooft in boeken die blijven nazinderen, lang nadat de laatste
+            pagina is omgeslagen.
+          </p>
+        </div>
+        <div class="author-accent" aria-hidden="true">
+          <blockquote>
+            &ldquo;Verhalen die de stilte doorbreken.&rdquo;
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" id="nieuwsbrief">
+      <div class="container newsletter-inner">
+        <p class="section-eyebrow">Blijf op de hoogte</p>
+        <h2 class="section-title">Schrijf je in voor onze nieuwsbrief</h2>
+        <p class="newsletter-description">
+          Ontvang het laatste nieuws over nieuwe titels, auteurs en exclusieve
+          voorpublicaties van Breure Media.
+        </p>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <div class="form-group">
+            <label for="email" class="visually-hidden">E-mailadres</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jouw@email.nl"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" class="btn btn-secondary">Inschrijven</button>
+          </div>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Breure Media</span>
+        <p class="footer-tagline">Uitgeverij van literaire thrillers</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>
+          <a href="mailto:info@breuremedia.nl">info@breuremedia.nl</a>
+        </p>
+        <p>Nederland</p>
+      </div>
+      <div class="footer-legal">
+        <p>&copy; 2026 Breure Media. Alle rechten voorbehouden.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
