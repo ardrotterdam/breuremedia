@@ -9,6 +9,7 @@ export interface PageSeoOptions {
   imageAlt?: string;
   type?: "website" | "article" | "book";
   noIndex?: boolean;
+  keywords?: string[];
 }
 
 export function absoluteUrl(path: string): string {
@@ -24,6 +25,7 @@ export function buildMetadata({
   imageAlt,
   type = "website",
   noIndex = false,
+  keywords,
 }: PageSeoOptions): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image ? absoluteUrl(image) : absoluteUrl("/assets/schaduwen-over-domburg-cover.webp");
@@ -32,6 +34,7 @@ export function buildMetadata({
   return {
     title,
     description,
+    keywords: keywords?.join(", "),
     alternates: {
       canonical: url,
     },

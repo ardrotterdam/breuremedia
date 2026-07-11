@@ -37,6 +37,7 @@ export function bookSchema(book: Book) {
     description: book.description,
     inLanguage: book.language,
     genre: book.genre,
+    bookFormat: "https://schema.org/Paperback",
     author: {
       "@type": "Person",
       name: book.author,

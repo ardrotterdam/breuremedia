@@ -42,6 +42,7 @@ export async function generateMetadata({
     image: book.coverImage,
     imageAlt: book.coverAlt,
     type: "article",
+    keywords: book.keywords,
   });
 }
 
