@@ -1,12 +1,22 @@
 interface AffiliateButtonProps {
   amazonUrl?: string;
   naam?: string;
+  label?: string;
+  compact?: boolean;
 }
 
-export function AffiliateButton({ amazonUrl, naam }: AffiliateButtonProps) {
+export function AffiliateButton({
+  amazonUrl,
+  naam,
+  label,
+  compact = false,
+}: AffiliateButtonProps) {
   if (!amazonUrl) {
     return null;
   }
+
+  const buttonLabel =
+    label ?? (naam ? `Bekijk ${naam} op Amazon` : "Bekijk op Amazon");
 
   return (
     <a
@@ -14,9 +24,14 @@ export function AffiliateButton({ amazonUrl, naam }: AffiliateButtonProps) {
       className="btn btn-primary"
       rel="nofollow sponsored noopener"
       target="_blank"
-      aria-label={naam ? `Bekijk ${naam} op Amazon` : "Bekijk op Amazon"}
+      aria-label={buttonLabel}
+      style={
+        compact
+          ? { padding: "0.625rem 1.25rem", fontSize: "0.75rem" }
+          : undefined
+      }
     >
-      Bekijk op Amazon
+      {buttonLabel}
     </a>
   );
 }
