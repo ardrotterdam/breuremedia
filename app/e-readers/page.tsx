@@ -60,14 +60,24 @@ const faqItems = [
       "Nee. Alleen de Kindle Paperwhite en duurdere modellen zijn waterdicht. Wil je een waterdichte e-reader, kies dan de Paperwhite of de Kobo Libra Colour.",
   },
   {
-    question: "Kan ik bibliotheekboeken lenen op de Kobo Libra Colour?",
+    question: "Is het kleurenscherm van de Kobo Libra Colour net zo goed als een tablet?",
     answer:
-      "Ja, rechtstreeks vanaf het apparaat via OverDrive/Libby-integratie — een voordeel ten opzichte van Kindle, waar dat alleen via een omweg met een aparte app kan.",
+      "Nee, en dat is bewust. E Ink Kaleido 3 toont rustige, papierachtige kleuren zonder schittering of blauw licht — ideaal voor urenlang lezen, maar niet bedoeld voor video of felle graphics. Zie het als een gedrukt boek met kleurenillustraties, niet als een iPad.",
+  },
+  {
+    question: "Kan ik met een Kobo e-reader boeken lenen bij de Nederlandse bibliotheek?",
+    answer:
+      "Ja, dit is een van de grootste voordelen van Kobo boven Kindle. Via de online Bibliotheek leen je e-books die je rechtstreeks op de Libra Colour leest, zonder omwegen via een computer.",
+  },
+  {
+    question: "Hoe lang gaat de batterij van de Kobo Libra Colour mee?",
+    answer:
+      "Weken, bij normaal leesgebruik. E-ink verbruikt alleen stroom bij het omslaan van een pagina, dus één lading via USB-C is genoeg voor een hele vakantie.",
   },
   {
     question: "Is de Kobo Libra Colour waterdicht?",
     answer:
-      "Ja, volgens de IPX8-norm: waterdicht tot maximaal 60 minuten in maximaal 2 meter diep water.",
+      "Ja, volgens de IPX8-norm: tot 60 minuten in maximaal 2 meter diep water. Lezen in bad, aan het zwembad of op het strand kan zonder zorgen.",
   },
 ];
 
@@ -312,19 +322,16 @@ export default function EReadersPage() {
           aria-labelledby="kobo-libra-colour-heading"
         >
           <h2 id="kobo-libra-colour-heading" className="content-heading">
-            Kobo Libra Colour — de beste e-reader buiten Amazon
+            Kobo Libra Colour review: de beste e-reader buiten Amazon
           </h2>
           <p className="content-paragraph">
-            Kobo is het merk voor lezers die vrijheid willen: EPUB-bestanden,
-            lenen bij de openbare bibliotheek rechtstreeks vanaf het apparaat,
-            en geen gedwongen winkel. De Libra Colour is het topmodel voor de
-            meeste mensen: een kleurenscherm (rustige, papierachtige kleuren —
-            geen tablet), fysieke bladerknoppen die je pas mist als je ze ooit
-            gehad hebt, en waterdichte bescherming volgens de IPX8-norm. Met 32
-            GB opslag neem je tot 24.000 eBooks of 150 luisterboeken mee, en de
-            batterij gaat wekenlang mee op één lading. Op Amazon zelf staat hij
-            rond de €259, beoordeeld met 4,5 sterren op basis van ruim 2.300
-            reviews.
+            Er zijn lezers die hun boeken kopen waar het uitkomt: de ene keer
+            bij bol, dan bij de Kobo-winkel, soms gratis geleend bij de
+            openbare bibliotheek. Voor die lezers is er eigenlijk maar één
+            serieus topmodel, en dat is de Kobo Libra Colour. Geen gesloten
+            ecosysteem, geen gedwongen winkel — gewoon EPUB-bestanden,
+            rechtstreeks bibliotheekboeken lenen vanaf het apparaat, en lezen
+            zoals jij dat wilt.
           </p>
           <p className="content-paragraph">
             <a
@@ -333,19 +340,46 @@ export default function EReadersPage() {
               rel="nofollow sponsored noopener"
               target="_blank"
             >
-              → Bekijk de actuele prijs op Amazon
+              → Bekijk de actuele prijs van de Kobo Libra Colour op Amazon
             </a>
           </p>
           <p className="content-paragraph">
-            De keerzijde: een kleurenscherm van e-ink heeft een iets grijzere
-            achtergrond dan het beste zwart-witscherm, en de Kobo-winkel is
-            kleiner dan die van Amazon. Voor wie veel bij de bibliotheek leent
-            of zijn boeken uit meerdere bronnen haalt, weegt de vrijheid daar
-            ruimschoots tegenop.
+            Het 7-inch E Ink Kaleido 3-scherm is het eerste kleurenscherm dat
+            écht aanvoelt als papier. Verwacht geen tabletkleuren: de tinten
+            zijn rustig en gedempt, alsof je een aquarel bekijkt in plaats van
+            een beeldscherm. Boekomslagen, strips, graphic novels en je eigen
+            markeringen komen tot leven, terwijl het scherm niet spiegelt in fel
+            zonlicht en &apos;s avonds een donkere leesmodus heeft die je ogen
+            spaart.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> bibliotheekleners, EPUB-verzamelaars, en
-            iedereen die bewust niet aan één winkel vast wil zitten.
+            Wat de Libra Colour onderscheidt van vrijwel elke concurrent: de
+            fysieke bladerknoppen en de asymmetrische vorm. Het klinkt als een
+            detail, tot je een winteravond lang met één hand — de andere om een
+            mok — hoofdstuk na hoofdstuk wegtikt zonder het scherm aan te raken.
+            Het apparaat draait automatisch mee als je van hand wisselt.
+          </p>
+          <p className="content-paragraph">
+            Praktisch zit het ruim in orde: 32 GB opslag (goed voor zo&apos;n
+            24.000 e-books of 150 luisterboeken), een batterij die weken meegaat
+            op één lading, en IPX8-waterdichtheid — tot 60 minuten in twee
+            meter water, dus bad en strand zijn geen risico. Wie graag
+            aantekeningen maakt, kan met de los verkrijgbare Kobo Stylus 2
+            direct in kleur markeren en schrijven. Op Amazon wordt het model
+            beoordeeld met 4,5 sterren op basis van bijna 2.400 beoordelingen,
+            voor een prijs rond de €260.
+          </p>
+          <p className="content-paragraph">
+            De keerzijde is er ook. Een kleurenscherm van e-ink heeft een iets
+            grijzere achtergrond dan het beste zwart-witscherm, en de
+            Kobo-winkel is kleiner dan die van Amazon. Voor wie veel bij de
+            bibliotheek leent of zijn boeken uit meerdere bronnen haalt, weegt
+            de vrijheid daar ruimschoots tegenop.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> bibliotheekleners, EPUB-verzamelaars,
+            strip- en graphic novel-lezers, en iedereen die bewust niet aan één
+            winkel vast wil zitten.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kobo-libra-colour")} />
         </section>

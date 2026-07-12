@@ -35,7 +35,7 @@ export const ereaders: Ereader[] = [
     naam: "Kobo Libra Colour",
     korteOmschrijving:
       "Kobo is het merk voor lezers die vrijheid willen: EPUB-bestanden, lenen bij de openbare bibliotheek rechtstreeks vanaf het apparaat, en geen gedwongen winkel.",
-    amazonUrl: "https://amzn.to/4pn5PrO",
+    amazonUrl: "https://amzn.to/4vpmj3I",
   },
   {
     slug: "kobo-clara-bw",
