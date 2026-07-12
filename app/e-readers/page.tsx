@@ -556,6 +556,16 @@ export default function EReadersPage() {
             de tekst opzij voor je notitie; klap je de marge dicht, dan is de
             pagina weer gewoon een pagina.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/kindle-scribe-schrijven-met-pen-notities.webp"
+              alt="Hand schrijft met pen aantekeningen op een Kindle Scribe e-reader met groot ontspiegeld e-inkscherm"
+              width={1600}
+              height={893}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </figure>
           <p className="content-paragraph">
             Daarnaast is het een volwaardig notitieboek: vergadernotities,
             takenlijsten, een dagboek — alles op één apparaat, zonder meldingen
