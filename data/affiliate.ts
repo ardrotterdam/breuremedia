@@ -28,8 +28,7 @@ export const ereaders: Ereader[] = [
     naam: "Kindle (basismodel)",
     korteOmschrijving:
       "De goedkoopste Kindle is de laatste jaren stilletjes heel goed geworden: hetzelfde scherpe schermtype als de Paperwhite (300 ppi), licht als een pocketboek en met USB-C.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+    amazonUrl: "https://amzn.to/4yiGDqi",
   },
   {
     slug: "kobo-libra-colour",

@@ -48,6 +48,16 @@ const faqItems = [
     answer:
       "Beide ecosystemen hebben een ruim Nederlands aanbod. Kobo heeft van oudsher sterke banden met de Nederlandse markt; Kindle heeft de grootste totale winkel.",
   },
+  {
+    question: "Hoeveel batterijduur heeft de Kindle (basismodel)?",
+    answer:
+      "Tot 6 weken op één volle lading, afhankelijk van gebruik.",
+  },
+  {
+    question: "Is de Kindle (basismodel) waterdicht?",
+    answer:
+      "Nee. Alleen de Kindle Paperwhite en duurdere modellen zijn waterdicht. Wil je een waterdichte e-reader, kies dan de Paperwhite of de Kobo Libra Colour.",
+  },
 ];
 
 function getEreaderUrl(slug: string) {
@@ -230,10 +240,24 @@ export default function EReadersPage() {
           </h2>
           <p className="content-paragraph">
             De goedkoopste Kindle is de laatste jaren stilletjes heel goed
-            geworden: hetzelfde scherpe schermtype als de Paperwhite (300 ppi),
-            licht als een pocketboek en met USB-C. Wat je inlevert ten
-            opzichte van de Paperwhite: geen waterdichtheid, geen warme
-            verlichting, en een iets kleiner scherm van 6 inch.
+            geworden: hetzelfde scherpe schermtype als de Paperwhite, licht
+            als een pocketboek, met USB-C en tot 6 weken batterijduur op één
+            lading. Er is 16 GB opslag — genoeg voor duizenden boeken — en
+            Amazon maakt hem tegenwoordig van 75% gerecycled plastic en 90%
+            gerecycled magnesium. Op Amazon zelf staat hij rond de €120,
+            beoordeeld met 4,6 sterren op basis van ruim 14.500 reviews. Wat je
+            inlevert ten opzichte van de Paperwhite: geen waterdichtheid, geen
+            warme verlichting, en een iets kleiner scherm van 6 inch.
+          </p>
+          <p className="content-paragraph">
+            <a
+              href={getEreaderUrl("kindle-basis")}
+              className="text-link"
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              → Bekijk de actuele prijs op Amazon
+            </a>
           </p>
           <p className="content-paragraph">
             Mijn eerlijke advies: als het prijsverschil met de Paperwhite je
