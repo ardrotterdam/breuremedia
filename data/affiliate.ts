@@ -42,8 +42,7 @@ export const ereaders: Ereader[] = [
     naam: "Kobo Clara BW",
     korteOmschrijving:
       "De Clara BW is het kleine broertje: 6 inch, zwart-wit, maar met het nieuwste en scherpste schermtype dat er is — nieuwer zelfs dan wat in de basis-Kindle zit.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+    amazonUrl: "https://amzn.to/4fdZ8nd",
   },
   {
     slug: "kindle-scribe",

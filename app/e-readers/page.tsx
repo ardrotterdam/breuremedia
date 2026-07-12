@@ -79,6 +79,26 @@ const faqItems = [
     answer:
       "Ja, volgens de IPX8-norm: tot 60 minuten in maximaal 2 meter diep water. Lezen in bad, aan het zwembad of op het strand kan zonder zorgen.",
   },
+  {
+    question: "Wat is het verschil tussen de Kobo Clara BW en de Kobo Libra Colour?",
+    answer:
+      "De Clara BW is kleiner (6 inch), lichter en goedkoper, met een zwart-witscherm en bediening via touchscreen. De Libra Colour heeft een 7-inch kleurenscherm, fysieke bladerknoppen en meer opslag. Beide zijn waterdicht en lenen rechtstreeks bibliotheekboeken.",
+  },
+  {
+    question: "Is de Kobo Clara BW geschikt voor luisterboeken?",
+    answer:
+      "Ja. De Clara BW heeft ingebouwde Bluetooth, waarmee je Kobo-luisterboeken afspeelt via een koptelefoon of speaker. De 16 GB opslag biedt ruimte aan zo'n 75 luisterboeken.",
+  },
+  {
+    question: "Is de Kobo Clara BW waterdicht?",
+    answer:
+      "Ja, volgens de IPX8-norm: tot 60 minuten in maximaal 2 meter diep water. Uitzonderlijk voor een e-reader in deze prijsklasse — lezen in bad of aan het zwembad kan zonder zorgen.",
+  },
+  {
+    question: "Hoe lang gaat de batterij van de Kobo Clara BW mee?",
+    answer:
+      "Weken, bij normaal leesgebruik. Het e-ink-scherm verbruikt alleen stroom bij het omslaan van een pagina, dus één lading is genoeg voor een lange vakantie.",
+  },
 ];
 
 function getEreaderUrl(slug: string) {
@@ -106,10 +126,19 @@ export default function EReadersPage() {
     )
   );
 
+  const koboClaraProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Kobo Clara BW",
+      "Kobo",
+      "Compacte 6-inch e-reader met E Ink Carta 1300, ComfortLight PRO, IPX8-waterdichtheid en Bluetooth voor luisterboeken."
+    )
+  );
+
   return (
     <main>
       <JsonLd data={jsonLd} />
       <JsonLd data={koboLibraProductSchema} />
+      <JsonLd data={koboClaraProductSchema} />
       <PageHeader
         eyebrow="Gids"
         title="De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest"
@@ -400,19 +429,56 @@ export default function EReadersPage() {
           aria-labelledby="kobo-clara-bw-heading"
         >
           <h2 id="kobo-clara-bw-heading" className="content-heading">
-            Kobo Clara BW — compact, scherp, betaalbaar
+            Kobo Clara BW review: klein, licht en verrassend compleet
           </h2>
           <p className="content-paragraph">
-            De Clara BW is het kleine broertje: 6 inch, zwart-wit, maar met het
-            nieuwste en scherpste schermtype dat er is — nieuwer zelfs dan wat
-            in de basis-Kindle zit. Waterdicht, warme verlichting,
-            bibliotheek-lenen aan boord. Eigenlijk alles wat de basis-Kindle
-            mist, voor een vergelijkbare prijsklasse.
+            Niet iedereen wil het grootste scherm of een kleurendisplay. Er is
+            een grote groep lezers die maar één ding vraagt: een licht apparaat
+            dat in elke jaszak past, wekenlang meegaat en gewoon heel goed
+            zwart-op-wit leest. Voor die lezers is de Kobo Clara BW het slimste
+            instapmodel van dit moment — met dezelfde vrijheid als zijn grote
+            broer: EPUB-bestanden, bibliotheekboeken rechtstreeks lenen, geen
+            gedwongen winkel.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> wie compact en betaalbaar wil, maar niet
-            wil inleveren op schermkwaliteit — en Amazon liever links laat
-            liggen.
+            <a
+              href={getEreaderUrl("kobo-clara-bw")}
+              className="content-inline-link"
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              → Bekijk de actuele prijs van de Kobo Clara BW op Amazon
+            </a>
+          </p>
+          <p className="content-paragraph">
+            Het 6-inch scherm gebruikt E Ink Carta 1300, de nieuwste generatie
+            zwart-wit e-ink: scherpe letters, snelle pagina-omslagen en geen
+            spiegeling in fel zonlicht. De ComfortLight PRO-verlichting past
+            helderheid én kleurtemperatuur aan — overdag koel wit, &apos;s avonds
+            warm en met minder blauw licht, zodat je ogen rustig blijven tot de
+            laatste bladzijde. Een instelbare donkere leesmodus zit er ook op.
+          </p>
+          <p className="content-paragraph">
+            Verrassend voor een instapmodel: de Clara BW is volledig waterdicht
+            volgens de IPX8-norm (tot 60 minuten in twee meter water) en heeft
+            Bluetooth aan boord voor Kobo-luisterboeken — koptelefoon of speaker
+            aansluiten en luisteren maar. De 16 GB opslag is goed voor
+            zo&apos;n 12.000 e-books, en de batterij gaat weken mee op één
+            lading. Op Amazon scoort het model 4,6 sterren op basis van ruim 2.600
+            beoordelingen, voor een prijs rond de €170.
+          </p>
+          <p className="content-paragraph">
+            De keerzijde: geen fysieke bladerknoppen (alles gaat via het
+            touchscreen) en het scherm is met 6 inch echt compact — fijn voor
+            onderweg, minder voor wie graag met grote letters leest. Wie dat
+            comfort zoekt, kijkt naar de Libra Colour. Maar als draagbare,
+            zorgeloze leesmachine voor dit geld is de Clara BW moeilijk te
+            verslaan.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> forenzen en reizigers, bibliotheekleners
+            met een kleiner budget, en iedereen die een compacte, waterdichte
+            e-reader zoekt zonder aan één winkel vast te zitten.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kobo-clara-bw")} />
         </section>
