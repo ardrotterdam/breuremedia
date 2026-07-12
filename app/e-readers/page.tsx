@@ -359,6 +359,16 @@ export default function EReadersPage() {
             mok — hoofdstuk na hoofdstuk wegtikt zonder het scherm aan te raken.
             Het apparaat draait automatisch mee als je van hand wisselt.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/kobo-libra-colour-waterdicht-lezen-in-bad.webp"
+              alt="Vrouw leest ontspannen in bad op een waterdichte Kobo Libra Colour e-reader met kleurenscherm, kaarsen ernaast"
+              width={1600}
+              height={873}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </figure>
           <p className="content-paragraph">
             Praktisch zit het ruim in orde: 32 GB opslag (goed voor zo&apos;n
             24.000 e-books of 150 luisterboeken), een batterij die weken meegaat
