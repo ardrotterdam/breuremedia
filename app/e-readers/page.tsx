@@ -99,6 +99,26 @@ const faqItems = [
     answer:
       "Weken, bij normaal leesgebruik. Het e-ink-scherm verbruikt alleen stroom bij het omslaan van een pagina, dus één lading is genoeg voor een lange vakantie.",
   },
+  {
+    question: "Kun je op de Kindle Scribe schrijven zoals op papier?",
+    answer:
+      "Het komt dichtbij. De Premium Pen (inbegrepen, hoeft nooit opgeladen) schrijft met lichte weerstand op het ontspiegelde scherm, wat natuurlijker aanvoelt dan een gladde tablet. Handgeschreven notities zijn om te zetten in getypte tekst.",
+  },
+  {
+    question: "Wat is het verschil tussen de Kindle Scribe en een gewone Kindle?",
+    answer:
+      "De Scribe heeft een veel groter scherm (10,2 inch), een pen om mee te schrijven en een ingebouwd notitieboek. Een gewone Kindle is compacter, goedkoper en puur op lezen gericht. Voor alleen romans lezen is een Paperwhite praktischer.",
+  },
+  {
+    question: "Is de Kindle Scribe waterdicht?",
+    answer:
+      "Nee. In tegenstelling tot de Kindle Paperwhite en de Kobo-modellen in deze lijst heeft de Scribe geen waterdichtheidscertificering. Voor bad of zwembad is dit niet het juiste apparaat.",
+  },
+  {
+    question: "Moet ik wachten op de Kindle Scribe Colorsoft?",
+    answer:
+      "Alleen als je per se in kleur wilt markeren. De Scribe Colorsoft is aanzienlijk duurder, terwijl deze Scribe hetzelfde schrijfgevoel en dezelfde notitiefuncties biedt tegen een scherpere prijs.",
+  },
 ];
 
 function getEreaderUrl(slug: string) {
@@ -134,11 +154,20 @@ export default function EReadersPage() {
     )
   );
 
+  const kindleScribeProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Amazon Kindle Scribe",
+      "Amazon",
+      "10,2-inch e-reader en digitaal notitieboek in één, met 300 ppi ontspiegeld scherm en inbegrepen Premium Pen om mee te schrijven."
+    )
+  );
+
   return (
     <main>
       <JsonLd data={jsonLd} />
       <JsonLd data={koboLibraProductSchema} />
       <JsonLd data={koboClaraProductSchema} />
+      <JsonLd data={kindleScribeProductSchema} />
       <PageHeader
         eyebrow="Gids"
         title="De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest"
@@ -499,19 +528,56 @@ export default function EReadersPage() {
           aria-labelledby="kindle-scribe-heading"
         >
           <h2 id="kindle-scribe-heading" className="content-heading">
-            Kindle Scribe — lezen én schrijven
+            Kindle Scribe review: de e-reader waar je óók op schrijft
           </h2>
           <p className="content-paragraph">
-            De Scribe is een ander soort apparaat: 10,2 inch, met een pen
-            waarmee je in de kantlijn schrijft alsof het papier is. Ik noem hem
-            hier omdat ik weet wie hem koopt: studenten, onderzoekers, en
-            mensen die documenten en PDF&apos;s doorwerken. Als notitieapparaat
-            is hij uitstekend; als je alleen romans leest, is hij onnodig groot
-            en duur.
+            Sommige lezers lezen niet alleen — ze werken met hun boeken.
+            Aantekeningen in de kantlijn, onderstrepingen, gedachten die meteen
+            op papier moeten voor ze vervliegen. Voor die lezers bestaat er maar
+            één Kindle: de Scribe, een e-reader en notitieboek in één, geleverd
+            met de Premium Pen die je nooit hoeft op te laden.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> wie leest om te wérken — aantekeningen,
-            PDF&apos;s, studie.
+            <a
+              href={getEreaderUrl("kindle-scribe")}
+              className="content-inline-link"
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              → Bekijk de actuele prijs van de Kindle Scribe op Amazon
+            </a>
+          </p>
+          <p className="content-paragraph">
+            Het 10,2-inch scherm is met afstand het grootste in deze lijst: 300
+            ppi, ontspiegeld en verlicht, zodat je binnen én buiten leest en
+            schrijft. Schrijven voelt verrassend echt — de pen glijdt niet weg
+            zoals op een tablet, maar heeft de lichte weerstand van papier.
+            Schrijf je in een boek, dan schuift het &quot;Dynamisch canvas&quot;
+            de tekst opzij voor je notitie; klap je de marge dicht, dan is de
+            pagina weer gewoon een pagina.
+          </p>
+          <p className="content-paragraph">
+            Daarnaast is het een volwaardig notitieboek: vergadernotities,
+            takenlijsten, een dagboek — alles op één apparaat, zonder meldingen
+            of sociale media die om aandacht vragen. Handgeschreven notities zet
+            je om in getypte tekst en mail je direct naar jezelf of anderen. Op
+            Amazon scoort de Scribe 4,3 sterren op basis van ruim 1.800
+            beoordelingen, voor een prijs rond de €450 (32 GB, inclusief Premium
+            Pen).
+          </p>
+          <p className="content-paragraph">
+            Eerlijk is eerlijk: dit is geen apparaat voor de strandtas. Het is
+            groot, niet waterdicht, en fors duurder dan een gewone e-reader. Er
+            bestaat inmiddels ook een nieuwere Kindle Scribe Colorsoft met
+            kleurenscherm — mooi voor wie in kleur wil markeren, maar ook weer
+            een flink stuk prijziger. Voor de meeste schrijvende lezers is deze
+            Scribe de verstandige keuze: bewezen, compleet en scherper
+            geprijsd.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> studenten en onderzoekers, professionals
+            die documenten annoteren, dagboekschrijvers, en iedereen die lezen
+            en schrijven op één afleidingsvrij apparaat wil.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-scribe")} />
         </section>

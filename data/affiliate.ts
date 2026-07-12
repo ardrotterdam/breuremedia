@@ -49,8 +49,7 @@ export const ereaders: Ereader[] = [
     naam: "Kindle Scribe",
     korteOmschrijving:
       "De Scribe is een ander soort apparaat: 10,2 inch, met een pen waarmee je in de kantlijn schrijft alsof het papier is.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+    amazonUrl: "https://amzn.to/44K9Z3v",
   },
   {
     slug: "kindle-colorsoft",
