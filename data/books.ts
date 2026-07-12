@@ -57,7 +57,7 @@ export const books: Book[] = [
     language: "nl",
     format: "Paperback",
     formatNote:
-      "Nu in eindredactie. Teken vooraf in en ontvang als eerste bericht over verschijning, prijs en een exclusieve voorpublicatie.",
+      "Schaduwen over Domburg verschijnt naar verwachting najaar 2026. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
     setting: "Domburg, Zeeland — Nederlandse kust",
     themes: [
       "Stilte en spanning",
@@ -98,12 +98,12 @@ export const books: Book[] = [
       {
         question: "Hoe kan ik Schaduwen over Domburg bestellen?",
         answer:
-          "De bestelfunctionaliteit volgt binnenkort. Schrijf je in voor de nieuwsbrief op de homepage of neem contact op via info@breuremedia.com om op de hoogte te blijven van de verschijningsdatum.",
+          "Schaduwen over Domburg verschijnt naar verwachting najaar 2026. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in voor de nieuwsbrief op de homepage of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
       },
       {
         question: "Wat kost het boek?",
         answer:
-          "De adviesprijs is €29,95. De definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden binnenkort bekendgemaakt.",
+          "De adviesprijs is €29,95. Het boek verschijnt naar verwachting najaar 2026; de definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden nader bekendgemaakt.",
       },
     ],
   },

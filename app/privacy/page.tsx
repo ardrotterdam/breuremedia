@@ -48,14 +48,15 @@ export default function PrivacyPage() {
             Welke gegevens verzamelen wij?
           </h2>
           <p className="content-paragraph">
-            Op dit moment verzamelt {siteConfig.name} geen persoonsgegevens via
-            deze website. De nieuwsbrief is nog niet actief en er worden geen
-            e-mailadressen opgeslagen.
+            {siteConfig.name} verzamelt via deze website alleen het e-mailadres
+            dat u zelf invult bij inschrijving voor de nieuwsbrief. Dit gebeurt
+            met uw uitdrukkelijke toestemming.
           </p>
           <p className="content-paragraph">
-            Wanneer de nieuwsbrief wordt geactiveerd, verzamelen wij alleen uw
-            e-mailadres, met uw uitdrukkelijke toestemming. U kunt zich op elk
-            moment uitschrijven.
+            Wij gebruiken uw e-mailadres uitsluitend om u te informeren over de
+            verschijning van Schaduwen over Domburg en andere publicaties van
+            {siteConfig.name}. Wij delen uw gegevens niet met derden voor
+            marketingdoeleinden. U kunt zich op elk moment uitschrijven.
           </p>
         </section>
 

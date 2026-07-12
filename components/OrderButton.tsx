@@ -1,7 +1,7 @@
 export function OrderButton() {
   return (
     <a href="/#newsletter-heading" className="btn btn-primary">
-      Reserveer uw exemplaar
+      Blijf op de hoogte
     </a>
   );
 }
