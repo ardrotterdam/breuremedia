@@ -249,6 +249,20 @@ export default function EReadersPage() {
             inlevert ten opzichte van de Paperwhite: geen waterdichtheid, geen
             warme verlichting, en een iets kleiner scherm van 6 inch.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/kindle-basismodel-leesbaarheid-licht-donker.webp"
+              alt="Hand met compacte e-reader: scherm blijft even goed leesbaar in een donkere kamer als in fel daglicht"
+              width={1600}
+              height={873}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+            />
+            <figcaption className="content-meta">
+              Sfeerbeeld — de voorkantverlichting van de Kindle werkt in elke
+              lichtomstandigheid.
+            </figcaption>
+          </figure>
           <p className="content-paragraph">
             <a
               href={getEreaderUrl("kindle-basis")}
