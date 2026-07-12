@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -95,6 +96,21 @@ export default function EReadersPage() {
             <strong>basis-Kindle</strong>. Alles hieronder legt uit waarom.
           </p>
         </section>
+
+        <figure className="content-section">
+          <Image
+            src="/assets/kindle-paperwhite-schaduwen-over-domburg.webp"
+            alt="Kindle Paperwhite met de cover van de literaire thriller Schaduwen over Domburg van Ard Breure op het scherm"
+            width={1200}
+            height={1200}
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <figcaption className="content-meta">
+            Zo ziet Schaduwen over Domburg eruit op de Kindle Paperwhite — de
+            e-reader die ik hieronder als beste koop aanraad.
+          </figcaption>
+        </figure>
 
         <section className="content-section" aria-labelledby="overview-heading">
           <h2 id="overview-heading" className="content-heading">
