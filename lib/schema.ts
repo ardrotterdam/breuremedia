@@ -124,6 +124,22 @@ export function itemListSchema(name: string, items: ItemListEntry[]) {
   };
 }
 
+export function productBasicSchema(
+  name: string,
+  brand: string,
+  description: string
+) {
+  return {
+    "@type": "Product",
+    name,
+    brand: {
+      "@type": "Brand",
+      name: brand,
+    },
+    description,
+  };
+}
+
 export function buildJsonLd(...schemas: Record<string, unknown>[]) {
   return {
     "@context": "https://schema.org",

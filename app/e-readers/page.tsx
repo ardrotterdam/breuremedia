@@ -12,6 +12,7 @@ import {
   breadcrumbSchema,
   buildJsonLd,
   itemListSchema,
+  productBasicSchema,
 } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
@@ -58,6 +59,16 @@ const faqItems = [
     answer:
       "Nee. Alleen de Kindle Paperwhite en duurdere modellen zijn waterdicht. Wil je een waterdichte e-reader, kies dan de Paperwhite of de Kobo Libra Colour.",
   },
+  {
+    question: "Kan ik bibliotheekboeken lenen op de Kobo Libra Colour?",
+    answer:
+      "Ja, rechtstreeks vanaf het apparaat via OverDrive/Libby-integratie — een voordeel ten opzichte van Kindle, waar dat alleen via een omweg met een aparte app kan.",
+  },
+  {
+    question: "Is de Kobo Libra Colour waterdicht?",
+    answer:
+      "Ja, volgens de IPX8-norm: waterdicht tot maximaal 60 minuten in maximaal 2 meter diep water.",
+  },
 ];
 
 function getEreaderUrl(slug: string) {
@@ -77,9 +88,18 @@ export default function EReadersPage() {
     )
   );
 
+  const koboLibraProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Kobo Libra Colour",
+      "Kobo",
+      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en bibliotheek-lenen rechtstreeks vanaf het apparaat."
+    )
+  );
+
   return (
     <main>
       <JsonLd data={jsonLd} />
+      <JsonLd data={koboLibraProductSchema} />
       <PageHeader
         eyebrow="Gids"
         title="De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest"
@@ -296,11 +316,25 @@ export default function EReadersPage() {
           </h2>
           <p className="content-paragraph">
             Kobo is het merk voor lezers die vrijheid willen: EPUB-bestanden,
-            lenen bij de openbare bibliotheek rechtstreeks vanaf het apparaat, en
-            geen gedwongen winkel. De Libra Colour is het topmodel voor de
+            lenen bij de openbare bibliotheek rechtstreeks vanaf het apparaat,
+            en geen gedwongen winkel. De Libra Colour is het topmodel voor de
             meeste mensen: een kleurenscherm (rustige, papierachtige kleuren —
             geen tablet), fysieke bladerknoppen die je pas mist als je ze ooit
-            gehad hebt, en een asymmetrische vorm die perfect in één hand ligt.
+            gehad hebt, en waterdichte bescherming volgens de IPX8-norm. Met 32
+            GB opslag neem je tot 24.000 eBooks of 150 luisterboeken mee, en de
+            batterij gaat wekenlang mee op één lading. Op Amazon zelf staat hij
+            rond de €259, beoordeeld met 4,5 sterren op basis van ruim 2.300
+            reviews.
+          </p>
+          <p className="content-paragraph">
+            <a
+              href={getEreaderUrl("kobo-libra-colour")}
+              className="content-inline-link"
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              → Bekijk de actuele prijs op Amazon
+            </a>
           </p>
           <p className="content-paragraph">
             De keerzijde: een kleurenscherm van e-ink heeft een iets grijzere
