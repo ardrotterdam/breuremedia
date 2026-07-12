@@ -3,7 +3,7 @@ export interface Ereader {
   naam: string;
   korteOmschrijving: string;
   amazonUrl: string;
-  todo: string;
+  todo?: string;
 }
 
 export interface RotterdamBoek {
@@ -21,8 +21,7 @@ export const ereaders: Ereader[] = [
     naam: "Kindle Paperwhite",
     korteOmschrijving:
       "Als iemand mij op een verjaardag vraagt \"welke e-reader moet ik kopen?\", is dit negen van de tien keer het antwoord. Het scherm van 7 inch is groot genoeg om prettig te lezen en klein genoeg om in één hand te houden.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+    amazonUrl: "https://amzn.to/4vYBl1z",
   },
   {
     slug: "kindle-basis",
