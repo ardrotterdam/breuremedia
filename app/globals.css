@@ -320,7 +320,7 @@ input:focus-visible {
 
 .hero-author {
   font-family: var(--font-serif);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
@@ -328,7 +328,7 @@ input:focus-visible {
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 2.5rem;
