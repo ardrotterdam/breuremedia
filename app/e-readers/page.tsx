@@ -249,18 +249,10 @@ export default function EReadersPage() {
             inlevert ten opzichte van de Paperwhite: geen waterdichtheid, geen
             warme verlichting, en een iets kleiner scherm van 6 inch.
           </p>
-          <Image
-            src="/assets/kindle-basismodel-119-euro-e-reader.webp"
-            alt="Amazon Kindle basismodel e-reader met 25% helderdere verlichting, prijs rond de €120"
-            width={1200}
-            height={1143}
-            sizes="(max-width: 768px) 100vw, 48rem"
-            style={{ width: "100%", height: "auto", marginBottom: "1.25rem" }}
-          />
           <p className="content-paragraph">
             <a
               href={getEreaderUrl("kindle-basis")}
-              className="text-link"
+              className="content-inline-link"
               rel="nofollow sponsored noopener"
               target="_blank"
             >

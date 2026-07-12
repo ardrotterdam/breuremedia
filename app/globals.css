@@ -831,6 +831,16 @@ input:focus-visible {
   color: var(--color-charcoal);
 }
 
+.content-inline-link {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.content-inline-link:hover {
+  color: var(--color-charcoal);
+}
+
 /* Breadcrumbs */
 
 .breadcrumbs {
