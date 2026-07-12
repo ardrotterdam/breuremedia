@@ -458,6 +458,16 @@ export default function EReadersPage() {
             warm en met minder blauw licht, zodat je ogen rustig blijven tot de
             laatste bladzijde. Een instelbare donkere leesmodus zit er ook op.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/kobo-clara-bw-lezen-in-zonlicht-strand.webp"
+              alt="Kobo Clara BW e-reader met leesbaar e-inkscherm in fel zonlicht op het strand, zonnebril ernaast"
+              width={1600}
+              height={1355}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </figure>
           <p className="content-paragraph">
             Verrassend voor een instapmodel: de Clara BW is volledig waterdicht
             volgens de IPX8-norm (tot 60 minuten in twee meter water) en heeft
