@@ -100,7 +100,8 @@ export default function EReadersPage() {
           <h2 id="overview-heading" className="content-heading">
             In één oogopslag
           </h2>
-          <table className="content-table">
+          <div className="content-table-wrapper">
+            <table className="content-table">
             <thead>
               <tr>
                 <th scope="col">Model</th>
@@ -148,6 +149,7 @@ export default function EReadersPage() {
               </tr>
             </tbody>
           </table>
+          </div>
         </section>
 
         <p className="content-meta affiliate-disclosure">
@@ -333,9 +335,11 @@ export default function EReadersPage() {
             lezen.
           </p>
         </section>
+      </div>
 
-        <FaqSection items={faqItems} />
+      <FaqSection items={faqItems} />
 
+      <div className="container content-page content-page--footer">
         <section className="content-section">
           <p className="content-meta">
             <em>

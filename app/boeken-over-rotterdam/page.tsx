@@ -244,9 +244,11 @@ export default function BoekenOverRotterdamPage() {
             amazonUrl={getBoekUrl("moderne-rotterdamse-thriller")}
           />
         </section>
+      </div>
 
-        <FaqSection items={faqItems} />
+      <FaqSection items={faqItems} />
 
+      <div className="container content-page content-page--footer">
         <section className="content-section">
           <p className="content-meta">
             <em>
