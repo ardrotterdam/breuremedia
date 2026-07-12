@@ -101,6 +101,29 @@ export function webSiteSchema() {
   };
 }
 
+export interface ItemListEntry {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+export function itemListSchema(name: string, items: ItemListEntry[]) {
+  return {
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Thing",
+        name: item.name,
+        url: item.url,
+        ...(item.description && { description: item.description }),
+      },
+    })),
+  };
+}
+
 export function buildJsonLd(...schemas: Record<string, unknown>[]) {
   return {
     "@context": "https://schema.org",

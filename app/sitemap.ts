@@ -6,6 +6,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/e-readers", priority: 0.8, changeFrequency: "monthly" as const },
+    {
+      path: "/boeken-over-rotterdam",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
     { path: "/over-de-auteur", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/contact", priority: 0.6, changeFrequency: "yearly" as const },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },

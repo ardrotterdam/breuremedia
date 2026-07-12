@@ -24,6 +24,8 @@ export const author = {
 
 export const navLinks = [
   { href: "/boeken", label: "Boeken" },
+  { href: "/e-readers", label: "E-readers" },
+  { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
   { href: "/over-de-auteur", label: "Auteur" },
   { href: "/contact", label: "Contact" },
 ] as const;

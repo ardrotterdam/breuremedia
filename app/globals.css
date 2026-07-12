@@ -753,6 +753,31 @@ input:focus-visible {
   color: var(--color-text-muted);
 }
 
+.affiliate-disclosure {
+  margin-bottom: 2.5rem;
+  max-width: 48rem;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.content-table th,
+.content-table td {
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-warm-white-muted);
+  vertical-align: top;
+}
+
+.content-table th {
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
 .text-link {
   display: inline-block;
   margin-top: 0.5rem;
