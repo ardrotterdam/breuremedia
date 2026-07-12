@@ -657,6 +657,16 @@ export default function EReadersPage() {
             rustig avondlezen, terwijl omslagen en afbeeldingen gewoon in kleur
             blijven.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/kindle-colorsoft-kleurenscherm-warm-licht.webp"
+              alt="Kindle Colorsoft e-reader met kleurrijke boekomslag op het e-inkscherm, lezen bij warm avondlicht"
+              width={1600}
+              height={893}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </figure>
           <p className="content-paragraph">
             Verder is het alles wat een moderne Kindle hoort te zijn: volledig
             waterdicht, dus zwembad en bad zijn geen risico, een batterij die
