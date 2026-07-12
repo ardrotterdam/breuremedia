@@ -112,6 +112,24 @@ export default function EReadersPage() {
           </figcaption>
         </figure>
 
+        <div
+          className="content-section content-inline-cta"
+          style={{ textAlign: "center", marginTop: "-0.25rem" }}
+        >
+          <p
+            className="content-meta"
+            style={{ marginBottom: "0.875rem", maxWidth: "none" }}
+          >
+            Mijn nummer 1 aanbeveling — lees hieronder waarom, of bekijk hem
+            meteen:
+          </p>
+          <AffiliateButton
+            amazonUrl={getEreaderUrl("kindle-paperwhite")}
+            label="Bekijk de Kindle Paperwhite op Amazon"
+            compact
+          />
+        </div>
+
         <section className="content-section" aria-labelledby="overview-heading">
           <h2 id="overview-heading" className="content-heading">
             In één oogopslag
