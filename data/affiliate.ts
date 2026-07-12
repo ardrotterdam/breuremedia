@@ -56,8 +56,7 @@ export const ereaders: Ereader[] = [
     naam: "Kindle Colorsoft",
     korteOmschrijving:
       "Lees je strips, tijdschriften of boeken met illustraties, en zit je al in het Kindle-ecosysteem? Dan is de Colorsoft de logische stap.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+    amazonUrl: "https://amzn.to/4pi7gHS",
   },
 ];
 

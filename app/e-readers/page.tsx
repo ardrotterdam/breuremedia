@@ -119,6 +119,26 @@ const faqItems = [
     answer:
       "Alleen als je per se in kleur wilt markeren. De Scribe Colorsoft is aanzienlijk duurder, terwijl deze Scribe hetzelfde schrijfgevoel en dezelfde notitiefuncties biedt tegen een scherpere prijs.",
   },
+  {
+    question: "Wat is het verschil tussen de Kindle Colorsoft en de Kindle Paperwhite?",
+    answer:
+      "Het scherm. De Colorsoft toont papierachtige kleuren voor omslagen, afbeeldingen en markeringen; de Paperwhite is zwart-wit met een nét iets witter scherm en een lagere prijs. Formaat, waterdichtheid en batterijduur zijn vrijwel gelijk.",
+  },
+  {
+    question: "Wat is het verschil tussen de Kindle Colorsoft en de Kobo Libra Colour?",
+    answer:
+      "Beide hebben een 7-inch kleuren-e-inkscherm. De Kobo biedt fysieke bladerknoppen en open EPUB-ondersteuning met bibliotheeklenen; de Kindle biedt de grootste boekwinkel en naadloze integratie voor wie al Kindle-boeken bezit. De keuze is vooral: welk ecosysteem past bij jou?",
+  },
+  {
+    question: "Is de Kindle Colorsoft waterdicht?",
+    answer:
+      "Ja. Amazon adverteert de Colorsoft als waterdicht en zorgeloos — lezen naast het zwembad of in bad kan zonder problemen.",
+  },
+  {
+    question: "Hoe lang gaat de batterij van de Kindle Colorsoft mee?",
+    answer:
+      "Tot acht weken op één lading via USB-C, afhankelijk van gebruik en verlichting. Het kleurenscherm verbruikt nauwelijks meer dan een zwart-wit e-inkscherm omdat het alleen stroom trekt bij het omslaan van pagina's.",
+  },
 ];
 
 function getEreaderUrl(slug: string) {
@@ -162,12 +182,21 @@ export default function EReadersPage() {
     )
   );
 
+  const kindleColorsoftProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Amazon Kindle Colorsoft",
+      "Amazon",
+      "Compacte 7-inch e-reader met papierachtig kleuren-e-inkscherm, aanpasbaar warm licht, waterdicht ontwerp en wekenlange batterijduur."
+    )
+  );
+
   return (
     <main>
       <JsonLd data={jsonLd} />
       <JsonLd data={koboLibraProductSchema} />
       <JsonLd data={koboClaraProductSchema} />
       <JsonLd data={kindleScribeProductSchema} />
+      <JsonLd data={kindleColorsoftProductSchema} />
       <PageHeader
         eyebrow="Gids"
         title="De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest"
@@ -598,18 +627,57 @@ export default function EReadersPage() {
           aria-labelledby="kindle-colorsoft-heading"
         >
           <h2 id="kindle-colorsoft-heading" className="content-heading">
-            Kindle Colorsoft — kleur voor Kindle-lezers
+            Kindle Colorsoft review: de Paperwhite, maar dan in kleur
           </h2>
           <p className="content-paragraph">
-            Lees je strips, tijdschriften of boeken met illustraties, en zit je
-            al in het Kindle-ecosysteem? Dan is de Colorsoft de logische stap:
-            hetzelfde vertrouwde Kindle-gevoel, maar met kleur. Voor pure
-            romanlezers voegt kleur weinig toe — dan is de Paperwhite scherper
-            én voordeliger.
+            Wie al jaren tevreden in het Kindle-ecosysteem leest en maar één
+            ding mist — kleur — hoeft niet meer te kiezen. De Kindle Colorsoft
+            is in essentie een Paperwhite met een kleurenscherm: dezelfde
+            compacte vorm, dezelfde zorgeloosheid, maar boekomslagen die
+            eruitzien zoals de ontwerper ze bedoelde en markeringen in geel,
+            oranje, blauw en roze in plaats van grijs.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> stripboek- en tijdschriftlezers die
-            Kindle trouw willen blijven.
+            <a
+              href={getEreaderUrl("kindle-colorsoft")}
+              className="content-inline-link"
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              → Bekijk de actuele prijs van de Kindle Colorsoft op Amazon
+            </a>
+          </p>
+          <p className="content-paragraph">
+            Het 7-inch Colorsoft-scherm toont papierachtige, gedempte kleuren
+            met hoog contrast — geen schreeuwerig tabletscherm, maar e-ink dat
+            oogvriendelijk blijft tijdens lange leessessies. Het licht is
+            instelbaar van koel wit naar warm amber, zodat je zowel in fel
+            zonlicht als &apos;s avonds in bed comfortabel leest. Slim detail: de
+            functie Paginakleur keert zwarte tekst en witte achtergrond om voor
+            rustig avondlezen, terwijl omslagen en afbeeldingen gewoon in kleur
+            blijven.
+          </p>
+          <p className="content-paragraph">
+            Verder is het alles wat een moderne Kindle hoort te zijn: volledig
+            waterdicht, dus zwembad en bad zijn geen risico, een batterij die
+            tot acht weken meegaat op één USB-C-lading, en directe toegang tot
+            miljoenen titels in de Kindle Store. Op Amazon scoort de Colorsoft
+            4,5 sterren op basis van ruim 2.400 beoordelingen, voor een prijs
+            rond de €270 (16 GB).
+          </p>
+          <p className="content-paragraph">
+            De keerzijde is dezelfde als bij elk kleuren-e-inkscherm: de
+            achtergrond is een fractie grijzer dan bij de beste
+            zwart-witschermen, en je betaalt zo&apos;n honderd euro meer dan
+            voor een Paperwhite. Lees je vrijwel alleen romans zonder
+            illustraties, dan is die meerprijs het niet waard. Lees je strips,
+            kookboeken, tijdschriftartikelen of markeer je veel in kleur, dan
+            is dit de fijnste Kindle van dit moment.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> trouwe Kindle-lezers die kleur willen,
+            strip- en kookboeklezers, studenten die in kleur markeren, en
+            iedereen die boekomslagen wil zien zoals ze bedoeld zijn.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-colorsoft")} />
         </section>
