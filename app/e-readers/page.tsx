@@ -24,6 +24,8 @@ export const metadata: Metadata = buildMetadata({
   image: "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp",
   imageAlt:
     "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee",
+  imageWidth: 1600,
+  imageHeight: 873,
 });
 
 const breadcrumbs = [

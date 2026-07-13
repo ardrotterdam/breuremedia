@@ -7,6 +7,8 @@ export interface PageSeoOptions {
   path: string;
   image?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   type?: "website" | "article" | "book";
   noIndex?: boolean;
   keywords?: string[];
@@ -23,6 +25,8 @@ export function buildMetadata({
   path,
   image,
   imageAlt,
+  imageWidth,
+  imageHeight,
   type = "website",
   noIndex = false,
   keywords,
@@ -30,6 +34,8 @@ export function buildMetadata({
   const url = absoluteUrl(path);
   const ogImage = image ? absoluteUrl(image) : absoluteUrl("/assets/schaduwen-over-domburg-cover.webp");
   const ogImageAlt = imageAlt ?? title;
+  const ogImageWidth = imageWidth ?? 800;
+  const ogImageHeight = imageHeight ?? 1200;
 
   return {
     title,
@@ -51,8 +57,8 @@ export function buildMetadata({
       images: [
         {
           url: ogImage,
-          width: 800,
-          height: 1200,
+          width: ogImageWidth,
+          height: ogImageHeight,
           alt: ogImageAlt,
         },
       ],
