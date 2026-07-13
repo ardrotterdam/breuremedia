@@ -17,6 +17,17 @@
   --transition: 0.3s ease;
   --container-max: 1120px;
   --header-height: 64px;
+  /* Type scale — reading-first, 18px body baseline */
+  --font-size-body: 1.125rem;
+  --line-height-body: 1.7;
+  --font-size-secondary: 1rem;
+  --line-height-secondary: 1.65;
+  --font-size-lead: 1.25rem;
+  --line-height-lead: 1.65;
+  --font-size-ui: 0.875rem;
+  --line-height-ui: 1.5;
+  --font-size-caption: 0.8125rem;
+  --text-column: 42rem;
 }
 
 /* Reset & Base */
@@ -38,8 +49,8 @@ html {
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   color: var(--color-text);
   background-color: var(--color-warm-white);
   -webkit-font-smoothing: antialiased;
@@ -128,7 +139,7 @@ input:focus-visible {
 
 .section-eyebrow,
 .hero-eyebrow {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-ui);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -164,7 +175,7 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0.875rem 2rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-ui);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -219,7 +230,7 @@ input:focus-visible {
 }
 
 .nav a {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-ui);
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -322,7 +333,7 @@ input:focus-visible {
 
 .hero-author {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: var(--font-size-lead);
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
@@ -330,20 +341,20 @@ input:focus-visible {
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: var(--font-size-lead);
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 2.5rem;
   max-width: 48ch;
-  line-height: 1.65;
+  line-height: var(--line-height-lead);
 }
 
 .hero-description {
-  font-size: 1.0625rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-muted);
   margin-bottom: 1.25rem;
   max-width: 48ch;
-  line-height: 1.75;
+  line-height: var(--line-height-body);
 }
 
 .hero-description:last-of-type {
@@ -369,15 +380,15 @@ input:focus-visible {
 }
 
 .hero-format {
-  font-size: 0.875rem;
+  font-size: var(--font-size-secondary);
   color: var(--color-text-muted);
   letter-spacing: 0.02em;
-  line-height: 1.55;
+  line-height: var(--line-height-secondary);
 }
 
 .hero-meta .hero-format {
-  font-size: 0.9375rem;
-  line-height: 1.65;
+  font-size: var(--font-size-secondary);
+  line-height: var(--line-height-secondary);
   max-width: 50ch;
 }
 
@@ -386,17 +397,17 @@ input:focus-visible {
   background-color: var(--color-warm-white);
 }
 .synopsis-inner {
-  max-width: 44rem;
+  max-width: var(--text-column);
 }
 .synopsis-paragraph {
-  font-size: 1.0625rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-muted);
-  line-height: 1.8;
+  line-height: var(--line-height-body);
   margin-bottom: 1.5rem;
-  max-width: 62ch;
 }
 .synopsis-paragraph:first-of-type {
-  font-size: 1.1875rem;
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
   color: var(--color-text);
 }
 
@@ -431,8 +442,8 @@ input:focus-visible {
 
 .author-text p {
   margin-bottom: 1.25rem;
-  font-size: 0.9375rem;
-  line-height: 1.75;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .author-text em {
@@ -446,7 +457,7 @@ input:focus-visible {
 
 .author-accent blockquote {
   font-family: var(--font-serif);
-  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.5rem, 2.75vw, 2rem);
   font-style: italic;
   font-weight: 400;
   line-height: 1.45;
@@ -474,7 +485,8 @@ input:focus-visible {
   color: var(--color-text-muted);
   margin-bottom: 2rem;
   max-width: 48ch;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .newsletter-form .form-group {
@@ -488,7 +500,7 @@ input:focus-visible {
   min-width: 0;
   padding: 0.75rem 0;
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
   font-weight: 300;
   color: var(--color-text);
   background-color: transparent;
@@ -510,7 +522,8 @@ input:focus-visible {
 
 .form-message {
   margin-top: 1rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-secondary);
+  line-height: var(--line-height-secondary);
   min-height: 1.25rem;
 }
 
@@ -529,9 +542,9 @@ input:focus-visible {
 
 .form-privacy {
   margin-top: 1.25rem;
-  font-size: 0.75rem;
+  font-size: var(--font-size-secondary);
   color: var(--color-text-muted);
-  line-height: 1.6;
+  line-height: var(--line-height-secondary);
   max-width: 48ch;
 }
 
@@ -558,9 +571,9 @@ input:focus-visible {
 }
 
 .footer-tagline {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-secondary);
   color: rgba(232, 226, 216, 0.72);
-  line-height: 1.6;
+  line-height: var(--line-height-secondary);
   margin-bottom: 2rem;
 }
 
@@ -569,7 +582,7 @@ input:focus-visible {
 }
 
 .footer-details p {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-secondary);
   margin-bottom: 0.25rem;
 }
 
@@ -578,9 +591,10 @@ input:focus-visible {
 }
 
 .footer-legal {
-  font-size: 0.6875rem;
+  font-size: var(--font-size-caption);
   color: rgba(232, 226, 216, 0.48);
   letter-spacing: 0.02em;
+  line-height: var(--line-height-ui);
 }
 
 /* Responsive */
@@ -699,7 +713,7 @@ input:focus-visible {
   }
 
   .content-table {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-secondary);
   }
 
   .content-table th,
@@ -723,7 +737,7 @@ input:focus-visible {
 }
 
 .page-header-inner {
-  max-width: 48rem;
+  max-width: var(--text-column);
 }
 
 .page-title {
@@ -737,10 +751,10 @@ input:focus-visible {
 }
 
 .page-description {
-  font-size: 1.0625rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-muted);
   max-width: 48ch;
-  line-height: 1.75;
+  line-height: var(--line-height-body);
   overflow-wrap: break-word;
 }
 
@@ -758,13 +772,13 @@ input:focus-visible {
 
 .content-section {
   margin-bottom: 3rem;
-  max-width: 48rem;
+  max-width: var(--text-column);
   min-width: 0;
 }
 
 .content-heading {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.5rem, 2.75vw, 2rem);
   font-weight: 400;
   color: var(--color-charcoal);
   margin-bottom: 1rem;
@@ -773,21 +787,21 @@ input:focus-visible {
 
 .content-paragraph {
   margin-bottom: 1.25rem;
-  font-size: 0.9375rem;
-  line-height: 1.75;
-  max-width: 52ch;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   overflow-wrap: break-word;
 }
 
 .content-meta {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-secondary);
+  line-height: var(--line-height-secondary);
   color: var(--color-text-muted);
   overflow-wrap: break-word;
 }
 
 .affiliate-disclosure {
   margin-bottom: 2.5rem;
-  max-width: 48rem;
+  max-width: var(--text-column);
 }
 
 .content-table-wrapper {
@@ -800,8 +814,8 @@ input:focus-visible {
   width: 100%;
   min-width: 36rem;
   border-collapse: collapse;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: var(--font-size-secondary);
+  line-height: var(--line-height-secondary);
 }
 
 .content-table th,
@@ -821,7 +835,7 @@ input:focus-visible {
 .text-link {
   display: inline-block;
   margin-top: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: var(--font-size-ui);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-gold);
@@ -852,7 +866,7 @@ input:focus-visible {
   flex-wrap: wrap;
   gap: 0.5rem;
   list-style: none;
-  font-size: 0.75rem;
+  font-size: var(--font-size-ui);
   letter-spacing: 0.04em;
   color: var(--color-text-muted);
 }
@@ -908,7 +922,7 @@ input:focus-visible {
 
 .book-card-title {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 400;
   color: var(--color-charcoal);
   margin-bottom: 0.25rem;
@@ -916,21 +930,22 @@ input:focus-visible {
 
 .book-card-author {
   font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--font-size-body);
   font-style: italic;
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
 .book-card-description {
-  font-size: 0.875rem;
+  font-size: var(--font-size-secondary);
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
-  line-height: 1.65;
+  line-height: var(--line-height-secondary);
 }
 
 .book-card-price {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.125rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   color: var(--color-charcoal);
 }
@@ -942,7 +957,7 @@ input:focus-visible {
 }
 
 .book-detail-inner {
-  max-width: 48rem;
+  max-width: var(--text-column);
 }
 
 .theme-list {
@@ -954,7 +969,8 @@ input:focus-visible {
   position: relative;
   padding-left: 1.25rem;
   margin-bottom: 0.5rem;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   color: var(--color-text-muted);
 }
 
@@ -977,7 +993,7 @@ input:focus-visible {
 }
 
 .faq-inner {
-  max-width: 48rem;
+  max-width: var(--text-column);
 }
 
 .faq-list {
@@ -1009,7 +1025,7 @@ input:focus-visible {
 
 .faq-question {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.125rem;
+  font-size: var(--font-size-lead);
   font-weight: 600;
   color: var(--color-charcoal);
   line-height: 1.4;
@@ -1033,10 +1049,9 @@ input:focus-visible {
 }
 
 .faq-answer {
-  font-size: 0.9375rem;
+  font-size: var(--font-size-body);
   color: var(--color-text-muted);
-  line-height: 1.75;
-  max-width: 52ch;
+  line-height: var(--line-height-body);
   overflow-wrap: break-word;
 }
 
@@ -1049,8 +1064,9 @@ input:focus-visible {
 
 .author-accent--inline blockquote {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
   font-style: italic;
+  line-height: 1.45;
   color: var(--color-charcoal);
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-warm-white-muted);
@@ -1067,7 +1083,7 @@ input:focus-visible {
 }
 
 .footer-nav a {
-  font-size: 0.6875rem;
+  font-size: var(--font-size-ui);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(232, 226, 216, 0.72);
