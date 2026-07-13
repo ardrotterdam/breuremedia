@@ -72,9 +72,8 @@ export const rotterdamBoeken: RotterdamBoek[] = [
     slug: "karakter-bordewijk",
     naam: "Karakter — F. Bordewijk",
     korteOmschrijving:
-      "Dé Rotterdamse roman, punt. Het verhaal van Katadreuffe, de zoon van deurwaarder Dreverhaven, die zich tegen zijn vader in omhoog vecht in het vooroorlogse Rotterdam van kantoren, kades en armoede.",
-    amazonUrl: "",
-    todo: "AMAZON-LINK INVOEGEN",
+      "Het verhaal van Jacob Willem Katadreuffe, buitenechtelijke zoon van deurwaarder Dreverhaven, die zich in het vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk — dwars tegen zijn eigen vader in.",
+    amazonUrl: "https://amzn.to/3T0STeX",
   },
   {
     slug: "jules-deelder",

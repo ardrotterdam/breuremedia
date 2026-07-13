@@ -124,6 +124,34 @@ export function itemListSchema(name: string, items: ItemListEntry[]) {
   };
 }
 
+export function affiliateBookSchema(book: {
+  name: string;
+  author: string;
+  description: string;
+  isbn: string;
+  datePublished: string;
+  url: string;
+}) {
+  return {
+    "@type": "Book",
+    name: book.name,
+    author: {
+      "@type": "Person",
+      name: book.author,
+    },
+    description: book.description,
+    isbn: book.isbn,
+    datePublished: book.datePublished,
+    inLanguage: "nl",
+    url: book.url,
+    offers: {
+      "@type": "Offer",
+      url: book.url,
+      availability: "https://schema.org/InStock",
+    },
+  };
+}
+
 export function productBasicSchema(
   name: string,
   brand: string,

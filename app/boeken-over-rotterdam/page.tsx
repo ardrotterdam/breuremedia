@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { rotterdamBoeken } from "@/data/affiliate";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
+  affiliateBookSchema,
   breadcrumbSchema,
   buildJsonLd,
   itemListSchema,
@@ -49,6 +50,10 @@ function getBoekUrl(slug: string) {
 }
 
 export default function BoekenOverRotterdamPage() {
+  const karakterBoek = rotterdamBoeken.find(
+    (item) => item.slug === "karakter-bordewijk"
+  );
+
   const jsonLd = buildJsonLd(
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
@@ -60,7 +65,19 @@ export default function BoekenOverRotterdamPage() {
           : absoluteUrl(`/boeken-over-rotterdam#${item.slug}`),
         description: item.korteOmschrijving,
       }))
-    )
+    ),
+    ...(karakterBoek?.amazonUrl
+      ? [
+          affiliateBookSchema({
+            name: "Karakter",
+            author: "F. Bordewijk",
+            description: karakterBoek.korteOmschrijving,
+            isbn: "9789038815480",
+            datePublished: "2025-10-02",
+            url: karakterBoek.amazonUrl,
+          }),
+        ]
+      : [])
   );
 
   return (
@@ -132,19 +149,26 @@ export default function BoekenOverRotterdamPage() {
             Karakter — F. Bordewijk
           </h2>
           <p className="content-paragraph">
-            Dé Rotterdamse roman, punt. Het verhaal van Katadreuffe, de zoon van
-            deurwaarder Dreverhaven, die zich tegen zijn vader in omhoog vecht
-            in het vooroorlogse Rotterdam van kantoren, kades en armoede.
-            Bordewijks staccato stijl is de stad zelf: hard, kaal, zonder één
-            overbodig woord. De verfilming won een Oscar, maar het boek is
-            beter — en na bijna een eeuw nog steeds de maatstaf voor iedereen
-            die over deze stad schrijft. Ook voor mij.
+            Geen boek over Rotterdam is zo vaak genoemd en zo weinig herlezen
+            als <em>Karakter</em>. Bordewijk schreef in 1938 het verhaal van
+            Jacob Willem Katadreuffe, buitenechtelijke zoon van de
+            onverzettelijke deurwaarder Dreverhaven, die zich in het
+            vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk —
+            dwars tegen zijn eigen vader in. Geen gezellige haven hier, maar een
+            stad van kantoren, incasso&apos;s en onbuigzame wilskracht. De stijl
+            is kil en precies, bijna juridisch, en juist daardoor
+            onvergetelijk. Wie Rotterdam wil begrijpen vóór de oorlog, vóór het
+            bombardement, leest dit.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> iedereen die één boek over Rotterdam wil
-            lezen. Dan dit.
+            <em>Karakter</em> won in 1938 de C.W. van der Hoogtprijs en werd in
+            1997 verfilmd door Mike van Diem, die er een Oscar voor buitenlandse
+            film mee won.
           </p>
-          <AffiliateButton amazonUrl={getBoekUrl("karakter-bordewijk")} />
+          <AffiliateButton
+            amazonUrl={getBoekUrl("karakter-bordewijk")}
+            label="MEER OVER KARAKTER — BESTEL HIER"
+          />
         </section>
 
         <section
