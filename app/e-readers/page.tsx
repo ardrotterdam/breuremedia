@@ -228,8 +228,8 @@ export default function EReadersPage() {
           <Image
             src="/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp"
             alt="Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee"
-            width={2816}
-            height={1536}
+            width={1600}
+            height={873}
             priority
             sizes="(max-width: 768px) 100vw, 48rem"
             style={{ width: "100%", height: "auto" }}
