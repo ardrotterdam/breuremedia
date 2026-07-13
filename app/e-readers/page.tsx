@@ -226,10 +226,11 @@ export default function EReadersPage() {
 
         <figure className="content-section">
           <Image
-            src="/assets/kindle-paperwhite-schaduwen-over-domburg.webp"
-            alt="Kindle Paperwhite met de cover van de literaire thriller Schaduwen over Domburg van Ard Breure op het scherm"
-            width={1200}
-            height={1200}
+            src="/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp"
+            alt="Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee"
+            width={2816}
+            height={1536}
+            priority
             sizes="(max-width: 768px) 100vw, 48rem"
             style={{ width: "100%", height: "auto" }}
           />
