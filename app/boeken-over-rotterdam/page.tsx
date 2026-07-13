@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -213,6 +214,16 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> de lezer voor wie Rotterdam ook tribune,
             gras en zondagmiddag is.
           </p>
+          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
+            <Image
+              className="book-cover"
+              src="/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp"
+              alt="De Coolsingel bleef leeg - het klassieke boek over Feyenoord van Hugo Borst, boekomslag"
+              width={963}
+              height={1500}
+              sizes="280px"
+            />
+          </div>
           <AffiliateButton amazonUrl={getBoekUrl("hugo-borst")} />
         </section>
 
