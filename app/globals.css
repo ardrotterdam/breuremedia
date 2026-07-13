@@ -398,6 +398,7 @@ input:focus-visible {
 }
 .synopsis-inner {
   max-width: var(--text-column);
+  margin-inline: auto;
 }
 .synopsis-paragraph {
   font-size: var(--font-size-body);
@@ -738,6 +739,7 @@ input:focus-visible {
 
 .page-header-inner {
   max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .page-title {
@@ -774,6 +776,7 @@ input:focus-visible {
   margin-bottom: 3rem;
   max-width: var(--text-column);
   min-width: 0;
+  margin-inline: auto;
 }
 
 .content-heading {
@@ -802,6 +805,7 @@ input:focus-visible {
 .affiliate-disclosure {
   margin-bottom: 2.5rem;
   max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .content-table-wrapper {
@@ -859,6 +863,8 @@ input:focus-visible {
 
 .breadcrumbs {
   margin-bottom: 2.5rem;
+  max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .breadcrumbs-list {
@@ -958,6 +964,7 @@ input:focus-visible {
 
 .book-detail-inner {
   max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .theme-list {
@@ -994,6 +1001,7 @@ input:focus-visible {
 
 .faq-inner {
   max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .faq-list {
