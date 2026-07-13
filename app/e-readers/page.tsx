@@ -21,6 +21,9 @@ export const metadata: Metadata = buildMetadata({
   description:
     "In deze gids vergelijk ik de zes e-readers die er in 2026 echt toe doen, en vertel ik welke ik zelf zou kopen — afhankelijk van hoe jij leest.",
   path: "/e-readers",
+  image: "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp",
+  imageAlt:
+    "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee",
 });
 
 const breadcrumbs = [
