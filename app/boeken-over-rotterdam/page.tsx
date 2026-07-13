@@ -92,6 +92,18 @@ export default function BoekenOverRotterdamPage() {
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <figure className="content-section">
+          <Image
+            src="/assets/rotterdam-maas-lezen-sfeerbeeld.webp"
+            alt="Illustratie van lezen aan de Maas in Rotterdam met de Erasmusbrug op de achtergrond"
+            width={1600}
+            height={600}
+            priority
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </figure>
+
         <section className="content-section">
           <p className="content-paragraph">
             Rotterdam is een stad die je niet beschrijft met
