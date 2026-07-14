@@ -815,9 +815,13 @@ input:focus-visible {
 }
 
 .affiliate-disclosure {
-  margin-bottom: 2.5rem;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  margin-block: 1.5rem 2.5rem;
   max-width: var(--text-column);
   margin-inline: auto;
+  overflow-wrap: break-word;
 }
 
 .content-table-wrapper {

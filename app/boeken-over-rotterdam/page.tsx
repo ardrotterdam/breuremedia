@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AffiliateButton } from "@/components/AffiliateButton";
+import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
@@ -190,6 +191,8 @@ export default function BoekenOverRotterdamPage() {
           <Link href="/boeken/schaduwen-over-domburg">Schaduwen over Domburg</Link>
         </p>
 
+        <AffiliateDisclosure />
+
         <figure className="content-section">
           <Image
             src="/assets/rotterdam-maas-lezen-sfeerbeeld.webp"
@@ -218,10 +221,6 @@ export default function BoekenOverRotterdamPage() {
             verhalen waarin Rotterdam geen decor is, maar een personage.
           </p>
         </section>
-
-        <p className="content-meta affiliate-disclosure">
-          Als Amazon-partner verdien ik aan in aanmerking komende aankopen.
-        </p>
 
         <section
           id="schaduwen-over-domburg"
@@ -416,10 +415,7 @@ export default function BoekenOverRotterdamPage() {
         <section className="content-section">
           <p className="content-meta">
             <em>
-              Als Amazon-partner verdien ik aan in aanmerking komende aankopen.
-              Dat verandert niets aan de prijs die jij betaalt, en niets aan
-              mijn keuze — hier staan alleen boeken die ik zelf de moeite waard
-              vind.
+              Hier staan alleen boeken die ik zelf de moeite waard vind.
             </em>
           </p>
           <p className="content-meta">

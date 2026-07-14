@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AffiliateButton } from "@/components/AffiliateButton";
+import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
@@ -229,6 +230,8 @@ export default function EReadersPage() {
           </p>
         </section>
 
+        <AffiliateDisclosure />
+
         <figure className="content-section">
           <Image
             src="/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp"
@@ -318,10 +321,6 @@ export default function EReadersPage() {
           </table>
           </div>
         </section>
-
-        <p className="content-meta affiliate-disclosure">
-          Als Amazon-partner verdien ik aan in aanmerking komende aankopen.
-        </p>
 
         <section
           id="kindle-paperwhite"
@@ -728,11 +727,7 @@ export default function EReadersPage() {
       <div className="container content-page content-page--footer">
         <section className="content-section">
           <p className="content-meta">
-            <em>
-              Als Amazon-partner verdien ik aan in aanmerking komende aankopen.
-              Dat verandert niets aan de prijs die jij betaalt, en niets aan
-              mijn oordeel — ik raad alleen aan wat ik zelf zou kopen.
-            </em>
+            <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
           </p>
           <p className="content-meta">
             <em>
