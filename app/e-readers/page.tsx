@@ -367,7 +367,9 @@ export default function EReadersPage() {
             genoeg om in één hand te houden. De verlichting is warm instelbaar,
             zodat je &apos;s avonds leest zonder dat het voelt als naar een
             telefoon staren. Hij is waterdicht — badkuip, zwembad, Nederlandse
-            regen — en de batterij gaat wekenlang mee, niet urenlang.
+            regen — en de batterij gaat wekenlang mee, niet urenlang. Op
+            Amazon scoort de Paperwhite 4,6 sterren op basis van ruim 15.700
+            beoordelingen, voor een prijs rond de €179,99 (16 GB).
           </p>
           <p className="content-paragraph">
             Wat je moet weten: je zit in het Amazon-ecosysteem. Boeken koop je
