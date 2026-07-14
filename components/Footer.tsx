@@ -16,6 +16,7 @@ export function Footer() {
           <Link href="/boeken">Boeken</Link>
           <Link href="/e-readers">E-readers</Link>
           <Link href="/boeken-over-rotterdam">Boeken over Rotterdam</Link>
+          <Link href="/boeken-over-zeeland">Boeken over Zeeland</Link>
           <Link href="/over-de-auteur">Over de auteur</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>

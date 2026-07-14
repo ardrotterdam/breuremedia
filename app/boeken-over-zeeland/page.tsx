@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AffiliateButton } from "@/components/AffiliateButton";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
@@ -27,6 +28,10 @@ const zeelandBookDetails: Record<
     schemaName: "Schaduwen over Domburg",
     author: "Ard Breure",
     image: "/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp",
+  },
+  "time-to-momo-zeeland": {
+    schemaName: "Time to Momo Zeeland",
+    image: "/assets/time-to-momo-zeeland-boekomslag-placeholder.png",
   },
 };
 
@@ -57,7 +62,7 @@ const faqItems = [
   {
     question: "Welke reisgids is het beste voor Zeeland?",
     answer:
-      "Dat hangt af van wat je zoekt: een compacte gids voor de kustplaatsen en de Deltawerken, of een uitgebreidere gids met wandel- en fietsroutes door heel Walcheren en Zeeuws-Vlaanderen. Ik test en voeg concrete aanraders hier binnenkort toe.",
+      "Time to Momo Zeeland is een prettige eerste keus: een praktische gids met de leukste stranden, hotspots en horeca, inclusief tips van locals. Voor wie liever nog dieper de Deltawerken of de fiets- en wandelroutes van Walcheren en Zeeuws-Vlaanderen induikt, volgen hier binnenkort meer aanraders.",
   },
   {
     question: "Is Schaduwen over Domburg ook interessant als reisliteratuur?",
@@ -184,6 +189,42 @@ export default function BoekenOverZeelandPage() {
           <Link href="/#newsletter-heading" className="btn btn-primary">
             Schrijf je in voor de wachtlijst
           </Link>
+        </section>
+
+        <section
+          id="time-to-momo-zeeland"
+          className="content-section"
+          aria-labelledby="time-to-momo-zeeland-heading"
+        >
+          <h2 id="time-to-momo-zeeland-heading" className="content-heading">
+            Time to Momo Zeeland
+          </h2>
+          <p className="content-paragraph">
+            Zoek je geen roman maar een praktische gids voor je volgende
+            tripje naar Zeeland? <em>Time to Momo Zeeland</em> neemt je mee
+            naar de leukste stranden, verrassende hotspots en goede horeca —
+            van gezellige terrasjes tot de vis die zo vanuit zee op je bord
+            belandt. Met tips van locals haal je alles uit je bezoek aan
+            &apos;het Zeeuwse&apos;.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> wie eerst wil reizen en pas daarna wil
+            lezen — of andersom, en na <em>Schaduwen over Domburg</em> zelf
+            naar het strand van Domburg toe wil.
+          </p>
+          <Image
+            className="book-cover"
+            src="/assets/time-to-momo-zeeland-boekomslag-placeholder.png"
+            alt="Time to Momo Zeeland - boekomslag (voorlopige afbeelding)"
+            width={1024}
+            height={1536}
+            sizes="280px"
+            loading="lazy"
+          />
+          <AffiliateButton
+            amazonUrl={getBoekUrl("time-to-momo-zeeland")}
+            label="MEER OVER TIME TO MOMO ZEELAND — BESTEL HIER"
+          />
         </section>
       </div>
 

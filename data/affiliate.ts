@@ -119,6 +119,14 @@ export const zeelandBoeken: ZeelandBoek[] = [
       "Een literaire thriller die begint met een lichaam op het strand van Domburg en een rechercheur die een oude belofte niet nakwam — een verhaal dat de Zeeuwse kust als personage gebruikt.",
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
+  {
+    slug: "time-to-momo-zeeland",
+    naam: "Time to Momo Zeeland",
+    korteOmschrijving:
+      "Zoek je geen roman maar een praktische gids voor je volgende tripje naar Zeeland? Time to Momo Zeeland neemt je mee naar de leukste stranden, verrassende hotspots en goede horeca — van gezellige terrasjes tot de vis die zo vanuit zee op je bord belandt. Met tips van locals haal je alles uit je bezoek aan 'het Zeeuwse'.",
+    // TODO: amazonUrl invullen met affiliate link zodra beschikbaar.
+    todo: "Affiliate link nog invullen; cover afbeelding is een placeholder totdat de echte omslag beschikbaar is.",
+  },
   // Meer Zeeuwse romans, verhalen en reisgidsen volgen hier.
 ];
 
