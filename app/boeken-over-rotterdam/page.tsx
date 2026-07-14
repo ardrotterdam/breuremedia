@@ -321,33 +321,6 @@ export default function BoekenOverRotterdamPage() {
             label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"
           />
         </section>
-
-        <section
-          id="moderne-rotterdamse-thriller"
-          className="content-section"
-          aria-labelledby="moderne-rotterdamse-thriller-heading"
-        >
-          <h2
-            id="moderne-rotterdamse-thriller-heading"
-            className="content-heading"
-          >
-            Een moderne Rotterdamse thriller
-          </h2>
-          <p className="content-paragraph">
-            De stad van nu — met haar torens, haar haven vol camera&apos;s en
-            haar oude wijken onder druk — is een cadeau voor thrillerschrijvers,
-            en er verschijnen elk jaar titels die er dankbaar gebruik van maken.
-            Hier hoort een recente Rotterdamse misdaadroman die de stad van
-            vandaag laat zien.
-          </p>
-          <p className="content-paragraph">
-            <strong>Voor wie:</strong> wie na de klassiekers het Rotterdam van
-            nu wil lezen — als opwarmer voor wat hierboven staat.
-          </p>
-          <AffiliateButton
-            amazonUrl={getBoekUrl("moderne-rotterdamse-thriller")}
-          />
-        </section>
       </div>
 
       <FaqSection items={faqItems} />

@@ -98,14 +98,6 @@ export const rotterdamBoeken: RotterdamBoek[] = [
       "Gids met honderd wederopbouwprojecten uit Rotterdam — van het Groothandelsgebouw tot Pendrecht en Ommoord, met historische foto's naast de huidige situatie.",
     amazonUrl: "https://amzn.to/4w0zclU",
   },
-  {
-    slug: "moderne-rotterdamse-thriller",
-    naam: "Een moderne Rotterdamse thriller",
-    korteOmschrijving:
-      "De stad van nu — met haar torens, haar haven vol camera's en haar oude wijken onder druk — is een cadeau voor thrillerschrijvers.",
-    amazonUrl: "",
-    todo: "TITEL + LINK KIEZEN",
-  },
 ];
 
 export function getEreaderBySlug(slug: string): Ereader | undefined {
