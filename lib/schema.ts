@@ -126,24 +126,48 @@ export function itemListSchema(name: string, items: ItemListEntry[]) {
 
 export function affiliateBookSchema(book: {
   name: string;
-  author: string;
+  author?: string;
+  editor?: string;
   description: string;
-  isbn: string;
-  datePublished: string;
+  isbn?: string;
+  datePublished?: string;
   url: string;
+  publisher?: string;
+  bookFormat?: string;
 }) {
+  const bookFormat = book.bookFormat
+    ? book.bookFormat.startsWith("http")
+      ? book.bookFormat
+      : `https://schema.org/${book.bookFormat}`
+    : undefined;
+
   return {
     "@type": "Book",
     name: book.name,
-    author: {
-      "@type": "Person",
-      name: book.author,
-    },
+    ...(book.author && {
+      author: {
+        "@type": "Person",
+        name: book.author,
+      },
+    }),
+    ...(book.editor && {
+      editor: {
+        "@type": "Person",
+        name: book.editor,
+      },
+    }),
     description: book.description,
-    isbn: book.isbn,
-    datePublished: book.datePublished,
+    ...(book.isbn && { isbn: book.isbn }),
+    ...(book.datePublished && { datePublished: book.datePublished }),
     inLanguage: "nl",
     url: book.url,
+    ...(book.publisher && {
+      publisher: {
+        "@type": "Organization",
+        name: book.publisher,
+      },
+    }),
+    ...(bookFormat && { bookFormat }),
     offers: {
       "@type": "Offer",
       url: book.url,

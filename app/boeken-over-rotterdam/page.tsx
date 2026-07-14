@@ -54,6 +54,9 @@ export default function BoekenOverRotterdamPage() {
   const karakterBoek = rotterdamBoeken.find(
     (item) => item.slug === "karakter-bordewijk"
   );
+  const wederopbouwBoek = rotterdamBoeken.find(
+    (item) => item.slug === "rotterdam-wederopbouw-groenendijk"
+  );
 
   const jsonLd = buildJsonLd(
     breadcrumbSchema(breadcrumbs),
@@ -76,6 +79,18 @@ export default function BoekenOverRotterdamPage() {
             isbn: "9789038815480",
             datePublished: "2025-10-02",
             url: karakterBoek.amazonUrl,
+          }),
+        ]
+      : []),
+    ...(wederopbouwBoek?.amazonUrl
+      ? [
+          affiliateBookSchema({
+            name: "Rotterdam Wederopbouw: De 100 gebouwen",
+            editor: "Paul Groenendijk",
+            description: wederopbouwBoek.korteOmschrijving,
+            publisher: "nai010 uitgevers",
+            bookFormat: "Paperback",
+            url: wederopbouwBoek.amazonUrl,
           }),
         ]
       : [])
@@ -240,29 +255,34 @@ export default function BoekenOverRotterdamPage() {
         </section>
 
         <section
-          id="bombardement-wederopbouw"
+          id="rotterdam-wederopbouw-groenendijk"
           className="content-section"
-          aria-labelledby="bombardement-wederopbouw-heading"
+          aria-labelledby="rotterdam-wederopbouw-groenendijk-heading"
         >
           <h2
-            id="bombardement-wederopbouw-heading"
+            id="rotterdam-wederopbouw-groenendijk-heading"
             className="content-heading"
           >
-            Het bombardement en de wederopbouw
+            Rotterdam Wederopbouw — Paul Groenendijk (red.)
           </h2>
           <p className="content-paragraph">
-            14 mei 1940 is het scharnierpunt van alles wat Rotterdam is. Wie de
-            stad wil begrijpen — waarom ze eruitziet zoals ze eruitziet, waarom
-            haar mensen praten zoals ze praten — moet iets lezen over de
-            verwoesting en wat daarna kwam: de kaalslag, de ambitie, de betonnen
-            trots. Er zijn zowel romans als toegankelijke geschiedenisboeken
-            over deze periode.
+            Wie Rotterdam zegt, denkt aan bouwen. Na het bombardement van 14 mei
+            1940 werd de stad letterlijk opnieuw opgebouwd — vier dagen na de
+            verwoesting kreeg stadsarchitect Witteveen al opdracht voor een
+            wederopbouwplan. Deze gids brengt honderd projecten uit die periode
+            samen, van het Groothandelsgebouw tot de Maastorenflat, van
+            Pendrecht tot Ommoord, met historische foto&apos;s naast de huidige
+            situatie. Geen roman, geen verhaal met personages — maar wel het
+            fundament onder elk boek dat wél over deze stad geschreven wordt.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> wie wil snappen waaróm Rotterdam anders
-            is dan elke andere Nederlandse stad.
+            <strong>Voor wie:</strong> wie wil begrijpen waaróm Rotterdam is
+            zoals het is, voordat je leest hoe het voelt.
           </p>
-          <AffiliateButton amazonUrl={getBoekUrl("bombardement-wederopbouw")} />
+          <AffiliateButton
+            amazonUrl={getBoekUrl("rotterdam-wederopbouw-groenendijk")}
+            label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"
+          />
         </section>
 
         <section

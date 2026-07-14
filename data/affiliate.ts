@@ -92,12 +92,11 @@ export const rotterdamBoeken: RotterdamBoek[] = [
     todo: "TITEL + LINK KIEZEN",
   },
   {
-    slug: "bombardement-wederopbouw",
-    naam: "Het bombardement en de wederopbouw",
+    slug: "rotterdam-wederopbouw-groenendijk",
+    naam: "Rotterdam Wederopbouw — Paul Groenendijk (red.)",
     korteOmschrijving:
-      "14 mei 1940 is het scharnierpunt van alles wat Rotterdam is. Wie de stad wil begrijpen moet iets lezen over de verwoesting en wat daarna kwam.",
-    amazonUrl: "",
-    todo: "TITEL + LINK KIEZEN",
+      "Gids met honderd wederopbouwprojecten uit Rotterdam — van het Groothandelsgebouw tot Pendrecht en Ommoord, met historische foto's naast de huidige situatie.",
+    amazonUrl: "https://amzn.to/4w0zclU",
   },
   {
     slug: "moderne-rotterdamse-thriller",
