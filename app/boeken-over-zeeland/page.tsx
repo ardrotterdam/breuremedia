@@ -7,7 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { zeelandBoeken } from "@/data/affiliate";
+import { getZeelandBoekBySlug, zeelandBoeken } from "@/data/affiliate";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
   breadcrumbSchema,
@@ -20,9 +20,51 @@ import {
 const pageDescription =
   "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
 
+const dutchMonths: Record<string, string> = {
+  januari: "01",
+  februari: "02",
+  maart: "03",
+  april: "04",
+  mei: "05",
+  juni: "06",
+  juli: "07",
+  augustus: "08",
+  september: "09",
+  oktober: "10",
+  november: "11",
+  december: "12",
+};
+
+function toIsoDate(dutchDate?: string): string | undefined {
+  if (!dutchDate) {
+    return undefined;
+  }
+  const match = dutchDate.match(/^(\d{1,2})\s+([a-z]+)\s+(\d{4})$/i);
+  if (!match) {
+    return undefined;
+  }
+  const [, day, monthName, year] = match;
+  const month = dutchMonths[monthName.toLowerCase()];
+  if (!month) {
+    return undefined;
+  }
+  return `${year}-${month}-${day.padStart(2, "0")}`;
+}
+
 const zeelandBookDetails: Record<
   string,
-  { schemaName: string; author?: string; editor?: string; image?: string }
+  {
+    schemaName: string;
+    author?: string;
+    authors?: string[];
+    editor?: string;
+    image?: string;
+    publisher?: string;
+    datePublished?: string;
+    numberOfPages?: number;
+    bookFormat?: string;
+    inLanguage?: string;
+  }
 > = {
   "schaduwen-over-domburg": {
     schemaName: "Schaduwen over Domburg",
@@ -31,7 +73,15 @@ const zeelandBookDetails: Record<
   },
   "time-to-momo-zeeland": {
     schemaName: "Time to Momo Zeeland",
-    image: "/assets/time-to-momo-zeeland-boekomslag-placeholder.png",
+    authors: ["Kim van Zweeden", "Melanie van Zweeden"],
+    image: "/assets/time-to-momo-zeeland-boekomslag.webp",
+    publisher: "Mo’Media",
+    datePublished: toIsoDate(
+      getZeelandBoekBySlug("time-to-momo-zeeland")?.publicationDate
+    ),
+    numberOfPages: getZeelandBoekBySlug("time-to-momo-zeeland")?.pages,
+    bookFormat: "https://schema.org/Paperback",
+    inLanguage: "nl",
   },
 };
 
@@ -88,9 +138,8 @@ function getBoekSchemaUrl(slug: string) {
   if (boek.internalUrl) {
     return absoluteUrl(boek.internalUrl);
   }
-  if (boek.amazonUrl) {
-    return boek.amazonUrl;
-  }
+  // Always point the Book schema at its own section on this page, never at
+  // the Amazon affiliate URL, so the canonical page stays with Breure Media.
   return absoluteUrl(`/boeken-over-zeeland#${slug}`);
 }
 
@@ -112,8 +161,14 @@ export default function BoekenOverZeelandPage() {
           url: getBoekSchemaUrl(item.slug),
           description: item.korteOmschrijving,
           author: details.author,
+          authors: details.authors,
           editor: details.editor,
           image: details.image,
+          publisher: details.publisher,
+          datePublished: details.datePublished,
+          numberOfPages: details.numberOfPages,
+          bookFormat: details.bookFormat,
+          inLanguage: details.inLanguage,
         };
       }),
       { itemType: "Book" }
@@ -197,33 +252,39 @@ export default function BoekenOverZeelandPage() {
           aria-labelledby="time-to-momo-zeeland-heading"
         >
           <h2 id="time-to-momo-zeeland-heading" className="content-heading">
-            Time to Momo Zeeland
+            Time to Momo Zeeland — Kim van Zweeden en Melanie van Zweeden
           </h2>
           <p className="content-paragraph">
             Zoek je geen roman maar een praktische gids voor je volgende
-            tripje naar Zeeland? <em>Time to Momo Zeeland</em> neemt je mee
-            naar de leukste stranden, verrassende hotspots en goede horeca —
-            van gezellige terrasjes tot de vis die zo vanuit zee op je bord
-            belandt. Met tips van locals haal je alles uit je bezoek aan
-            &apos;het Zeeuwse&apos;.
+            tripje naar Zeeland? <em>Time to Momo Zeeland</em>, geschreven
+            door Kim van Zweeden en Melanie van Zweeden, is zo&apos;n gids:
+            met tips van locals neemt het boek je mee naar de mooiste
+            stranden, sfeervolle stadjes en dorpen, en goede horeca — van
+            gezellige terrasjes tot de vis die zo vanuit zee op je bord
+            belandt. Ook de bekendere Zeeuwse hoogtepunten, van de Zeeuwse
+            kust tot de Deltawerken, komen aan bod.
           </p>
           <p className="content-paragraph">
             <strong>Voor wie:</strong> wie eerst wil reizen en pas daarna wil
             lezen — of andersom, en na <em>Schaduwen over Domburg</em> zelf
             naar het strand van Domburg toe wil.
           </p>
+          <p className="content-meta">
+            Kim van Zweeden en Melanie van Zweeden, uitgegeven door
+            Mo&rsquo;Media (28 april 2022), 128 pagina&apos;s.
+          </p>
           <Image
             className="book-cover"
-            src="/assets/time-to-momo-zeeland-boekomslag-placeholder.png"
-            alt="Time to Momo Zeeland - boekomslag (voorlopige afbeelding)"
-            width={1024}
-            height={1536}
+            src="/assets/time-to-momo-zeeland-boekomslag.webp"
+            alt="Boekomslag van Time to Momo Zeeland, reisgids van Kim van Zweeden en Melanie van Zweeden"
+            width={800}
+            height={1052}
             sizes="280px"
             loading="lazy"
           />
           <AffiliateButton
             amazonUrl={getBoekUrl("time-to-momo-zeeland")}
-            label="MEER OVER TIME TO MOMO ZEELAND — BESTEL HIER"
+            label="BEKIJK TIME TO MOMO ZEELAND BIJ AMAZON"
           />
         </section>
       </div>

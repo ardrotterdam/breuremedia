@@ -106,8 +106,15 @@ export interface ZeelandBoek {
   slug: string;
   naam: string;
   korteOmschrijving: string;
+  authors?: string[];
+  category?: string;
+  publisher?: string;
+  publicationDate?: string;
+  pages?: number;
   amazonUrl?: string;
   internalUrl?: string;
+  image?: string;
+  imageAlt?: string;
   todo?: string;
 }
 
@@ -124,8 +131,15 @@ export const zeelandBoeken: ZeelandBoek[] = [
     naam: "Time to Momo Zeeland",
     korteOmschrijving:
       "Zoek je geen roman maar een praktische gids voor je volgende tripje naar Zeeland? Time to Momo Zeeland neemt je mee naar de leukste stranden, verrassende hotspots en goede horeca — van gezellige terrasjes tot de vis die zo vanuit zee op je bord belandt. Met tips van locals haal je alles uit je bezoek aan 'het Zeeuwse'.",
-    // TODO: amazonUrl invullen met affiliate link zodra beschikbaar.
-    todo: "Affiliate link nog invullen; cover afbeelding is een placeholder totdat de echte omslag beschikbaar is.",
+    authors: ["Kim van Zweeden", "Melanie van Zweeden"],
+    category: "Reisgids",
+    publisher: "Mo’Media",
+    publicationDate: "28 april 2022",
+    pages: 128,
+    amazonUrl: "https://amzn.to/3T0zaMu",
+    image: "/assets/time-to-momo-zeeland-boekomslag.webp",
+    imageAlt:
+      "Boekomslag van Time to Momo Zeeland, reisgids van Kim van Zweeden en Melanie van Zweeden",
   },
   // Meer Zeeuwse romans, verhalen en reisgidsen volgen hier.
 ];

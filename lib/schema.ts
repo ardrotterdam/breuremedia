@@ -106,8 +106,14 @@ export interface ItemListEntry {
   url: string;
   description?: string;
   author?: string;
+  authors?: string[];
   editor?: string;
   image?: string;
+  publisher?: string;
+  datePublished?: string;
+  numberOfPages?: number;
+  bookFormat?: string;
+  inLanguage?: string;
 }
 
 export interface ItemListSchemaOptions {
@@ -125,18 +131,35 @@ function itemListItemSchema(
       url: item.url,
       ...(item.description && { description: item.description }),
       ...(item.image && { image: absoluteUrl(item.image) }),
-      ...(item.author && {
-        author: {
-          "@type": "Person",
-          name: item.author,
-        },
-      }),
+      ...(item.authors && item.authors.length > 0
+        ? {
+            author: item.authors.map((name) => ({
+              "@type": "Person",
+              name,
+            })),
+          }
+        : item.author && {
+            author: {
+              "@type": "Person",
+              name: item.author,
+            },
+          }),
       ...(item.editor && {
         editor: {
           "@type": "Person",
           name: item.editor,
         },
       }),
+      ...(item.publisher && {
+        publisher: {
+          "@type": "Organization",
+          name: item.publisher,
+        },
+      }),
+      ...(item.datePublished && { datePublished: item.datePublished }),
+      ...(item.numberOfPages && { numberOfPages: item.numberOfPages }),
+      ...(item.bookFormat && { bookFormat: item.bookFormat }),
+      ...(item.inLanguage && { inLanguage: item.inLanguage }),
     };
   }
 
