@@ -810,6 +810,8 @@ input:focus-visible {
   line-height: var(--line-height-secondary);
   color: var(--color-text-muted);
   overflow-wrap: break-word;
+  max-width: var(--text-column);
+  margin-inline: auto;
 }
 
 .affiliate-disclosure {
