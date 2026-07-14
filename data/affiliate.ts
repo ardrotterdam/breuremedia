@@ -77,11 +77,10 @@ export const rotterdamBoeken: RotterdamBoek[] = [
   },
   {
     slug: "jules-deelder",
-    naam: "Jules Deelder — de stem van Rotterdam",
+    naam: "De dikke van Deelder",
     korteOmschrijving:
       "Over Rotterdam schrijven zonder Deelder te noemen is als over de stad lopen zonder de Maas over te steken. De nachtburgemeester ving de stad in gedichten en verhalen die je hardop wilt lezen.",
-    amazonUrl: "",
-    todo: "TITEL + LINK KIEZEN",
+    amazonUrl: "https://amzn.to/4aPu3EV",
   },
   {
     slug: "hugo-borst",
