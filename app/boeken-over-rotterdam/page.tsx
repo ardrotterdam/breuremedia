@@ -96,6 +96,8 @@ export default function BoekenOverRotterdamPage() {
             description: karakterBoek.korteOmschrijving,
             isbn: "9789038815480",
             datePublished: "2025-10-02",
+            publisher: "Nijgh & Van Ditmar",
+            bookFormat: "Paperback",
             url: karakterBoek.amazonUrl,
           }),
         ]
@@ -234,6 +236,17 @@ export default function BoekenOverRotterdamPage() {
             1997 verfilmd door Mike van Diem, die er een Oscar voor buitenlandse
             film mee won.
           </p>
+          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
+            <Image
+              className="book-cover"
+              src="/assets/karakter-f-bordewijk-boekomslag.webp"
+              alt="Karakter - boekomslag van F. Bordewijk"
+              width={942}
+              height={1500}
+              sizes="280px"
+              loading="lazy"
+            />
+          </div>
           <AffiliateButton
             amazonUrl={getBoekUrl("karakter-bordewijk")}
             label="MEER OVER KARAKTER — BESTEL HIER"
