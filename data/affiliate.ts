@@ -102,10 +102,34 @@ export const rotterdamBoeken: RotterdamBoek[] = [
   },
 ];
 
+export interface ZeelandBoek {
+  slug: string;
+  naam: string;
+  korteOmschrijving: string;
+  amazonUrl?: string;
+  internalUrl?: string;
+  todo?: string;
+}
+
+export const zeelandBoeken: ZeelandBoek[] = [
+  {
+    slug: "schaduwen-over-domburg",
+    naam: "Schaduwen over Domburg — Ard Breure",
+    korteOmschrijving:
+      "Een literaire thriller die begint met een lichaam op het strand van Domburg en een rechercheur die een oude belofte niet nakwam — een verhaal dat de Zeeuwse kust als personage gebruikt.",
+    internalUrl: "/boeken/schaduwen-over-domburg",
+  },
+  // Meer Zeeuwse romans, verhalen en reisgidsen volgen hier.
+];
+
 export function getEreaderBySlug(slug: string): Ereader | undefined {
   return ereaders.find((item) => item.slug === slug);
 }
 
 export function getRotterdamBoekBySlug(slug: string): RotterdamBoek | undefined {
   return rotterdamBoeken.find((item) => item.slug === slug);
+}
+
+export function getZeelandBoekBySlug(slug: string): ZeelandBoek | undefined {
+  return zeelandBoeken.find((item) => item.slug === slug);
 }

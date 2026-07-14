@@ -26,6 +26,7 @@ export const navLinks = [
   { href: "/boeken", label: "Boeken" },
   { href: "/e-readers", label: "E-readers" },
   { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
+  { href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
   { href: "/over-de-auteur", label: "Auteur" },
   { href: "/contact", label: "Contact" },
 ] as const;
