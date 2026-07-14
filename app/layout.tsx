@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -48,6 +49,7 @@ export default function RootLayout({
         <JsonLd data={jsonLd} />
         <Header />
         {children}
+        <GoogleAnalytics gaId="G-FY6TDYHB0P" />
         <Footer />
       </body>
     </html>
