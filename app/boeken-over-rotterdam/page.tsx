@@ -192,17 +192,15 @@ export default function BoekenOverRotterdamPage() {
             lees je meer en kun je je inschrijven om als eerste bericht te
             krijgen.
           </p>
-          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
-            <Image
-              className="book-cover"
-              src="/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp"
-              alt="Schaduwen over Domburg - literaire thriller van Ard Breure, boekomslag met vuurtoren en de Rotterdamse Erasmusbrug"
-              width={1365}
-              height={2048}
-              sizes="280px"
-              loading="lazy"
-            />
-          </div>
+          <Image
+            className="book-cover"
+            src="/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp"
+            alt="Schaduwen over Domburg - literaire thriller van Ard Breure, boekomslag met vuurtoren en de Rotterdamse Erasmusbrug"
+            width={1365}
+            height={2048}
+            sizes="280px"
+            loading="lazy"
+          />
           <Link
             href="/boeken/schaduwen-over-domburg"
             className="btn btn-primary"
@@ -236,17 +234,15 @@ export default function BoekenOverRotterdamPage() {
             1997 verfilmd door Mike van Diem, die er een Oscar voor buitenlandse
             film mee won.
           </p>
-          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
-            <Image
-              className="book-cover"
-              src="/assets/karakter-f-bordewijk-boekomslag.webp"
-              alt="Karakter - boekomslag van F. Bordewijk"
-              width={942}
-              height={1500}
-              sizes="280px"
-              loading="lazy"
-            />
-          </div>
+          <Image
+            className="book-cover"
+            src="/assets/karakter-f-bordewijk-boekomslag.webp"
+            alt="Karakter - boekomslag van F. Bordewijk"
+            width={942}
+            height={1500}
+            sizes="280px"
+            loading="lazy"
+          />
           <AffiliateButton
             amazonUrl={getBoekUrl("karakter-bordewijk")}
             label="MEER OVER KARAKTER — BESTEL HIER"
@@ -272,17 +268,15 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> wie de tóón van Rotterdam wil horen, niet
             alleen de feiten.
           </p>
-          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
-            <Image
-              className="book-cover"
-              src="/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp"
-              alt="De dikke van Deelder - boekomslag van Jules Deelder"
-              width={343}
-              height={500}
-              sizes="280px"
-              loading="lazy"
-            />
-          </div>
+          <Image
+            className="book-cover"
+            src="/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp"
+            alt="De dikke van Deelder - boekomslag van Jules Deelder"
+            width={343}
+            height={500}
+            sizes="280px"
+            loading="lazy"
+          />
           <AffiliateButton amazonUrl={getBoekUrl("jules-deelder")} />
         </section>
 
@@ -306,16 +300,15 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> de lezer voor wie Rotterdam ook tribune,
             gras en zondagmiddag is.
           </p>
-          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
-            <Image
-              className="book-cover"
-              src="/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp"
-              alt="De Coolsingel bleef leeg - het klassieke boek over Feyenoord van Hugo Borst, boekomslag"
-              width={963}
-              height={1500}
-              sizes="280px"
-            />
-          </div>
+          <Image
+            className="book-cover"
+            src="/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp"
+            alt="De Coolsingel bleef leeg - het klassieke boek over Feyenoord van Hugo Borst, boekomslag"
+            width={963}
+            height={1500}
+            sizes="280px"
+            loading="lazy"
+          />
           <AffiliateButton amazonUrl={getBoekUrl("hugo-borst")} />
         </section>
 
@@ -344,17 +337,15 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> wie wil begrijpen waaróm Rotterdam is
             zoals het is, voordat je leest hoe het voelt.
           </p>
-          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
-            <Image
-              className="book-cover"
-              src="/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp"
-              alt="Rotterdam Wederopbouw: De 100 gebouwen - boekomslag van Paul Groenendijk"
-              width={870}
-              height={1500}
-              sizes="280px"
-              loading="lazy"
-            />
-          </div>
+          <Image
+            className="book-cover"
+            src="/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp"
+            alt="Rotterdam Wederopbouw: De 100 gebouwen - boekomslag van Paul Groenendijk"
+            width={870}
+            height={1500}
+            sizes="280px"
+            loading="lazy"
+          />
           <AffiliateButton
             amazonUrl={getBoekUrl("rotterdam-wederopbouw-groenendijk")}
             label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"

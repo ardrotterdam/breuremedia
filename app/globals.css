@@ -797,6 +797,14 @@ input:focus-visible {
   overflow-wrap: break-word;
 }
 
+.content-section .book-cover {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  margin-inline: auto;
+  margin-block: 1.5rem;
+}
+
 .content-meta {
   font-size: var(--font-size-secondary);
   line-height: var(--line-height-secondary);
