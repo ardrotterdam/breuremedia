@@ -60,6 +60,9 @@ export default function BoekenOverRotterdamPage() {
   const wederopbouwBoek = rotterdamBoeken.find(
     (item) => item.slug === "rotterdam-wederopbouw-groenendijk"
   );
+  const deelderBoek = rotterdamBoeken.find(
+    (item) => item.slug === "jules-deelder"
+  );
 
   const jsonLd = buildJsonLd(
     breadcrumbSchema(breadcrumbs),
@@ -106,6 +109,18 @@ export default function BoekenOverRotterdamPage() {
             publisher: "nai010 uitgevers",
             bookFormat: "Paperback",
             url: wederopbouwBoek.amazonUrl,
+          }),
+        ]
+      : []),
+    ...(deelderBoek
+      ? [
+          affiliateBookSchema({
+            name: "De dikke van Deelder",
+            author: "Jules Deelder",
+            description: deelderBoek.korteOmschrijving,
+            publisher: "De Bezige Bij",
+            bookFormat: "EBook",
+            url: absoluteUrl("/boeken-over-rotterdam#jules-deelder"),
           }),
         ]
       : [])
@@ -244,6 +259,17 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> wie de tóón van Rotterdam wil horen, niet
             alleen de feiten.
           </p>
+          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
+            <Image
+              className="book-cover"
+              src="/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp"
+              alt="De dikke van Deelder - boekomslag van Jules Deelder"
+              width={343}
+              height={500}
+              sizes="280px"
+              loading="lazy"
+            />
+          </div>
           <AffiliateButton amazonUrl={getBoekUrl("jules-deelder")} />
         </section>
 
