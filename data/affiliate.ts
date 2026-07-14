@@ -88,8 +88,7 @@ export const rotterdamBoeken: RotterdamBoek[] = [
     naam: "Hugo Borst — Rotterdam en voetbal",
     korteOmschrijving:
       "Geen stad waar voetbal en identiteit zo in elkaar grijpen als hier, en niemand schrijft daar zo goed over als Hugo Borst — Spartaan, columnist, en een van de beste sportschrijvers van het land.",
-    amazonUrl: "",
-    todo: "TITEL + LINK KIEZEN",
+    amazonUrl: "https://amzn.to/4gxPZIp",
   },
   {
     slug: "rotterdam-wederopbouw-groenendijk",

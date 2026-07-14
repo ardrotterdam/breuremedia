@@ -7,20 +7,34 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { rotterdamBoeken } from "@/data/affiliate";
+import { getBookBySlug } from "@/data/books";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
   affiliateBookSchema,
+  bookSchema,
   breadcrumbSchema,
   buildJsonLd,
+  faqSchema,
   itemListSchema,
 } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title:
-    "Boeken over Rotterdam: de beste romans en thrillers | Breure Media",
+  title: "Boeken over Rotterdam: romans, thrillers en verhalen | Breure Media",
   description:
-    "Op deze pagina verzamel ik de boeken die de stad echt vangen: romans, thrillers en verhalen waarin Rotterdam geen decor is, maar een personage.",
+    "Vijf boeken die Rotterdam echt vangen — van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.",
   path: "/boeken-over-rotterdam",
+  image: "/assets/rotterdam-maas-lezen-sfeerbeeld.webp",
+  imageAlt:
+    "Illustratie van lezen aan de Maas in Rotterdam met de Erasmusbrug op de achtergrond",
+  imageWidth: 1600,
+  imageHeight: 600,
+  keywords: [
+    "boeken over rotterdam",
+    "rotterdamse roman",
+    "thriller rotterdam",
+    "karakter bordewijk",
+    "jules deelder",
+  ],
 });
 
 const breadcrumbs = [
@@ -44,16 +58,38 @@ const faqItems = [
     answer:
       "Begin met Karakter voor de ziel van de stad, lees Deelder voor haar stem, en een boek over het bombardement en de wederopbouw voor haar geschiedenis.",
   },
+  {
+    question: "Welke boeken laten het echte Rotterdam zien?",
+    answer:
+      "Niet de ansichtkaartversie: Karakter voor het vooroorlogse Rotterdam, Deelder voor de stem van de stad, Wederopbouw voor de architectuur, en thrillers als Schaduwen over Domburg voor de haven.",
+  },
+  {
+    question: "Is Rotterdam Wederopbouw ook interessant zonder architectuurachtergrond?",
+    answer:
+      "Ja. Rotterdam Wederopbouw: De 100 gebouwen is geen vakboek voor architecten, maar een toegankelijke gids met historische foto's naast de huidige situatie — ideaal om te begrijpen waaróm Rotterdam eruitziet zoals het doet, ook zonder voorkennis.",
+  },
 ];
 
 function getBoekUrl(slug: string) {
   return rotterdamBoeken.find((item) => item.slug === slug)?.amazonUrl ?? "";
 }
 
+function getBoekSchemaUrl(slug: string) {
+  const boek = rotterdamBoeken.find((item) => item.slug === slug);
+  if (!boek) {
+    return "";
+  }
+  if (boek.internalUrl) {
+    return absoluteUrl(boek.internalUrl);
+  }
+  if (boek.amazonUrl) {
+    return boek.amazonUrl;
+  }
+  return absoluteUrl(`/boeken-over-rotterdam#${slug}`);
+}
+
 export default function BoekenOverRotterdamPage() {
-  const schaduwenBoek = rotterdamBoeken.find(
-    (item) => item.slug === "schaduwen-over-domburg"
-  );
+  const schaduwenBook = getBookBySlug("schaduwen-over-domburg");
   const karakterBoek = rotterdamBoeken.find(
     (item) => item.slug === "karakter-bordewijk"
   );
@@ -63,6 +99,7 @@ export default function BoekenOverRotterdamPage() {
   const deelderBoek = rotterdamBoeken.find(
     (item) => item.slug === "jules-deelder"
   );
+  const borstBoek = rotterdamBoeken.find((item) => item.slug === "hugo-borst");
 
   const jsonLd = buildJsonLd(
     breadcrumbSchema(breadcrumbs),
@@ -76,19 +113,9 @@ export default function BoekenOverRotterdamPage() {
         description: item.korteOmschrijving,
       }))
     ),
-    ...(schaduwenBoek
-      ? [
-          affiliateBookSchema({
-            name: "Schaduwen over Domburg",
-            author: "Ard Breure",
-            description: schaduwenBoek.korteOmschrijving,
-            publisher: "Breure Media",
-            genre: "Literaire thriller",
-            url: absoluteUrl("/boeken/schaduwen-over-domburg"),
-          }),
-        ]
-      : []),
-    ...(karakterBoek?.amazonUrl
+    faqSchema(faqItems),
+    ...(schaduwenBook ? [bookSchema(schaduwenBook)] : []),
+    ...(karakterBoek
       ? [
           affiliateBookSchema({
             name: "Karakter",
@@ -98,11 +125,13 @@ export default function BoekenOverRotterdamPage() {
             datePublished: "2025-10-02",
             publisher: "Nijgh & Van Ditmar",
             bookFormat: "Paperback",
-            url: karakterBoek.amazonUrl,
+            genre: "Roman",
+            image: "/assets/karakter-f-bordewijk-boekomslag.webp",
+            url: getBoekSchemaUrl("karakter-bordewijk"),
           }),
         ]
       : []),
-    ...(wederopbouwBoek?.amazonUrl
+    ...(wederopbouwBoek
       ? [
           affiliateBookSchema({
             name: "Rotterdam Wederopbouw: De 100 gebouwen",
@@ -110,7 +139,10 @@ export default function BoekenOverRotterdamPage() {
             description: wederopbouwBoek.korteOmschrijving,
             publisher: "nai010 uitgevers",
             bookFormat: "Paperback",
-            url: wederopbouwBoek.amazonUrl,
+            genre: "Architectuur",
+            image:
+              "/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp",
+            url: getBoekSchemaUrl("rotterdam-wederopbouw-groenendijk"),
           }),
         ]
       : []),
@@ -122,7 +154,21 @@ export default function BoekenOverRotterdamPage() {
             description: deelderBoek.korteOmschrijving,
             publisher: "De Bezige Bij",
             bookFormat: "EBook",
-            url: absoluteUrl("/boeken-over-rotterdam#jules-deelder"),
+            genre: "Poëzie en proza",
+            image: "/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp",
+            url: getBoekSchemaUrl("jules-deelder"),
+          }),
+        ]
+      : []),
+    ...(borstBoek
+      ? [
+          affiliateBookSchema({
+            name: "De Coolsingel bleef leeg",
+            author: "Hugo Borst",
+            description: borstBoek.korteOmschrijving,
+            genre: "Sportliteratuur",
+            image: "/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp",
+            url: getBoekSchemaUrl("hugo-borst"),
           }),
         ]
       : [])
@@ -134,10 +180,15 @@ export default function BoekenOverRotterdamPage() {
       <PageHeader
         eyebrow="Leeslijst"
         title="Boeken over Rotterdam: romans en thrillers die in de stad spelen"
-        description="Door Ard Breure, auteur van Schaduwen over Domburg"
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
+
+        <p className="content-meta">
+          Door{" "}
+          <Link href="/over-de-auteur">Ard Breure</Link>, auteur van{" "}
+          <Link href="/boeken/schaduwen-over-domburg">Schaduwen over Domburg</Link>
+        </p>
 
         <figure className="content-section">
           <Image
@@ -158,10 +209,13 @@ export default function BoekenOverRotterdamPage() {
             over werken, over een stad die één keer is platgegooid en zichzelf
             opnieuw heeft uitgevonden — en over mensen die niet praten als ze
             ook kunnen doen. Ik ben er zelf aan verknocht geraakt, zo erg dat
-            mijn eigen debuut voor een groot deel in de Rotterdamse haven
-            speelt. Op deze pagina verzamel ik de boeken die de stad echt
-            vangen: romans, thrillers en verhalen waarin Rotterdam geen decor
-            is, maar een personage.
+            mijn eigen debuut,{" "}
+            <Link href="/boeken/schaduwen-over-domburg">
+              Schaduwen over Domburg
+            </Link>
+            , voor een groot deel in de Rotterdamse haven speelt. Op deze pagina
+            verzamel ik de boeken die de stad echt vangen: romans, thrillers en
+            verhalen waarin Rotterdam geen decor is, maar een personage.
           </p>
         </section>
 
@@ -188,9 +242,11 @@ export default function BoekenOverRotterdamPage() {
             geheimen bewaren dan mensen.
           </p>
           <p className="content-paragraph">
-            Het boek verschijnt naar verwachting najaar 2026. Op de boekpagina
-            lees je meer en kun je je inschrijven om als eerste bericht te
-            krijgen.
+            Het boek verschijnt naar verwachting najaar 2026. Op de{" "}
+            <Link href="/boeken/schaduwen-over-domburg">boekpagina</Link> lees
+            je meer en kun je je inschrijven om als eerste bericht te krijgen.
+            Meer literaire thrillers vind je bij{" "}
+            <Link href="/boeken">alle boeken van Breure Media</Link>.
           </p>
           <Image
             className="book-cover"
@@ -232,7 +288,8 @@ export default function BoekenOverRotterdamPage() {
           <p className="content-paragraph">
             <em>Karakter</em> won in 1938 de C.W. van der Hoogtprijs en werd in
             1997 verfilmd door Mike van Diem, die er een Oscar voor buitenlandse
-            film mee won.
+            film mee won. Voor meer literaire thrillers, zie ook{" "}
+            <Link href="/boeken">alle boeken van Breure Media</Link>.
           </p>
           <Image
             className="book-cover"
@@ -364,6 +421,10 @@ export default function BoekenOverRotterdamPage() {
               mijn keuze — hier staan alleen boeken die ik zelf de moeite waard
               vind.
             </em>
+          </p>
+          <p className="content-meta">
+            Lees je liever op een e-reader? Bekijk onze{" "}
+            <Link href="/e-readers">e-reader gids</Link>.
           </p>
           <p className="content-meta">
             <em>
