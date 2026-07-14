@@ -279,6 +279,17 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> wie wil begrijpen waaróm Rotterdam is
             zoals het is, voordat je leest hoe het voelt.
           </p>
+          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
+            <Image
+              className="book-cover"
+              src="/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp"
+              alt="Rotterdam Wederopbouw: De 100 gebouwen - boekomslag van Paul Groenendijk"
+              width={870}
+              height={1500}
+              sizes="280px"
+              loading="lazy"
+            />
+          </div>
           <AffiliateButton
             amazonUrl={getBoekUrl("rotterdam-wederopbouw-groenendijk")}
             label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"
