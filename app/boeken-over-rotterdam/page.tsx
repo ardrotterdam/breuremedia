@@ -283,7 +283,7 @@ export default function BoekenOverRotterdamPage() {
           aria-labelledby="jules-deelder-heading"
         >
           <h2 id="jules-deelder-heading" className="content-heading">
-            Jules Deelder — de stem van Rotterdam
+            De dikke van Deelder — Jules Deelder
           </h2>
           <p className="content-paragraph">
             Over Rotterdam schrijven zonder Deelder te noemen is als over de
