@@ -164,6 +164,26 @@ export default function EReadersPage() {
     )
   );
 
+  const kindlePaperwhiteProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Amazon Kindle Paperwhite",
+      "Amazon",
+      "7-inch e-reader met ontspiegeld scherm, instelbare warme verlichting, IPX8-waterdichtheid en tot 12 weken batterijduur op één lading.",
+      "179.99",
+      getEreaderUrl("kindle-paperwhite")
+    )
+  );
+
+  const kindleBasisProductSchema = buildJsonLd(
+    productBasicSchema(
+      "Amazon Kindle",
+      "Amazon",
+      "Compacte 6-inch e-reader met scherp e-inkscherm, verstelbare voorkantverlichting, USB-C-oplading en tot 6 weken batterijduur op één lading.",
+      "119.99",
+      getEreaderUrl("kindle-basis")
+    )
+  );
+
   const koboLibraProductSchema = buildJsonLd(
     productBasicSchema(
       "Kobo Libra Colour",
@@ -207,6 +227,8 @@ export default function EReadersPage() {
   return (
     <main>
       <JsonLd data={jsonLd} />
+      <JsonLd data={kindlePaperwhiteProductSchema} />
+      <JsonLd data={kindleBasisProductSchema} />
       <JsonLd data={koboLibraProductSchema} />
       <JsonLd data={koboClaraProductSchema} />
       <JsonLd data={kindleScribeProductSchema} />

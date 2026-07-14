@@ -3,6 +3,8 @@ export interface Ereader {
   naam: string;
   korteOmschrijving: string;
   amazonUrl: string;
+  prijs?: number;
+  prijsFormatted?: string;
   todo?: string;
 }
 
@@ -22,6 +24,8 @@ export const ereaders: Ereader[] = [
     korteOmschrijving:
       "Als iemand mij op een verjaardag vraagt \"welke e-reader moet ik kopen?\", is dit negen van de tien keer het antwoord. Het scherm van 7 inch is groot genoeg om prettig te lezen en klein genoeg om in één hand te houden.",
     amazonUrl: "https://amzn.to/4vYBl1z",
+    prijs: 179.99,
+    prijsFormatted: "€179,99",
   },
   {
     slug: "kindle-basis",
