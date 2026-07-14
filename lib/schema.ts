@@ -105,85 +105,92 @@ export interface ItemListEntry {
   name: string;
   url: string;
   description?: string;
+  author?: string;
+  editor?: string;
+  image?: string;
 }
 
-export function itemListSchema(name: string, items: ItemListEntry[]) {
+export interface ItemListSchemaOptions {
+  itemType?: "Book" | "Thing";
+}
+
+function itemListItemSchema(
+  item: ItemListEntry,
+  itemType: "Book" | "Thing"
+) {
+  if (itemType === "Book") {
+    return {
+      "@type": "Book",
+      name: item.name,
+      url: item.url,
+      ...(item.description && { description: item.description }),
+      ...(item.image && { image: absoluteUrl(item.image) }),
+      ...(item.author && {
+        author: {
+          "@type": "Person",
+          name: item.author,
+        },
+      }),
+      ...(item.editor && {
+        editor: {
+          "@type": "Person",
+          name: item.editor,
+        },
+      }),
+    };
+  }
+
+  return {
+    "@type": "Thing",
+    name: item.name,
+    url: item.url,
+    ...(item.description && { description: item.description }),
+  };
+}
+
+export function collectionPageSchema(
+  name: string,
+  url: string,
+  description?: string
+) {
+  return {
+    "@type": "CollectionPage",
+    name,
+    url,
+    ...(description && { description }),
+    inLanguage: siteConfig.language,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}
+
+export function itemListSchema(
+  name: string,
+  items: ItemListEntry[],
+  options?: ItemListSchemaOptions
+) {
+  const itemType = options?.itemType ?? "Thing";
+
   return {
     "@type": "ItemList",
     name,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      item: {
-        "@type": "Thing",
-        name: item.name,
-        url: item.url,
-        ...(item.description && { description: item.description }),
-      },
+      item: itemListItemSchema(item, itemType),
     })),
-  };
-}
-
-export function affiliateBookSchema(book: {
-  name: string;
-  author?: string;
-  editor?: string;
-  description: string;
-  isbn?: string;
-  datePublished?: string;
-  url: string;
-  publisher?: string;
-  bookFormat?: string;
-  genre?: string;
-  image?: string;
-}) {
-  const bookFormat = book.bookFormat
-    ? book.bookFormat.startsWith("http")
-      ? book.bookFormat
-      : `https://schema.org/${book.bookFormat}`
-    : undefined;
-
-  return {
-    "@type": "Book",
-    name: book.name,
-    ...(book.author && {
-      author: {
-        "@type": "Person",
-        name: book.author,
-      },
-    }),
-    ...(book.editor && {
-      editor: {
-        "@type": "Person",
-        name: book.editor,
-      },
-    }),
-    description: book.description,
-    ...(book.genre && { genre: book.genre }),
-    ...(book.isbn && { isbn: book.isbn }),
-    ...(book.datePublished && { datePublished: book.datePublished }),
-    inLanguage: "nl",
-    url: book.url,
-    ...(book.image && { image: absoluteUrl(book.image) }),
-    ...(book.publisher && {
-      publisher: {
-        "@type": "Organization",
-        name: book.publisher,
-      },
-    }),
-    ...(bookFormat && { bookFormat }),
-    offers: {
-      "@type": "Offer",
-      url: book.url,
-      availability: "https://schema.org/InStock",
-    },
   };
 }
 
 export function productBasicSchema(
   name: string,
   brand: string,
-  description: string
+  description: string,
+  price: string,
+  url: string
 ) {
   return {
     "@type": "Product",
@@ -193,6 +200,13 @@ export function productBasicSchema(
       name: brand,
     },
     description,
+    offers: {
+      "@type": "Offer",
+      price,
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url,
+    },
   };
 }
 

@@ -168,7 +168,9 @@ export default function EReadersPage() {
     productBasicSchema(
       "Kobo Libra Colour",
       "Kobo",
-      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en bibliotheek-lenen rechtstreeks vanaf het apparaat."
+      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en bibliotheek-lenen rechtstreeks vanaf het apparaat.",
+      "260.00",
+      getEreaderUrl("kobo-libra-colour")
     )
   );
 
@@ -176,7 +178,9 @@ export default function EReadersPage() {
     productBasicSchema(
       "Kobo Clara BW",
       "Kobo",
-      "Compacte 6-inch e-reader met E Ink Carta 1300, ComfortLight PRO, IPX8-waterdichtheid en Bluetooth voor luisterboeken."
+      "Compacte 6-inch e-reader met E Ink Carta 1300, ComfortLight PRO, IPX8-waterdichtheid en Bluetooth voor luisterboeken.",
+      "170.00",
+      getEreaderUrl("kobo-clara-bw")
     )
   );
 
@@ -184,7 +188,9 @@ export default function EReadersPage() {
     productBasicSchema(
       "Amazon Kindle Scribe",
       "Amazon",
-      "10,2-inch e-reader en digitaal notitieboek in één, met 300 ppi ontspiegeld scherm en inbegrepen Premium Pen om mee te schrijven."
+      "10,2-inch e-reader en digitaal notitieboek in één, met 300 ppi ontspiegeld scherm en inbegrepen Premium Pen om mee te schrijven.",
+      "450.00",
+      getEreaderUrl("kindle-scribe")
     )
   );
 
@@ -192,7 +198,9 @@ export default function EReadersPage() {
     productBasicSchema(
       "Amazon Kindle Colorsoft",
       "Amazon",
-      "Compacte 7-inch e-reader met papierachtig kleuren-e-inkscherm, aanpasbaar warm licht, waterdicht ontwerp en wekenlange batterijduur."
+      "Compacte 7-inch e-reader met papierachtig kleuren-e-inkscherm, aanpasbaar warm licht, waterdicht ontwerp en wekenlange batterijduur.",
+      "270.00",
+      getEreaderUrl("kindle-colorsoft")
     )
   );
 
