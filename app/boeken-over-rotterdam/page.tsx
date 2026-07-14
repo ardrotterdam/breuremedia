@@ -8,21 +8,53 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { rotterdamBoeken } from "@/data/affiliate";
-import { getBookBySlug } from "@/data/books";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
-  affiliateBookSchema,
-  bookSchema,
   breadcrumbSchema,
   buildJsonLd,
+  collectionPageSchema,
   faqSchema,
   itemListSchema,
 } from "@/lib/schema";
 
+const pageDescription =
+  "Vijf boeken die Rotterdam echt vangen — van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.";
+
+const rotterdamBookDetails: Record<
+  string,
+  { schemaName: string; author?: string; editor?: string; image?: string }
+> = {
+  "schaduwen-over-domburg": {
+    schemaName: "Schaduwen over Domburg",
+    author: "Ard Breure",
+    image: "/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp",
+  },
+  "karakter-bordewijk": {
+    schemaName: "Karakter",
+    author: "F. Bordewijk",
+    image: "/assets/karakter-f-bordewijk-boekomslag.webp",
+  },
+  "jules-deelder": {
+    schemaName: "De dikke van Deelder",
+    author: "Jules Deelder",
+    image: "/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp",
+  },
+  "hugo-borst": {
+    schemaName: "De Coolsingel bleef leeg",
+    author: "Hugo Borst",
+    image: "/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp",
+  },
+  "rotterdam-wederopbouw-groenendijk": {
+    schemaName: "Rotterdam Wederopbouw: De 100 gebouwen",
+    editor: "Paul Groenendijk",
+    image:
+      "/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp",
+  },
+};
+
 export const metadata: Metadata = buildMetadata({
   title: "Boeken over Rotterdam: romans, thrillers en verhalen | Breure Media",
-  description:
-    "Vijf boeken die Rotterdam echt vangen — van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.",
+  description: pageDescription,
   path: "/boeken-over-rotterdam",
   image: "/assets/rotterdam-maas-lezen-sfeerbeeld.webp",
   imageAlt:
@@ -90,89 +122,30 @@ function getBoekSchemaUrl(slug: string) {
 }
 
 export default function BoekenOverRotterdamPage() {
-  const schaduwenBook = getBookBySlug("schaduwen-over-domburg");
-  const karakterBoek = rotterdamBoeken.find(
-    (item) => item.slug === "karakter-bordewijk"
-  );
-  const wederopbouwBoek = rotterdamBoeken.find(
-    (item) => item.slug === "rotterdam-wederopbouw-groenendijk"
-  );
-  const deelderBoek = rotterdamBoeken.find(
-    (item) => item.slug === "jules-deelder"
-  );
-  const borstBoek = rotterdamBoeken.find((item) => item.slug === "hugo-borst");
-
   const jsonLd = buildJsonLd(
+    collectionPageSchema(
+      "Boeken over Rotterdam: romans, thrillers en verhalen",
+      absoluteUrl("/boeken-over-rotterdam"),
+      pageDescription
+    ),
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
       "Boeken over Rotterdam",
-      rotterdamBoeken.map((item) => ({
-        name: item.naam,
-        url: item.internalUrl
-          ? absoluteUrl(item.internalUrl)
-          : absoluteUrl(`/boeken-over-rotterdam#${item.slug}`),
-        description: item.korteOmschrijving,
-      }))
+      rotterdamBoeken.map((item) => {
+        const details = rotterdamBookDetails[item.slug];
+
+        return {
+          name: details.schemaName,
+          url: getBoekSchemaUrl(item.slug),
+          description: item.korteOmschrijving,
+          author: details.author,
+          editor: details.editor,
+          image: details.image,
+        };
+      }),
+      { itemType: "Book" }
     ),
-    faqSchema(faqItems),
-    ...(schaduwenBook ? [bookSchema(schaduwenBook)] : []),
-    ...(karakterBoek
-      ? [
-          affiliateBookSchema({
-            name: "Karakter",
-            author: "F. Bordewijk",
-            description: karakterBoek.korteOmschrijving,
-            isbn: "9789038815480",
-            datePublished: "2025-10-02",
-            publisher: "Nijgh & Van Ditmar",
-            bookFormat: "Paperback",
-            genre: "Roman",
-            image: "/assets/karakter-f-bordewijk-boekomslag.webp",
-            url: getBoekSchemaUrl("karakter-bordewijk"),
-          }),
-        ]
-      : []),
-    ...(wederopbouwBoek
-      ? [
-          affiliateBookSchema({
-            name: "Rotterdam Wederopbouw: De 100 gebouwen",
-            editor: "Paul Groenendijk",
-            description: wederopbouwBoek.korteOmschrijving,
-            publisher: "nai010 uitgevers",
-            bookFormat: "Paperback",
-            genre: "Architectuur",
-            image:
-              "/assets/rotterdam-wederopbouw-100-gebouwen-paul-groenendijk-boekomslag.webp",
-            url: getBoekSchemaUrl("rotterdam-wederopbouw-groenendijk"),
-          }),
-        ]
-      : []),
-    ...(deelderBoek
-      ? [
-          affiliateBookSchema({
-            name: "De dikke van Deelder",
-            author: "Jules Deelder",
-            description: deelderBoek.korteOmschrijving,
-            publisher: "De Bezige Bij",
-            bookFormat: "EBook",
-            genre: "Poëzie en proza",
-            image: "/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp",
-            url: getBoekSchemaUrl("jules-deelder"),
-          }),
-        ]
-      : []),
-    ...(borstBoek
-      ? [
-          affiliateBookSchema({
-            name: "De Coolsingel bleef leeg",
-            author: "Hugo Borst",
-            description: borstBoek.korteOmschrijving,
-            genre: "Sportliteratuur",
-            image: "/assets/de-coolsingel-bleef-leeg-hugo-borst-boekomslag.webp",
-            url: getBoekSchemaUrl("hugo-borst"),
-          }),
-        ]
-      : [])
+    faqSchema(faqItems)
   );
 
   return (
@@ -241,10 +214,12 @@ export default function BoekenOverRotterdamPage() {
             geheimen bewaren dan mensen.
           </p>
           <p className="content-paragraph">
-            Het boek verschijnt naar verwachting najaar 2026. Op de{" "}
+            Dit is een aankomend boek — het is nog niet af en nu niet te koop.
+            Het verschijnt naar verwachting najaar 2026. Schrijf je in op de
+            wachtlijst en ontvang je een e-mail zodra het boek beschikbaar is.
+            Op de{" "}
             <Link href="/boeken/schaduwen-over-domburg">boekpagina</Link> lees
-            je meer en kun je je inschrijven om als eerste bericht te krijgen.
-            Meer literaire thrillers vind je bij{" "}
+            je meer over het verhaal. Meer literaire thrillers vind je bij{" "}
             <Link href="/boeken">alle boeken van Breure Media</Link>.
           </p>
           <Image
@@ -256,11 +231,8 @@ export default function BoekenOverRotterdamPage() {
             sizes="280px"
             loading="lazy"
           />
-          <Link
-            href="/boeken/schaduwen-over-domburg"
-            className="btn btn-primary"
-          >
-            Meer over Schaduwen over Domburg
+          <Link href="/#newsletter-heading" className="btn btn-primary">
+            Schrijf je in voor de wachtlijst
           </Link>
         </section>
 
