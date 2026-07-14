@@ -134,6 +134,7 @@ export function affiliateBookSchema(book: {
   url: string;
   publisher?: string;
   bookFormat?: string;
+  genre?: string;
 }) {
   const bookFormat = book.bookFormat
     ? book.bookFormat.startsWith("http")
@@ -157,6 +158,7 @@ export function affiliateBookSchema(book: {
       },
     }),
     description: book.description,
+    ...(book.genre && { genre: book.genre }),
     ...(book.isbn && { isbn: book.isbn }),
     ...(book.datePublished && { datePublished: book.datePublished }),
     inLanguage: "nl",

@@ -51,6 +51,9 @@ function getBoekUrl(slug: string) {
 }
 
 export default function BoekenOverRotterdamPage() {
+  const schaduwenBoek = rotterdamBoeken.find(
+    (item) => item.slug === "schaduwen-over-domburg"
+  );
   const karakterBoek = rotterdamBoeken.find(
     (item) => item.slug === "karakter-bordewijk"
   );
@@ -70,6 +73,18 @@ export default function BoekenOverRotterdamPage() {
         description: item.korteOmschrijving,
       }))
     ),
+    ...(schaduwenBoek
+      ? [
+          affiliateBookSchema({
+            name: "Schaduwen over Domburg",
+            author: "Ard Breure",
+            description: schaduwenBoek.korteOmschrijving,
+            publisher: "Breure Media",
+            genre: "Literaire thriller",
+            url: absoluteUrl("/boeken/schaduwen-over-domburg"),
+          }),
+        ]
+      : []),
     ...(karakterBoek?.amazonUrl
       ? [
           affiliateBookSchema({
@@ -160,6 +175,17 @@ export default function BoekenOverRotterdamPage() {
             lees je meer en kun je je inschrijven om als eerste bericht te
             krijgen.
           </p>
+          <div style={{ maxWidth: "280px", marginBottom: "1.5rem" }}>
+            <Image
+              className="book-cover"
+              src="/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp"
+              alt="Schaduwen over Domburg - literaire thriller van Ard Breure, boekomslag met vuurtoren en de Rotterdamse Erasmusbrug"
+              width={1365}
+              height={2048}
+              sizes="280px"
+              loading="lazy"
+            />
+          </div>
           <Link
             href="/boeken/schaduwen-over-domburg"
             className="btn btn-primary"
