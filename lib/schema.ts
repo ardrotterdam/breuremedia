@@ -213,11 +213,13 @@ export function productBasicSchema(
   brand: string,
   description: string,
   price: string,
-  url: string
+  url: string,
+  image: string
 ) {
   return {
     "@type": "Product",
     name,
+    image: absoluteUrl(image),
     brand: {
       "@type": "Brand",
       name: brand,
