@@ -4,9 +4,14 @@
  * formulier ("Ontvang bericht zodra het boek verschijnt"), zodat
  * navigeren en versturen niet dezelfde naam dragen.
  */
-export function OrderButton() {
+interface OrderButtonProps {
+  /** Anker van het inschrijfformulier op de huidige pagina. */
+  href?: string;
+}
+
+export function OrderButton({ href = "#newsletter-heading" }: OrderButtonProps) {
   return (
-    <a href="#newsletter-heading" className="btn btn-primary">
+    <a href={href} className="btn btn-primary btn-cta btn-shine">
       Meld je aan voor bericht bij verschijning
     </a>
   );

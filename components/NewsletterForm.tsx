@@ -116,7 +116,9 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
         />
         <button
           type="submit"
-          className="btn btn-secondary"
+          className={`btn btn-secondary${
+            compact ? " btn-shine btn-shine--soft" : ""
+          }`}
           disabled={isSubmitting}
         >
           Ontvang bericht zodra het boek verschijnt
