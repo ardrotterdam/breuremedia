@@ -194,6 +194,18 @@ export default function BoekenOverZeelandPage() {
 
         <AffiliateDisclosure />
 
+        <figure className="content-section">
+          <Image
+            src="/assets/zeeland-duinen-zee-lezende-vrouw-op-bankje.webp"
+            alt="Lezende vrouw op een bankje in de Zeeuwse duinen met uitzicht op zee bij zonsondergang"
+            width={1672}
+            height={941}
+            priority
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </figure>
+
         <section className="content-section">
           <p className="content-paragraph">
             Ik ben opgegroeid in Zeeland — de wijdsheid van het strand, de
