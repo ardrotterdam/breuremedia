@@ -524,6 +524,18 @@ export default function BoekenOverZeelandPage() {
           <h2 id="time-to-momo-zeeland-heading" className="content-heading">
             Time to Momo Zeeland — Kim van Zweeden en Melanie van Zweeden
           </h2>
+          <figure className="content-section">
+            <Image
+              src="/assets/time-to-momo-zeeland-fietspauze-lifestyle-aan-de-kust.webp"
+              alt="Vrouw bekijkt Time to Momo Zeeland tijdens een fietspauze aan de Zeeuwse kust."
+              title="Time to Momo Zeeland | Lifestyle aan de Zeeuwse kust"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
           <p className="content-paragraph">
             Zoek je geen roman maar een praktische gids voor je volgende
             tripje naar Zeeland? <em>Time to Momo Zeeland</em>, geschreven
@@ -543,18 +555,28 @@ export default function BoekenOverZeelandPage() {
             Kim van Zweeden en Melanie van Zweeden, uitgegeven door
             Mo&rsquo;Media (28 april 2022), 128 pagina&apos;s.
           </p>
-          <Image
-            className="book-cover"
-            src="/assets/time-to-momo-zeeland-boekomslag.webp"
-            alt="Boekomslag van Time to Momo Zeeland, reisgids van Kim van Zweeden en Melanie van Zweeden"
-            width={800}
-            height={1052}
-            sizes="280px"
-            loading="lazy"
-          />
+          <h3 className="content-heading">Originele boekcover</h3>
+          <a
+            href={getBoekUrl("time-to-momo-zeeland")}
+            className="book-cover-link"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            aria-label="Bekijk Time to Momo Zeeland op Amazon"
+          >
+            <Image
+              className="book-cover"
+              src="/assets/time-to-momo-zeeland-boekomslag.webp"
+              alt="Boekomslag van Time to Momo Zeeland, reisgids van Kim van Zweeden en Melanie van Zweeden"
+              title="Time to Momo Zeeland | Reisgids Zeeland"
+              width={800}
+              height={1052}
+              sizes="280px"
+              loading="lazy"
+            />
+          </a>
           <AffiliateButton
             amazonUrl={getBoekUrl("time-to-momo-zeeland")}
-            label="BEKIJK TIME TO MOMO ZEELAND BIJ AMAZON"
+            label="Bekijk Time to Momo Zeeland op Amazon"
           />
         </section>
 
