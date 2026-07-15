@@ -7,7 +7,6 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/NewsletterForm";
-import { OrderButton } from "@/components/OrderButton";
 import { PageHeader } from "@/components/PageHeader";
 import { rotterdamBoeken } from "@/data/affiliate";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
@@ -233,7 +232,6 @@ export default function BoekenOverRotterdamPage() {
             sizes="280px"
             loading="lazy"
           />
-          <OrderButton href="#boek-wachtlijst" />
         </section>
 
         <section
