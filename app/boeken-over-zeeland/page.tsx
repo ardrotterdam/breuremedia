@@ -357,8 +357,8 @@ export default function BoekenOverZeelandPage() {
               src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-boekcover.webp"
               alt="Boekcover van Spoorloos door Ellen de Vriend, een spannende Zeeland-thriller die zich afspeelt op Schouwen-Duiveland."
               title="Spoorloos – Ellen de Vriend | Zeeland-thriller"
-              width={1672}
-              height={941}
+              width={600}
+              height={920}
               sizes="280px"
               loading="lazy"
             />
