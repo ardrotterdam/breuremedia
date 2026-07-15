@@ -136,7 +136,10 @@ export const zeelandBoeken: ZeelandBoek[] = [
     publisher: "Uitgeverij De Fontein",
     publicationDate: "28 april 2026",
     pages: 256,
-    todo: "Amazon-affiliatelink en boekomslag toevoegen",
+    amazonUrl: "https://amzn.to/4wE9Yd6",
+    image: "/assets/spoorloos-ellen-de-vriend-zeeland-thriller-boekcover.webp",
+    imageAlt:
+      "Boekcover van Spoorloos door Ellen de Vriend, een spannende Zeeland-thriller die zich afspeelt op Schouwen-Duiveland.",
   },
   {
     slug: "time-to-momo-zeeland",

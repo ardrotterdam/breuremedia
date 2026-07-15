@@ -75,6 +75,7 @@ const zeelandBookDetails: Record<
   "spoorloos-ellen-de-vriend": {
     schemaName: "Spoorloos",
     author: "Ellen de Vriend",
+    image: "/assets/spoorloos-ellen-de-vriend-zeeland-thriller-boekcover.webp",
     publisher: "Uitgeverij De Fontein",
     datePublished: toIsoDate(
       getZeelandBoekBySlug("spoorloos-ellen-de-vriend")?.publicationDate
@@ -344,9 +345,27 @@ export default function BoekenOverZeelandPage() {
             Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (28 april
             2026), 256 pagina&apos;s.
           </p>
+          <a
+            href={getBoekUrl("spoorloos-ellen-de-vriend")}
+            className="book-cover-link"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            aria-label="Bekijk Spoorloos op Amazon"
+          >
+            <Image
+              className="book-cover"
+              src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-boekcover.webp"
+              alt="Boekcover van Spoorloos door Ellen de Vriend, een spannende Zeeland-thriller die zich afspeelt op Schouwen-Duiveland."
+              title="Spoorloos – Ellen de Vriend | Zeeland-thriller"
+              width={1672}
+              height={941}
+              sizes="280px"
+              loading="lazy"
+            />
+          </a>
           <AffiliateButton
             amazonUrl={getBoekUrl("spoorloos-ellen-de-vriend")}
-            label="BEKIJK SPOORLOOS BIJ AMAZON"
+            label="Bekijk Spoorloos op Amazon"
           />
         </section>
 

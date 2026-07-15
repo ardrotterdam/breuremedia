@@ -22,7 +22,7 @@ export function AffiliateButton({
     <a
       href={amazonUrl}
       className="btn btn-primary"
-      rel="nofollow sponsored noopener"
+      rel="nofollow sponsored noopener noreferrer"
       target="_blank"
       aria-label={buttonLabel}
       style={

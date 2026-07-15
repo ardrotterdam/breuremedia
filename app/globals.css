@@ -1126,6 +1126,18 @@ input:focus-visible {
   margin-block: 1.5rem;
 }
 
+.book-cover-link {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  margin-inline: auto;
+  margin-block: 1.5rem;
+}
+
+.book-cover-link .book-cover {
+  margin-block: 0;
+}
+
 .content-meta {
   font-size: var(--font-size-secondary);
   line-height: var(--line-height-secondary);
