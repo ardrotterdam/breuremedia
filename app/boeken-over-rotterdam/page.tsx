@@ -232,7 +232,7 @@ export default function BoekenOverRotterdamPage() {
             loading="lazy"
           />
           <Link href="/#newsletter-heading" className="btn btn-primary">
-            Schrijf je in voor de wachtlijst
+            Ontvang bericht zodra het boek verschijnt
           </Link>
         </section>
 

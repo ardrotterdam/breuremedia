@@ -103,7 +103,7 @@ export function NewsletterForm() {
           className="btn btn-secondary"
           disabled={isSubmitting}
         >
-          Inschrijven
+          Ontvang bericht zodra het boek verschijnt
         </button>
       </div>
       <p
