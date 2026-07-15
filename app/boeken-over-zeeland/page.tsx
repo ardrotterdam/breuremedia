@@ -19,7 +19,7 @@ import {
 } from "@/lib/schema";
 
 const pageDescription =
-  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthriller Spoorloos van Ellen de Vriend tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
+  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthrillers Duivelskruid en Spoorloos van Ellen de Vriend tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
 
 const dutchMonths: Record<string, string> = {
   januari: "01",
@@ -72,6 +72,18 @@ const zeelandBookDetails: Record<
     author: "Ard Breure",
     image: "/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp",
   },
+  "duivelskruid-ellen-de-vriend": {
+    schemaName: "Duivelskruid",
+    author: "Ellen de Vriend",
+    image: "/assets/duivelskruid-ellen-de-vriend-zeeland-thriller-boekcover.webp",
+    publisher: "Uitgeverij De Fontein",
+    datePublished: toIsoDate(
+      getZeelandBoekBySlug("duivelskruid-ellen-de-vriend")?.publicationDate
+    ),
+    numberOfPages: getZeelandBoekBySlug("duivelskruid-ellen-de-vriend")?.pages,
+    bookFormat: "https://schema.org/Paperback",
+    inLanguage: "nl",
+  },
   "spoorloos-ellen-de-vriend": {
     schemaName: "Spoorloos",
     author: "Ellen de Vriend",
@@ -108,6 +120,7 @@ export const metadata: Metadata = buildMetadata({
     "verhalen zeeland",
     "reisgids zeeland",
     "schaduwen over domburg",
+    "duivelskruid ellen de vriend",
     "spoorloos ellen de vriend",
     "zeelandthriller",
   ],
@@ -122,12 +135,12 @@ const faqItems = [
   {
     question: "Welke boeken spelen zich af in Zeeland?",
     answer:
-      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Spoorloos van Ellen de Vriend (2026) speelt zich af in Bruinisse op Schouwen-Duiveland. Deze leeslijst groeit — meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
+      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Duivelskruid van Ellen de Vriend (2025) speelt zich af in Vlissingen; het vervolg Spoorloos (2026) in Bruinisse op Schouwen-Duiveland. Deze leeslijst groeit — meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
   },
   {
     question: "In welke volgorde lees ik de Zeelandthrillers van Ellen de Vriend?",
     answer:
-      "Begin met deel 1, Duivelskruid (2025), waarin teamchef Roos Latuheru haar eerste grote zaak in Zeeland onderzoekt. Lees daarna deel 2, Spoorloos (2026). Beide delen zijn ook los te lezen, maar in volgorde volg je de ontwikkeling van Roos en haar team het beste.",
+      "Begin met deel 1, Duivelskruid (2025), waarin rechercheur Roos Latuheru haar eerste grote zaak in Zeeland onderzoekt. Lees daarna deel 2, Spoorloos (2026). Spoorloos is ook zelfstandig te lezen, maar in volgorde volg je de ontwikkeling van Roos en haar team het beste.",
   },
   {
     question: "Welke reisgids is het beste voor Zeeland?",
@@ -292,6 +305,89 @@ export default function BoekenOverZeelandPage() {
         </section>
 
         <section
+          id="duivelskruid-ellen-de-vriend"
+          className="content-section"
+          aria-labelledby="duivelskruid-ellen-de-vriend-heading"
+        >
+          <h2
+            id="duivelskruid-ellen-de-vriend-heading"
+            className="content-heading"
+          >
+            Duivelskruid — Ellen de Vriend
+          </h2>
+          <p className="content-meta">
+            Uit 2025 · Zeeland-thriller · Deel 1 van de serie{" "}
+            <em>Een Zeelandthriller</em>
+          </p>
+          <p className="content-paragraph">
+            Aan de rand van Vlissingen wordt een hardloopster in de schemering
+            aangevallen. Wanneer kort daarna opnieuw slachtoffers vallen, krijgt
+            rechercheur Roos Latuheru haar eerste grote moordzaak toegewezen.
+          </p>
+          <p className="content-paragraph">
+            De dader lijkt telkens een stap voor te blijven. Terwijl de spanning
+            oploopt en de tijd begint te dringen, ontdekt Roos dat niets is wat
+            het lijkt — iedereen lijkt iets te verbergen.{" "}
+            <em>Duivelskruid</em> is het eerste deel van de Zeelandthriller-serie
+            van Ellen de Vriend: een goed startpunt voor wie spanning, mysterie
+            en onverwachte plotwendingen zoekt.
+          </p>
+          <h3 className="content-heading">Waarom dit boek?</h3>
+          <ul className="theme-list">
+            <li>Het eerste deel van de Zeelandthriller-serie</li>
+            <li>Speelt zich af in Vlissingen</li>
+            <li>Spannende Nederlandse thriller met verrassende ontknoping</li>
+            <li>Ideaal voor liefhebbers van Zeeland én spannende boeken</li>
+          </ul>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> liefhebbers van Nederlandse thrillers,
+            fans van Zeeland en de Zeeuwse kust, en lezers van Kiki van Dijk,
+            Mathijs Deen en Linda van Rijn — en iedereen die houdt van spanning,
+            recherchewerk en verrassende ontknopingen.
+          </p>
+          <p className="content-paragraph">
+            Ellen de Vriend zet met <em>Duivelskruid</em> een sterke serie neer
+            die de sfeer van Zeeland combineert met een meeslepend verhaal — en
+            uitnodigt om ook het vervolg te lezen.
+          </p>
+          <p className="content-paragraph">
+            <strong>Leesvolgorde:</strong> begin met <em>Duivelskruid</em> en
+            lees daarna verder met{" "}
+            <a href="#spoorloos-ellen-de-vriend">
+              <em>Spoorloos</em>
+            </a>
+            , waarin Roos Latuheru een mysterieuze vermissingszaak onderzoekt op
+            Schouwen-Duiveland.
+          </p>
+          <p className="content-meta">
+            Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (27 mei
+            2025), 256 pagina&apos;s.
+          </p>
+          <a
+            href={getBoekUrl("duivelskruid-ellen-de-vriend")}
+            className="book-cover-link"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            aria-label="Bekijk Duivelskruid op Amazon"
+          >
+            <Image
+              className="book-cover"
+              src="/assets/duivelskruid-ellen-de-vriend-zeeland-thriller-boekcover.webp"
+              alt="Boekcover Duivelskruid van Ellen de Vriend, deel 1 van de Zeelandthriller-serie in Vlissingen."
+              title="Duivelskruid – Ellen de Vriend | Zeeland-thriller"
+              width={277}
+              height={425}
+              sizes="280px"
+              loading="lazy"
+            />
+          </a>
+          <AffiliateButton
+            amazonUrl={getBoekUrl("duivelskruid-ellen-de-vriend")}
+            label="Bekijk Duivelskruid op Amazon"
+          />
+        </section>
+
+        <section
           id="spoorloos-ellen-de-vriend"
           className="content-section"
           aria-labelledby="spoorloos-ellen-de-vriend-heading"
@@ -336,10 +432,19 @@ export default function BoekenOverZeelandPage() {
             keuze voor wie houdt van een meeslepende thriller met een
             authentieke Zeeuwse sfeer.
           </p>
+          <h3 className="content-heading">Eerst deel 1 lezen?</h3>
           <p className="content-paragraph">
-            <strong>Tip:</strong> heb je deel 1 (<em>Duivelskruid</em>, 2025)
-            nog niet gelezen? Begin daar eerst mee en geniet daarna van{" "}
-            <em>Spoorloos</em> voor de complete Zeelandthriller-ervaring.
+            Hoewel <em>Spoorloos</em> uitstekend zelfstandig te lezen is, haal
+            je het meeste uit de serie wanneer je begint met{" "}
+            <a href="#duivelskruid-ellen-de-vriend">
+              <em>Duivelskruid</em>
+            </a>
+            . Daar maak je kennis met rechercheur Roos Latuheru, waarna het
+            verhaal in <em>Spoorloos</em> naadloos verdergaat.
+          </p>
+          <p className="content-paragraph">
+            Start met <em>Duivelskruid</em> (deel 1) en lees daarna{" "}
+            <em>Spoorloos</em> (deel 2).
           </p>
           <p className="content-meta">
             Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (28 april

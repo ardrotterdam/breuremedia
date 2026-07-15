@@ -127,6 +127,21 @@ export const zeelandBoeken: ZeelandBoek[] = [
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {
+    slug: "duivelskruid-ellen-de-vriend",
+    naam: "Duivelskruid — Ellen de Vriend",
+    korteOmschrijving:
+      "Deel 1 van de serie Een Zeelandthriller. Aan de rand van Vlissingen wordt een hardloopster aangevallen — en rechercheur Roos Latuheru krijgt haar eerste grote moordzaak toegewezen, terwijl de dader telkens een stap voor lijkt te blijven.",
+    authors: ["Ellen de Vriend"],
+    category: "Thriller",
+    publisher: "Uitgeverij De Fontein",
+    publicationDate: "27 mei 2025",
+    pages: 256,
+    amazonUrl: "https://www.amazon.nl/dp/9789026178580",
+    image: "/assets/duivelskruid-ellen-de-vriend-zeeland-thriller-boekcover.webp",
+    imageAlt:
+      "Boekcover Duivelskruid van Ellen de Vriend, deel 1 van de Zeelandthriller-serie in Vlissingen.",
+  },
+  {
     slug: "spoorloos-ellen-de-vriend",
     naam: "Spoorloos — Ellen de Vriend",
     korteOmschrijving:
