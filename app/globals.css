@@ -15,8 +15,10 @@
   --color-text-muted: #6b6560;
   /* Font families injected by next/font via layout.tsx */
   --transition: 0.3s ease;
+  --ease-header: cubic-bezier(0.16, 1, 0.3, 1);
   --container-max: 1120px;
-  --header-height: 64px;
+  --header-height: 96px;
+  --header-height-scrolled: 64px;
   /* Type scale — reading-first, 18px body baseline */
   --font-size-body: 1.125rem;
   --line-height-body: 1.7;
@@ -214,7 +216,56 @@ input:focus-visible {
   z-index: 100;
   height: var(--header-height);
   background-color: var(--color-charcoal);
-  border-bottom: 1px solid rgba(184, 151, 90, 0.12);
+  border-bottom: 1px solid transparent;
+  transition:
+    height 350ms var(--ease-header),
+    background-color 350ms var(--ease-header),
+    border-color 350ms var(--ease-header);
+}
+
+.site-header.is-scrolled {
+  height: var(--header-height-scrolled);
+  background-color: rgba(30, 30, 30, 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(184, 151, 90, 0.18);
+}
+
+.logo {
+  transition: font-size 350ms var(--ease-header);
+}
+
+.site-header.is-scrolled .logo {
+  font-size: 1.25rem;
+}
+
+/* Waterlijn — signature element */
+
+.waterline {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 7px;
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--color-gold);
+  opacity: 0.4;
+}
+
+.waterline-svg {
+  display: block;
+  animation: waterline-drift 10s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes waterline-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-160px);
+  }
 }
 
 .header-inner {
@@ -230,6 +281,7 @@ input:focus-visible {
 }
 
 .nav a {
+  position: relative;
   font-size: var(--font-size-ui);
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -237,8 +289,74 @@ input:focus-visible {
   color: rgba(232, 226, 216, 0.72);
 }
 
-.nav a:hover {
+/* Inktlijn — underline die zichzelf tekent */
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.3em;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms var(--ease-header);
+}
+
+.nav a:hover,
+.nav a:focus-visible {
   color: var(--color-gold-light);
+}
+
+.nav a:hover::after,
+.nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav a:focus-visible {
+  outline: none;
+}
+
+.nav a[aria-current="page"] {
+  color: var(--color-warm-white);
+}
+
+.nav a[aria-current="page"]::after {
+  height: 2px;
+  transform: scaleX(1);
+}
+
+/* Page-load entrance — draait één keer; de header remount niet bij
+   client-side navigatie (App Router), dus geen herhaling. */
+
+@keyframes header-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo,
+.nav-toggle {
+  animation: header-item-in 600ms var(--ease-header) both;
+}
+
+@media (min-width: 641px) {
+  .nav a {
+    animation: header-item-in 600ms var(--ease-header) both;
+  }
+
+  .nav a:nth-child(1) { animation-delay: 90ms; }
+  .nav a:nth-child(2) { animation-delay: 180ms; }
+  .nav a:nth-child(3) { animation-delay: 270ms; }
+  .nav a:nth-child(4) { animation-delay: 360ms; }
+  .nav a:nth-child(5) { animation-delay: 450ms; }
+  .nav a:nth-child(6) { animation-delay: 540ms; }
 }
 
 .nav-toggle {
@@ -653,17 +771,28 @@ input:focus-visible {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-height: 72px;
+    --header-height-scrolled: 56px;
+  }
+
   .nav {
     display: none;
     position: absolute;
-    top: var(--header-height);
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
     gap: 0;
     background-color: var(--color-charcoal);
     border-bottom: 1px solid rgba(184, 151, 90, 0.12);
-    padding: 0.5rem 0;
+    padding: 0.75rem 0 0.5rem;
+  }
+
+  .site-header.is-scrolled .nav {
+    background-color: rgba(30, 30, 30, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
 
   .nav.is-open {
@@ -674,6 +803,33 @@ input:focus-visible {
     padding: 0.875rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   }
+
+  /* Inktlijn werkt niet op full-width menu-items; actieve pagina
+     krijgt in plaats daarvan een gouden accentlijn links. */
+  .nav a::after {
+    content: none;
+  }
+
+  .nav a:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: -2px;
+  }
+
+  .nav a[aria-current="page"] {
+    color: var(--color-gold-light);
+    box-shadow: inset 2px 0 0 var(--color-gold);
+  }
+
+  .nav.is-open a {
+    animation: header-item-in 400ms var(--ease-header) both;
+  }
+
+  .nav.is-open a:nth-child(1) { animation-delay: 40ms; }
+  .nav.is-open a:nth-child(2) { animation-delay: 90ms; }
+  .nav.is-open a:nth-child(3) { animation-delay: 140ms; }
+  .nav.is-open a:nth-child(4) { animation-delay: 190ms; }
+  .nav.is-open a:nth-child(5) { animation-delay: 240ms; }
+  .nav.is-open a:nth-child(6) { animation-delay: 290ms; }
 
   .nav-toggle {
     display: flex;
@@ -1163,6 +1319,12 @@ input:focus-visible {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .waterline-svg {
+    animation: none;
   }
 
   .book-cover:hover,
