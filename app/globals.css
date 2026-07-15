@@ -668,6 +668,25 @@ input:focus-visible {
   max-width: 48ch;
 }
 
+/* Compacte formuliervariant voor tekstkolommen (content-pagina's) */
+
+.newsletter-form--compact {
+  margin-top: 2rem;
+}
+
+.newsletter-form--compact .form-group {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 28rem;
+}
+
+.newsletter-form--compact input[type="email"] {
+  width: 100%;
+  /* Op de warm-witte paginakleur is de standaard warm-witte underline onzichtbaar */
+  border-bottom-color: rgba(44, 44, 44, 0.25);
+}
+
 /* Footer */
 
 .site-footer {

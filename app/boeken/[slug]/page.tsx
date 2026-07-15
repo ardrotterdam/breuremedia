@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import {
   getAllBookSlugs,
   getBookBySlug,
@@ -96,6 +97,13 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
           </ul>
         </div>
       </section>
+
+      <NewsletterSection
+        source={`boekpagina-${book.slug}`}
+        eyebrow="Wachtlijst"
+        title="Als eerste weten wanneer het boek verschijnt?"
+        description={`Laat je e-mailadres achter en ontvang bericht zodra ${book.title} beschikbaar is — inclusief verschijningsdatum en een exclusieve voorpublicatie.`}
+      />
 
       <FaqSection items={book.faq} title={`Veelgestelde vragen over ${book.title}`} />
     </main>

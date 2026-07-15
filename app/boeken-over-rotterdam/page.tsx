@@ -6,6 +6,7 @@ import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { PageHeader } from "@/components/PageHeader";
 import { rotterdamBoeken } from "@/data/affiliate";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
@@ -231,9 +232,25 @@ export default function BoekenOverRotterdamPage() {
             sizes="280px"
             loading="lazy"
           />
-          <Link href="/#newsletter-heading" className="btn btn-primary">
-            Ontvang bericht zodra het boek verschijnt
-          </Link>
+          <a href="#boek-wachtlijst" className="btn btn-primary">
+            Meld je aan voor bericht bij verschijning
+          </a>
+        </section>
+
+        <section
+          id="boek-wachtlijst"
+          className="content-section"
+          aria-labelledby="boek-wachtlijst-heading"
+        >
+          <h2 id="boek-wachtlijst-heading" className="content-heading">
+            Ontvang bericht bij verschijning
+          </h2>
+          <p className="content-paragraph">
+            Laat je e-mailadres achter en je ontvangt één bericht zodra{" "}
+            <em>Schaduwen over Domburg</em> verschijnt — met de
+            verschijningsdatum en een exclusieve voorpublicatie.
+          </p>
+          <NewsletterForm source="boeken-over-rotterdam" compact />
         </section>
 
         <section

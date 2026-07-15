@@ -98,7 +98,7 @@ export const books: Book[] = [
       {
         question: "Hoe kan ik Schaduwen over Domburg bestellen?",
         answer:
-          "Schaduwen over Domburg verschijnt naar verwachting najaar 2026. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in voor de nieuwsbrief op de homepage of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
+          "Schaduwen over Domburg verschijnt naar verwachting najaar 2026. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in via het formulier op deze pagina of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
       },
       {
         question: "Wat kost het boek?",

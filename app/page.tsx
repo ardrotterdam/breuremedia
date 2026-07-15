@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { BookHero } from "@/components/BookHero";
-import { NewsletterForm } from "@/components/NewsletterForm";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { getAllBooks } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
@@ -63,20 +63,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="newsletter" aria-labelledby="newsletter-heading">
-        <div className="container newsletter-inner">
-          <hr className="editorial-rule" aria-hidden="true" />
-          <p className="section-eyebrow">Berichten uit Breure Media</p>
-          <h2 id="newsletter-heading" className="section-title">
-            Nieuwe verhalen beginnen in stilte.
-          </h2>
-          <p className="newsletter-description">
-            Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder
-            project verschijnt.
-          </p>
-          <NewsletterForm />
-        </div>
-      </section>
+      <NewsletterSection source="homepage" />
     </main>
   );
 }

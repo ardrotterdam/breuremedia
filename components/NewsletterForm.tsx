@@ -1,11 +1,20 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 
-export function NewsletterForm() {
+type NewsletterFormProps = {
+  /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
+  source?: string;
+  /** Compacte variant voor gebruik binnen tekstkolommen. */
+  compact?: boolean;
+};
+
+export function NewsletterForm({ source, compact = false }: NewsletterFormProps) {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"success" | "error" | "info" | "">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const emailId = useId();
+  const messageId = useId();
 
   function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -50,6 +59,7 @@ export function NewsletterForm() {
           email,
           subject: "Nieuwe intekening — Schaduwen over Domburg",
           from_name: "Breure Media website",
+          source: source ?? "website",
           botcheck: botcheckInput.checked,
         }),
       });
@@ -77,7 +87,11 @@ export function NewsletterForm() {
   }
 
   return (
-    <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
+    <form
+      className={`newsletter-form${compact ? " newsletter-form--compact" : ""}`}
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <input
         type="checkbox"
         name="botcheck"
@@ -87,16 +101,18 @@ export function NewsletterForm() {
         aria-hidden="true"
       />
       <div className="form-group">
-        <label htmlFor="email" className="visually-hidden">
+        <label htmlFor={emailId} className="visually-hidden">
           E-mailadres
         </label>
         <input
           type="email"
-          id="email"
+          id={emailId}
           name="email"
           placeholder="jouw@email.nl"
           required
           autoComplete="email"
+          aria-invalid={status === "error" || undefined}
+          aria-describedby={messageId}
         />
         <button
           type="submit"
@@ -107,6 +123,7 @@ export function NewsletterForm() {
         </button>
       </div>
       <p
+        id={messageId}
         className={`form-message${status ? ` ${status}` : ""}`}
         role="status"
         aria-live="polite"
