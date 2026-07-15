@@ -19,7 +19,7 @@ import {
 } from "@/lib/schema";
 
 const pageDescription =
-  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
+  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthriller Spoorloos van Ellen de Vriend tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
 
 const dutchMonths: Record<string, string> = {
   januari: "01",
@@ -72,6 +72,17 @@ const zeelandBookDetails: Record<
     author: "Ard Breure",
     image: "/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp",
   },
+  "spoorloos-ellen-de-vriend": {
+    schemaName: "Spoorloos",
+    author: "Ellen de Vriend",
+    publisher: "Uitgeverij De Fontein",
+    datePublished: toIsoDate(
+      getZeelandBoekBySlug("spoorloos-ellen-de-vriend")?.publicationDate
+    ),
+    numberOfPages: getZeelandBoekBySlug("spoorloos-ellen-de-vriend")?.pages,
+    bookFormat: "https://schema.org/Paperback",
+    inLanguage: "nl",
+  },
   "time-to-momo-zeeland": {
     schemaName: "Time to Momo Zeeland",
     authors: ["Kim van Zweeden", "Melanie van Zweeden"],
@@ -96,6 +107,8 @@ export const metadata: Metadata = buildMetadata({
     "verhalen zeeland",
     "reisgids zeeland",
     "schaduwen over domburg",
+    "spoorloos ellen de vriend",
+    "zeelandthriller",
   ],
 });
 
@@ -108,7 +121,12 @@ const faqItems = [
   {
     question: "Welke boeken spelen zich af in Zeeland?",
     answer:
-      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Deze leeslijst groeit — meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
+      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Spoorloos van Ellen de Vriend (2026) speelt zich af in Bruinisse op Schouwen-Duiveland. Deze leeslijst groeit — meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
+  },
+  {
+    question: "In welke volgorde lees ik de Zeelandthrillers van Ellen de Vriend?",
+    answer:
+      "Begin met deel 1, Duivelskruid (2025), waarin teamchef Roos Latuheru haar eerste grote zaak in Zeeland onderzoekt. Lees daarna deel 2, Spoorloos (2026). Beide delen zijn ook los te lezen, maar in volgorde volg je de ontwikkeling van Roos en haar team het beste.",
   },
   {
     question: "Welke reisgids is het beste voor Zeeland?",
@@ -270,6 +288,66 @@ export default function BoekenOverZeelandPage() {
             verschijningsdatum en een exclusieve voorpublicatie.
           </p>
           <NewsletterForm source="boeken-over-zeeland" compact />
+        </section>
+
+        <section
+          id="spoorloos-ellen-de-vriend"
+          className="content-section"
+          aria-labelledby="spoorloos-ellen-de-vriend-heading"
+        >
+          <h2
+            id="spoorloos-ellen-de-vriend-heading"
+            className="content-heading"
+          >
+            Spoorloos — Ellen de Vriend
+          </h2>
+          <p className="content-meta">
+            Nieuw in 2026 · Zeeland-thriller · Deel 2 van de serie{" "}
+            <em>Een Zeelandthriller</em>
+          </p>
+          <p className="content-paragraph">
+            Wanneer de jonge onderneemster Carice Romeijn uit Bruinisse
+            spoorloos verdwijnt, lijkt het aanvankelijk een vermissingszaak.
+            Maar al snel verandert het onderzoek in een zenuwslopende thriller
+            vol geheimen, leugens en onverwachte wendingen.
+          </p>
+          <p className="content-paragraph">
+            Rechercheur Roos Latuheru ontdekt dat vrijwel iedereen in het hechte
+            Zeeuwse dorp iets achterhoudt. De waarheid blijkt veel dichterbij te
+            liggen dan iemand had kunnen vermoeden.
+          </p>
+          <h3 className="content-heading">Waarom dit boek?</h3>
+          <ul className="theme-list">
+            <li>Gloednieuwe Zeeland-thriller uit 2026</li>
+            <li>Speelt zich af op Schouwen-Duiveland</li>
+            <li>Spannend van de eerste tot de laatste pagina</li>
+            <li>Geschreven door de Zeeuwse auteur Ellen de Vriend</li>
+          </ul>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> liefhebbers van spannende Nederlandse
+            thrillers, fans van Zeeland en de Zeeuwse kust, en lezers van Kiki
+            van Dijk, Linda van Rijn en Mathijs Deen — en iedereen die houdt
+            van mysteries en onverwachte plotwendingen.
+          </p>
+          <p className="content-paragraph">
+            Ellen de Vriend combineert de rust van Zeeland met een verhaal vol
+            spanning, waardoor je het boek moeilijk weglegt. Een uitstekende
+            keuze voor wie houdt van een meeslepende thriller met een
+            authentieke Zeeuwse sfeer.
+          </p>
+          <p className="content-paragraph">
+            <strong>Tip:</strong> heb je deel 1 (<em>Duivelskruid</em>, 2025)
+            nog niet gelezen? Begin daar eerst mee en geniet daarna van{" "}
+            <em>Spoorloos</em> voor de complete Zeelandthriller-ervaring.
+          </p>
+          <p className="content-meta">
+            Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (28 april
+            2026), 256 pagina&apos;s.
+          </p>
+          <AffiliateButton
+            amazonUrl={getBoekUrl("spoorloos-ellen-de-vriend")}
+            label="BEKIJK SPOORLOOS BIJ AMAZON"
+          />
         </section>
 
         <section

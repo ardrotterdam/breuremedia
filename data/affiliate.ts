@@ -127,6 +127,18 @@ export const zeelandBoeken: ZeelandBoek[] = [
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {
+    slug: "spoorloos-ellen-de-vriend",
+    naam: "Spoorloos — Ellen de Vriend",
+    korteOmschrijving:
+      "Deel 2 van de serie Een Zeelandthriller. Wanneer de jonge onderneemster Carice Romeijn uit Bruinisse spoorloos verdwijnt, lijkt het een vermissingszaak — tot rechercheur Roos Latuheru ontdekt dat vrijwel iedereen in het hechte Zeeuwse dorp iets achterhoudt.",
+    authors: ["Ellen de Vriend"],
+    category: "Thriller",
+    publisher: "Uitgeverij De Fontein",
+    publicationDate: "28 april 2026",
+    pages: 256,
+    todo: "Amazon-affiliatelink en boekomslag toevoegen",
+  },
+  {
     slug: "time-to-momo-zeeland",
     naam: "Time to Momo Zeeland",
     korteOmschrijving:
