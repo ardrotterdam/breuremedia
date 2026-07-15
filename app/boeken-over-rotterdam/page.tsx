@@ -299,6 +299,18 @@ export default function BoekenOverRotterdamPage() {
           <h2 id="jules-deelder-heading" className="content-heading">
             De dikke van Deelder — Jules Deelder
           </h2>
+          <figure className="content-section">
+            <Image
+              src="/assets/de-dikke-van-deelder-rotterdam-nh-hotel-lifestyle-lezen-met-uitzicht-op-erasmusbrug.webp"
+              alt="Lezer geniet van De Dikke van Deelder in een NH Hotel met uitzicht op de Erasmusbrug en de Rotterdamse skyline."
+              title="De Dikke van Deelder | Lifestyle in NH Hotel Rotterdam"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
           <p className="content-paragraph">
             Over Rotterdam schrijven zonder Deelder te noemen is als over de
             stad lopen zonder de Maas over te steken. De nachtburgemeester ving
@@ -310,15 +322,24 @@ export default function BoekenOverRotterdamPage() {
             <strong>Voor wie:</strong> wie de tóón van Rotterdam wil horen, niet
             alleen de feiten.
           </p>
-          <Image
-            className="book-cover"
-            src="/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp"
-            alt="De dikke van Deelder - boekomslag van Jules Deelder"
-            width={343}
-            height={500}
-            sizes="280px"
-            loading="lazy"
-          />
+          <h3 className="content-heading">Originele boekcover</h3>
+          <a
+            href={getBoekUrl("jules-deelder")}
+            className="book-cover-link"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            aria-label="Bekijk De dikke van Deelder op Amazon"
+          >
+            <Image
+              className="book-cover"
+              src="/assets/de-dikke-van-deelder-jules-deelder-boekomslag.webp"
+              alt="De dikke van Deelder - boekomslag van Jules Deelder"
+              width={343}
+              height={500}
+              sizes="280px"
+              loading="lazy"
+            />
+          </a>
           <AffiliateButton amazonUrl={getBoekUrl("jules-deelder")} />
         </section>
 
