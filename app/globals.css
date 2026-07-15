@@ -252,15 +252,6 @@ input:focus-visible {
   transform: translateX(150%);
 }
 
-/* Rustiger uitvoering voor secundaire knoppen: gouden streep (zichtbaar
-   op lichte ondergrond), kleinere lift en zachtere schaduw. */
-
-.btn-shine--soft {
-  --shine-color: rgba(184, 151, 90, 0.11);
-  --btn-lift: -1px;
-  --btn-hover-shadow: 0 8px 18px -8px rgba(74, 58, 30, 0.28);
-}
-
 /* Verfijnde CTA-variant (OrderButton): royalere maat en letter-spacing */
 
 .btn-cta {
@@ -701,30 +692,45 @@ input:focus-visible {
 
 .newsletter-form .form-group {
   display: flex;
-  /* De knoptekst is breder dan de kolom: laat de knop onder het
-     invoerveld vallen in plaats van het veld tot 0px te knijpen. */
+  /* Vangnet: als veld + knop samen niet passen, valt de knop netjes
+     onder het veld in plaats van het veld tot 0px te knijpen. */
   flex-wrap: wrap;
-  gap: 1.25rem 0.75rem;
-  max-width: 28rem;
+  align-items: stretch;
+  gap: 0.75rem;
+  max-width: 30rem;
 }
 
 .newsletter-form input[type="email"] {
-  flex: 1 1 16rem;
-  padding: 0.75rem 0;
+  flex: 1 1 14rem;
+  /* Zonder expliciete min-width blokkeert de impliciete min-content
+     van het input-element (± 250px) de één-regel-layout in de kolom. */
+  min-width: 0;
+  height: 3.25rem;
+  padding: 0 1.125rem;
   font-family: var(--font-sans);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-secondary);
   font-weight: 300;
   color: var(--color-text);
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(44, 44, 44, 0.25);
+  background-color: #faf7f0;
+  border: 1px solid rgba(44, 44, 44, 0.3);
+  border-radius: 2px;
   outline: none;
-  border-radius: 0;
-  transition: border-color var(--transition);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
 }
 
-.newsletter-form input[type="email"]:focus {
-  border-bottom-color: var(--color-gold);
+.newsletter-form input[type="email"]:hover {
+  border-color: rgba(44, 44, 44, 0.5);
+}
+
+.newsletter-form input[type="email"]:focus,
+.newsletter-form input[type="email"]:focus-visible {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-subtle);
+  background-color: #fffdf8;
 }
 
 .newsletter-form input[type="email"]::placeholder {
@@ -732,11 +738,46 @@ input:focus-visible {
   opacity: 0.7;
 }
 
+/* Donkere submitknop: primaire actie, zelfde hoogte als het veld zodat
+   veld en knop op desktop één compositie vormen. Hover verdiept de
+   inkttint (bewust geen goud zoals .btn-primary — de shine + lift van
+   .btn-shine geven het accent al). */
+
+.newsletter-form .form-group .btn {
+  height: 3.25rem;
+  padding: 0.375rem 1.625rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.btn-submit {
+  background-color: var(--color-charcoal);
+  color: var(--color-warm-white);
+}
+
+.btn-submit:hover {
+  background-color: #101010;
+  color: var(--color-warm-white);
+}
+
+.btn-submit:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Rustiger lift dan de grote hoofd-CTA */
+.newsletter-form .btn-shine {
+  --btn-lift: -1px;
+  --btn-hover-shadow: 0 10px 22px -10px rgba(74, 58, 30, 0.35);
+}
+
+/* De meldingsregel reserveert exact één tekstregel, zodat succes- en
+   foutmeldingen verschijnen zonder dat de privacyregel verspringt. */
 .form-message {
-  margin-top: 1rem;
+  margin-top: 0.625rem;
   font-size: var(--font-size-secondary);
   line-height: var(--line-height-secondary);
-  min-height: 1.25rem;
+  min-height: calc(1em * var(--line-height-secondary));
 }
 
 .form-message.success {
@@ -753,39 +794,35 @@ input:focus-visible {
 }
 
 .form-privacy {
-  margin-top: 1.25rem;
-  font-size: var(--font-size-secondary);
+  margin-top: 0.375rem;
+  font-size: var(--font-size-caption);
   color: var(--color-text-muted);
   line-height: var(--line-height-secondary);
-  max-width: 48ch;
+  max-width: 52ch;
 }
 
-/* Compacte formuliervariant voor tekstkolommen (content-pagina's) */
+/* Compacte formuliervariant voor tekstkolommen (content-pagina's):
+   veld en knop naast elkaar op één regel binnen de tekstkolom. De
+   introzin erboven (.content-paragraph) levert de verticale marge. */
 
 .newsletter-form--compact {
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .newsletter-form--compact .form-group {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
-  max-width: 28rem;
+  max-width: none;
 }
 
+/* Iets krapper gezet dan de brede variant, zodat veld + knop samen
+   binnen de 42rem-tekstkolom op één regel passen. */
 .newsletter-form--compact input[type="email"] {
-  width: 100%;
+  flex-basis: 11rem;
 }
 
-/* Compacte form-knop: familie van de hoofd-CTA (zelfde letter-spacing
-   en padding-verhouding), maar bewust kleiner — secundair op deze
-   pagina's. Lange knoptekst mag wrappen binnen de tekstkolom. */
-
-.newsletter-form--compact .btn-secondary {
-  padding: 1rem 2rem;
-  letter-spacing: 0.16em;
-  text-align: center;
-  white-space: normal;
+.newsletter-form--compact .form-group .btn {
+  font-size: var(--font-size-caption);
+  letter-spacing: 0.1em;
+  padding: 0.375rem 1.25rem;
 }
 
 /* Footer */
@@ -969,13 +1006,21 @@ input:focus-visible {
 
   .newsletter-form .form-group {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    align-items: stretch;
+    gap: 0.75rem;
     max-width: none;
   }
 
   .newsletter-form input[type="email"] {
+    /* In kolomrichting stuurt flex-basis de hoogte: terug naar auto,
+       anders wordt het veld 14rem hoog. */
+    flex: 0 0 auto;
     width: 100%;
+  }
+
+  .newsletter-form .form-group .btn {
+    width: 100%;
+    white-space: normal;
   }
 
   .author,
