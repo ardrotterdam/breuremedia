@@ -171,6 +171,22 @@ export const zeelandBoeken: ZeelandBoek[] = [
     imageAlt:
       "Boekomslag van Time to Momo Zeeland, reisgids van Kim van Zweeden en Melanie van Zweeden",
   },
+  {
+    slug: "111-plekken-in-zeeland",
+    naam: "111 plekken in Zeeland die je gezien moet hebben",
+    korteOmschrijving:
+      "Reisgids met 111 verrassende en onverwachte plekken in Zeeland — van verborgen natuurgebieden en lokale verhalen tot bijzondere musea en typisch Zeeuwse curiosa, buiten de bekende toeristische routes.",
+    authors: ["Jan Kuipers"],
+    category: "Reisgids",
+    publisher: "Uitgeverij Thoth",
+    publicationDate: "maart 2020",
+    pages: 240,
+    amazonUrl: "https://amzn.to/4fgkWOZ",
+    image:
+      "/assets/111-plekken-in-zeeland-die-je-gezien-moet-hebben-lifestyle-illustratie.webp",
+    imageAlt:
+      "Lifestyle illustratie van het boek 111 Plekken in Zeeland die je gezien moet hebben aan de Zeeuwse kust.",
+  },
   // Meer Zeeuwse romans, verhalen en reisgidsen volgen hier.
 ];
 

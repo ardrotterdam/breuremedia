@@ -19,7 +19,7 @@ import {
 } from "@/lib/schema";
 
 const pageDescription =
-  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthrillers Duivelskruid en Spoorloos van Ellen de Vriend tot praktische gidsen voor de Zeeuwse kust. Een groeiende leeslijst van auteur Ard Breure.";
+  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthrillers Duivelskruid en Spoorloos van Ellen de Vriend tot praktische gidsen als Time to Momo Zeeland en 111 plekken in Zeeland. Een groeiende leeslijst van auteur Ard Breure.";
 
 const dutchMonths: Record<string, string> = {
   januari: "01",
@@ -108,6 +108,20 @@ const zeelandBookDetails: Record<
     bookFormat: "https://schema.org/Paperback",
     inLanguage: "nl",
   },
+  "111-plekken-in-zeeland": {
+    schemaName: "111 plekken in Zeeland die je gezien moet hebben",
+    author: "Jan Kuipers",
+    editor: "Heleen Dekker",
+    image:
+      "/assets/111-plekken-in-zeeland-die-je-gezien-moet-hebben-lifestyle-illustratie.webp",
+    publisher: "Uitgeverij Thoth",
+    datePublished: toIsoDate(
+      getZeelandBoekBySlug("111-plekken-in-zeeland")?.publicationDate
+    ),
+    numberOfPages: getZeelandBoekBySlug("111-plekken-in-zeeland")?.pages,
+    bookFormat: "https://schema.org/Paperback",
+    inLanguage: "nl",
+  },
 };
 
 export const metadata: Metadata = buildMetadata({
@@ -123,6 +137,8 @@ export const metadata: Metadata = buildMetadata({
     "duivelskruid ellen de vriend",
     "spoorloos ellen de vriend",
     "zeelandthriller",
+    "111 plekken in zeeland",
+    "jan kuipers zeeland",
   ],
 });
 
@@ -145,7 +161,7 @@ const faqItems = [
   {
     question: "Welke reisgids is het beste voor Zeeland?",
     answer:
-      "Time to Momo Zeeland is een prettige eerste keus: een praktische gids met de leukste stranden, hotspots en horeca, inclusief tips van locals. Voor wie liever nog dieper de Deltawerken of de fiets- en wandelroutes van Walcheren en Zeeuws-Vlaanderen induikt, volgen hier binnenkort meer aanraders.",
+      "Time to Momo Zeeland is een prettige eerste keus voor stranden, hotspots en horeca met tips van locals. Wie juist buiten de bekende routes wil, pakt 111 plekken in Zeeland die je gezien moet hebben van Jan Kuipers en Heleen Dekker: 111 verrassende plekken met lokale verhalen en onverwachte locaties. Beide gidsen vullen elkaar goed aan.",
   },
   {
     question: "Is Schaduwen over Domburg ook interessant als reisliteratuur?",
@@ -513,6 +529,100 @@ export default function BoekenOverZeelandPage() {
           <AffiliateButton
             amazonUrl={getBoekUrl("time-to-momo-zeeland")}
             label="BEKIJK TIME TO MOMO ZEELAND BIJ AMAZON"
+          />
+        </section>
+
+        <section
+          id="111-plekken-in-zeeland"
+          className="content-section"
+          aria-labelledby="111-plekken-in-zeeland-heading"
+        >
+          <h2 id="111-plekken-in-zeeland-heading" className="content-heading">
+            111 plekken in Zeeland die je gezien moet hebben — Jan Kuipers
+          </h2>
+          <p className="content-meta">
+            Reisgids · 111 verrassende plekken · Ook leuk als cadeau
+          </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/111-plekken-in-zeeland-die-je-gezien-moet-hebben-lifestyle-illustratie.webp"
+              alt="Lifestyle illustratie van het boek 111 Plekken in Zeeland die je gezien moet hebben aan de Zeeuwse kust."
+              title="111 Plekken in Zeeland die je gezien moet hebben | Lifestyle illustratie"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
+          <p className="content-paragraph">
+            Zeeland is veel meer dan stranden, duinen en mosselen. In{" "}
+            <em>111 plekken in Zeeland die je gezien moet hebben</em> nemen{" "}
+            <strong>Jan Kuipers</strong> en <strong>Heleen Dekker</strong> je
+            mee naar bijzondere, onverwachte en soms bijna verborgen locaties
+            verspreid over de provincie.
+          </p>
+          <p className="content-paragraph">
+            Van opvallende musea en historische plekken tot lokale verhalen,
+            onbekende natuurgebieden en typisch Zeeuwse bijzonderheden: dit
+            boek laat je Zeeland met andere ogen bekijken. Perfect voor iedereen
+            die niet alleen de bekende toeristische plekken wil bezoeken, maar
+            juist benieuwd is naar het echte en verrassende Zeeland.
+          </p>
+          <h3 className="content-heading">Waarom dit boek?</h3>
+          <ul className="theme-list">
+            <li>111 concrete plekken om te ontdekken</li>
+            <li>Vol verrassende verhalen en lokale bijzonderheden</li>
+            <li>Geschikt voor dagjes uit, vakanties en weekendjes Zeeland</li>
+            <li>Interessant voor toeristen én inwoners van Zeeland</li>
+            <li>Een origineel cadeau voor Zeeland-liefhebbers</li>
+            <li>Handzaam boek om vooraf inspiratie uit te halen</li>
+          </ul>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> mensen die een vakantie of weekend in
+            Zeeland plannen, inwoners die hun eigen provincie beter willen
+            leren kennen, liefhebbers van lokale geschiedenis en cultuur,
+            wandelaars, fietsers en dagjesmensen — en iedereen die graag buiten
+            de gebaande paden reist.
+          </p>
+          <p className="content-paragraph">
+            Dit is geen standaard overzicht met alleen de bekendste stranden en
+            badplaatsen. De auteurs laten juist zien wat Zeeland bijzonder
+            maakt: onverwachte plekken, bijzondere verhalen en locaties waar je
+            anders misschien zo aan voorbij zou gaan. Daardoor is het boek niet
+            alleen praktisch, maar ook leuk om thuis rustig door te bladeren.
+          </p>
+          <p className="content-paragraph">
+            Met 111 plekken heb je genoeg inspiratie voor meerdere vakanties,
+            autoritten, fietstochten en dagjes uit. Neem het boek erbij wanneer
+            je een weekend of vakantie in Zeeland plant en kies vooraf een paar
+            plekken die je normaal nooit zou bezoeken.
+          </p>
+          <p className="content-meta">
+            Jan Kuipers, bewerkt door Heleen Dekker, uitgegeven door Uitgeverij
+            Thoth (maart 2020, 2e druk), 240 pagina&apos;s.
+          </p>
+          <a
+            href={getBoekUrl("111-plekken-in-zeeland")}
+            className="book-cover-link"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            aria-label="Bekijk 111 plekken in Zeeland op Amazon"
+          >
+            <Image
+              className="book-cover"
+              src="/assets/111-plekken-in-zeeland-kuipers-dekker-boekomslag.webp"
+              alt="Boekomslag van 111 plekken in Zeeland die je gezien moet hebben van Jan Kuipers en Heleen Dekker"
+              title="111 plekken in Zeeland die je gezien moet hebben – Jan Kuipers"
+              width={532}
+              height={809}
+              sizes="280px"
+              loading="lazy"
+            />
+          </a>
+          <AffiliateButton
+            amazonUrl={getBoekUrl("111-plekken-in-zeeland")}
+            label="Bekijk 111 plekken in Zeeland op Amazon"
           />
         </section>
       </div>
