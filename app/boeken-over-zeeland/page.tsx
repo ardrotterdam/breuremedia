@@ -421,10 +421,10 @@ export default function BoekenOverZeelandPage() {
           <figure className="content-section">
             <Image
               src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-lifestyle-lezen-aan-zee.webp"
-              alt="Persoon leest Spoorloos van Ellen de Vriend aan de Zeeuwse kust tijdens zonsondergang."
+              alt="Vrouw leest Spoorloos van Ellen de Vriend aan de Zeeuwse kust bij zonsondergang."
               title="Spoorloos – Ellen de Vriend | Lifestyle aan de Zeeuwse kust"
-              width={1672}
-              height={941}
+              width={1536}
+              height={1024}
               sizes="(max-width: 768px) 100vw, 48rem"
               style={{ width: "100%", height: "auto" }}
               loading="lazy"
