@@ -335,6 +335,18 @@ export default function BoekenOverZeelandPage() {
             Uit 2025 · Zeeland-thriller · Deel 1 van de serie{" "}
             <em>Een Zeelandthriller</em>
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/duivelskruid-ellen-de-vriend-lifestyle-lezen-aan-de-zeeuwse-haven.webp"
+              alt="Vrouw leest Duivelskruid van Ellen de Vriend aan een sfeervolle Zeeuwse haven."
+              title="Duivelskruid – Ellen de Vriend | Lezen aan een Zeeuwse haven"
+              width={1672}
+              height={941}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
           <p className="content-paragraph">
             Aan de rand van Vlissingen wordt een hardloopster in de schemering
             aangevallen. Wanneer kort daarna opnieuw slachtoffers vallen, krijgt
@@ -379,6 +391,7 @@ export default function BoekenOverZeelandPage() {
             Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (27 mei
             2025), 256 pagina&apos;s.
           </p>
+          <h3 className="content-heading">Originele boekcover</h3>
           <a
             href={getBoekUrl("duivelskruid-ellen-de-vriend")}
             className="book-cover-link"
