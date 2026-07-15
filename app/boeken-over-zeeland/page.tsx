@@ -418,6 +418,18 @@ export default function BoekenOverZeelandPage() {
             Nieuw in 2026 · Zeeland-thriller · Deel 2 van de serie{" "}
             <em>Een Zeelandthriller</em>
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-lifestyle-lezen-aan-zee.webp"
+              alt="Persoon leest Spoorloos van Ellen de Vriend aan de Zeeuwse kust tijdens zonsondergang."
+              title="Spoorloos – Ellen de Vriend | Lifestyle aan de Zeeuwse kust"
+              width={1672}
+              height={941}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
           <p className="content-paragraph">
             Wanneer de jonge onderneemster Carice Romeijn uit Bruinisse
             spoorloos verdwijnt, lijkt het aanvankelijk een vermissingszaak.
@@ -466,6 +478,7 @@ export default function BoekenOverZeelandPage() {
             Ellen de Vriend, uitgegeven door Uitgeverij De Fontein (28 april
             2026), 256 pagina&apos;s.
           </p>
+          <h3 className="content-heading">Originele boekcover</h3>
           <a
             href={getBoekUrl("spoorloos-ellen-de-vriend")}
             className="book-cover-link"
