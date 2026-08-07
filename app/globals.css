@@ -1134,6 +1134,17 @@ input:focus-visible {
   margin-inline: auto;
 }
 
+/*
+ * Brede sectie voor vergelijkingstabellen die niet in de smalle leeskolom
+ * passen. Op desktop mag de tabel buiten de tekstbreedte komen (gangbaar
+ * editorial-patroon); op mobiel blijft de tabel-wrapper horizontaal scrollen.
+ */
+@media (min-width: 48rem) {
+  .content-section--wide {
+    max-width: 56rem;
+  }
+}
+
 .content-heading {
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(1.5rem, 2.75vw, 2rem);
