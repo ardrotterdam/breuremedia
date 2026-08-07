@@ -17,6 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
     { path: "/e-readers", priority: 0.8, changeFrequency: "monthly" as const },
     {
+      path: "/waterdichte-e-reader",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
       path: "/boeken-over-rotterdam",
       priority: 0.8,
       changeFrequency: "monthly" as const,
