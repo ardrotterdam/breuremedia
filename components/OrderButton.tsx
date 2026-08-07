@@ -7,12 +7,17 @@
 interface OrderButtonProps {
   /** Anker van het inschrijfformulier op de huidige pagina. */
   href?: string;
+  /** Knoptekst; standaard Nederlands. Geef Engels mee op /en-pagina's. */
+  label?: string;
 }
 
-export function OrderButton({ href = "#newsletter-heading" }: OrderButtonProps) {
+export function OrderButton({
+  href = "#newsletter-heading",
+  label = "Meld je aan voor bericht bij verschijning",
+}: OrderButtonProps) {
   return (
     <a href={href} className="btn btn-primary btn-cta btn-shine">
-      Meld je aan voor bericht bij verschijning
+      {label}
     </a>
   );
 }

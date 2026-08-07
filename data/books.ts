@@ -3,6 +3,29 @@ export interface FaqItem {
   answer: string;
 }
 
+/**
+ * Optional English translation of a book's editorial content. Only titles
+ * the author publishes in English carry this block; Dutch-only titles leave
+ * it undefined. Structural/commercial fields (slug, price, currency, format,
+ * cover image) are shared and stay on the parent Book.
+ */
+export interface BookTranslation {
+  /** English URL slug, used under /en/<slug>. */
+  slug: string;
+  title: string;
+  subtitle: string;
+  genre: string;
+  tagline: string;
+  description: string;
+  longDescription: string[];
+  coverAlt: string;
+  formatNote: string;
+  setting: string;
+  themes: string[];
+  keywords: string[];
+  faq: FaqItem[];
+}
+
 export interface Book {
   slug: string;
   title: string;
@@ -26,6 +49,8 @@ export interface Book {
   published?: string;
   keywords: string[];
   faq: FaqItem[];
+  /** English edition content, when the book is also published in English. */
+  en?: BookTranslation;
 }
 
 /**
@@ -106,6 +131,73 @@ export const books: Book[] = [
           "De adviesprijs is €29,95. Het boek verschijnt naar verwachting najaar 2026; de definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden nader bekendgemaakt.",
       },
     ],
+    en: {
+      slug: "shadows-over-domburg",
+      title: "Shadows over Domburg",
+      subtitle: "A literary thriller",
+      genre: "Literary thriller",
+      tagline:
+        "A body on the beach at Domburg. A detective who broke a promise five years ago. And a lie that, like the sea, always washes back ashore.",
+      description:
+        "A literary thriller about silence, guilt and the reckoning that always comes — set on the Dutch coast, where an old promise returns with the tide.",
+      longDescription: [
+        "On the beach at Domburg, the body of an American washes ashore — a man no one here was supposed to know. For detective Tom Jansen — once with the Rotterdam seaport police, now nobody at all — it is no stranger's case. It is an old debt returning with the tide.",
+        "Five years earlier, Jansen promised this man protection. He did not keep that promise. Now the man lies on the sand, beside a watch that recorded exactly four minutes before it stopped — four minutes in which someone stood before him whom the sea has not given up.",
+        "Together with the Danish detective Larsen, Jansen follows a trail of shipping containers, missing weapon parts and men who go by assumed names — back to the harbour where he once swore his oath, and to a lie larger than himself.",
+        "Shadows over Domburg is a literary thriller about silence, guilt and the reckoning that always comes — written in the tradition of Mulisch and Hermans: cool, precise and unflinchingly honest about the things people never tell one another.",
+      ],
+      coverAlt: "Book cover of Shadows over Domburg by Ard Breure",
+      formatNote:
+        "Shadows over Domburg is expected in autumn 2026. Sign up for the newsletter to be the first to hear the exact release date, price and an exclusive preview.",
+      setting: "Domburg, Zeeland — the Dutch coast",
+      themes: [
+        "Silence and suspense",
+        "Moral choices",
+        "Psychological depth",
+        "Dutch coastal setting",
+      ],
+      keywords: [
+        "literary thriller",
+        "Dutch thriller",
+        "thriller set in the Netherlands",
+        "Zeeland thriller",
+        "psychological thriller",
+        "Ard Breure",
+      ],
+      faq: [
+        {
+          question: "What is a literary thriller?",
+          answer:
+            "A literary thriller combines suspense with careful prose, deeply drawn characters and themes that reach beyond the crime itself. The emphasis lies on psychology, atmosphere and moral dilemmas — not only on who did it.",
+        },
+        {
+          question: "Where is Shadows over Domburg set?",
+          answer:
+            "The story takes place on the Dutch coast, in and around Domburg in the province of Zeeland. The sea, the mist and the silence of the coastal town are an integral part of the tension.",
+        },
+        {
+          question:
+            "What is the difference between a literary thriller and an ordinary thriller?",
+          answer:
+            "In a regular thriller, plot and action come first. A literary thriller takes its time for character development, atmosphere and language. You read not only to find out what happens, but also to understand the people and their choices.",
+        },
+        {
+          question: "Who is this book for?",
+          answer:
+            "For readers who love thrillers with psychological depth. If you enjoy authors such as Tana French, Jo Nesbø or Kate Atkinson, and you appreciate a story that builds slowly rather than escalating at once, this book is for you.",
+        },
+        {
+          question: "How can I order Shadows over Domburg?",
+          answer:
+            "Shadows over Domburg is expected in autumn 2026. Ordering will open once the release date is confirmed. Sign up through the form on this page or write to info@breuremedia.com to be the first to know.",
+        },
+        {
+          question: "What does the book cost?",
+          answer:
+            "The recommended price is €29.95. The book is expected in autumn 2026; the final edition (paperback or hardcover) and the exact release date will be announced later.",
+        },
+      ],
+    },
   },
 ];
 
@@ -119,4 +211,18 @@ export function getBookBySlug(slug: string): Book | undefined {
 
 export function getAllBookSlugs(): string[] {
   return books.map((book) => book.slug);
+}
+
+/** Books that also have an English edition (i.e. carry an `en` block). */
+export function getEnglishBooks(): (Book & { en: BookTranslation })[] {
+  return books.filter(
+    (book): book is Book & { en: BookTranslation } => book.en !== undefined
+  );
+}
+
+/** Find a book by its English slug (the segment used under /en/<slug>). */
+export function getBookByEnglishSlug(
+  enSlug: string
+): (Book & { en: BookTranslation }) | undefined {
+  return getEnglishBooks().find((book) => book.en.slug === enSlug);
 }

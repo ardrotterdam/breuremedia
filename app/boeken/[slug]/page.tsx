@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookHero } from "@/components/BookHero";
@@ -44,6 +45,13 @@ export async function generateMetadata({
     imageAlt: book.coverAlt,
     type: "article",
     keywords: book.keywords,
+    ...(book.en && {
+      languages: {
+        nl: `/boeken/${book.slug}`,
+        en: `/en/${book.en.slug}`,
+        "x-default": `/en/${book.en.slug}`,
+      },
+    }),
   });
 }
 
@@ -76,6 +84,14 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
       <section className="book-detail" aria-labelledby="book-about-heading">
         <div className="container book-detail-inner">
           <Breadcrumbs items={breadcrumbs} />
+
+          {book.en && (
+            <p className="content-meta">
+              <Link href={`/en/${book.en.slug}`} className="text-link">
+                Read this page in English
+              </Link>
+            </p>
+          )}
 
           <h2 id="book-about-heading" className="section-title">
             Over dit boek

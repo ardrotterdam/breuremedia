@@ -12,6 +12,14 @@ export interface PageSeoOptions {
   type?: "website" | "article" | "book";
   noIndex?: boolean;
   keywords?: string[];
+  /** OpenGraph locale, e.g. "en_US". Defaults to the site locale (nl_NL). */
+  locale?: string;
+  /**
+   * hreflang alternates, mapping language code → absolute-or-relative path,
+   * e.g. { nl: "/boeken/schaduwen-over-domburg", en: "/en/shadows-over-domburg" }.
+   * Include an "x-default" entry to name the fallback for unmatched locales.
+   */
+  languages?: Record<string, string>;
 }
 
 export function absoluteUrl(path: string): string {
@@ -30,12 +38,22 @@ export function buildMetadata({
   type = "website",
   noIndex = false,
   keywords,
+  locale,
+  languages,
 }: PageSeoOptions): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image ? absoluteUrl(image) : absoluteUrl("/assets/schaduwen-over-domburg-cover.webp");
   const ogImageAlt = imageAlt ?? title;
   const ogImageWidth = imageWidth ?? 800;
   const ogImageHeight = imageHeight ?? 1200;
+  const hreflang = languages
+    ? Object.fromEntries(
+        Object.entries(languages).map(([lang, target]) => [
+          lang,
+          absoluteUrl(target),
+        ])
+      )
+    : undefined;
 
   return {
     title,
@@ -43,6 +61,7 @@ export function buildMetadata({
     keywords: keywords?.join(", "),
     alternates: {
       canonical: url,
+      ...(hreflang && { languages: hreflang }),
     },
     robots: noIndex
       ? { index: false, follow: false }
@@ -52,7 +71,7 @@ export function buildMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
+      locale: locale ?? siteConfig.locale,
       type,
       images: [
         {

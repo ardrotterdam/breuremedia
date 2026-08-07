@@ -1,4 +1,4 @@
-import type { Book } from "@/data/books";
+import type { Book, BookTranslation } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -57,6 +57,51 @@ export function bookSchema(book: Book) {
       priceCurrency: book.currency,
       availability: "https://schema.org/PreOrder",
       url: absoluteUrl(`/boeken/${book.slug}`),
+    },
+  };
+}
+
+/**
+ * Book schema for the English edition. Shares the commercial fields with the
+ * Dutch book but uses the English title/description, inLanguage "en" and the
+ * /en URL, and links the Dutch edition via workTranslation.
+ */
+export function englishBookSchema(book: Book & { en: BookTranslation }) {
+  const en = book.en;
+  const enUrl = absoluteUrl(`/en/${en.slug}`);
+
+  return {
+    "@type": "Book",
+    name: en.title,
+    description: en.description,
+    inLanguage: "en",
+    genre: en.genre,
+    bookFormat: "https://schema.org/Paperback",
+    author: {
+      "@type": "Person",
+      name: book.author,
+      url: absoluteUrl("/over-de-auteur"),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    image: absoluteUrl(book.coverImage),
+    url: enUrl,
+    workExample: {
+      "@type": "Book",
+      name: book.title,
+      inLanguage: book.language,
+      url: absoluteUrl(`/boeken/${book.slug}`),
+    },
+    ...(book.isbn && { isbn: book.isbn }),
+    offers: {
+      "@type": "Offer",
+      price: book.price.toFixed(2),
+      priceCurrency: book.currency,
+      availability: "https://schema.org/PreOrder",
+      url: enUrl,
     },
   };
 }

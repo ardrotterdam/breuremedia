@@ -6,11 +6,13 @@ import type { FaqItem } from "@/data/books";
 interface FaqSectionProps {
   items: FaqItem[];
   title?: string;
+  eyebrow?: string;
 }
 
 export function FaqSection({
   items,
   title = "Veelgestelde vragen",
+  eyebrow = "Vragen van lezers",
 }: FaqSectionProps) {
   const baseId = useId();
   const [openItems, setOpenItems] = useState<Set<number>>(() => new Set());
@@ -30,7 +32,7 @@ export function FaqSection({
   return (
     <section className="faq" aria-labelledby="faq-heading">
       <div className="container faq-inner">
-        <p className="section-eyebrow">Vragen van lezers</p>
+        <p className="section-eyebrow">{eyebrow}</p>
         <h2 id="faq-heading" className="section-title">
           {title}
         </h2>

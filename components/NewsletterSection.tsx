@@ -1,10 +1,12 @@
-import { NewsletterForm } from "./NewsletterForm";
+import { NewsletterForm, type NewsletterFormCopy } from "./NewsletterForm";
 
 interface NewsletterSectionProps {
   source: string;
   eyebrow?: string;
   title?: string;
   description?: string;
+  /** Overschrijf de formulierteksten (bijv. Engels op /en-pagina's). */
+  formCopy?: Partial<NewsletterFormCopy>;
 }
 
 /**
@@ -16,6 +18,7 @@ export function NewsletterSection({
   eyebrow = "Berichten uit Breure Media",
   title = "Nieuwe verhalen beginnen in stilte.",
   description = "Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder project verschijnt.",
+  formCopy,
 }: NewsletterSectionProps) {
   return (
     <section className="newsletter" aria-labelledby="newsletter-heading">
@@ -26,7 +29,7 @@ export function NewsletterSection({
           {title}
         </h2>
         <p className="newsletter-description">{description}</p>
-        <NewsletterForm source={source} />
+        <NewsletterForm source={source} copy={formCopy} />
       </div>
     </section>
   );

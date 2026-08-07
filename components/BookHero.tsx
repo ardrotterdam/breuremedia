@@ -5,9 +5,11 @@ import { OrderButton } from "./OrderButton";
 interface BookHeroProps {
   book: Book;
   priority?: boolean;
+  /** Label for the order/sign-up CTA; defaults to Dutch inside OrderButton. */
+  orderLabel?: string;
 }
 
-export function BookHero({ book, priority = false }: BookHeroProps) {
+export function BookHero({ book, priority = false, orderLabel }: BookHeroProps) {
   return (
     <section className="hero">
       <div className="hero-layout">
@@ -37,7 +39,7 @@ export function BookHero({ book, priority = false }: BookHeroProps) {
             <p className="hero-format">
               {book.format} · {book.priceFormatted}
             </p>
-            <OrderButton />
+            <OrderButton label={orderLabel} />
           </div>
         </div>
       </div>

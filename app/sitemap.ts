@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllBooks } from "@/data/books";
+import { getAllBooks, getEnglishBooks } from "@/data/books";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -27,6 +27,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.9,
+    // When an English edition exists, declare the language alternates so
+    // Google treats the pages as translations of one another.
+    ...(book.en && {
+      alternates: {
+        languages: {
+          nl: `${siteConfig.url}/boeken/${book.slug}`,
+          en: `${siteConfig.url}/en/${book.en.slug}`,
+        },
+      },
+    }),
+  }));
+
+  const englishBookPages = getEnglishBooks().map((book) => ({
+    url: `${siteConfig.url}/en/${book.en.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+    alternates: {
+      languages: {
+        nl: `${siteConfig.url}/boeken/${book.slug}`,
+        en: `${siteConfig.url}/en/${book.en.slug}`,
+      },
+    },
   }));
 
   const staticEntries = staticPages.map((page) => ({
@@ -36,5 +59,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: page.priority,
   }));
 
-  return [...staticEntries, ...bookPages];
+  return [...staticEntries, ...bookPages, ...englishBookPages];
 }

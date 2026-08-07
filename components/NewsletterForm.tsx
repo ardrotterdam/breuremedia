@@ -2,14 +2,48 @@
 
 import { useId, useState, type FormEvent } from "react";
 
+export interface NewsletterFormCopy {
+  emailLabel: string;
+  placeholder: string;
+  submit: string;
+  submitting: string;
+  success: string;
+  invalidEmail: string;
+  error: string;
+  privacy: string;
+  /** Subject line sent to Web3Forms. */
+  subject: string;
+}
+
+const dutchCopy: NewsletterFormCopy = {
+  emailLabel: "E-mailadres",
+  placeholder: "jouw@email.nl",
+  submit: "Ontvang bericht zodra het boek verschijnt",
+  submitting: "Even geduld…",
+  success: "Dank u. U ontvangt bericht zodra het boek verschijnt.",
+  invalidEmail: "Voer een geldig e-mailadres in.",
+  error:
+    "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com.",
+  privacy:
+    "Uw e-mailadres wordt uitsluitend gebruikt voor berichten over publicaties van Breure Media. Geen spam, uitschrijven kan altijd.",
+  subject: "Nieuwe intekening — Schaduwen over Domburg",
+};
+
 type NewsletterFormProps = {
   /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
   source?: string;
   /** Compacte variant voor gebruik binnen tekstkolommen. */
   compact?: boolean;
+  /** Overschrijf losse teksten (bijv. Engels op /en-pagina's). */
+  copy?: Partial<NewsletterFormCopy>;
 };
 
-export function NewsletterForm({ source, compact = false }: NewsletterFormProps) {
+export function NewsletterForm({
+  source,
+  compact = false,
+  copy,
+}: NewsletterFormProps) {
+  const t: NewsletterFormCopy = { ...dutchCopy, ...copy };
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"success" | "error" | "info" | "">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,20 +64,20 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
     const email = emailInput.value.trim();
 
     if (!email || !isValidEmail(email)) {
-      setMessage("Voer een geldig e-mailadres in.");
+      setMessage(t.invalidEmail);
       setStatus("error");
       emailInput.focus();
       return;
     }
 
     if (botcheckInput.checked) {
-      setMessage("Dank u. U ontvangt bericht zodra het boek verschijnt.");
+      setMessage(t.success);
       setStatus("success");
       form.reset();
       return;
     }
 
-    setMessage("Even geduld…");
+    setMessage(t.submitting);
     setStatus("info");
     setIsSubmitting(true);
 
@@ -57,7 +91,7 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
         body: JSON.stringify({
           access_key: "da837bfb-4e7b-41fd-8184-0ca43bea55d5",
           email,
-          subject: "Nieuwe intekening — Schaduwen over Domburg",
+          subject: t.subject,
           from_name: "Breure Media website",
           source: source ?? "website",
           botcheck: botcheckInput.checked,
@@ -67,19 +101,15 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setMessage("Dank u. U ontvangt bericht zodra het boek verschijnt.");
+        setMessage(t.success);
         setStatus("success");
         form.reset();
       } else {
-        setMessage(
-          "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com."
-        );
+        setMessage(t.error);
         setStatus("error");
       }
     } catch {
-      setMessage(
-        "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com."
-      );
+      setMessage(t.error);
       setStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -102,13 +132,13 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
       />
       <div className="form-group">
         <label htmlFor={emailId} className="visually-hidden">
-          E-mailadres
+          {t.emailLabel}
         </label>
         <input
           type="email"
           id={emailId}
           name="email"
-          placeholder="jouw@email.nl"
+          placeholder={t.placeholder}
           required
           autoComplete="email"
           aria-invalid={status === "error" || undefined}
@@ -119,7 +149,7 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
           className="btn btn-submit btn-shine"
           disabled={isSubmitting}
         >
-          Ontvang bericht zodra het boek verschijnt
+          {t.submit}
         </button>
       </div>
       <p
@@ -130,10 +160,7 @@ export function NewsletterForm({ source, compact = false }: NewsletterFormProps)
       >
         {message}
       </p>
-      <p className="form-privacy">
-        Uw e-mailadres wordt uitsluitend gebruikt voor berichten over
-        publicaties van Breure Media. Geen spam, uitschrijven kan altijd.
-      </p>
+      <p className="form-privacy">{t.privacy}</p>
     </form>
   );
 }
