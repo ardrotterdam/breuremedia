@@ -54,8 +54,9 @@ const rotterdamBookDetails: Record<
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Boeken over Rotterdam: romans, thrillers en verhalen | Breure Media",
-  description: pageDescription,
+  title: "Boeken over Rotterdam: 5 romans, thrillers en verhalen",
+  description:
+    "Ontdek boeken die Rotterdam echt vangen: van Karakter en Jules Deelder tot verhalen over de haven, voetbal en wederopbouw.",
   path: "/boeken-over-rotterdam",
   image: "/assets/rotterdam-maas-lezen-sfeerbeeld.webp",
   imageAlt:
