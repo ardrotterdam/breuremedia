@@ -765,6 +765,14 @@ export default function EReadersPage() {
       <div className="container content-page content-page--footer">
         <section className="content-section">
           <p className="content-meta">
+            Zoek je specifiek een waterdichte e-reader voor bad, strand of
+            zwembad? Lees dan mijn gids over de{" "}
+            <Link href="/waterdichte-e-reader">
+              beste waterdichte e-readers
+            </Link>
+            .
+          </p>
+          <p className="content-meta">
             <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
           </p>
           <p className="content-meta">
