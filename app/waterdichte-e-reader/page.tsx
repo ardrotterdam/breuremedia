@@ -202,7 +202,10 @@ export default function WaterdichteEReaderPage() {
 
         <AffiliateDisclosure />
 
-        <section className="content-section" aria-labelledby="overview-heading">
+        <section
+          className="content-section content-section--wide"
+          aria-labelledby="overview-heading"
+        >
           <h2 id="overview-heading" className="content-heading">
             De vier beste waterdichte e-readers in één oogopslag
           </h2>
