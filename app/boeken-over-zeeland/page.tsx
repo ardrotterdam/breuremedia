@@ -125,8 +125,9 @@ const zeelandBookDetails: Record<
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Boeken over Zeeland: romans, verhalen en reisgidsen | Breure Media",
-  description: pageDescription,
+  title: "5 boeken over Zeeland: thrillers en reisgidsen",
+  description:
+    "Ontdek 5 boeken over Zeeland: van thrillers in Domburg, Vlissingen en Bruinisse tot reisgidsen vol bijzondere plekken en tips.",
   path: "/boeken-over-zeeland",
   keywords: [
     "boeken over zeeland",
