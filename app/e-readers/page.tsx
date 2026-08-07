@@ -48,7 +48,7 @@ const faqItems = [
   {
     question: "Kan ik bibliotheekboeken lezen op een e-reader?",
     answer:
-      "Op een Kobo kan dat rechtstreeks vanaf het apparaat. Op een Kindle kan het ook, maar via een omweg met de Libby-app op je telefoon.",
+      "Voor e-books van de Nederlandse online Bibliotheek heb je doorgaans een geschikte e-reader, Adobe Digital Editions en een Windows- of Mac-computer nodig. Kindle ondersteunt de gebruikte Adobe DRM-beveiliging niet. In sommige andere landen kun je via OverDrive wel rechtstreeks vanaf een Kobo lenen — dat geldt niet voor de Nederlandse online Bibliotheek.",
   },
   {
     question: "Welke e-reader is het beste voor Nederlandse boeken?",
@@ -73,7 +73,7 @@ const faqItems = [
   {
     question: "Kan ik met een Kobo e-reader boeken lenen bij de Nederlandse bibliotheek?",
     answer:
-      "Ja, dit is een van de grootste voordelen van Kobo boven Kindle. Via de online Bibliotheek leen je e-books die je rechtstreeks op de Libra Colour leest, zonder omwegen via een computer.",
+      "Ja. Op een Kobo kun je e-books van de Nederlandse online Bibliotheek lezen — in tegenstelling tot een Kindle, die de Adobe DRM-beveiliging niet ondersteunt. Je leent via de website en zet de boeken met Adobe Digital Editions vanaf een Windows- of Mac-computer op je e-reader. Rechtstreeks lenen vanaf het apparaat, zoals OverDrive in sommige andere landen, hoort daar niet bij.",
   },
   {
     question: "Hoe lang gaat de batterij van de Kobo Libra Colour mee?",
@@ -88,7 +88,7 @@ const faqItems = [
   {
     question: "Wat is het verschil tussen de Kobo Clara BW en de Kobo Libra Colour?",
     answer:
-      "De Clara BW is kleiner (6 inch), lichter en goedkoper, met een zwart-witscherm en bediening via touchscreen. De Libra Colour heeft een 7-inch kleurenscherm, fysieke bladerknoppen en meer opslag. Beide zijn waterdicht en lenen rechtstreeks bibliotheekboeken.",
+      "De Clara BW is kleiner (6 inch), lichter en goedkoper, met een zwart-witscherm en bediening via touchscreen. De Libra Colour heeft een 7-inch kleurenscherm, fysieke bladerknoppen en meer opslag. Beide zijn waterdicht en geschikt voor e-books van de Nederlandse online Bibliotheek via Adobe Digital Editions.",
   },
   {
     question: "Is de Kobo Clara BW geschikt voor luisterboeken?",
@@ -133,7 +133,7 @@ const faqItems = [
   {
     question: "Wat is het verschil tussen de Kindle Colorsoft en de Kobo Libra Colour?",
     answer:
-      "Beide hebben een 7-inch kleuren-e-inkscherm. De Kobo biedt fysieke bladerknoppen en open EPUB-ondersteuning met bibliotheeklenen; de Kindle biedt de grootste boekwinkel en naadloze integratie voor wie al Kindle-boeken bezit. De keuze is vooral: welk ecosysteem past bij jou?",
+      "Beide hebben een 7-inch kleuren-e-inkscherm. De Kobo biedt fysieke bladerknoppen, open EPUB-ondersteuning en e-books van de online Bibliotheek via Adobe Digital Editions; de Kindle biedt de grootste boekwinkel en naadloze integratie voor wie al Kindle-boeken bezit. De keuze is vooral: welk ecosysteem past bij jou?",
   },
   {
     question: "Is de Kindle Colorsoft waterdicht?",
@@ -190,7 +190,7 @@ export default function EReadersPage() {
     productBasicSchema(
       "Kobo Libra Colour",
       "Kobo",
-      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en bibliotheek-lenen rechtstreeks vanaf het apparaat.",
+      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en ondersteuning voor EPUB, inclusief e-books van de online Bibliotheek via Adobe Digital Editions.",
       "260.00",
       getEreaderUrl("kobo-libra-colour"),
       "/assets/kobo-libra-colour-waterdicht-lezen-in-bad.webp"
@@ -460,8 +460,8 @@ export default function EReadersPage() {
             openbare bibliotheek. Voor die lezers is er eigenlijk maar één
             serieus topmodel, en dat is de Kobo Libra Colour. Geen gesloten
             ecosysteem, geen gedwongen winkel — gewoon EPUB-bestanden,
-            rechtstreeks bibliotheekboeken lenen vanaf het apparaat, en lezen
-            zoals jij dat wilt.
+            e-books van de Nederlandse online Bibliotheek via Adobe Digital
+            Editions, en lezen zoals jij dat wilt.
           </p>
           <p className="content-paragraph">
             <a
@@ -538,8 +538,8 @@ export default function EReadersPage() {
             dat in elke jaszak past, wekenlang meegaat en gewoon heel goed
             zwart-op-wit leest. Voor die lezers is de Kobo Clara BW het slimste
             instapmodel van dit moment — met dezelfde vrijheid als zijn grote
-            broer: EPUB-bestanden, bibliotheekboeken rechtstreeks lenen, geen
-            gedwongen winkel.
+            broer: EPUB-bestanden, e-books van de online Bibliotheek via Adobe
+            Digital Editions, geen gedwongen winkel.
           </p>
           <p className="content-paragraph">
             <a
@@ -744,8 +744,9 @@ export default function EReadersPage() {
           </h2>
           <p className="content-paragraph">
             <strong>1. Waar komen je boeken vandaan?</strong> Koop je gewoon
-            bij de grootste winkel: Kindle. Leen je bij de bibliotheek of
-            verzamel je EPUB&apos;s: Kobo.
+            bij de grootste winkel: Kindle. Leen je bij de Nederlandse online
+            Bibliotheek of verzamel je EPUB&apos;s: Kobo — Kindle ondersteunt
+            die beveiligde bibliotheekboeken niet.
           </p>
           <p className="content-paragraph">
             <strong>2. Zwart-wit of kleur?</strong> Voor romans en thrillers:

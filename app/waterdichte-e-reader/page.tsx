@@ -468,9 +468,11 @@ export default function WaterdichteEReaderPage() {
           <p className="content-paragraph">
             Het grootste voordeel is tegelijk de belangrijkste beperking: het
             Amazon-ecosysteem. Wie daar al boeken heeft gekocht, krijgt een
-            eenvoudige en prettige ervaring. Voor Nederlandse bibliotheekboeken
-            is een Kindle juist minder geschikt. De online Bibliotheek gebruikt
-            een beveiliging die Kindle niet ondersteunt.
+            eenvoudige en prettige ervaring. Voor e-books van de Nederlandse
+            online Bibliotheek is een Kindle niet geschikt: die ondersteunt de
+            Adobe DRM-beveiliging niet. Op een geschikte e-reader, zoals een
+            Kobo, zet je die boeken doorgaans via Adobe Digital Editions vanaf
+            een Windows- of Mac-computer.
           </p>
           <h3 className="content-heading">Pluspunten</h3>
           <ul className="theme-list">
@@ -483,7 +485,7 @@ export default function WaterdichteEReaderPage() {
           <h3 className="content-heading">Nadelen</h3>
           <ul className="theme-list">
             <li>Geen fysieke bladerknoppen</li>
-            <li>Minder geschikt voor e-books van de Nederlandse online Bibliotheek</li>
+            <li>Geen ondersteuning voor beveiligde e-books van de Nederlandse online Bibliotheek</li>
             <li>Sterke koppeling met de Kindle Store</li>
           </ul>
           <p className="content-paragraph">
@@ -549,7 +551,7 @@ export default function WaterdichteEReaderPage() {
             <li>Duurder dan een zwart-witmodel</li>
             <li>Kleur voegt bij gewone romans weinig toe</li>
             <li>Geen fysieke bladerknoppen</li>
-            <li>Minder geschikt voor de Nederlandse online Bibliotheek</li>
+            <li>Geen ondersteuning voor beveiligde e-books van de Nederlandse online Bibliotheek</li>
           </ul>
           <p className="content-paragraph">
             <strong>Voor wie?</strong> Voor bestaande Kindle-gebruikers die bewust
