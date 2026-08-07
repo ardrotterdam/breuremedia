@@ -134,7 +134,7 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
         source={`boekpagina-${book.slug}`}
         eyebrow="Wachtlijst"
         title="Als eerste weten wanneer het boek verschijnt?"
-        description={`Laat je e-mailadres achter en ontvang bericht zodra ${book.title} beschikbaar is — inclusief verschijningsdatum en een exclusieve voorpublicatie.`}
+        description={`Leuk dat je nieuwsgierig bent naar ${book.title}. Laat je e-mailadres achter, dan ontvang je als eerste nieuws over de verschijningsdatum en een exclusieve voorpublicatie.`}
       />
 
       <FaqSection items={book.faq} title={`Veelgestelde vragen over ${book.title}`} />

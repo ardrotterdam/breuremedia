@@ -18,14 +18,15 @@ export interface NewsletterFormCopy {
 const dutchCopy: NewsletterFormCopy = {
   emailLabel: "E-mailadres",
   placeholder: "jouw@email.nl",
-  submit: "Ontvang bericht zodra het boek verschijnt",
+  submit: "HOUD MIJ OP DE HOOGTE",
   submitting: "Even geduld…",
-  success: "Dank u. U ontvangt bericht zodra het boek verschijnt.",
+  success:
+    "Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over Schaduwen over Domburg, hoor je als eerste van ons.",
   invalidEmail: "Voer een geldig e-mailadres in.",
   error:
     "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com.",
   privacy:
-    "Uw e-mailadres wordt uitsluitend gebruikt voor berichten over publicaties van Breure Media. Geen spam, uitschrijven kan altijd.",
+    "Je inschrijving is volledig vrijblijvend. We gebruiken je e-mailadres alleen voor berichten van Breure Media. Geen spam, en uitschrijven kan altijd.",
   subject: "Nieuwe intekening — Schaduwen over Domburg",
 };
 
