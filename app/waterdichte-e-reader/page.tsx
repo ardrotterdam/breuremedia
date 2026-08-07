@@ -155,6 +155,19 @@ export default function WaterdichteEReaderPage() {
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <figure className="content-section">
+          <Image
+            src={heroImage}
+            alt={heroAlt}
+            width={1200}
+            height={675}
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+          />
+        </figure>
+
         <section className="content-section">
           <p className="content-paragraph">
             Een papieren boek en een vol bad zijn geen gelukkige combinatie. Met
@@ -186,19 +199,6 @@ export default function WaterdichteEReaderPage() {
             dan de Kindle Paperwhite.
           </p>
         </section>
-
-        <figure className="content-section">
-          <Image
-            src={heroImage}
-            alt={heroAlt}
-            width={1200}
-            height={675}
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 768px) 100vw, 48rem"
-            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
-          />
-        </figure>
 
         <AffiliateDisclosure />
 
