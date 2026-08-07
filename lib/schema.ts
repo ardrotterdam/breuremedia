@@ -17,12 +17,12 @@ export function organizationSchema() {
   };
 }
 
-export function personSchema() {
+export function personSchema(jobTitle: string = "Auteur") {
   return {
     "@type": "Person",
     name: author.name,
     url: absoluteUrl("/over-de-auteur"),
-    jobTitle: "Auteur",
+    jobTitle,
     worksFor: {
       "@type": "Organization",
       name: siteConfig.name,

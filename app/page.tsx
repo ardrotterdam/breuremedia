@@ -14,6 +14,11 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
   image: featuredBook.coverImage,
   imageAlt: featuredBook.coverAlt,
+  languages: {
+    nl: "/",
+    en: "/en",
+    "x-default": "/en",
+  },
 });
 
 export default function HomePage() {

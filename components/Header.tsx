@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks, siteConfig } from "@/lib/site";
+import {
+  counterpartPath,
+  enNavLinks,
+  headerCopy,
+  localeFromPathname,
+} from "@/lib/i18n";
 
 /*
  * Kalme sinusachtige golf: één kwadratische curve gevolgd door
@@ -17,6 +23,12 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const locale = localeFromPathname(pathname);
+  const links = locale === "en" ? enNavLinks : navLinks;
+  const t = headerCopy[locale];
+  const homeHref = locale === "en" ? "/en" : "/";
+  const otherHref = counterpartPath(pathname);
 
   useEffect(() => {
     let ticking = false;
@@ -38,17 +50,25 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) => {
+    if (href === "/" || href === "/en") {
+      return pathname === href;
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
       <div className="container header-inner">
-        <Link href="/" className="logo" onClick={() => setIsOpen(false)}>
+        <Link href={homeHref} className="logo" onClick={() => setIsOpen(false)}>
           {siteConfig.name}
         </Link>
-        <nav className={`nav${isOpen ? " is-open" : ""}`} aria-label="Hoofdnavigatie">
-          {navLinks.map((link) => (
+        <nav
+          className={`nav${isOpen ? " is-open" : ""}`}
+          aria-label={t.navLabel}
+          lang={locale}
+        >
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -58,10 +78,43 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <span className="lang-switch" aria-label="Taal / Language">
+            {locale === "nl" ? (
+              <span className="lang-current" aria-current="true">
+                NL
+              </span>
+            ) : (
+              <Link
+                href={otherHref}
+                hrefLang="nl"
+                className="lang-link"
+                onClick={() => setIsOpen(false)}
+              >
+                NL
+              </Link>
+            )}
+            <span className="lang-sep" aria-hidden="true">
+              ·
+            </span>
+            {locale === "en" ? (
+              <span className="lang-current" aria-current="true">
+                EN
+              </span>
+            ) : (
+              <Link
+                href={otherHref}
+                hrefLang="en"
+                className="lang-link"
+                onClick={() => setIsOpen(false)}
+              >
+                EN
+              </Link>
+            )}
+          </span>
         </nav>
         <button
           className="nav-toggle"
-          aria-label={isOpen ? "Menu sluiten" : "Menu openen"}
+          aria-label={isOpen ? t.closeMenu : t.openMenu}
           aria-expanded={isOpen}
           onClick={() => setIsOpen((prev) => !prev)}
         >

@@ -408,6 +408,38 @@ input:focus-visible {
   transform: scaleX(1);
 }
 
+/* Taalschakelaar (NL · EN) — subtiel, rechts in de navigatie. */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--font-size-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lang-switch .lang-link {
+  color: rgba(232, 226, 216, 0.55);
+}
+
+.lang-switch a::after {
+  display: none;
+}
+
+.lang-switch .lang-link:hover,
+.lang-switch .lang-link:focus-visible {
+  color: var(--color-gold-light);
+}
+
+.lang-switch .lang-current {
+  color: var(--color-warm-white);
+  font-weight: 500;
+}
+
+.lang-switch .lang-sep {
+  color: rgba(232, 226, 216, 0.35);
+}
+
 /* Page-load entrance — draait één keer; de header remount niet bij
    client-side navigatie (App Router), dus geen herhaling. */
 

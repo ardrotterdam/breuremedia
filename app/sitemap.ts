@@ -3,6 +3,8 @@ import { getAllBooks, getEnglishBooks } from "@/data/books";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   const staticPages = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const },
@@ -22,13 +24,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
+  // Dutch pages that have an English counterpart (for hreflang alternates).
+  const staticTranslations: Record<string, string> = {
+    "": "/en",
+    "/over-de-auteur": "/en/about",
+    "/contact": "/en/contact",
+    "/privacy": "/en/privacy",
+  };
+
+  const englishStaticPages = [
+    { path: "/en", nl: "", priority: 0.9, changeFrequency: "weekly" as const },
+    {
+      path: "/en/about",
+      nl: "/over-de-auteur",
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/en/contact",
+      nl: "/contact",
+      priority: 0.5,
+      changeFrequency: "yearly" as const,
+    },
+    {
+      path: "/en/privacy",
+      nl: "/privacy",
+      priority: 0.3,
+      changeFrequency: "yearly" as const,
+    },
+  ];
+
   const bookPages = getAllBooks().map((book) => ({
     url: `${siteConfig.url}/boeken/${book.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.9,
-    // When an English edition exists, declare the language alternates so
-    // Google treats the pages as translations of one another.
     ...(book.en && {
       alternates: {
         languages: {
@@ -41,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const englishBookPages = getEnglishBooks().map((book) => ({
     url: `${siteConfig.url}/en/${book.en.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.9,
     alternates: {
@@ -52,12 +82,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  const staticEntries = staticPages.map((page) => ({
+  const staticEntries = staticPages.map((page) => {
+    const enPath = staticTranslations[page.path];
+    return {
+      url: `${siteConfig.url}${page.path}`,
+      lastModified: now,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+      ...(enPath && {
+        alternates: {
+          languages: {
+            nl: `${siteConfig.url}${page.path}`,
+            en: `${siteConfig.url}${enPath}`,
+          },
+        },
+      }),
+    };
+  });
+
+  const englishStaticEntries = englishStaticPages.map((page) => ({
     url: `${siteConfig.url}${page.path}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: page.changeFrequency,
     priority: page.priority,
+    alternates: {
+      languages: {
+        nl: `${siteConfig.url}${page.nl}`,
+        en: `${siteConfig.url}${page.path}`,
+      },
+    },
   }));
 
-  return [...staticEntries, ...bookPages, ...englishBookPages];
+  return [
+    ...staticEntries,
+    ...bookPages,
+    ...englishBookPages,
+    ...englishStaticEntries,
+  ];
 }

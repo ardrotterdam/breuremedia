@@ -6,10 +6,10 @@ import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterSection } from "@/components/NewsletterSection";
-import type { NewsletterFormCopy } from "@/components/NewsletterForm";
 import { getBookByEnglishSlug, getEnglishBooks, type Book } from "@/data/books";
 import { bookPageTitle, buildMetadata } from "@/lib/seo";
 import { author, siteConfig } from "@/lib/site";
+import { englishNewsletterCopy } from "@/lib/i18n";
 import {
   breadcrumbSchema,
   buildJsonLd,
@@ -21,21 +21,6 @@ import {
 interface EnglishBookPageProps {
   params: Promise<{ slug: string }>;
 }
-
-/** English copy for the newsletter form on /en pages. */
-const englishFormCopy: Partial<NewsletterFormCopy> = {
-  emailLabel: "Email address",
-  placeholder: "you@email.com",
-  submit: "Notify me when the book is released",
-  submitting: "One moment…",
-  success: "Thank you. You'll be notified as soon as the book is released.",
-  invalidEmail: "Please enter a valid email address.",
-  error:
-    "Something went wrong. Please try again later or email info@breuremedia.com.",
-  privacy:
-    "Your email address is used only for updates about Breure Media publications. No spam; you can unsubscribe at any time.",
-  subject: "New sign-up — Shadows over Domburg",
-};
 
 export async function generateStaticParams() {
   return getEnglishBooks().map((book) => ({ slug: book.en.slug }));
@@ -99,7 +84,7 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
 
   const jsonLd = buildJsonLd(
     englishBookSchema(book),
-    personSchema(),
+    personSchema("Author"),
     breadcrumbSchema(breadcrumbs),
     faqSchema(en.faq)
   );
@@ -158,7 +143,7 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
         eyebrow="Waiting list"
         title="Be the first to know when the book is released"
         description={`Leave your email address and we'll let you know the moment ${en.title} is available — including the release date and an exclusive preview.`}
-        formCopy={englishFormCopy}
+        formCopy={englishNewsletterCopy}
       />
 
       <FaqSection

@@ -3,19 +3,16 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { author, siteConfig } from "@/lib/site";
+import { author, siteConfig, authorEn } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
-import {
-  breadcrumbSchema,
-  buildJsonLd,
-  personSchema,
-} from "@/lib/schema";
+import { breadcrumbSchema, buildJsonLd, personSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: sitePageTitle("Over de auteur"),
+  title: sitePageTitle("About the author"),
   description:
-    "Lees meer over Ard Breure, auteur van Schaduwen over Domburg en oprichter van het literaire thrillerlabel Breure Media.",
-  path: "/over-de-auteur",
+    "About Ard Breure, author of Shadows over Domburg and founder of the literary thriller imprint Breure Media.",
+  path: "/en/about",
+  locale: "en_US",
   languages: {
     nl: "/over-de-auteur",
     en: "/en/about",
@@ -24,32 +21,38 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const breadcrumbs = [
-  { name: "Home", path: "/" },
-  { name: "Over de auteur", path: "/over-de-auteur" },
+  { name: "Home", path: "/en" },
+  { name: "About the author", path: "/en/about" },
 ];
 
-export default function AboutAuthorPage() {
+export default function EnglishAboutPage() {
   const jsonLd = buildJsonLd(
-    personSchema(),
+    personSchema("Author"),
     breadcrumbSchema(breadcrumbs)
   );
 
   return (
-    <main>
+    <main lang="en">
       <JsonLd data={jsonLd} />
       <PageHeader
-        eyebrow="Auteur"
+        eyebrow="Author"
         title={author.name}
-        description={author.shortBio}
+        description={authorEn.shortBio}
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <p className="content-meta">
+          <Link href="/over-de-auteur" className="text-link">
+            Lees deze pagina in het Nederlands
+          </Link>
+        </p>
+
         <section className="content-section" aria-labelledby="author-bio-heading">
           <h2 id="author-bio-heading" className="content-heading">
-            Over de schrijver
+            About the writer
           </h2>
-          {author.bio.map((paragraph) => (
+          {authorEn.bio.map((paragraph) => (
             <p key={paragraph} className="content-paragraph">
               {paragraph}
             </p>
@@ -61,31 +64,29 @@ export default function AboutAuthorPage() {
             Breure Media
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} is een onafhankelijk Nederlands label voor
-            literaire thrillers. Het richt zich op boeken waarin spanning,
-            taal en psychologische diepgang samenkomen — verhalen die blijven
-            nazinderen, lang nadat de laatste pagina is omgeslagen.
+            {siteConfig.name} is an independent Dutch imprint for literary
+            thrillers. It focuses on books where suspense, language and
+            psychological depth come together — stories that keep resonating
+            long after the final page.
           </p>
           <p className="content-paragraph">
-            Het debuut <em>Schaduwen over Domburg</em> is het eerste werk dat
-            onder dit label verschijnt.
+            The debut <em>Shadows over Domburg</em> is the first work to appear
+            under this imprint.
           </p>
         </section>
 
         <section className="content-section" aria-labelledby="author-books-heading">
           <h2 id="author-books-heading" className="content-heading">
-            Publicaties
+            Publications
           </h2>
           <p className="content-paragraph">
-            <Link href="/boeken/schaduwen-over-domburg">
-              Schaduwen over Domburg
-            </Link>{" "}
-            — literaire thriller, verschijnt bij {siteConfig.name}.
+            <Link href="/en/shadows-over-domburg">Shadows over Domburg</Link> —
+            literary thriller, published by {siteConfig.name}.
           </p>
         </section>
 
         <aside className="author-accent author-accent--inline" aria-label="Motto">
-          <blockquote>&ldquo;{siteConfig.motto}&rdquo;</blockquote>
+          <blockquote>&ldquo;Stories that break the silence.&rdquo;</blockquote>
         </aside>
       </div>
     </main>

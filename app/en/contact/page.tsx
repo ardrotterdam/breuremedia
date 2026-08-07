@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
@@ -9,8 +10,9 @@ import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Contact"),
   description:
-    "Neem contact op met Breure Media voor vragen over Schaduwen over Domburg, persaanvragen of samenwerking.",
-  path: "/contact",
+    "Get in touch with Breure Media for questions about Shadows over Domburg, press enquiries or collaboration.",
+  path: "/en/contact",
+  locale: "en_US",
   languages: {
     nl: "/contact",
     en: "/en/contact",
@@ -19,50 +21,56 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const breadcrumbs = [
-  { name: "Home", path: "/" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/en" },
+  { name: "Contact", path: "/en/contact" },
 ];
 
-export default function ContactPage() {
+export default function EnglishContactPage() {
   const jsonLd = buildJsonLd(breadcrumbSchema(breadcrumbs));
 
   return (
-    <main>
+    <main lang="en">
       <JsonLd data={jsonLd} />
       <PageHeader
         eyebrow="Contact"
-        title="Neem contact op"
-        description="Vragen over het boek, persaanvragen of samenwerking? We horen graag van u."
+        title="Get in touch"
+        description="Questions about the book, press enquiries or collaboration? We'd love to hear from you."
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <p className="content-meta">
+          <Link href="/contact" className="text-link">
+            Lees deze pagina in het Nederlands
+          </Link>
+        </p>
+
         <section className="content-section" aria-labelledby="contact-info-heading">
           <h2 id="contact-info-heading" className="content-heading">
-            Bereikbaarheid
+            How to reach us
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} is een onafhankelijk Nederlands uitgeverslabel.
-            Voor vragen over publicaties, bestellingen of persaanvragen kunt u
-            ons bereiken via e-mail.
+            {siteConfig.name} is an independent Dutch publishing imprint. For
+            questions about publications, orders or press enquiries, you can
+            reach us by email.
           </p>
           <p className="content-paragraph">
             <a href={`mailto:${siteConfig.email}`} className="text-link">
               {siteConfig.email}
             </a>
           </p>
-          <p className="content-paragraph">{siteConfig.country}</p>
+          <p className="content-paragraph">The Netherlands</p>
         </section>
 
         <section className="content-section" aria-labelledby="contact-topics-heading">
           <h2 id="contact-topics-heading" className="content-heading">
-            Waar kunnen we mee helpen?
+            What can we help you with?
           </h2>
           <ul className="theme-list">
-            <li>Vragen over Schaduwen over Domburg en de verschijningsdatum</li>
-            <li>Persaanvragen en interviewverzoeken</li>
-            <li>Samenwerking en distributie</li>
-            <li>Algemene vragen over Breure Media</li>
+            <li>Questions about Shadows over Domburg and its release date</li>
+            <li>Press and interview requests</li>
+            <li>Collaboration and distribution</li>
+            <li>General questions about Breure Media</li>
           </ul>
         </section>
       </div>

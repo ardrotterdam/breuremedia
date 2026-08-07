@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
@@ -9,8 +10,9 @@ import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Privacy"),
   description:
-    "Privacybeleid van Breure Media. Lees hoe wij omgaan met uw gegevens bij het gebruik van onze website en nieuwsbrief.",
-  path: "/privacy",
+    "Privacy policy of Breure Media. Read how we handle your data when you use our website and newsletter.",
+  path: "/en/privacy",
+  locale: "en_US",
   languages: {
     nl: "/privacy",
     en: "/en/privacy",
@@ -19,49 +21,54 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const breadcrumbs = [
-  { name: "Home", path: "/" },
-  { name: "Privacy", path: "/privacy" },
+  { name: "Home", path: "/en" },
+  { name: "Privacy", path: "/en/privacy" },
 ];
 
-export default function PrivacyPage() {
+export default function EnglishPrivacyPage() {
   const jsonLd = buildJsonLd(breadcrumbSchema(breadcrumbs));
 
   return (
-    <main>
+    <main lang="en">
       <JsonLd data={jsonLd} />
       <PageHeader
-        eyebrow="Juridisch"
-        title="Privacybeleid"
-        description="Hoe Breure Media omgaat met uw persoonsgegevens."
+        eyebrow="Legal"
+        title="Privacy policy"
+        description="How Breure Media handles your personal data."
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <p className="content-meta">
+          <Link href="/privacy" className="text-link">
+            Lees deze pagina in het Nederlands
+          </Link>
+        </p>
+
         <section className="content-section" aria-labelledby="privacy-intro-heading">
           <h2 id="privacy-intro-heading" className="content-heading">
-            Inleiding
+            Introduction
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} respecteert uw privacy. Dit beleid beschrijft welke
-            gegevens wij verzamelen wanneer u onze website bezoekt en hoe wij
-            daarmee omgaan.
+            {siteConfig.name} respects your privacy. This policy describes which
+            data we collect when you visit our website and how we handle it.
           </p>
         </section>
 
         <section className="content-section" aria-labelledby="privacy-data-heading">
           <h2 id="privacy-data-heading" className="content-heading">
-            Welke gegevens verzamelen wij?
+            What data do we collect?
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} verzamelt via deze website alleen het e-mailadres
-            dat u zelf invult bij inschrijving voor de nieuwsbrief. Dit gebeurt
-            met uw uitdrukkelijke toestemming.
+            Through this website, {siteConfig.name} collects only the email
+            address you enter yourself when subscribing to the newsletter. This
+            happens with your explicit consent.
           </p>
           <p className="content-paragraph">
-            Wij gebruiken uw e-mailadres uitsluitend om u te informeren over de
-            verschijning van Schaduwen over Domburg en andere publicaties van
-            {siteConfig.name}. Wij delen uw gegevens niet met derden voor
-            marketingdoeleinden. U kunt zich op elk moment uitschrijven.
+            We use your email address solely to inform you about the release of
+            Shadows over Domburg and other {siteConfig.name} publications. We do
+            not share your data with third parties for marketing purposes. You
+            can unsubscribe at any time.
           </p>
         </section>
 
@@ -70,22 +77,20 @@ export default function PrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            Deze website maakt geen gebruik van trackingcookies of
-            advertentienetwerken. Technisch noodzakelijke cookies kunnen worden
-            gebruikt voor het functioneren van de site.
+            This website does not use tracking cookies or advertising networks.
+            Technically necessary cookies may be used for the site to function.
           </p>
         </section>
 
         <section className="content-section" aria-labelledby="privacy-rights-heading">
           <h2 id="privacy-rights-heading" className="content-heading">
-            Uw rechten
+            Your rights
           </h2>
           <p className="content-paragraph">
-            Op grond van de Algemene Verordening Gegevensbescherming (AVG) heeft
-            u recht op inzage, correctie en verwijdering van uw
-            persoonsgegevens. Neem contact op via{" "}
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> voor
-            vragen over uw gegevens.
+            Under the General Data Protection Regulation (GDPR) you have the
+            right to access, correct and delete your personal data. Contact us at{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> for
+            questions about your data.
           </p>
         </section>
 
@@ -94,11 +99,11 @@ export default function PrivacyPage() {
             Contact
           </h2>
           <p className="content-paragraph">
-            Vragen over dit privacybeleid? Stuur een e-mail naar{" "}
+            Questions about this privacy policy? Send an email to{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
           <p className="content-paragraph content-meta">
-            Laatst bijgewerkt: juli 2026
+            Last updated: July 2026
           </p>
         </section>
       </div>
