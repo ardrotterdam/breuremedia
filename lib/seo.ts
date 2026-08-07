@@ -9,6 +9,8 @@ export interface PageSeoOptions {
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
+  /** MIME type of the OG image, e.g. "image/webp". Added to og:image when set. */
+  imageType?: string;
   type?: "website" | "article" | "book";
   noIndex?: boolean;
   keywords?: string[];
@@ -40,6 +42,7 @@ export function buildMetadata({
   keywords,
   locale,
   languages,
+  imageType,
 }: PageSeoOptions): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image ? absoluteUrl(image) : absoluteUrl("/assets/schaduwen-over-domburg-cover.webp");
@@ -79,6 +82,7 @@ export function buildMetadata({
           width: ogImageWidth,
           height: ogImageHeight,
           alt: ogImageAlt,
+          ...(imageType && { type: imageType }),
         },
       ],
     },

@@ -15,7 +15,8 @@ import { breadcrumbSchema, buildJsonLd, faqSchema, itemListSchema } from "@/lib/
 const pageTitle = "Beste waterdichte e-reader 2026: 4 modellen vergeleken";
 const pageDescription =
   "Welke e-reader kan mee in bad, naar het strand of zwembad? Vergelijk 4 waterdichte modellen van Kobo en Kindle en ontdek welke bij jou past.";
-const heroImage = "/assets/kobo-libra-colour-waterdicht-lezen-in-bad.webp";
+const heroImage = "/images/beste-waterdichte-e-reader-2026.webp";
+const heroAlt = "Waterdichte e-reader naast een zwembad voor lezen op vakantie";
 const datePublished = "2026-08-07";
 
 export const metadata: Metadata = buildMetadata({
@@ -24,10 +25,10 @@ export const metadata: Metadata = buildMetadata({
   path: "/waterdichte-e-reader",
   type: "article",
   image: heroImage,
-  imageAlt:
-    "Vrouw leest ontspannen in bad op een waterdichte Kobo Libra Colour e-reader met kleurenscherm",
-  imageWidth: 1600,
-  imageHeight: 873,
+  imageAlt: heroAlt,
+  imageWidth: 1200,
+  imageHeight: 675,
+  imageType: "image/webp",
 });
 
 const breadcrumbs = [
@@ -186,23 +187,20 @@ export default function WaterdichteEReaderPage() {
           </p>
         </section>
 
-        <AffiliateDisclosure />
-
         <figure className="content-section">
           <Image
             src={heroImage}
-            alt="Vrouw leest ontspannen in bad op een waterdichte Kobo Libra Colour e-reader met kleurenscherm, kaarsen ernaast"
-            width={1600}
-            height={873}
+            alt={heroAlt}
+            width={1200}
+            height={675}
             priority
+            fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 48rem"
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
           />
-          <figcaption className="content-meta">
-            Een waterdichte e-reader maakt lezen in bad, aan het zwembad of op
-            het strand zorgeloos — mits je de grenzen van de certificering kent.
-          </figcaption>
         </figure>
+
+        <AffiliateDisclosure />
 
         <section className="content-section" aria-labelledby="overview-heading">
           <h2 id="overview-heading" className="content-heading">
