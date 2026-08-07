@@ -43,6 +43,7 @@ export const authorEn = {
 export const navLinks = [
   { href: "/boeken", label: "Schaduwen over Domburg" },
   { href: "/e-readers", label: "E-readers" },
+  { href: "/blog", label: "Blog" },
   { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
   { href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
   { href: "/over-de-auteur", label: "Auteur" },

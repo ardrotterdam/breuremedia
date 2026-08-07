@@ -58,6 +58,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     nav: [
       { href: "/boeken", label: "Boeken" },
       { href: "/e-readers", label: "E-readers" },
+      { href: "/blog", label: "Blog" },
       { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
       { href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
       { href: "/over-de-auteur", label: "Over de auteur" },

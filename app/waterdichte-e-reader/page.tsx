@@ -737,6 +737,9 @@ export default function WaterdichteEReaderPage() {
             <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
           </p>
           <p className="content-meta">
+            <Link href="/blog">Bekijk meer artikelen van Breure Media</Link>.
+          </p>
+          <p className="content-meta">
             <em>
               Ard Breure is de auteur van de literaire thriller{" "}
               <Link href="/boeken/schaduwen-over-domburg">

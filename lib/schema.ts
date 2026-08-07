@@ -213,6 +213,8 @@ function itemListItemSchema(
     name: item.name,
     url: item.url,
     ...(item.description && { description: item.description }),
+    ...(item.image && { image: absoluteUrl(item.image) }),
+    ...(item.datePublished && { datePublished: item.datePublished }),
   };
 }
 

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? [{ path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const }]
       : []),
     { path: "/e-readers", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
     {
       path: "/waterdichte-e-reader",
       priority: 0.8,
