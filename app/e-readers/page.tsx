@@ -13,7 +13,6 @@ import {
   breadcrumbSchema,
   buildJsonLd,
   itemListSchema,
-  productBasicSchema,
 } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
@@ -164,81 +163,10 @@ export default function EReadersPage() {
     )
   );
 
-  const kindlePaperwhiteProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Amazon Kindle Paperwhite",
-      "Amazon",
-      "7-inch e-reader met ontspiegeld scherm, instelbare warme verlichting, IPX8-waterdichtheid en tot 12 weken batterijduur op één lading.",
-      "179.99",
-      getEreaderUrl("kindle-paperwhite"),
-      "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp"
-    )
-  );
-
-  const kindleBasisProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Amazon Kindle",
-      "Amazon",
-      "Compacte 6-inch e-reader met scherp e-inkscherm, verstelbare voorkantverlichting, USB-C-oplading en tot 6 weken batterijduur op één lading.",
-      "119.99",
-      getEreaderUrl("kindle-basis"),
-      "/assets/kindle-basismodel-leesbaarheid-licht-donker.webp"
-    )
-  );
-
-  const koboLibraProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Kobo Libra Colour",
-      "Kobo",
-      "Kleurene-reader met fysieke bladerknoppen, IPX8-waterdichtheid, 32 GB opslag en ondersteuning voor EPUB, inclusief e-books van de online Bibliotheek via Adobe Digital Editions.",
-      "260.00",
-      getEreaderUrl("kobo-libra-colour"),
-      "/assets/kobo-libra-colour-waterdicht-lezen-in-bad.webp"
-    )
-  );
-
-  const koboClaraProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Kobo Clara BW",
-      "Kobo",
-      "Compacte 6-inch e-reader met E Ink Carta 1300, ComfortLight PRO, IPX8-waterdichtheid en Bluetooth voor luisterboeken.",
-      "170.00",
-      getEreaderUrl("kobo-clara-bw"),
-      "/assets/kobo-clara-bw-lezen-in-zonlicht-strand.webp"
-    )
-  );
-
-  const kindleScribeProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Amazon Kindle Scribe",
-      "Amazon",
-      "10,2-inch e-reader en digitaal notitieboek in één, met 300 ppi ontspiegeld scherm en inbegrepen Premium Pen om mee te schrijven.",
-      "450.00",
-      getEreaderUrl("kindle-scribe"),
-      "/assets/kindle-scribe-schrijven-met-pen-notities.webp"
-    )
-  );
-
-  const kindleColorsoftProductSchema = buildJsonLd(
-    productBasicSchema(
-      "Amazon Kindle Colorsoft",
-      "Amazon",
-      "Compacte 7-inch e-reader met papierachtig kleuren-e-inkscherm, aanpasbaar warm licht, waterdicht ontwerp en wekenlange batterijduur.",
-      "270.00",
-      getEreaderUrl("kindle-colorsoft"),
-      "/assets/kindle-colorsoft-kleurenscherm-warm-licht.webp"
-    )
-  );
 
   return (
     <main>
       <JsonLd data={jsonLd} />
-      <JsonLd data={kindlePaperwhiteProductSchema} />
-      <JsonLd data={kindleBasisProductSchema} />
-      <JsonLd data={koboLibraProductSchema} />
-      <JsonLd data={koboClaraProductSchema} />
-      <JsonLd data={kindleScribeProductSchema} />
-      <JsonLd data={kindleColorsoftProductSchema} />
       <PageHeader
         eyebrow="Gids"
         title="De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest"
