@@ -5,9 +5,16 @@ import { siteConfig } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
+  // De /boeken-overzichtspagina stuurt bij één titel door naar dat boek, dus
+  // die nemen we dan niet op in de sitemap. Bij twee of meer titels is het
+  // weer een echte pagina en verschijnt hij vanzelf terug.
+  const hasBookOverview = getAllBooks().length > 1;
+
   const staticPages = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
-    { path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const },
+    ...(hasBookOverview
+      ? [{ path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const }]
+      : []),
     { path: "/e-readers", priority: 0.8, changeFrequency: "monthly" as const },
     {
       path: "/boeken-over-rotterdam",

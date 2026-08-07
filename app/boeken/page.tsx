@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookCard } from "@/components/BookCard";
 import { JsonLd } from "@/components/JsonLd";
@@ -21,6 +22,15 @@ const breadcrumbs = [
 
 export default function BooksOverviewPage() {
   const books = getAllBooks();
+
+  // Met één titel is een aparte overzichtspagina een overbodige tussenstap:
+  // stuur bezoekers direct naar het boek. Zodra er een tweede titel bijkomt,
+  // verschijnt het overzicht vanzelf weer (tijdelijke 307-redirect, geen
+  // permanente die browsers/Google blijvend cachen).
+  if (books.length === 1) {
+    redirect(`/boeken/${books[0].slug}`);
+  }
+
   const jsonLd = buildJsonLd(breadcrumbSchema(breadcrumbs));
 
   return (
