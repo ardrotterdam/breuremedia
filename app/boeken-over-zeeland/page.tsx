@@ -296,7 +296,7 @@ export default function BoekenOverZeelandPage() {
           <Image
             className="book-cover"
             src="/assets/schaduwen-over-domburg-boekomslag-ard-breure.webp"
-            alt="Schaduwen over Domburg - literaire thriller van Ard Breure, boekomslag met vuurtoren en de Rotterdamse Erasmusbrug"
+            alt="Schaduwen over Domburg - literaire thriller van Ard Breure, boekomslag met de vuurtoren aan de Zeeuwse kust bij nacht"
             width={1365}
             height={2048}
             sizes="280px"
@@ -684,6 +684,10 @@ export default function BoekenOverZeelandPage() {
               Deze leeslijst wordt uitgebreid met meer romans, verhalen en
               reisgidsen over Zeeland.
             </em>
+          </p>
+          <p className="content-meta">
+            Ligt je hart in de haven? Bekijk dan ook mijn leeslijst met{" "}
+            <Link href="/boeken-over-rotterdam">boeken over Rotterdam</Link>.
           </p>
           <p className="content-meta">
             Lees je liever op een e-reader? Bekijk onze{" "}

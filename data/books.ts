@@ -49,6 +49,12 @@ export interface Book {
   published?: string;
   keywords: string[];
   faq: FaqItem[];
+  /**
+   * Curated reading-list pages this book belongs to. Rendered as internal
+   * links on the book detail page, so authority flows to the topical
+   * leeslijsten (e.g. boeken over Rotterdam / Zeeland).
+   */
+  relatedReadingLists?: { href: string; label: string }[];
   /** English edition content, when the book is also published in English. */
   en?: BookTranslation;
 }
@@ -97,6 +103,10 @@ export const books: Book[] = [
       "thriller Domburg",
       "psychologische thriller",
       "Ard Breure",
+    ],
+    relatedReadingLists: [
+      { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
+      { href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
     ],
     faq: [
       {

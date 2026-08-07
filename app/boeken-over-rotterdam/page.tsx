@@ -426,6 +426,10 @@ export default function BoekenOverRotterdamPage() {
             </em>
           </p>
           <p className="content-meta">
+            Trekt de kust je meer dan de haven? Bekijk dan mijn leeslijst met{" "}
+            <Link href="/boeken-over-zeeland">boeken over Zeeland</Link>.
+          </p>
+          <p className="content-meta">
             Lees je liever op een e-reader? Bekijk onze{" "}
             <Link href="/e-readers">e-reader gids</Link>.
           </p>

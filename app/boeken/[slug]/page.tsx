@@ -111,6 +111,22 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
               <li key={theme}>{theme}</li>
             ))}
           </ul>
+
+          {book.relatedReadingLists && book.relatedReadingLists.length > 0 && (
+            <>
+              <h2 className="content-heading">Verder lezen</h2>
+              <p className="content-paragraph">
+                Dit boek staat ook in deze leeslijsten van Breure Media:
+              </p>
+              <ul className="theme-list">
+                {book.relatedReadingLists.map((list) => (
+                  <li key={list.href}>
+                    <Link href={list.href}>{list.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       </section>
 
