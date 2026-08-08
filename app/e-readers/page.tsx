@@ -192,6 +192,12 @@ export default function EReadersPage() {
             Op zoek naar de goedkoopste goede optie? De{" "}
             <strong>basis-Kindle</strong>. Alles hieronder legt uit waarom.
           </p>
+          <p className="content-paragraph">
+            Speciaal op zoek naar een model voor bad, strand of zwembad? Lees
+            de aparte gids over de{" "}
+            <Link href="/waterdichte-e-reader">waterdichte e-reader</Link> —
+            met IPX8-uitleg en gerichte aanbevelingen.
+          </p>
         </section>
 
         <AffiliateDisclosure />
@@ -703,6 +709,10 @@ export default function EReadersPage() {
           </p>
           <p className="content-meta">
             <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
+          </p>
+          <p className="content-meta">
+            Wil je vooral waterdicht lezen? Bekijk de gids{" "}
+            <Link href="/waterdichte-e-reader">waterdichte e-reader</Link>.
           </p>
           <p className="content-meta">
             <em>
