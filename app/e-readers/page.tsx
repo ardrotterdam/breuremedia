@@ -8,20 +8,29 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { ereaders } from "@/data/affiliate";
+import { author, siteConfig } from "@/lib/site";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
   breadcrumbSchema,
   buildJsonLd,
+  collectionPageSchema,
   itemListSchema,
 } from "@/lib/schema";
 
+const pageTitle =
+  "Beste e-reader 2026: Kindle of Kobo? Eerlijke vergelijking | Breure Media";
+const pageDescription =
+  "In deze gids vergelijk ik de zes e-readers die er in 2026 echt toe doen, en vertel ik welke ik zelf zou kopen — afhankelijk van hoe jij leest.";
+const pagePath = "/e-readers";
+const heroImage =
+  "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp";
+
 export const metadata: Metadata = buildMetadata({
-  title:
-    "Beste e-reader 2026: Kindle of Kobo? Eerlijke vergelijking | Breure Media",
-  description:
-    "In deze gids vergelijk ik de zes e-readers die er in 2026 echt toe doen, en vertel ik welke ik zelf zou kopen — afhankelijk van hoe jij leest.",
-  path: "/e-readers",
-  image: "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp",
+  title: pageTitle,
+  description: pageDescription,
+  path: pagePath,
+  type: "article",
+  image: heroImage,
   imageAlt:
     "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee",
   imageWidth: 1600,
@@ -30,8 +39,31 @@ export const metadata: Metadata = buildMetadata({
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
-  { name: "E-readers", path: "/e-readers" },
+  { name: "E-readers", path: pagePath },
 ];
+
+const articleSchema = {
+  "@type": "Article",
+  headline:
+    "De beste e-reader van 2026 — gekozen door een schrijver die er zelf op leest",
+  description: pageDescription,
+  image: absoluteUrl(heroImage),
+  inLanguage: siteConfig.language,
+  author: {
+    "@type": "Person",
+    name: author.name,
+    url: absoluteUrl("/over-de-auteur"),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": absoluteUrl(pagePath),
+  },
+};
 
 const faqItems = [
   {
@@ -152,12 +184,18 @@ function getEreaderUrl(slug: string) {
 
 export default function EReadersPage() {
   const jsonLd = buildJsonLd(
+    articleSchema,
+    collectionPageSchema(
+      "Beste e-readers 2026",
+      absoluteUrl(pagePath),
+      pageDescription
+    ),
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
       "Beste e-readers 2026",
       ereaders.map((item) => ({
         name: item.naam,
-        url: absoluteUrl(`/e-readers#${item.slug}`),
+        url: absoluteUrl(`${pagePath}#${item.slug}`),
         description: item.korteOmschrijving,
       }))
     )

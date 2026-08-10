@@ -255,33 +255,6 @@ export function itemListSchema(
   };
 }
 
-export function productBasicSchema(
-  name: string,
-  brand: string,
-  description: string,
-  price: string,
-  url: string,
-  image: string
-) {
-  return {
-    "@type": "Product",
-    name,
-    image: absoluteUrl(image),
-    brand: {
-      "@type": "Brand",
-      name: brand,
-    },
-    description,
-    offers: {
-      "@type": "Offer",
-      price,
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      url,
-    },
-  };
-}
-
 export function buildJsonLd(...schemas: Record<string, unknown>[]) {
   return {
     "@context": "https://schema.org",
