@@ -1,43 +1,34 @@
 import type { MetadataRoute } from "next";
 import { getAllBooks, getEnglishBooks } from "@/data/books";
+import {
+  contentPages,
+  parseContentDate,
+  type ContentPageEntry,
+} from "@/data/content-pages";
+import { getPublishedBlogPosts } from "@/data/blog";
 import { siteConfig } from "@/lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+function toSitemapEntry(
+  page: ContentPageEntry,
+  options?: {
+    alternates?: MetadataRoute.Sitemap[number]["alternates"];
+  }
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${siteConfig.url}${page.path}`,
+    lastModified: parseContentDate(page.lastModified),
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+    ...(options?.alternates && { alternates: options.alternates }),
+  };
+}
 
+export default function sitemap(): MetadataRoute.Sitemap {
   // De /boeken-overzichtspagina stuurt bij één titel door naar dat boek, dus
   // die nemen we dan niet op in de sitemap. Bij twee of meer titels is het
   // weer een echte pagina en verschijnt hij vanzelf terug.
   const hasBookOverview = getAllBooks().length > 1;
 
-  const staticPages = [
-    { path: "", priority: 1, changeFrequency: "weekly" as const },
-    ...(hasBookOverview
-      ? [{ path: "/boeken", priority: 0.9, changeFrequency: "weekly" as const }]
-      : []),
-    { path: "/e-readers", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
-    {
-      path: "/waterdichte-e-reader",
-      priority: 0.8,
-      changeFrequency: "monthly" as const,
-    },
-    {
-      path: "/boeken-over-rotterdam",
-      priority: 0.8,
-      changeFrequency: "monthly" as const,
-    },
-    {
-      path: "/boeken-over-zeeland",
-      priority: 0.8,
-      changeFrequency: "monthly" as const,
-    },
-    { path: "/over-de-auteur", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/contact", priority: 0.6, changeFrequency: "yearly" as const },
-    { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
-  ];
-
-  // Dutch pages that have an English counterpart (for hreflang alternates).
   const staticTranslations: Record<string, string> = {
     "": "/en",
     "/over-de-auteur": "/en/about",
@@ -45,31 +36,77 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy": "/en/privacy",
   };
 
-  const englishStaticPages = [
-    { path: "/en", nl: "", priority: 0.9, changeFrequency: "weekly" as const },
+  const englishStaticPages: ContentPageEntry[] = [
+    {
+      path: "/en",
+      lastModified: "2026-08-07",
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
     {
       path: "/en/about",
-      nl: "/over-de-auteur",
+      lastModified: "2026-08-07",
       priority: 0.7,
-      changeFrequency: "monthly" as const,
+      changeFrequency: "monthly",
     },
     {
       path: "/en/contact",
-      nl: "/contact",
+      lastModified: "2026-08-07",
       priority: 0.5,
-      changeFrequency: "yearly" as const,
+      changeFrequency: "yearly",
     },
     {
       path: "/en/privacy",
-      nl: "/privacy",
+      lastModified: "2026-08-07",
       priority: 0.3,
-      changeFrequency: "yearly" as const,
+      changeFrequency: "yearly",
     },
   ];
 
+  const englishNlPath: Record<string, string> = {
+    "/en": "",
+    "/en/about": "/over-de-auteur",
+    "/en/contact": "/contact",
+    "/en/privacy": "/privacy",
+  };
+
+  const staticEntries = contentPages
+    .filter((page) => {
+      if (page.path === "/boeken" && !hasBookOverview) {
+        return false;
+      }
+      return page.include !== false;
+    })
+    .map((page) => {
+      const enPath = staticTranslations[page.path];
+      return toSitemapEntry(page, {
+        ...(enPath && {
+          alternates: {
+            languages: {
+              nl: `${siteConfig.url}${page.path}`,
+              en: `${siteConfig.url}${enPath}`,
+            },
+          },
+        }),
+      });
+    });
+
+  // Blog posts that are not already covered by contentPages (path match).
+  const contentPaths = new Set(contentPages.map((page) => page.path));
+  const blogEntries = getPublishedBlogPosts()
+    .filter((post) => !contentPaths.has(post.href))
+    .map((post) =>
+      toSitemapEntry({
+        path: post.href,
+        lastModified: post.updatedAt ?? post.publishedAt,
+        priority: 0.7,
+        changeFrequency: "monthly",
+      })
+    );
+
   const bookPages = getAllBooks().map((book) => ({
     url: `${siteConfig.url}/boeken/${book.slug}`,
-    lastModified: now,
+    lastModified: parseContentDate(book.published ?? "2026-08-07"),
     changeFrequency: "monthly" as const,
     priority: 0.9,
     ...(book.en && {
@@ -84,7 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const englishBookPages = getEnglishBooks().map((book) => ({
     url: `${siteConfig.url}/en/${book.en.slug}`,
-    lastModified: now,
+    lastModified: parseContentDate(book.published ?? "2026-08-07"),
     changeFrequency: "monthly" as const,
     priority: 0.9,
     alternates: {
@@ -95,39 +132,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  const staticEntries = staticPages.map((page) => {
-    const enPath = staticTranslations[page.path];
-    return {
-      url: `${siteConfig.url}${page.path}`,
-      lastModified: now,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      ...(enPath && {
-        alternates: {
-          languages: {
-            nl: `${siteConfig.url}${page.path}`,
-            en: `${siteConfig.url}${enPath}`,
-          },
+  const englishStaticEntries = englishStaticPages.map((page) =>
+    toSitemapEntry(page, {
+      alternates: {
+        languages: {
+          nl: `${siteConfig.url}${englishNlPath[page.path] ?? ""}`,
+          en: `${siteConfig.url}${page.path}`,
         },
-      }),
-    };
-  });
-
-  const englishStaticEntries = englishStaticPages.map((page) => ({
-    url: `${siteConfig.url}${page.path}`,
-    lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-    alternates: {
-      languages: {
-        nl: `${siteConfig.url}${page.nl}`,
-        en: `${siteConfig.url}${page.path}`,
       },
-    },
-  }));
+    })
+  );
 
   return [
     ...staticEntries,
+    ...blogEntries,
     ...bookPages,
     ...englishBookPages,
     ...englishStaticEntries,

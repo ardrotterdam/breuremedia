@@ -692,7 +692,13 @@ export default function BoekenOverZeelandPage() {
           </p>
           <p className="content-meta">
             Lees je liever op een e-reader? Bekijk onze{" "}
-            <Link href="/e-readers">e-reader gids</Link>.
+            <Link href="/e-readers">e-reader gids</Link>
+            {" "}of de{" "}
+            <Link href="/waterdichte-e-reader">waterdichte e-reader</Link>
+            {" "}voor bad en strand.
+          </p>
+          <p className="content-meta">
+            <Link href="/blog">Meer artikelen op het blog</Link>.
           </p>
           <p className="content-meta">
             <em>

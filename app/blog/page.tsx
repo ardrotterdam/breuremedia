@@ -14,7 +14,7 @@ import {
 
 const pageTitle = "Blog over boeken, e-readers en schrijven | Breure Media";
 const pageDescription =
-  "Lees artikelen van Breure Media over boeken, e-readers, schrijven en verhalen uit Rotterdam en Zeeland.";
+  "Artikelen over e-booklengte, waterdichte e-readers en meer. Lees de gidsen van Breure Media — start hier.";
 const pagePath = "/blog";
 const intro =
   "Verhalen beginnen niet alleen op de eerste pagina. Hier lees je artikelen over boeken, e-readers, schrijven en de plaatsen die de verhalen van Breure Media vormgeven.";

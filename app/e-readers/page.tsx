@@ -746,11 +746,21 @@ export default function EReadersPage() {
             .
           </p>
           <p className="content-meta">
+            Benieuwd hoe lang een gemiddeld e-book is? Bekijk{" "}
+            <Link href="/lengte-van-ebook">
+              de lengte van een e-book per genre
+            </Link>
+            .
+          </p>
+          <p className="content-meta">
             <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
           </p>
           <p className="content-meta">
-            Wil je vooral waterdicht lezen? Bekijk de gids{" "}
-            <Link href="/waterdichte-e-reader">waterdichte e-reader</Link>.
+            <Link href="/blog">Meer artikelen op het blog</Link>
+            {" · "}
+            <Link href="/boeken-over-rotterdam">Boeken over Rotterdam</Link>
+            {" · "}
+            <Link href="/boeken-over-zeeland">Boeken over Zeeland</Link>
           </p>
           <p className="content-meta">
             <em>

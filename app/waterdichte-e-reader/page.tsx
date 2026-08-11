@@ -7,17 +7,19 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { ereaders } from "@/data/affiliate";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd, faqSchema, itemListSchema } from "@/lib/schema";
 
-const pageTitle = "Beste waterdichte e-reader 2026: 4 modellen vergeleken";
+const pageTitle = "Beste waterdichte e-reader 2026: top 4 vergeleken";
 const pageDescription =
-  "Welke e-reader kan mee in bad, naar het strand of zwembad? Vergelijk 4 waterdichte modellen van Kobo en Kindle en ontdek welke bij jou past.";
+  "Welke waterdichte e-reader past bij jou? Vergelijk 4 Kobo- & Kindle-modellen met voor- en nadelen. Bekijk prijzen.";
 const heroImage = "/images/beste-waterdichte-e-reader-2026.webp";
 const heroAlt = "Waterdichte e-reader naast een zwembad voor lezen op vakantie";
 const datePublished = "2026-08-07";
+const dateModified = "2026-08-11";
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
@@ -29,6 +31,13 @@ export const metadata: Metadata = buildMetadata({
   imageWidth: 1200,
   imageHeight: 675,
   imageType: "image/webp",
+  keywords: [
+    "waterdichte ereader",
+    "waterdichte e-reader",
+    "beste waterdichte e-reader",
+    "e-reader bad",
+    "IPX8 e-reader",
+  ],
 });
 
 const breadcrumbs = [
@@ -44,34 +53,14 @@ const faqItems = [
       "Nee. Controleer altijd het exacte model en de officiële IP-classificatie. De basis-Kindle en verschillende oudere of goedkopere modellen zijn niet automatisch waterdicht.",
   },
   {
+    question: "Welke waterdichte e-reader is het beste?",
+    answer:
+      "Voor de meeste lezers is de Kobo Libra Colour de beste allround keuze dankzij IPX8, fysieke bladerknoppen en een 7-inch kleurenscherm. Lees je vooral romans en wil je minder uitgeven, kies dan de Kobo Clara BW.",
+  },
+  {
     question: "Kan een e-reader in bad vallen?",
     answer:
       "Een model met IPX8 is ontworpen om een tijdelijke onderdompeling onder vastgelegde testomstandigheden te doorstaan. Haal de e-reader direct uit het water, droog hem af en sluit pas een oplader aan wanneer de USB-poort volledig droog is.",
-  },
-  {
-    question: "Kan een waterdichte e-reader tegen zeewater?",
-    answer:
-      "Behandel geen enkele e-reader als bedoeld voor langdurig gebruik in zee. Zout kan schade en corrosie veroorzaken. Volg na contact met zeewater altijd de reinigings- en drooginstructies van de fabrikant.",
-  },
-  {
-    question: "Welke Kobo e-readers zijn waterdicht?",
-    answer:
-      "Kobo noemt onder meer de Kobo Clara BW, Clara Colour, Libra Colour en Sage als waterdichte modellen. Controleer bij aankoop altijd de actuele productspecificaties, vooral als je een ouder of tweedehands model kiest.",
-  },
-  {
-    question: "Is de Kindle Paperwhite waterdicht?",
-    answer:
-      "Ja, de huidige Kindle Paperwhite heeft volgens Amazon een IPX8-classificatie. Dat beschermt tegen tijdelijke onderdompeling onder de door Amazon beschreven testomstandigheden.",
-  },
-  {
-    question: "Werkt een touchscreen met natte vingers?",
-    answer:
-      "Waterdruppels kunnen de bediening minder nauwkeurig maken. Droog je handen en het scherm voor de betrouwbaarste reactie. Een model met fysieke bladerknoppen, zoals de Kobo Libra Colour, is daarom praktisch naast het water.",
-  },
-  {
-    question: "Heb ik nog een beschermhoes nodig?",
-    answer:
-      "Ja. Een hoes beschermt vooral tegen stoten, krassen en zand — zaken waar een waterdichtheidscertificaat niets over zegt. De meeste gewone hoezen zijn zelf overigens niet waterdicht.",
   },
 ];
 
@@ -85,7 +74,7 @@ const articleSchema = {
   description: pageDescription,
   image: absoluteUrl(heroImage),
   datePublished,
-  dateModified: datePublished,
+  dateModified,
   inLanguage: siteConfig.language,
   author: {
     "@type": "Person",
@@ -149,7 +138,7 @@ export default function WaterdichteEReaderPage() {
       <PageHeader
         eyebrow="Koopgids"
         title="Welke waterdichte e-reader is het beste voor bad, strand en vakantie?"
-        description="Door Ard Breure, auteur van Schaduwen over Domburg · Laatst bijgewerkt 7 augustus 2026"
+        description="Door Ard Breure, auteur van Schaduwen over Domburg · Laatst bijgewerkt 11 augustus 2026"
       />
 
       <div className="container content-page">
@@ -666,9 +655,31 @@ export default function WaterdichteEReaderPage() {
             <Link href="/e-readers">
               complete vergelijking van de beste e-readers van 2026
             </Link>
+            . Benieuwd hoe lang een gemiddeld e-book is? Zie{" "}
+            <Link href="/lengte-van-ebook">lengte van een e-book per genre</Link>
             .
           </p>
         </section>
+
+        <RelatedGuides
+          guides={[
+            {
+              href: "/e-readers",
+              label: "Beste e-readers 2026",
+              description: "Kindle of Kobo — complete vergelijking",
+            },
+            {
+              href: "/lengte-van-ebook",
+              label: "Lengte van een e-book",
+              description: "Woord- en pagina-aantallen per genre",
+            },
+            {
+              href: "/blog",
+              label: "Blog",
+              description: "Meer artikelen over boeken en e-readers",
+            },
+          ]}
+        />
       </div>
 
       <FaqSection
@@ -735,9 +746,6 @@ export default function WaterdichteEReaderPage() {
           </ul>
           <p className="content-meta">
             <em>Ik raad alleen aan wat ik zelf zou kopen.</em>
-          </p>
-          <p className="content-meta">
-            <Link href="/blog">Bekijk meer artikelen van Breure Media</Link>.
           </p>
           <p className="content-meta">
             <em>

@@ -18,8 +18,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    href: "/lengte-van-ebook",
+    title: "Lengte van een e-book: woorden & pagina's per genre",
+    excerpt:
+      "Hoe lang is een e-book? Bekijk gemiddelde woord- en pagina-aantallen per genre en kies de juiste lengte.",
+    category: "Schrijven",
+    image: "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp",
+    imageAlt:
+      "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg aan de Zeeuwse kust",
+    publishedAt: "2026-08-11",
+    updatedAt: "2026-08-11",
+  },
+  {
     href: "/waterdichte-e-reader",
-    title: "Beste waterdichte e-reader 2026: 4 modellen vergeleken",
+    title: "Beste waterdichte e-reader 2026: top 4 vergeleken",
     excerpt:
       "Welke e-reader kan mee in bad, naar het strand of zwembad? Vergelijk vier waterdichte modellen van Kobo en Kindle.",
     category: "E-readers",
@@ -27,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     imageAlt:
       "Waterdichte e-reader naast een zwembad voor lezen op vakantie",
     publishedAt: "2026-08-07",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-08-11",
   },
 ];
 

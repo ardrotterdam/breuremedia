@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { PageHeader } from "@/components/PageHeader";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { rotterdamBoeken } from "@/data/affiliate";
 import { buildMetadata, absoluteUrl } from "@/lib/seo";
 import {
@@ -18,7 +19,10 @@ import {
   itemListSchema,
 } from "@/lib/schema";
 
+const pageTitle = "Boeken over Rotterdam: 5 romans & thrillers (gids)";
 const pageDescription =
+  "5 boeken die Rotterdam écht vangen — van Karakter tot haven-thrillers. Lees de gids en kies je volgende boek.";
+const pageDescriptionLong =
   "Vijf boeken die Rotterdam echt vangen — van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.";
 
 const rotterdamBookDetails: Record<
@@ -54,9 +58,8 @@ const rotterdamBookDetails: Record<
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Boeken over Rotterdam: 5 romans, thrillers en verhalen",
-  description:
-    "Ontdek boeken die Rotterdam echt vangen: van Karakter en Jules Deelder tot verhalen over de haven, voetbal en wederopbouw.",
+  title: pageTitle,
+  description: pageDescription,
   path: "/boeken-over-rotterdam",
   image: "/assets/rotterdam-maas-lezen-sfeerbeeld.webp",
   imageAlt:
@@ -93,15 +96,43 @@ const faqItems = [
     answer:
       "Begin met Karakter voor de ziel van de stad, lees Deelder voor haar stem, en een boek over het bombardement en de wederopbouw voor haar geschiedenis.",
   },
+];
+
+const bookIndex = [
   {
-    question: "Welke boeken laten het echte Rotterdam zien?",
-    answer:
-      "Niet de ansichtkaartversie: Karakter voor het vooroorlogse Rotterdam, Deelder voor de stem van de stad, Wederopbouw voor de architectuur, en thrillers als Schaduwen over Domburg voor de haven.",
+    slug: "schaduwen-over-domburg",
+    title: "Schaduwen over Domburg",
+    author: "Ard Breure",
+    summary:
+      "Literaire thriller die van het Zeeuwse strand dwars door de Rotterdamse haven voert.",
   },
   {
-    question: "Is Rotterdam Wederopbouw ook interessant zonder architectuurachtergrond?",
-    answer:
-      "Ja. Rotterdam Wederopbouw: De 100 gebouwen is geen vakboek voor architecten, maar een toegankelijke gids met historische foto's naast de huidige situatie — ideaal om te begrijpen waaróm Rotterdam eruitziet zoals het doet, ook zonder voorkennis.",
+    slug: "karakter-bordewijk",
+    title: "Karakter",
+    author: "F. Bordewijk",
+    summary:
+      "Dé klassieke Rotterdamse roman over wilskracht in het vooroorlogse Rotterdam.",
+  },
+  {
+    slug: "jules-deelder",
+    title: "De dikke van Deelder",
+    author: "Jules Deelder",
+    summary:
+      "Gedichten en verhalen met de droge, snelle toon van de nachtburgemeester.",
+  },
+  {
+    slug: "hugo-borst",
+    title: "De Coolsingel bleef leeg",
+    author: "Hugo Borst",
+    summary:
+      "Voetbal, Feyenoord en Rotterdamse identiteit — tribune en stad in één.",
+  },
+  {
+    slug: "rotterdam-wederopbouw-groenendijk",
+    title: "Rotterdam Wederopbouw",
+    author: "Paul Groenendijk (red.)",
+    summary:
+      "Honderd gebouwen die laten zien waarom Rotterdam eruitziet zoals het doet.",
   },
 ];
 
@@ -128,7 +159,7 @@ export default function BoekenOverRotterdamPage() {
     collectionPageSchema(
       "Boeken over Rotterdam: romans, thrillers en verhalen",
       absoluteUrl("/boeken-over-rotterdam"),
-      pageDescription
+      pageDescriptionLong
     ),
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
@@ -164,6 +195,8 @@ export default function BoekenOverRotterdamPage() {
           Door{" "}
           <Link href="/over-de-auteur">Ard Breure</Link>, auteur van{" "}
           <Link href="/boeken/schaduwen-over-domburg">Schaduwen over Domburg</Link>
+          {" · "}
+          Laatst bijgewerkt 11 augustus 2026
         </p>
 
         <AffiliateDisclosure />
@@ -182,19 +215,54 @@ export default function BoekenOverRotterdamPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Rotterdam is een stad die je niet beschrijft met
-            ansichtkaartwoorden. Wie erover schrijft, schrijft over de haven,
-            over werken, over een stad die één keer is platgegooid en zichzelf
-            opnieuw heeft uitgevonden — en over mensen die niet praten als ze
-            ook kunnen doen. Ik ben er zelf aan verknocht geraakt, zo erg dat
-            mijn eigen debuut,{" "}
+            Op zoek naar <strong>boeken over Rotterdam</strong>? Hieronder vind
+            je vijf titels die de stad echt vangen — romans, thrillers en
+            verhalen waarin Rotterdam geen decor is, maar een personage. Van
+            Bordewijk tot Deelder, van voetbal tot wederopbouw, en een
+            haven-thriller die van Zeeland naar de Maasvlakte loopt.
+          </p>
+          <p className="content-paragraph">
+            Rotterdam beschrijf je niet met ansichtkaartwoorden. Wie erover
+            schrijft, schrijft over de haven, over werken, over een stad die één
+            keer is platgegooid en zichzelf opnieuw heeft uitgevonden. Ik ben er
+            zelf aan verknocht geraakt, zo erg dat mijn debuut,{" "}
             <Link href="/boeken/schaduwen-over-domburg">
               Schaduwen over Domburg
             </Link>
-            , voor een groot deel in de Rotterdamse haven speelt. Op deze pagina
-            verzamel ik de boeken die de stad echt vangen: romans, thrillers en
-            verhalen waarin Rotterdam geen decor is, maar een personage.
+            , voor een groot deel in de Rotterdamse haven speelt.
           </p>
+        </section>
+
+        <section
+          id="overzicht"
+          className="content-section"
+          aria-labelledby="overzicht-heading"
+        >
+          <h2 id="overzicht-heading" className="content-heading">
+            Overzicht: 5 boeken over Rotterdam
+          </h2>
+          <div className="content-table-wrapper">
+            <table className="content-table">
+              <thead>
+                <tr>
+                  <th scope="col">Titel</th>
+                  <th scope="col">Auteur</th>
+                  <th scope="col">In het kort</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookIndex.map((book) => (
+                  <tr key={book.slug}>
+                    <td>
+                      <a href={`#${book.slug}`}>{book.title}</a>
+                    </td>
+                    <td>{book.author}</td>
+                    <td>{book.summary}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section
@@ -415,9 +483,38 @@ export default function BoekenOverRotterdamPage() {
             label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"
           />
         </section>
+
+        <RelatedGuides
+          title="Meer gidsen en leeslijsten"
+          guides={[
+            {
+              href: "/boeken-over-zeeland",
+              label: "Boeken over Zeeland",
+              description: "Thrillers en verhalen aan de Zeeuwse kust",
+            },
+            {
+              href: "/boeken/schaduwen-over-domburg",
+              label: "Schaduwen over Domburg",
+              description: "De literaire thriller over haven en kust",
+            },
+            {
+              href: "/e-readers",
+              label: "E-reader gids",
+              description: "Kindle of Kobo voor je volgende Rotterdam-boek",
+            },
+            {
+              href: "/blog",
+              label: "Blog",
+              description: "Artikelen over boeken, e-readers en schrijven",
+            },
+          ]}
+        />
       </div>
 
-      <FaqSection items={faqItems} />
+      <FaqSection
+        items={faqItems}
+        title="Veelgestelde vragen over boeken over Rotterdam"
+      />
 
       <div className="container content-page content-page--footer">
         <section className="content-section">
@@ -425,14 +522,6 @@ export default function BoekenOverRotterdamPage() {
             <em>
               Hier staan alleen boeken die ik zelf de moeite waard vind.
             </em>
-          </p>
-          <p className="content-meta">
-            Trekt de kust je meer dan de haven? Bekijk dan mijn leeslijst met{" "}
-            <Link href="/boeken-over-zeeland">boeken over Zeeland</Link>.
-          </p>
-          <p className="content-meta">
-            Lees je liever op een e-reader? Bekijk onze{" "}
-            <Link href="/e-readers">e-reader gids</Link>.
           </p>
           <p className="content-meta">
             <em>
