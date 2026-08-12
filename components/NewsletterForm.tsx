@@ -14,8 +14,6 @@ export interface NewsletterFormCopy {
   invalidEmail: string;
   error: string;
   privacy: string;
-  /** Optional override for the Web3Forms subject line. */
-  subject?: string;
 }
 
 const dutchCopy: NewsletterFormCopy = {
@@ -62,13 +60,6 @@ function buildSuccessMessage(book: string, language: "NL" | "EN"): string {
     : `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
 }
 
-function buildSubject(book: string, language: "NL" | "EN"): string {
-  if (language === "EN") {
-    return `New sign-up: ${book} (EN)`;
-  }
-  return `Nieuwe inschrijving: ${book} (NL)`;
-}
-
 export function NewsletterForm({
   source,
   book = "Algemeen",
@@ -80,7 +71,6 @@ export function NewsletterForm({
   const locale = localeFromPathname(pathname);
   const language = locale === "en" ? "EN" : "NL";
   const successMessage = t.success ?? buildSuccessMessage(book, language);
-  const subject = t.subject ?? buildSubject(book, language);
 
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"success" | "error" | "info" | "">("");
@@ -122,17 +112,14 @@ export function NewsletterForm({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "da837bfb-4e7b-41fd-8184-0ca43bea55d5",
           email,
-          subject,
-          from_name: "Breure Media website",
           book,
           language,
           page_url: pageUrl,
@@ -141,7 +128,7 @@ export function NewsletterForm({
         }),
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as { success?: boolean };
 
       if (response.ok && data.success) {
         setMessage(successMessage);
@@ -165,7 +152,6 @@ export function NewsletterForm({
       onSubmit={handleSubmit}
       noValidate
     >
-      <input type="hidden" name="subject" value={subject} />
       <input type="hidden" name="book" value={book} />
       <input type="hidden" name="language" value={language} />
       <input type="hidden" name="page_url" value={pathname} />
