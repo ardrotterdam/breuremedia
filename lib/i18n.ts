@@ -125,13 +125,14 @@ export const footerCopy: Record<Locale, FooterCopy> = {
   },
 };
 
-/** English copy for the newsletter form, shared across /en pages. */
+/** English copy for the newsletter form, shared across /en pages.
+ * Success text is built in NewsletterForm from the `book` prop + locale.
+ */
 export const englishNewsletterCopy = {
   emailLabel: "Email address",
   placeholder: "you@email.com",
   submit: "Notify me when the book is released",
   submitting: "One moment…",
-  success: "Thank you. You'll be notified as soon as the book is released.",
   invalidEmail: "Please enter a valid email address.",
   error:
     "Something went wrong. Please try again later or email info@breuremedia.com.",

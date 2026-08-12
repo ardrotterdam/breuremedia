@@ -9,7 +9,8 @@ export interface NewsletterFormCopy {
   placeholder: string;
   submit: string;
   submitting: string;
-  success: string;
+  /** Optional override; when omitted, success text is derived from `book` + locale. */
+  success?: string;
   invalidEmail: string;
   error: string;
   privacy: string;
@@ -22,8 +23,6 @@ const dutchCopy: NewsletterFormCopy = {
   placeholder: "jouw@email.nl",
   submit: "HOUD MIJ OP DE HOOGTE",
   submitting: "Even geduld…",
-  success:
-    "Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over Schaduwen over Domburg, hoor je als eerste van ons.",
   invalidEmail: "Voer een geldig e-mailadres in.",
   error:
     "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com.",
@@ -42,6 +41,27 @@ type NewsletterFormProps = {
   copy?: Partial<NewsletterFormCopy>;
 };
 
+function isGeneralBook(book: string): boolean {
+  const normalized = book.trim().toLowerCase();
+  return (
+    normalized === "" ||
+    normalized === "algemeen" ||
+    normalized === "general"
+  );
+}
+
+function buildSuccessMessage(book: string, language: "NL" | "EN"): string {
+  if (isGeneralBook(book)) {
+    return language === "EN"
+      ? "Thank you for subscribing! As soon as there is news about new books and releases from Breure Media, you'll be the first to know."
+      : "Bedankt voor je inschrijving! Zodra er nieuws is over nieuwe boeken en publicaties van Breure Media, hoor je als eerste van ons.";
+  }
+
+  return language === "EN"
+    ? `Thank you for subscribing! You're on the list. As soon as there is news about ${book}, you'll be the first to know.`
+    : `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
+}
+
 function buildSubject(book: string, language: "NL" | "EN"): string {
   if (language === "EN") {
     return `New sign-up: ${book} (EN)`;
@@ -59,6 +79,7 @@ export function NewsletterForm({
   const pathname = usePathname() ?? "/";
   const locale = localeFromPathname(pathname);
   const language = locale === "en" ? "EN" : "NL";
+  const successMessage = t.success ?? buildSuccessMessage(book, language);
   const subject = t.subject ?? buildSubject(book, language);
 
   const [message, setMessage] = useState("");
@@ -90,7 +111,7 @@ export function NewsletterForm({
     }
 
     if (botcheckInput.checked) {
-      setMessage(t.success);
+      setMessage(successMessage);
       setStatus("success");
       form.reset();
       return;
@@ -123,7 +144,7 @@ export function NewsletterForm({
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setMessage(t.success);
+        setMessage(successMessage);
         setStatus("success");
         form.reset();
       } else {
