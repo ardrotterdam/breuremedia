@@ -218,11 +218,13 @@ export const books: Book[] = [
     tagline:
       "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen.",
     description:
-      "Een technothriller over stilzwijgen, systeemfouten en de rekening die altijd komt — in een wereld waar alles met elkaar verbonden is.",
+      "Een zero-day exploit slaat toe in het hart van de Europese democratie. De klok tikt — en de grens tussen loyaliteit en verraad vervaagt.",
     longDescription: [
-      "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen. Zero Day Directive is een thriller over stilzwijgen, systeemfouten en de rekening die altijd komt.",
-      "Tussen fysieke en digitale werkelijkheid loopt een grens die steeds dunner wordt. Wie zwijgt, wie dekt af, en wie betaalt wanneer een onzichtbare fout openbaar wordt?",
-      "Zero Day Directive is een zelfstandige technothriller van Ard Breure — geschreven in dezelfde literaire traditie als Schaduwen over Domburg: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
+      "Een zero-day exploit slaat toe in het hart van de Europese democratie. De klok tikt — en de grens tussen loyaliteit en verraad vervaagt.",
+      "Wanneer een verwoestende cyberaanval het Europees Parlement lamlegt, staat Europa met de rug tegen de muur. Terwijl Brussel zich voorbereidt op een historische stemming over digitale soevereiniteit — kiezend tussen zijn traditionele bondgenootschap met Amerika en een onafhankelijke toekomst — eist Iran de aanval op, met de dreiging de Straat van Hormuz te sluiten om Europese neutraliteit af te dwingen.",
+      "Slechts één cybersecurity-analist in Brussel stuit op de gevaarlijke waarheid die verscholen ligt in de code. Maar terwijl hij door een labyrint van staatsgesponsorde hacking, politieke spionage en digitale oorlogsvoering raast, wordt de stemming zelf stiekem gemanipuleerd. Als de uitslag omslaat, zal het geopolitieke machtsevenwicht voor altijd verschuiven.",
+      "Boordevol authentieke techspanning, hartslagversnellende actie en realistische geopolitiek is Zero Day Directive een meeslepende technothriller voor fans van Tom Clancy, Daniel Silva en William Gibson.",
+      "Zal de waarheid aan het licht komen voordat de democratie wordt herschreven?",
     ],
     coverImage: "/assets/zero-day-directive.webp",
     coverAlt:
@@ -257,7 +259,7 @@ export const books: Book[] = [
       {
         question: "Wat is Zero Day Directive over?",
         answer:
-          "Een technothriller over de kwetsbaarheid van onze verbonden wereld. Een verhaal over stilzwijgen, systeemfouten en de rekening die altijd komt.",
+          "Een zero-day exploit slaat toe in het hart van de Europese democratie. Wanneer een cyberaanval het Europees Parlement lamlegt en een stemming over digitale soevereiniteit wordt gemanipuleerd, ontdekt één cybersecurity-analist in Brussel de gevaarlijke waarheid in de code.",
       },
       {
         question:
@@ -284,11 +286,13 @@ export const books: Book[] = [
       tagline:
         "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming.",
       description:
-        "A technothriller about silence, system failures, and the debt that always comes due — in a world where everything is connected.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
       longDescription: [
-        "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming. Zero Day Directive is a thriller about silence, system failures, and the debt that always comes due.",
-        "Between physical and digital reality runs a border that grows thinner by the day. Who stays silent, who covers up, and who pays when an invisible failure becomes public?",
-        "Zero Day Directive is a standalone technothriller by Ard Breure — written in the same literary tradition as Shadows over Domburg: cool, precise, and unflinchingly honest about the things people never tell one another.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
+        "When a devastating cyberattack paralyzes the European Parliament, Europe is forced into a corner. As Brussels prepares for a historic vote on digital sovereignty—choosing between its traditional alliance with America and an independent future—Iran claims the attack, threatening to shut down the Strait of Hormuz to force European neutrality.",
+        "Only one cybersecurity analyst in Brussels stumbles upon the dangerous truth hidden within the code. But as he races through a labyrinth of state-sponsored hacking, political espionage, and digital warfare, the vote itself is being secretly manipulated. If the result flips, the geopolitical balance of power will shift forever.",
+        "Packed with authentic tech suspense, pulse-pounding action, and realistic geopolitics, Zero Day Directive is a gripping techno-thriller for fans of Tom Clancy, Daniel Silva, and William Gibson.",
+        "Will the truth emerge before democracy is rewritten?",
       ],
       coverAlt:
         "Zero Day Directive - cyber thriller by Ard Breure, book cover with digital glitch effect, binary code and the European Parliament",
@@ -318,7 +322,7 @@ export const books: Book[] = [
         {
           question: "What is Zero Day Directive about?",
           answer:
-            "A technothriller about the vulnerability of our connected world. A story about silence, system failures, and the debt that always comes due.",
+            "A zero-day exploit strikes at the heart of European democracy. When a cyberattack paralyzes the European Parliament and a vote on digital sovereignty is manipulated, one cybersecurity analyst in Brussels uncovers the dangerous truth hidden in the code.",
         },
         {
           question:

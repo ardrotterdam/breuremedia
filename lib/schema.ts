@@ -31,10 +31,17 @@ export function personSchema(jobTitle: string = "Auteur") {
 }
 
 export function bookSchema(book: Book) {
+  // Prefer the full English description for Schema.org when available;
+  // fall back to the Dutch long description joined as a single string.
+  const schemaDescription =
+    book.en?.longDescription.join(" ") ??
+    book.longDescription.join(" ") ??
+    book.description;
+
   return {
     "@type": "Book",
     name: book.title,
-    description: book.description,
+    description: schemaDescription,
     inLanguage: book.language,
     genre: book.genre,
     bookFormat: "https://schema.org/Paperback",
@@ -73,7 +80,7 @@ export function englishBookSchema(book: Book & { en: BookTranslation }) {
   return {
     "@type": "Book",
     name: en.title,
-    description: en.description,
+    description: en.longDescription.join(" ") || en.description,
     inLanguage: "en",
     genre: en.genre,
     bookFormat: "https://schema.org/Paperback",

@@ -72,8 +72,7 @@ export default function EnglishHomePage() {
           copy={{
             eyebrow: "Coming Soon",
             subtitle: upcomingEn.subtitle,
-            blurb:
-              "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming. A thriller about silence, system failures, and the debt that always comes due.",
+            blurb: upcomingEn.description,
             expected: "Expected: Autumn 2027",
             primaryLabel: "Read more",
             secondaryLabel: "Join waiting list",

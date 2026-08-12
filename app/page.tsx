@@ -48,8 +48,7 @@ export default function HomePage() {
           copy={{
             eyebrow: "Aankomend",
             subtitle: upcomingBook.subtitle,
-            blurb:
-              "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen. Een thriller over stilzwijgen, systeemfouten en de rekening die altijd komt.",
+            blurb: upcomingBook.description,
             expected: "Verwacht: najaar 2027",
             primaryLabel: "Meer over dit boek",
             secondaryLabel: "Inschrijven wachtlijst",
