@@ -1545,19 +1545,56 @@ input:focus-visible {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-gold);
+  text-decoration: none;
 }
 
 .text-link:hover {
   color: var(--color-charcoal);
 }
 
+/*
+ * Inline tekst-links in lopende content: altijd herkenbaar als klikbaar
+ * (onderstreping + goudaccent). Uitgesloten: knoppen, cover-links,
+ * uppercase .text-link CTA's, kaarten en navigatie.
+ */
+.content-paragraph a:not(.btn):not(.text-link):not(.book-cover-link),
+.content-section li a:not(.btn):not(.text-link):not(.book-cover-link),
+.theme-list a:not(.btn),
+.faq-answer a:not(.btn),
+.affiliate-disclosure a:not(.btn),
+.content-table a:not(.btn),
 .content-inline-link {
-  color: var(--color-gold);
+  color: var(--color-charcoal);
   text-decoration: underline;
-  text-underline-offset: 0.15em;
+  text-decoration-color: var(--color-gold);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition:
+    color var(--transition),
+    text-decoration-color var(--transition),
+    text-decoration-thickness var(--transition);
 }
 
+.content-paragraph a:not(.btn):not(.text-link):not(.book-cover-link):hover,
+.content-section li a:not(.btn):not(.text-link):not(.book-cover-link):hover,
+.theme-list a:not(.btn):hover,
+.faq-answer a:not(.btn):hover,
+.affiliate-disclosure a:not(.btn):hover,
+.content-table a:not(.btn):hover,
 .content-inline-link:hover {
+  color: var(--color-gold);
+  text-decoration-color: var(--color-charcoal);
+  text-decoration-thickness: 2px;
+}
+
+/* Lijstlinks (Verder lezen / RelatedGuides): pijl-suffix */
+.related-guides-list a::after {
+  content: " →";
+  text-decoration: none;
+  color: var(--color-gold);
+}
+
+.related-guides-list a:hover::after {
   color: var(--color-charcoal);
 }
 

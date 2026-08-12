@@ -24,7 +24,7 @@ export function RelatedGuides({
       <h2 id="related-guides-heading" className="content-heading">
         {title}
       </h2>
-      <ul className="theme-list">
+      <ul className="theme-list related-guides-list">
         {guides.map((guide) => (
           <li key={guide.href}>
             <Link href={guide.href}>{guide.label}</Link>
