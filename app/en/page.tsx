@@ -77,7 +77,7 @@ export default function EnglishHomePage() {
             eyebrow: "Coming Soon",
             subtitle: upcomingEn.subtitle,
             blurb: upcomingEn.description,
-            expected: "Expected: Autumn 2027",
+            expected: "Expected: January 2027",
             primaryLabel: "Read more",
             secondaryLabel: "Join waiting list",
             bookHref: `/en/${upcomingEn.slug}`,

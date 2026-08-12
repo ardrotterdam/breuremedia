@@ -49,7 +49,7 @@ export default function HomePage() {
             eyebrow: "Aankomend",
             subtitle: upcomingBook.subtitle,
             blurb: upcomingBook.description,
-            expected: "Verwacht: najaar 2027",
+            expected: "Verwacht: januari 2027",
             primaryLabel: "Meer over dit boek",
             secondaryLabel: "Inschrijven wachtlijst",
             bookHref: `/boeken/${upcomingBook.slug}`,

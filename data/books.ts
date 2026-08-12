@@ -244,7 +244,7 @@ export const books: Book[] = [
     language: "nl",
     format: "Paperback",
     formatNote:
-      "Zero Day Directive verschijnt naar verwachting najaar 2027. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
+      "Zero Day Directive verschijnt naar verwachting januari 2027. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
     setting: "Nederland — de grens tussen fysieke en digitale werkelijkheid",
     themes: [
       "Technologie en kwetsbaarheid",
@@ -263,7 +263,7 @@ export const books: Book[] = [
       {
         question: "Wanneer verschijnt Zero Day Directive?",
         answer:
-          "Zero Day Directive verschijnt naar verwachting najaar 2027. Schrijf je in voor de wachtlijst om als eerste op de hoogte te worden gebracht.",
+          "Zero Day Directive verschijnt naar verwachting januari 2027. Schrijf je in voor de wachtlijst om als eerste op de hoogte te worden gebracht.",
       },
       {
         question: "Wat is Zero Day Directive over?",
@@ -279,12 +279,12 @@ export const books: Book[] = [
       {
         question: "Hoe kan ik Zero Day Directive bestellen?",
         answer:
-          "Zero Day Directive verschijnt naar verwachting najaar 2027. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in via het formulier op deze pagina of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
+          "Zero Day Directive verschijnt naar verwachting januari 2027. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in via het formulier op deze pagina of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
       },
       {
         question: "Wat kost het boek?",
         answer:
-          "De adviesprijs is €29,95. Het boek verschijnt naar verwachting najaar 2027; de definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden nader bekendgemaakt.",
+          "De adviesprijs is €29,95. Het boek verschijnt naar verwachting januari 2027; de definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden nader bekendgemaakt.",
       },
     ],
     en: {
@@ -306,7 +306,7 @@ export const books: Book[] = [
       coverAlt:
         "Zero Day Directive - cyber thriller by Ard Breure, book cover with digital glitch effect, binary code and the European Parliament",
       formatNote:
-        "Zero Day Directive is expected to be published in autumn 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
+        "Zero Day Directive is expected to be published in January 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
       setting:
         "The Netherlands — the border between physical and digital reality",
       themes: [
@@ -326,7 +326,7 @@ export const books: Book[] = [
         {
           question: "When will Zero Day Directive be published?",
           answer:
-            "Zero Day Directive is expected to be published in autumn 2027. Join the waiting list to be notified first.",
+            "Zero Day Directive is expected to be published in January 2027. Join the waiting list to be notified first.",
         },
         {
           question: "What is Zero Day Directive about?",
@@ -342,12 +342,12 @@ export const books: Book[] = [
         {
           question: "How can I order Zero Day Directive?",
           answer:
-            "Zero Day Directive is expected in autumn 2027. Ordering will open once the release date is confirmed. Sign up through the form on this page or write to info@breuremedia.com to be the first to know.",
+            "Zero Day Directive is expected in January 2027. Ordering will open once the release date is confirmed. Sign up through the form on this page or write to info@breuremedia.com to be the first to know.",
         },
         {
           question: "What does the book cost?",
           answer:
-            "The recommended price is €29.95. The book is expected in autumn 2027; the final edition (paperback or hardcover) and the exact release date will be announced later.",
+            "The recommended price is €29.95. The book is expected in January 2027; the final edition (paperback or hardcover) and the exact release date will be announced later.",
         },
       ],
     },
