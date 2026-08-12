@@ -1477,6 +1477,7 @@ input:focus-visible {
     top: 100%;
     left: 0;
     right: 0;
+    z-index: 50;
     flex-direction: column;
     gap: 0;
     background-color: var(--color-charcoal);
@@ -1484,10 +1485,22 @@ input:focus-visible {
     padding: 0.75rem 0 0.5rem;
   }
 
-  .site-header.is-scrolled .nav {
-    background-color: rgba(30, 30, 30, 0.92);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+  /* Open menu moet altijd 100% dekkend zijn — geen glass/blur zodat
+     paginatekst erachter niet doorheen schijnt. */
+  .site-header.is-scrolled .nav,
+  .nav.is-open {
+    background-color: var(--color-charcoal);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    opacity: 1;
+  }
+
+  /* Header-balk zelf ook solide zolang het menu open is (ook na scroll). */
+  .site-header:has(.nav.is-open),
+  .site-header.is-scrolled:has(.nav.is-open) {
+    background-color: var(--color-charcoal);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .nav.is-open {
