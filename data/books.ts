@@ -74,7 +74,7 @@ export const books: Book[] = [
     genre: "Literaire thriller",
     author: "Ard Breure",
     tagline:
-      "Een lichaam op het strand van Domburg. Een rechercheur die vijf jaar geleden een belofte niet nakwam. En een leugen die, net als de zee, altijd weer aanspoelt.",
+      "Een lichaam op het strand. Een spoor naar de Rotterdamse haven. En een netwerk dat onzichtbaar blijft.",
     description:
       "Een lichaam spoelt aan op het strand van Domburg. Wat op het eerste gezicht een geïsoleerde zaak lijkt, blijkt het begin van iets veel groters.",
     longDescription: [
@@ -152,7 +152,7 @@ export const books: Book[] = [
       subtitle: "A literary thriller",
       genre: "Literary thriller",
       tagline:
-        "A body on the beach at Domburg. A detective who broke a promise five years ago. And a lie that, like the sea, always washes back ashore.",
+        "A body on the beach. A trail to the Port of Rotterdam. And a network that remains invisible.",
       description:
         "A body washes ashore on the beach at Domburg. What first appears to be an isolated case soon points to something far larger.",
       longDescription: [

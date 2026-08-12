@@ -279,11 +279,11 @@ export default function BoekenOverZeelandPage() {
           <p className="content-paragraph">
             Ik begin schaamteloos bij mijn eigen boek — het staat hier omdat
             het hier hoort. <em>Schaduwen over Domburg</em> is een literaire
-            thriller over een ex-rechercheur van de Zeehavenpolitie die wordt
-            teruggeroepen naar een zaak die begint met een lichaam op het
-            strand van Domburg, maar die hem terugvoert naar een oude belofte
-            die hij niet nakwam. De duinen, de vuurtoren en de stilte van de
-            Zeeuwse kust zijn geen decor — ze zijn onderdeel van het verhaal.
+            thriller over een zaak die begint met een lichaam op het strand
+            van Domburg, maar die een spoor trekt naar de Rotterdamse haven en
+            een netwerk dat onzichtbaar blijft. De duinen, de vuurtoren en de
+            stilte van de Zeeuwse kust zijn geen decor — ze zijn onderdeel van
+            het verhaal.
           </p>
           <p className="content-paragraph">
             Dit is een aankomend boek — het is nog niet af en nu niet te koop.

@@ -34,7 +34,7 @@ export default function HomePage() {
           <hr className="editorial-rule" aria-hidden="true" />
           <p className="section-eyebrow">Over het boek</p>
           <h2 id="synopsis-heading" className="section-title">
-            Een oude schuld die terugkomt met de vloed.
+            {featuredBook.tagline}
           </h2>
           {featuredBook.longDescription.map((paragraph) => (
             <p key={paragraph} className="synopsis-paragraph">{paragraph}</p>

@@ -69,7 +69,7 @@ export const rotterdamBoeken: RotterdamBoek[] = [
     slug: "schaduwen-over-domburg",
     naam: "Schaduwen over Domburg — Ard Breure",
     korteOmschrijving:
-      "Een literaire thriller over een ex-rechercheur van de Zeehavenpolitie die wordt teruggeroepen naar een zaak die begint met een lichaam op een Zeeuws strand, maar die hem dwars door de Rotterdamse haven voert.",
+      "Een literaire thriller over een zaak die begint met een lichaam op een Zeeuws strand, maar die een spoor trekt dwars door de Rotterdamse haven — naar een netwerk dat onzichtbaar blijft.",
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {
@@ -123,7 +123,7 @@ export const zeelandBoeken: ZeelandBoek[] = [
     slug: "schaduwen-over-domburg",
     naam: "Schaduwen over Domburg — Ard Breure",
     korteOmschrijving:
-      "Een literaire thriller die begint met een lichaam op het strand van Domburg en een rechercheur die een oude belofte niet nakwam — een verhaal dat de Zeeuwse kust als personage gebruikt.",
+      "Een literaire thriller die begint met een lichaam op het strand van Domburg en een spoor naar de Rotterdamse haven — een verhaal dat de Zeeuwse kust als personage gebruikt.",
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {

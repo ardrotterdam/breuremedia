@@ -54,7 +54,7 @@ export default function EnglishHomePage() {
           <hr className="editorial-rule" aria-hidden="true" />
           <p className="section-eyebrow">About the book</p>
           <h2 id="synopsis-heading" className="section-title">
-            An old debt that returns with the tide.
+            {en.tagline}
           </h2>
           {en.longDescription.map((paragraph) => (
             <p key={paragraph} className="synopsis-paragraph">

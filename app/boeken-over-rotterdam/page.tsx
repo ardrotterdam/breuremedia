@@ -276,11 +276,10 @@ export default function BoekenOverRotterdamPage() {
           <p className="content-paragraph">
             Ik begin schaamteloos bij mijn eigen boek — het staat hier omdat het
             hier hoort. <em>Schaduwen over Domburg</em> is een literaire
-            thriller over een ex-rechercheur van de Zeehavenpolitie die wordt
-            teruggeroepen naar een zaak die begint met een lichaam op een
-            Zeeuws strand, maar die hem dwars door de Rotterdamse haven voert:
+            thriller over een zaak die begint met een lichaam op een Zeeuws
+            strand, maar die een spoor trekt dwars door de Rotterdamse haven:
             Katendrecht, de Waalhaven, de Maasvlakte, de kade bij nacht. Een
-            verhaal over schuld, stilte, en een stad waar containers meer
+            verhaal over macht, smokkel, en een stad waar containers meer
             geheimen bewaren dan mensen.
           </p>
           <p className="content-paragraph">
