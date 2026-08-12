@@ -1335,6 +1335,10 @@ input:focus-visible {
 
   .nav.is-open {
     display: flex;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .nav > a,

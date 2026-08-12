@@ -4,12 +4,14 @@ import type { Book } from "@/data/books";
 
 interface BookCardProps {
   book: Book;
+  /** Override the detail URL (e.g. `/en/<slug>` on English pages). */
+  href?: string;
 }
 
-export function BookCard({ book }: BookCardProps) {
+export function BookCard({ book, href }: BookCardProps) {
   return (
     <article className="book-card">
-      <Link href={`/boeken/${book.slug}`} className="book-card-link">
+      <Link href={href ?? `/boeken/${book.slug}`} className="book-card-link">
         <div className="book-card-cover">
           <Image
             src={book.coverImage}

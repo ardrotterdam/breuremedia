@@ -81,7 +81,8 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
   };
 
   const breadcrumbs = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/en" },
+    { name: "Books", path: "/en/books" },
     { name: en.title, path: `/en/${en.slug}` },
   ];
 

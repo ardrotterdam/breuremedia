@@ -13,6 +13,11 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Ontdek de literaire thrillers van Breure Media. Nederlandse thrillers met psychologische diepgang, verzorgde taal en sfeervolle settings.",
   path: "/boeken",
+  languages: {
+    nl: "/boeken",
+    en: "/en/books",
+    "x-default": "/en/books",
+  },
 });
 
 const breadcrumbs = [
