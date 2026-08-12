@@ -12,11 +12,14 @@ const featuredBook = allBooks[0];
 const upcomingBook = getBookBySlug("zero-day-directive") ?? allBooks[1];
 
 export const metadata: Metadata = buildMetadata({
-  title: `${featuredBook.title} | ${author.name} | ${siteConfig.name}`,
-  description: featuredBook.description,
+  title: "Breure Media | Literaire Thrillers",
+  description:
+    "Onafhankelijk Nederlands label voor literaire thrillers. Ontdek onze publicaties van Ard Breure.",
   path: "/",
-  image: featuredBook.coverImage,
-  imageAlt: featuredBook.coverAlt,
+  image: "/images/og-breure-media-general.jpg",
+  imageAlt: "Breure Media — literaire thrillers",
+  imageWidth: 1200,
+  imageHeight: 630,
   languages: {
     nl: "/",
     en: "/en",

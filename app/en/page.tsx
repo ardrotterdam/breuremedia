@@ -4,7 +4,7 @@ import { BookHero } from "@/components/BookHero";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
 import { getBookBySlug, getEnglishBooks, type Book } from "@/data/books";
-import { author, siteConfig, siteEn, authorEn } from "@/lib/site";
+import { author, siteEn, authorEn } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { englishNewsletterCopy } from "@/lib/i18n";
 
@@ -14,11 +14,14 @@ const upcomingBook = getBookBySlug("zero-day-directive");
 const upcomingEn = upcomingBook?.en;
 
 export const metadata: Metadata = buildMetadata({
-  title: `${en.title} | ${author.name} | ${siteConfig.name}`,
-  description: en.description,
+  title: "Breure Media | Literary Thrillers",
+  description:
+    "Independent Dutch imprint for literary thrillers. Discover publications by Ard Breure.",
   path: "/en",
-  image: en.coverImage ?? featuredBook.coverImage,
-  imageAlt: en.coverAlt,
+  image: "/images/og-breure-media-general.jpg",
+  imageAlt: "Breure Media — literary thrillers",
+  imageWidth: 1200,
+  imageHeight: 630,
   locale: "en_US",
   languages: {
     nl: "/",

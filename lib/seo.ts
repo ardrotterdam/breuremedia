@@ -45,10 +45,12 @@ export function buildMetadata({
   imageType,
 }: PageSeoOptions): Metadata {
   const url = absoluteUrl(path);
-  const ogImage = image ? absoluteUrl(image) : absoluteUrl("/assets/schaduwen-over-domburg-cover.webp");
+  const ogImage = image
+    ? absoluteUrl(image)
+    : absoluteUrl("/images/og-breure-media-general.jpg");
   const ogImageAlt = imageAlt ?? title;
-  const ogImageWidth = imageWidth ?? 800;
-  const ogImageHeight = imageHeight ?? 1200;
+  const ogImageWidth = imageWidth ?? (image ? 800 : 1200);
+  const ogImageHeight = imageHeight ?? (image ? 1200 : 630);
   const hreflang = languages
     ? Object.fromEntries(
         Object.entries(languages).map(([lang, target]) => [
