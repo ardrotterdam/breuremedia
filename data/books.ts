@@ -224,7 +224,7 @@ export const books: Book[] = [
       "Tussen fysieke en digitale werkelijkheid loopt een grens die steeds dunner wordt. Wie zwijgt, wie dekt af, en wie betaalt wanneer een onzichtbare fout openbaar wordt?",
       "Zero Day Directive is een zelfstandige technothriller van Ard Breure — geschreven in dezelfde literaire traditie als Schaduwen over Domburg: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
     ],
-    coverImage: "/assets/zerodaydirective.png",
+    coverImage: "/assets/zero-day-directive.webp",
     coverAlt: "Boekomslag van Zero Day Directive door Ard Breure",
     price: 29.95,
     priceFormatted: "€29,95",
