@@ -179,23 +179,13 @@ export async function POST(request: Request) {
     });
 
     try {
-      const [leadResult, confirmationResult] = await Promise.all([
-        resend.emails.send({
-          from: RESEND_FROM,
-          to: LEAD_TO,
-          replyTo: email,
-          subject: buildDashboardSubject(book, language),
-          text: leadText,
-        }),
-        resend.emails.send({
-          // Temporary: Resend onboarding sender until custom domain DNS is verified.
-          from: RESEND_FROM,
-          to: email,
-          subject: confirmation.subject,
-          html: buildConfirmationHtml(confirmation.body, language),
-          text: confirmation.body,
-        }),
-      ]);
+      const leadResult = await resend.emails.send({
+        from: RESEND_FROM,
+        to: LEAD_TO,
+        replyTo: email,
+        subject: buildDashboardSubject(book, language),
+        text: leadText,
+      });
 
       if (leadResult.error) {
         console.error("[newsletter] Lead notification failed:", {
@@ -208,6 +198,28 @@ export async function POST(request: Request) {
         });
         return jsonFail("Failed to send subscription notification.", 500);
       }
+    } catch (error) {
+      console.error("[newsletter] Lead notification request error:", {
+        error,
+        email,
+        book,
+        language,
+        source,
+        page_url: pageUrl,
+      });
+      return jsonFail("Failed to send subscription notification.", 500);
+    }
+
+    // Confirmation is best-effort: lead already captured, so always succeed to the client.
+    try {
+      const confirmationResult = await resend.emails.send({
+        // Temporary: Resend onboarding sender until custom domain DNS is verified.
+        from: RESEND_FROM,
+        to: email,
+        subject: confirmation.subject,
+        html: buildConfirmationHtml(confirmation.body, language),
+        text: confirmation.body,
+      });
 
       if (confirmationResult.error) {
         console.error("[newsletter] Confirmation email failed:", {
@@ -216,18 +228,14 @@ export async function POST(request: Request) {
           book,
           language,
         });
-        return jsonFail("Failed to send confirmation email.", 500);
       }
     } catch (error) {
-      console.error("[newsletter] Resend request error:", {
+      console.error("[newsletter] Confirmation email request error:", {
         error,
         email,
         book,
         language,
-        source,
-        page_url: pageUrl,
       });
-      return jsonFail("Failed to send emails.", 500);
     }
 
     return jsonOk();
