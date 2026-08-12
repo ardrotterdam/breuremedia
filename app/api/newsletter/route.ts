@@ -97,118 +97,174 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export async function POST(request: Request) {
-  let payload: NewsletterPayload;
+type ApiSuccess = { success: true };
+type ApiFailure = { success: false; message: string };
 
+function jsonOk() {
+  return NextResponse.json({ success: true } satisfies ApiSuccess, {
+    status: 200,
+  });
+}
+
+function jsonFail(message: string, status: 400 | 500) {
+  return NextResponse.json(
+    { success: false, message } satisfies ApiFailure,
+    { status }
+  );
+}
+
+async function readJsonSafe(
+  response: Response
+): Promise<{ data: Record<string, unknown> | null; raw: string }> {
+  const raw = await response.text();
+  if (!raw.trim()) {
+    return { data: null, raw };
+  }
   try {
-    payload = (await request.json()) as NewsletterPayload;
+    return { data: JSON.parse(raw) as Record<string, unknown>, raw };
   } catch {
-    return NextResponse.json(
-      { success: false, message: "Invalid JSON body." },
-      { status: 400 }
-    );
+    return { data: null, raw };
   }
+}
 
-  const email = payload.email?.trim() ?? "";
-  const book = (payload.book ?? "Algemeen").trim() || "Algemeen";
-  const language = normalizeLanguage(payload.language);
-  const pageUrl = payload.page_url?.trim() || siteConfig.url;
-  const source = payload.source?.trim() || "website";
-
-  if (!email || !isValidEmail(email)) {
-    return NextResponse.json(
-      { success: false, message: "Invalid email address." },
-      { status: 400 }
-    );
-  }
-
-  // Honeypot: pretend success without forwarding or emailing.
-  if (payload.botcheck) {
-    return NextResponse.json({ success: true });
-  }
-
-  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-  const resendApiKey = process.env.RESEND_API_KEY;
-
-  if (!accessKey) {
-    console.error("[newsletter] Missing NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY");
-    return NextResponse.json(
-      { success: false, message: "Server configuration error." },
-      { status: 500 }
-    );
-  }
-
-  // 1) Always persist the lead in Web3Forms first (source of truth).
+export async function POST(request: Request) {
   try {
-    const web3Response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: accessKey,
-        email,
-        subject: buildDashboardSubject(book, language),
-        from_name: "Breure Media website",
-        book,
-        language,
-        page_url: pageUrl,
-        source,
-      }),
-    });
+    let payload: NewsletterPayload;
 
-    const web3Data = (await web3Response.json()) as {
-      success?: boolean;
-      message?: string;
+    try {
+      payload = (await request.json()) as NewsletterPayload;
+    } catch (error) {
+      console.error("[newsletter] Invalid JSON body:", error);
+      return jsonFail("Invalid JSON body.", 400);
+    }
+
+    const email = payload.email?.trim() ?? "";
+    const book = (payload.book ?? "Algemeen").trim() || "Algemeen";
+    const language = normalizeLanguage(payload.language);
+    const pageUrl = payload.page_url?.trim() || siteConfig.url;
+    const source = payload.source?.trim() || "website";
+
+    if (!email || !isValidEmail(email)) {
+      console.error("[newsletter] Invalid email:", { email, book, source });
+      return jsonFail("Invalid email address.", 400);
+    }
+
+    // Honeypot: pretend success without forwarding or emailing.
+    if (payload.botcheck) {
+      console.info("[newsletter] Honeypot triggered; skipping forward.");
+      return jsonOk();
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!accessKey) {
+      console.error("[newsletter] Missing NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY");
+      return jsonFail("Server configuration error.", 500);
+    }
+
+    const web3Body = {
+      access_key: accessKey,
+      subject: buildDashboardSubject(book, language),
+      from_name: "Breure Media website",
+      name: "Newsletter subscriber",
+      email,
+      message: [
+        `New newsletter sign-up`,
+        `Email: ${email}`,
+        `Book: ${book}`,
+        `Language: ${language}`,
+        `Page: ${pageUrl}`,
+        `Source: ${source}`,
+      ].join("\n"),
+      book,
+      language,
+      page_url: pageUrl,
+      source,
     };
 
-    if (!web3Response.ok || !web3Data.success) {
-      console.error("[newsletter] Web3Forms submit failed:", {
-        status: web3Response.status,
-        data: web3Data,
+    // 1) Always persist the lead in Web3Forms first (source of truth).
+    try {
+      const web3Response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(web3Body),
       });
-      return NextResponse.json(
-        { success: false, message: "Failed to store subscription." },
-        { status: 502 }
+
+      const { data: web3Data, raw: web3Raw } = await readJsonSafe(web3Response);
+      const web3Success = web3Response.ok && web3Data?.success === true;
+
+      if (!web3Success) {
+        console.error("[newsletter] Web3Forms submit failed:", {
+          status: web3Response.status,
+          statusText: web3Response.statusText,
+          data: web3Data,
+          raw: web3Raw.slice(0, 500),
+          email,
+          book,
+          language,
+          source,
+          page_url: pageUrl,
+        });
+        return jsonFail("Failed to store subscription.", 500);
+      }
+    } catch (error) {
+      console.error("[newsletter] Web3Forms request error:", {
+        error,
+        email,
+        book,
+        language,
+        source,
+        page_url: pageUrl,
+      });
+      return jsonFail("Failed to store subscription.", 500);
+    }
+
+    // 2) Confirmation email via Resend — best-effort; never undo a stored lead.
+    if (!resendApiKey) {
+      console.error(
+        "[newsletter] Missing RESEND_API_KEY — lead stored in Web3Forms; skipping confirmation email."
       );
+      return jsonOk();
     }
-  } catch (error) {
-    console.error("[newsletter] Web3Forms request error:", error);
-    return NextResponse.json(
-      { success: false, message: "Failed to store subscription." },
-      { status: 502 }
-    );
-  }
 
-  // 2) Confirmation email via Resend — best-effort; never undo a stored lead.
-  if (!resendApiKey) {
-    console.error(
-      "[newsletter] Missing RESEND_API_KEY — lead stored in Web3Forms; skipping confirmation email."
-    );
-    return NextResponse.json({ success: true });
-  }
+    const confirmation = buildConfirmation(book, language);
 
-  const confirmation = buildConfirmation(book, language);
-  const resend = new Resend(resendApiKey);
+    try {
+      const resend = new Resend(resendApiKey);
+      const { error } = await resend.emails.send({
+        // Temporary: Resend onboarding sender until custom domain DNS is verified.
+        from: "Breure Media <onboarding@resend.dev>",
+        to: email,
+        subject: confirmation.subject,
+        html: buildConfirmationHtml(confirmation.body, language),
+        text: confirmation.body,
+      });
 
-  try {
-    const { error } = await resend.emails.send({
-      // Temporary: Resend onboarding sender until custom domain DNS is verified.
-      from: "Breure Media <onboarding@resend.dev>",
-      to: email,
-      subject: confirmation.subject,
-      html: buildConfirmationHtml(confirmation.body, language),
-      text: confirmation.body,
-    });
-
-    if (error) {
-      console.error("[newsletter] Resend send failed:", error);
-      // Lead is already in Web3Forms; still report success to the visitor.
+      if (error) {
+        console.error("[newsletter] Resend send failed:", {
+          error,
+          email,
+          book,
+          language,
+        });
+        // Lead is already in Web3Forms; still report success to the visitor.
+      }
+    } catch (error) {
+      console.error("[newsletter] Resend request error:", {
+        error,
+        email,
+        book,
+        language,
+      });
     }
-  } catch (error) {
-    console.error("[newsletter] Resend request error:", error);
-  }
 
-  return NextResponse.json({ success: true });
+    return jsonOk();
+  } catch (error) {
+    console.error("[newsletter] Unhandled error:", error);
+    return jsonFail("Internal server error.", 500);
+  }
 }

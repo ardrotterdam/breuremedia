@@ -85,22 +85,30 @@ export function NewsletterForm({
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const emailInput = form.elements.namedItem("email") as HTMLInputElement;
-    const botcheckInput = form.elements.namedItem(
-      "botcheck"
-    ) as HTMLInputElement;
-    const email = emailInput.value.trim();
+    const emailField = form.elements.namedItem("email");
+    const botcheckField = form.elements.namedItem("botcheck");
+
+    if (!(emailField instanceof HTMLInputElement)) {
+      console.error("[newsletter] Email input is missing from the form.");
+      setMessage(t.error);
+      setStatus("error");
+      return;
+    }
+
+    const email = emailField.value.trim();
+    const botcheck =
+      botcheckField instanceof HTMLInputElement && botcheckField.checked;
     const pageUrl =
       typeof window !== "undefined" ? window.location.href : pathname;
 
     if (!email || !isValidEmail(email)) {
       setMessage(t.invalidEmail);
       setStatus("error");
-      emailInput.focus();
+      emailField.focus();
       return;
     }
 
-    if (botcheckInput.checked) {
+    if (botcheck) {
       setMessage(successMessage);
       setStatus("success");
       form.reset();
@@ -111,6 +119,15 @@ export function NewsletterForm({
     setStatus("info");
     setIsSubmitting(true);
 
+    const payload = {
+      email,
+      book,
+      language,
+      page_url: pageUrl,
+      source: source ?? "website",
+      botcheck,
+    };
+
     try {
       const response = await fetch("/api/newsletter", {
         method: "POST",
@@ -118,27 +135,48 @@ export function NewsletterForm({
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          email,
-          book,
-          language,
-          page_url: pageUrl,
-          source: source ?? "website",
-          botcheck: botcheckInput.checked,
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const data = (await response.json()) as { success?: boolean };
+      const raw = await response.text();
+      let data: { success?: boolean; message?: string } | null = null;
 
-      if (response.ok && data.success) {
+      try {
+        data = raw ? (JSON.parse(raw) as { success?: boolean; message?: string }) : null;
+      } catch (parseError) {
+        console.error("[newsletter] Response was not valid JSON:", {
+          status: response.status,
+          statusText: response.statusText,
+          contentType: response.headers.get("content-type"),
+          body: raw.slice(0, 500),
+          error: parseError,
+          payload,
+        });
+        setMessage(t.error);
+        setStatus("error");
+        return;
+      }
+
+      if (response.ok && data?.success === true) {
         setMessage(successMessage);
         setStatus("success");
         form.reset();
-      } else {
-        setMessage(t.error);
-        setStatus("error");
+        return;
       }
-    } catch {
+
+      console.error("[newsletter] Submission rejected:", {
+        status: response.status,
+        statusText: response.statusText,
+        data,
+        payload,
+      });
+      setMessage(t.error);
+      setStatus("error");
+    } catch (error) {
+      console.error("[newsletter] Network or unexpected submit error:", {
+        error,
+        payload,
+      });
       setMessage(t.error);
       setStatus("error");
     } finally {
