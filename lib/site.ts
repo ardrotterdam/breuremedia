@@ -40,12 +40,71 @@ export const authorEn = {
     "Dutch author of literary thrillers. His debut, Shadows over Domburg, is published by Breure Media.",
 } as const;
 
-export const navLinks = [
-  { href: "/boeken", label: "Schaduwen over Domburg" },
-  { href: "/e-readers", label: "E-readers" },
-  { href: "/blog", label: "Blog" },
-  { href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
-  { href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
-  { href: "/over-de-auteur", label: "Auteur" },
-  { href: "/contact", label: "Contact" },
-] as const;
+/** Leaf link inside the main nav (top-level or dropdown child). */
+export interface NavLinkItem {
+  type: "link";
+  href: string;
+  label: string;
+}
+
+/** Non-interactive group label inside a dropdown. */
+export interface NavLabelItem {
+  type: "label";
+  label: string;
+}
+
+/** Visual separator inside a dropdown. */
+export interface NavDividerItem {
+  type: "divider";
+}
+
+export type NavChild = NavLinkItem | NavLabelItem | NavDividerItem;
+
+/** Top-level dropdown with nested children. */
+export interface NavDropdownItem {
+  type: "dropdown";
+  /** Overview href used for active-state matching (and as a fallback link). */
+  href: string;
+  label: string;
+  children: readonly NavChild[];
+}
+
+export type NavItem = NavLinkItem | NavDropdownItem;
+
+export const navLinks: readonly NavItem[] = [
+  {
+    type: "dropdown",
+    href: "/boeken",
+    label: "Boeken",
+    children: [
+      { type: "link", href: "/boeken", label: "Alle boeken" },
+      { type: "divider" },
+      {
+        type: "link",
+        href: "/boeken/schaduwen-over-domburg",
+        label: "Schaduwen over Domburg",
+      },
+      {
+        type: "link",
+        href: "/boeken/zero-day-directive",
+        label: "Zero Day Directive",
+      },
+      { type: "divider" },
+      { type: "label", label: "Thema's" },
+      {
+        type: "link",
+        href: "/boeken-over-rotterdam",
+        label: "Boeken over Rotterdam",
+      },
+      {
+        type: "link",
+        href: "/boeken-over-zeeland",
+        label: "Boeken over Zeeland",
+      },
+    ],
+  },
+  { type: "link", href: "/e-readers", label: "E-readers" },
+  { type: "link", href: "/blog", label: "Blog" },
+  { type: "link", href: "/over-de-auteur", label: "Auteur" },
+  { type: "link", href: "/contact", label: "Contact" },
+];

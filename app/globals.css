@@ -355,7 +355,8 @@ input:focus-visible {
 
 /*
  * Header gebruikt de volle viewportbreedte (niet de 1120px content-container),
- * zodat zeven NL-items + taalschakelaar op één regel passen vanaf 1360px.
+ * zodat Boeken-dropdown + overige items + taalschakelaar op één regel passen
+ * vanaf 1360px.
  */
 .site-header .header-inner.container {
   max-width: none;
@@ -374,7 +375,8 @@ input:focus-visible {
   }
 }
 
-.nav a {
+.nav a,
+.nav-dropdown-trigger {
   position: relative;
   font-size: var(--font-size-ui);
   font-weight: 400;
@@ -384,10 +386,36 @@ input:focus-visible {
   white-space: nowrap;
 }
 
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav-dropdown-caret {
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid currentColor;
+  opacity: 0.7;
+  transition: transform 200ms var(--ease-header);
+}
+
+.nav-dropdown.is-open .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
 /* Inktlijn — underline die zichzelf tekent. Subtiel verloop van licht
    naar dieper goud, in de tekenrichting (links → rechts). */
 
-.nav a::after {
+.nav a::after,
+.nav-dropdown-trigger::after {
   content: "";
   position: absolute;
   left: 0;
@@ -405,16 +433,25 @@ input:focus-visible {
 }
 
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger:focus-visible,
+.nav-dropdown.is-open .nav-dropdown-trigger,
+.nav-dropdown.is-active .nav-dropdown-trigger {
   color: var(--color-gold-light);
 }
 
 .nav a:hover::after,
-.nav a:focus-visible::after {
+.nav a:focus-visible::after,
+.nav-dropdown-trigger:hover::after,
+.nav-dropdown-trigger:focus-visible::after,
+.nav-dropdown.is-open .nav-dropdown-trigger::after,
+.nav-dropdown.is-active .nav-dropdown-trigger::after {
   transform: scaleX(1);
 }
 
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav-dropdown-trigger:focus-visible {
   outline: none;
 }
 
@@ -425,6 +462,81 @@ input:focus-visible {
 .nav a[aria-current="page"]::after {
   height: 2px;
   transform: scaleX(1);
+}
+
+.nav-dropdown.is-active .nav-dropdown-trigger {
+  color: var(--color-warm-white);
+}
+
+.nav-dropdown.is-active .nav-dropdown-trigger::after {
+  height: 2px;
+  transform: scaleX(1);
+}
+
+/* Books dropdown panel (desktop) */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 15.5rem;
+  /* Invisible hover bridge so the cursor can reach the panel */
+  padding-top: 0.85rem;
+  z-index: 120;
+}
+
+.nav-dropdown-panel[hidden] {
+  display: none;
+}
+
+.nav-dropdown-panel-inner {
+  background-color: var(--color-charcoal);
+  border: 1px solid rgba(184, 151, 90, 0.22);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  padding: 0.65rem 0;
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 0.55rem 1.1rem;
+  font-size: var(--font-size-caption);
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: rgba(232, 226, 216, 0.78);
+  white-space: nowrap;
+}
+
+.nav-dropdown-link::after {
+  content: none !important;
+}
+
+.nav-dropdown-link:hover,
+.nav-dropdown-link:focus-visible {
+  color: var(--color-gold-light);
+  background-color: rgba(184, 151, 90, 0.08);
+}
+
+.nav-dropdown-link[aria-current="page"] {
+  color: var(--color-warm-white);
+  background-color: rgba(184, 151, 90, 0.12);
+}
+
+.nav-dropdown-divider {
+  height: 1px;
+  margin: 0.45rem 1.1rem;
+  background-color: rgba(184, 151, 90, 0.18);
+}
+
+.nav-dropdown-label {
+  margin: 0.55rem 1.1rem 0.2rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 226, 216, 0.6);
 }
 
 /* Taalschakelaar (NL · EN) — subtiel, rechts in de navigatie. */
@@ -479,17 +591,23 @@ input:focus-visible {
 }
 
 @media (min-width: 1360px) {
-  .nav a {
+  .nav > a,
+  .nav > .nav-dropdown,
+  .nav > .lang-switch {
     animation: header-item-in 600ms var(--ease-header) both;
   }
 
-  .nav a:nth-child(1) { animation-delay: 90ms; }
-  .nav a:nth-child(2) { animation-delay: 180ms; }
-  .nav a:nth-child(3) { animation-delay: 270ms; }
-  .nav a:nth-child(4) { animation-delay: 360ms; }
-  .nav a:nth-child(5) { animation-delay: 450ms; }
-  .nav a:nth-child(6) { animation-delay: 540ms; }
-  .nav a:nth-child(7) { animation-delay: 630ms; }
+  .nav > a:nth-child(1),
+  .nav > .nav-dropdown:nth-child(1) { animation-delay: 90ms; }
+  .nav > a:nth-child(2),
+  .nav > .nav-dropdown:nth-child(2) { animation-delay: 180ms; }
+  .nav > a:nth-child(3),
+  .nav > .nav-dropdown:nth-child(3) { animation-delay: 270ms; }
+  .nav > a:nth-child(4),
+  .nav > .nav-dropdown:nth-child(4) { animation-delay: 360ms; }
+  .nav > a:nth-child(5),
+  .nav > .nav-dropdown:nth-child(5) { animation-delay: 450ms; }
+  .nav > .lang-switch { animation-delay: 540ms; }
 }
 
 .nav-toggle {
@@ -1086,8 +1204,8 @@ input:focus-visible {
 }
 
 /*
- * Desktop-nav past betrouwbaar vanaf ~1360px (7 uppercase labels +
- * taalschakelaar, zonder labels in te korten). Daaronder: hamburger.
+ * Desktop-nav past betrouwbaar vanaf ~1360px (Boeken-dropdown + 4 items +
+ * taalschakelaar). Daaronder: hamburger met uitklapbaar Boeken-submenu.
  */
 @media (max-width: 1359px) {
   .nav {
@@ -1113,38 +1231,93 @@ input:focus-visible {
     display: flex;
   }
 
-  .nav a {
+  .nav > a,
+  .nav-dropdown-trigger {
     padding: 0.875rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    width: 100%;
+    justify-content: space-between;
   }
 
   /* Inktlijn werkt niet op full-width menu-items; actieve pagina
      krijgt in plaats daarvan een gouden accentlijn links. */
-  .nav a::after {
+  .nav a::after,
+  .nav-dropdown-trigger::after {
     content: none;
   }
 
-  .nav a:focus-visible {
+  .nav a:focus-visible,
+  .nav-dropdown-trigger:focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: -2px;
   }
 
-  .nav a[aria-current="page"] {
+  .nav > a[aria-current="page"],
+  .nav-dropdown.is-active .nav-dropdown-trigger {
     color: var(--color-gold-light);
     box-shadow: inset 2px 0 0 var(--color-gold);
   }
 
-  .nav.is-open a {
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-panel {
+    position: static;
+    transform: none;
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .nav-dropdown-panel[hidden] {
+    display: none;
+  }
+
+  .nav-dropdown-panel-inner {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0.15rem 0 0.35rem;
+  }
+
+  .nav-dropdown-link {
+    padding: 0.7rem 1.5rem 0.7rem 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--font-size-ui);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-dropdown-link[aria-current="page"] {
+    color: var(--color-gold-light);
+    box-shadow: inset 2px 0 0 var(--color-gold);
+    background: transparent;
+  }
+
+  .nav-dropdown-divider {
+    margin: 0.35rem 1.5rem 0.35rem 2.5rem;
+  }
+
+  .nav-dropdown-label {
+    margin: 0.55rem 1.5rem 0.15rem 2.5rem;
+  }
+
+  .nav.is-open > a,
+  .nav.is-open > .nav-dropdown,
+  .nav.is-open > .lang-switch {
     animation: header-item-in 400ms var(--ease-header) both;
   }
 
-  .nav.is-open a:nth-child(1) { animation-delay: 40ms; }
-  .nav.is-open a:nth-child(2) { animation-delay: 90ms; }
-  .nav.is-open a:nth-child(3) { animation-delay: 140ms; }
-  .nav.is-open a:nth-child(4) { animation-delay: 190ms; }
-  .nav.is-open a:nth-child(5) { animation-delay: 240ms; }
-  .nav.is-open a:nth-child(6) { animation-delay: 290ms; }
-  .nav.is-open a:nth-child(7) { animation-delay: 340ms; }
+  .nav.is-open > :nth-child(1) { animation-delay: 40ms; }
+  .nav.is-open > :nth-child(2) { animation-delay: 90ms; }
+  .nav.is-open > :nth-child(3) { animation-delay: 140ms; }
+  .nav.is-open > :nth-child(4) { animation-delay: 190ms; }
+  .nav.is-open > :nth-child(5) { animation-delay: 240ms; }
+  .nav.is-open > :nth-child(6) { animation-delay: 290ms; }
 
   .nav-toggle {
     display: flex;
