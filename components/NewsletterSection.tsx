@@ -2,6 +2,8 @@ import { NewsletterForm, type NewsletterFormCopy } from "./NewsletterForm";
 
 interface NewsletterSectionProps {
   source: string;
+  /** Boektitel voor Web3Forms-metadata; standaard "Algemeen". */
+  book?: string;
   eyebrow?: string;
   title?: string;
   description?: string;
@@ -17,6 +19,7 @@ interface NewsletterSectionProps {
  */
 export function NewsletterSection({
   source,
+  book,
   eyebrow = "Berichten uit Breure Media",
   title = "Nieuwe verhalen beginnen in stilte.",
   description = "Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder project verschijnt.",
@@ -28,14 +31,15 @@ export function NewsletterSection({
       id={id}
       className="newsletter"
       aria-labelledby="newsletter-heading"
-    >      <div className="container newsletter-inner">
+    >
+      <div className="container newsletter-inner">
         <hr className="editorial-rule" aria-hidden="true" />
         <p className="section-eyebrow">{eyebrow}</p>
         <h2 id="newsletter-heading" className="section-title">
           {title}
         </h2>
         <p className="newsletter-description">{description}</p>
-        <NewsletterForm source={source} copy={formCopy} />
+        <NewsletterForm source={source} book={book} copy={formCopy} />
       </div>
     </section>
   );

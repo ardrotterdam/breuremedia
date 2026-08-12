@@ -137,7 +137,6 @@ export const englishNewsletterCopy = {
     "Something went wrong. Please try again later or email info@breuremedia.com.",
   privacy:
     "Your email address is used only for updates about Breure Media publications. No spam; you can unsubscribe at any time.",
-  subject: "New sign-up — Shadows over Domburg",
 };
 
 /** UI strings for the header, per locale. */

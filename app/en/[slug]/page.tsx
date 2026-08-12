@@ -144,6 +144,7 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
       <NewsletterSection
         id="wachtlijst"
         source={`en-${en.slug}`}
+        book={en.title}
         eyebrow="Waiting list"
         title="Be the first to know when the book is released"
         description={`Leave your email address and we'll let you know the moment ${en.title} is available — including the release date and an exclusive preview.`}

@@ -1,6 +1,8 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useId, useState, type FormEvent } from "react";
+import { localeFromPathname } from "@/lib/i18n";
 
 export interface NewsletterFormCopy {
   emailLabel: string;
@@ -11,8 +13,8 @@ export interface NewsletterFormCopy {
   invalidEmail: string;
   error: string;
   privacy: string;
-  /** Subject line sent to Web3Forms. */
-  subject: string;
+  /** Optional override for the Web3Forms subject line. */
+  subject?: string;
 }
 
 const dutchCopy: NewsletterFormCopy = {
@@ -27,24 +29,38 @@ const dutchCopy: NewsletterFormCopy = {
     "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com.",
   privacy:
     "Je inschrijving is volledig vrijblijvend. We gebruiken je e-mailadres alleen voor berichten van Breure Media. Geen spam, en uitschrijven kan altijd.",
-  subject: "Nieuwe intekening — Schaduwen over Domburg",
 };
 
 type NewsletterFormProps = {
   /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
   source?: string;
+  /** Boektitel voor metadata; standaard "Algemeen". */
+  book?: string;
   /** Compacte variant voor gebruik binnen tekstkolommen. */
   compact?: boolean;
   /** Overschrijf losse teksten (bijv. Engels op /en-pagina's). */
   copy?: Partial<NewsletterFormCopy>;
 };
 
+function buildSubject(book: string, language: "NL" | "EN"): string {
+  if (language === "EN") {
+    return `New sign-up: ${book} (EN)`;
+  }
+  return `Nieuwe inschrijving: ${book} (NL)`;
+}
+
 export function NewsletterForm({
   source,
+  book = "Algemeen",
   compact = false,
   copy,
 }: NewsletterFormProps) {
   const t: NewsletterFormCopy = { ...dutchCopy, ...copy };
+  const pathname = usePathname() ?? "/";
+  const locale = localeFromPathname(pathname);
+  const language = locale === "en" ? "EN" : "NL";
+  const subject = t.subject ?? buildSubject(book, language);
+
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"success" | "error" | "info" | "">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,6 +79,8 @@ export function NewsletterForm({
       "botcheck"
     ) as HTMLInputElement;
     const email = emailInput.value.trim();
+    const pageUrl =
+      typeof window !== "undefined" ? window.location.href : pathname;
 
     if (!email || !isValidEmail(email)) {
       setMessage(t.invalidEmail);
@@ -92,8 +110,11 @@ export function NewsletterForm({
         body: JSON.stringify({
           access_key: "da837bfb-4e7b-41fd-8184-0ca43bea55d5",
           email,
-          subject: t.subject,
+          subject,
           from_name: "Breure Media website",
+          book,
+          language,
+          page_url: pageUrl,
           source: source ?? "website",
           botcheck: botcheckInput.checked,
         }),
@@ -123,6 +144,10 @@ export function NewsletterForm({
       onSubmit={handleSubmit}
       noValidate
     >
+      <input type="hidden" name="subject" value={subject} />
+      <input type="hidden" name="book" value={book} />
+      <input type="hidden" name="language" value={language} />
+      <input type="hidden" name="page_url" value={pathname} />
       <input
         type="checkbox"
         name="botcheck"
