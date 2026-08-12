@@ -8,6 +8,7 @@ import {
   useState,
   type KeyboardEvent,
 } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -200,16 +201,29 @@ export function Header() {
     }
 
     const active = isPathActive(pathname, child.href);
+    const hasCover = Boolean(child.coverImage);
+
     return (
       <Link
         key={child.href}
         href={child.href}
         role="menuitem"
         aria-current={active ? "page" : undefined}
-        className="nav-dropdown-link"
+        className={`nav-dropdown-link${hasCover ? " nav-dropdown-link--book" : ""}`}
         onClick={closeMobile}
       >
-        {child.label}
+        {hasCover ? (
+          <span className="nav-dropdown-thumb" aria-hidden="true">
+            <Image
+              src={child.coverImage!}
+              alt=""
+              width={28}
+              height={42}
+              className="nav-dropdown-thumb-img"
+            />
+          </span>
+        ) : null}
+        <span className="nav-dropdown-link-label">{child.label}</span>
       </Link>
     );
   };
@@ -257,7 +271,7 @@ export function Header() {
           onClick={() => setIsBooksOpen((prev) => !prev)}
           onKeyDown={onBooksButtonKeyDown}
         >
-          {item.label}
+          <span className="nav-dropdown-trigger-label">{item.label}</span>
           <span className="nav-dropdown-caret" aria-hidden="true" />
         </button>
         <div

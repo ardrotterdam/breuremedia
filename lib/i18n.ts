@@ -21,15 +21,20 @@ export const enNavLinks: readonly NavItem[] = [
     children: [
       { type: "link", href: "/en/books", label: "All books" },
       { type: "divider" },
+      { type: "label", label: "Titles" },
       {
         type: "link",
         href: "/en/shadows-over-domburg",
         label: "Schaduwen over Domburg",
+        coverImage: "/assets/schaduwen-over-domburg-cover.webp",
+        coverAlt: "Cover of Shadows over Domburg",
       },
       {
         type: "link",
         href: "/en/zero-day-directive",
         label: "Zero Day Directive",
+        coverImage: "/assets/zero-day-directive.webp",
+        coverAlt: "Cover of Zero Day Directive",
       },
       { type: "divider" },
       { type: "label", label: "Themes" },

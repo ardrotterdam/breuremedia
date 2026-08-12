@@ -45,6 +45,9 @@ export interface NavLinkItem {
   type: "link";
   href: string;
   label: string;
+  /** Optional cover thumb shown in the books mega-dropdown. */
+  coverImage?: string;
+  coverAlt?: string;
 }
 
 /** Non-interactive group label inside a dropdown. */
@@ -79,15 +82,20 @@ export const navLinks: readonly NavItem[] = [
     children: [
       { type: "link", href: "/boeken", label: "Alle boeken" },
       { type: "divider" },
+      { type: "label", label: "Titels" },
       {
         type: "link",
         href: "/boeken/schaduwen-over-domburg",
         label: "Schaduwen over Domburg",
+        coverImage: "/assets/schaduwen-over-domburg-cover.webp",
+        coverAlt: "Cover van Schaduwen over Domburg",
       },
       {
         type: "link",
         href: "/boeken/zero-day-directive",
         label: "Zero Day Directive",
+        coverImage: "/assets/zero-day-directive.webp",
+        coverAlt: "Cover van Zero Day Directive",
       },
       { type: "divider" },
       { type: "label", label: "Thema's" },
