@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BookHero } from "@/components/BookHero";
 import { NewsletterSection } from "@/components/NewsletterSection";
+import { PublicationsHero } from "@/components/PublicationsHero";
 import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
-import { getBookBySlug, getEnglishBooks, type Book } from "@/data/books";
-import { author, siteEn, authorEn } from "@/lib/site";
+import { getBookBySlug, getEnglishBooks } from "@/data/books";
+import { author, siteConfig, siteEn, authorEn } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { englishNewsletterCopy } from "@/lib/i18n";
 
@@ -30,27 +30,58 @@ export const metadata: Metadata = buildMetadata({
   },
 });
 
-const localizedBook: Book = {
-  ...featuredBook,
-  title: en.title,
-  subtitle: en.subtitle,
-  tagline: en.tagline,
-  description: en.description,
-  longDescription: en.longDescription,
-  coverImage: en.coverImage ?? featuredBook.coverImage,
-  coverAlt: en.coverAlt,
-  formatNote: en.formatNote,
-  priceFormatted: "€29.95",
-};
-
 export default function EnglishHomePage() {
+  const featuredLocalized = {
+    ...featuredBook,
+    title: en.title,
+    subtitle: en.subtitle,
+    tagline: en.tagline,
+    description: en.description,
+    longDescription: en.longDescription,
+    coverImage: en.coverImage ?? featuredBook.coverImage,
+    coverAlt: en.coverAlt,
+    formatNote: en.formatNote,
+  };
+
+  const upcomingLocalized =
+    upcomingBook && upcomingEn
+      ? {
+          ...upcomingBook,
+          title: upcomingEn.title,
+          subtitle: upcomingEn.subtitle,
+          tagline: upcomingEn.tagline,
+          description: upcomingEn.description,
+          coverImage: upcomingEn.coverImage ?? upcomingBook.coverImage,
+          coverAlt: upcomingEn.coverAlt,
+        }
+      : null;
+
   return (
     <main lang="en">
-      <BookHero
-        book={localizedBook}
-        priority
-        orderLabel="Sign up to be notified on release"
-      />
+      {upcomingLocalized && upcomingEn ? (
+        <PublicationsHero
+          eyebrow="Our Publications"
+          brand={siteConfig.name}
+          lead={siteEn.tagline}
+          publications={[
+            {
+              book: featuredLocalized,
+              href: `/en/${en.slug}`,
+              pitch: en.tagline,
+              ctaLabel: "View book",
+              priority: true,
+            },
+            {
+              book: upcomingLocalized,
+              href: `/en/${upcomingEn.slug}`,
+              pitch: upcomingEn.tagline,
+              ctaLabel: "View book",
+              badge: "Expected Jan 2027",
+              priority: true,
+            },
+          ]}
+        />
+      ) : null}
 
       <section className="synopsis" aria-labelledby="synopsis-heading">
         <div className="container synopsis-inner">
@@ -67,15 +98,9 @@ export default function EnglishHomePage() {
         </div>
       </section>
 
-      {upcomingBook && upcomingEn && (
+      {upcomingLocalized && upcomingEn && (
         <UpcomingBookPromo
-          book={{
-            ...upcomingBook,
-            title: upcomingEn.title,
-            subtitle: upcomingEn.subtitle,
-            coverImage: upcomingEn.coverImage ?? upcomingBook.coverImage,
-            coverAlt: upcomingEn.coverAlt,
-          }}
+          book={upcomingLocalized}
           copy={{
             eyebrow: "Coming Soon",
             subtitle: upcomingEn.subtitle,

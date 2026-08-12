@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BookHero } from "@/components/BookHero";
 import { NewsletterSection } from "@/components/NewsletterSection";
+import { PublicationsHero } from "@/components/PublicationsHero";
 import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
 import { getAllBooks, getBookBySlug } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
@@ -30,7 +30,28 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <main>
-      <BookHero book={featuredBook} priority />
+      <PublicationsHero
+        eyebrow="Onze Publicaties"
+        brand={siteConfig.name}
+        lead={siteConfig.tagline}
+        publications={[
+          {
+            book: featuredBook,
+            href: `/boeken/${featuredBook.slug}`,
+            pitch: featuredBook.tagline,
+            ctaLabel: "Bekijk boek",
+            priority: true,
+          },
+          {
+            book: upcomingBook,
+            href: `/boeken/${upcomingBook.slug}`,
+            pitch: upcomingBook.tagline,
+            ctaLabel: "Bekijk boek",
+            badge: "Verwacht jan 2027",
+            priority: true,
+          },
+        ]}
+      />
 
       <section className="synopsis" aria-labelledby="synopsis-heading">
         <div className="container synopsis-inner">
