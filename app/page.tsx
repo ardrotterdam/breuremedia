@@ -2,11 +2,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { BookHero } from "@/components/BookHero";
 import { NewsletterSection } from "@/components/NewsletterSection";
-import { getAllBooks } from "@/data/books";
+import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
+import { getAllBooks, getBookBySlug } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 
-const featuredBook = getAllBooks()[0];
+const allBooks = getAllBooks();
+const featuredBook = allBooks[0];
+const upcomingBook = getBookBySlug("zero-day-directive") ?? allBooks[1];
 
 export const metadata: Metadata = buildMetadata({
   title: `${featuredBook.title} | ${author.name} | ${siteConfig.name}`,
@@ -38,6 +41,23 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {upcomingBook && (
+        <UpcomingBookPromo
+          book={upcomingBook}
+          copy={{
+            eyebrow: "Aankomend",
+            subtitle: upcomingBook.subtitle,
+            blurb:
+              "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen. Een thriller over stilzwijgen, systeemfouten en de rekening die altijd komt.",
+            expected: "Verwacht: najaar 2027",
+            primaryLabel: "Meer over dit boek",
+            secondaryLabel: "Inschrijven wachtlijst",
+            bookHref: `/boeken/${upcomingBook.slug}`,
+            waitlistHref: `/boeken/${upcomingBook.slug}#wachtlijst`,
+          }}
+        />
+      )}
 
       <section className="author" aria-labelledby="home-author-heading">
         <div className="container author-inner">

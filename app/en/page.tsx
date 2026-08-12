@@ -2,13 +2,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { BookHero } from "@/components/BookHero";
 import { NewsletterSection } from "@/components/NewsletterSection";
-import { getEnglishBooks, type Book } from "@/data/books";
+import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
+import { getBookBySlug, getEnglishBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteEn, authorEn } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { englishNewsletterCopy } from "@/lib/i18n";
 
 const featuredBook = getEnglishBooks()[0];
 const en = featuredBook.en;
+const upcomingBook = getBookBySlug("zero-day-directive");
+const upcomingEn = upcomingBook?.en;
 
 export const metadata: Metadata = buildMetadata({
   title: `${en.title} | ${author.name} | ${siteConfig.name}`,
@@ -57,6 +60,28 @@ export default function EnglishHomePage() {
           ))}
         </div>
       </section>
+
+      {upcomingBook && upcomingEn && (
+        <UpcomingBookPromo
+          book={{
+            ...upcomingBook,
+            title: upcomingEn.title,
+            subtitle: upcomingEn.subtitle,
+            coverAlt: upcomingEn.coverAlt,
+          }}
+          copy={{
+            eyebrow: "Coming Soon",
+            subtitle: upcomingEn.subtitle,
+            blurb:
+              "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming. A thriller about silence, system failures, and the debt that always comes due.",
+            expected: "Expected: Autumn 2027",
+            primaryLabel: "Read more",
+            secondaryLabel: "Join waiting list",
+            bookHref: `/en/${upcomingEn.slug}`,
+            waitlistHref: `/en/${upcomingEn.slug}#wachtlijst`,
+          }}
+        />
+      )}
 
       <section className="author" aria-labelledby="home-author-heading">
         <div className="container author-inner">
