@@ -131,7 +131,7 @@ function jsonFail(message: string, status: 400 | 500) {
 }
 
 const RESEND_FROM = "Breure Media <onboarding@resend.dev>";
-const LEAD_TO = "info@breuremedia.com";
+const LEAD_TO = "ardrotterdam@gmail.com";
 
 export async function POST(request: Request) {
   try {
