@@ -318,7 +318,11 @@ export default function BoekenOverZeelandPage() {
             <em>Schaduwen over Domburg</em> verschijnt — met de
             verschijningsdatum en een exclusieve voorpublicatie.
           </p>
-          <NewsletterForm source="boeken-over-zeeland" compact />
+          <NewsletterForm
+            source="boeken-over-zeeland"
+            book="Schaduwen over Domburg"
+            compact
+          />
         </section>
 
         <section
