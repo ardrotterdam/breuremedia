@@ -225,7 +225,8 @@ export const books: Book[] = [
       "Zero Day Directive is een zelfstandige technothriller van Ard Breure — geschreven in dezelfde literaire traditie als Schaduwen over Domburg: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
     ],
     coverImage: "/assets/zero-day-directive.webp",
-    coverAlt: "Boekomslag van Zero Day Directive door Ard Breure",
+    coverAlt:
+      "Zero Day Directive - cyberthriller van Ard Breure, boekomslag met digitaal glitch-effect, binary code en het Europees Parlement",
     price: 29.95,
     priceFormatted: "€29,95",
     currency: "EUR",
@@ -289,7 +290,8 @@ export const books: Book[] = [
         "Between physical and digital reality runs a border that grows thinner by the day. Who stays silent, who covers up, and who pays when an invisible failure becomes public?",
         "Zero Day Directive is a standalone technothriller by Ard Breure — written in the same literary tradition as Shadows over Domburg: cool, precise, and unflinchingly honest about the things people never tell one another.",
       ],
-      coverAlt: "Book cover of Zero Day Directive by Ard Breure",
+      coverAlt:
+        "Zero Day Directive - cyber thriller by Ard Breure, book cover with digital glitch effect, binary code and the European Parliament",
       formatNote:
         "Zero Day Directive is expected to be published in autumn 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
       setting:
