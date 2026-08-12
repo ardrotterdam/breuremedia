@@ -67,8 +67,9 @@ export default function AboutAuthorPage() {
             nazinderen, lang nadat de laatste pagina is omgeslagen.
           </p>
           <p className="content-paragraph">
-            Het debuut <em>Schaduwen over Domburg</em> is het eerste werk dat
-            onder dit label verschijnt.
+            Na het debuut <em>Schaduwen over Domburg</em> verschijnt met{" "}
+            <em>Zero Day Directive</em> de tweede literaire techno-thriller
+            onder dit label.
           </p>
         </section>
 
@@ -78,9 +79,15 @@ export default function AboutAuthorPage() {
           </h2>
           <p className="content-paragraph">
             <Link href="/boeken/schaduwen-over-domburg">
-              Schaduwen over Domburg
+              <em>Schaduwen over Domburg</em>
             </Link>{" "}
             — literaire thriller, verschijnt bij {siteConfig.name}.
+          </p>
+          <p className="content-paragraph">
+            <Link href="/boeken/zero-day-directive">
+              <em>Zero Day Directive</em>
+            </Link>{" "}
+            — cyberthriller / techno-thriller, verschijnt bij {siteConfig.name}.
           </p>
         </section>
 

@@ -70,8 +70,9 @@ export default function EnglishAboutPage() {
             long after the final page.
           </p>
           <p className="content-paragraph">
-            The debut <em>Shadows over Domburg</em> is the first work to appear
-            under this imprint.
+            Following the debut novel <em>Shadows over Domburg</em>,{" "}
+            <em>Zero Day Directive</em> marks the second high-stakes
+            techno-thriller released under this imprint.
           </p>
         </section>
 
@@ -80,8 +81,16 @@ export default function EnglishAboutPage() {
             Publications
           </h2>
           <p className="content-paragraph">
-            <Link href="/en/shadows-over-domburg">Shadows over Domburg</Link> —
-            literary thriller, published by {siteConfig.name}.
+            <Link href="/en/shadows-over-domburg">
+              <em>Shadows over Domburg</em>
+            </Link>{" "}
+            — literary thriller, published by {siteConfig.name}.
+          </p>
+          <p className="content-paragraph">
+            <Link href="/en/zero-day-directive">
+              <em>Zero Day Directive</em>
+            </Link>{" "}
+            — high-stakes cyber thriller, published by {siteConfig.name}.
           </p>
         </section>
 
