@@ -76,12 +76,13 @@ export const books: Book[] = [
     tagline:
       "Een lichaam op het strand van Domburg. Een rechercheur die vijf jaar geleden een belofte niet nakwam. En een leugen die, net als de zee, altijd weer aanspoelt.",
     description:
-      "Een literaire thriller over stilte, schuld en de rekening die altijd komt — aan de Nederlandse kust, waar een oude belofte terugspoelt met de vloed.",
+      "Een lichaam spoelt aan op het strand van Domburg. Wat op het eerste gezicht een geïsoleerde zaak lijkt, blijkt het begin van iets veel groters.",
     longDescription: [
-      "Op het strand van Domburg spoelt het lichaam aan van een Amerikaan die niemand hier hoorde te kennen. Voor rechercheur Tom Jansen — ooit Zeehavenpolitie Rotterdam, nu niemand meer — is het geen vreemde zaak. Het is een oude schuld die terugkomt met de vloed.",
-      "Vijf jaar eerder beloofde Jansen deze man bescherming. Hij hield die belofte niet. Nu ligt hij op het zand, met een horloge dat exact vier minuten heeft geregistreerd voordat het stilviel — vier minuten waarin iemand tegenover hem stond die de zee niet heeft prijsgegeven.",
-      "Samen met de Deense rechercheur Larsen volgt Jansen een spoor van containers, verdwenen wapenonderdelen en mannen die zichzelf schuilnamen geven — terug naar de haven waar hij ooit zijn eed aflegde, en naar een leugen die groter is dan hijzelf.",
-      "Schaduwen over Domburg is een literaire thriller over stilte, schuld en de rekening die altijd komt — geschreven in de traditie van Mulisch en Hermans: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
+      "Een lichaam spoelt aan op het strand van Domburg. Wat op het eerste gezicht een geïsoleerde zaak lijkt, blijkt het begin van iets veel groters.",
+      "Tom Jansen, voormalig politieman met jarenlange ervaring in de Rotterdamse haven, heeft zijn actieve loopbaan achter zich gelaten. Maar wanneer sporen van de zaak richting Rotterdam leiden, wordt hij opnieuw geconfronteerd met een wereld die hij maar al te goed kent: containers, expediteurs, douanecontroles en handelsroutes waar enorme hoeveelheden goederen dagelijks vrijwel ongezien passeren.",
+      "In de Eemhaven ontdekt hij dat achter ogenschijnlijk gewone vracht een netwerk schuilgaat waarin wapens, militaire elektronica en internationale belangen samenkomen. Documenten kloppen. Containers zijn verzegeld. Systemen geven geen alarm. En toch klopt er iets niet.",
+      "Terwijl het onderzoek zich verplaatst van de Zeeuwse kust naar de donkere randen van de Rotterdamse haven, wordt steeds moeilijker vast te stellen wie de waarheid spreekt en wie slechts precies genoeg waarheid vertelt om buiten beeld te blijven.",
+      "Schaduwen over Domburg is een moderne Nederlandse thriller over macht, internationale smokkel, technologie en de kwetsbaarheid van een wereld die vertrouwt op data, procedures en systemen. Een verhaal waarin de feiten helder kunnen zijn, de vragen logisch lijken en de antwoorden allesbehalve duidelijk zijn.",
     ],
     coverImage: "/assets/schaduwen-over-domburg-cover.webp",
     coverAlt:
@@ -153,12 +154,13 @@ export const books: Book[] = [
       tagline:
         "A body on the beach at Domburg. A detective who broke a promise five years ago. And a lie that, like the sea, always washes back ashore.",
       description:
-        "A literary thriller about silence, guilt and the reckoning that always comes — set on the Dutch coast, where an old promise returns with the tide.",
+        "A body washes ashore on the beach at Domburg. What first appears to be an isolated case soon points to something far larger.",
       longDescription: [
-        "On the beach at Domburg, the body of an American washes ashore — a man no one here was supposed to know. For detective Tom Jansen — once with the Rotterdam seaport police, now nobody at all — it is no stranger's case. It is an old debt returning with the tide.",
-        "Five years earlier, Jansen promised this man protection. He did not keep that promise. Now the man lies on the sand, beside a watch that recorded exactly four minutes before it stopped — four minutes in which someone stood before him whom the sea has not given up.",
-        "Together with the Danish detective Larsen, Jansen follows a trail of shipping containers, missing weapon parts and men who go by assumed names — back to the harbour where he once swore his oath, and to a lie larger than himself.",
-        "Shadows over Domburg is a literary thriller about silence, guilt and the reckoning that always comes — written in the tradition of Mulisch and Hermans: cool, precise and unflinchingly honest about the things people never tell one another.",
+        "A body washes ashore on the beach at Domburg. What first appears to be an isolated case soon points to something far larger.",
+        "Tom Jansen, a former police officer with years of experience in the Port of Rotterdam, has left his active career behind. But when the trail leads back toward Rotterdam, he is drawn once more into a world he knows intimately: containers, freight forwarders, customs inspections and global trade routes through which enormous volumes of cargo move every day almost unnoticed.",
+        "At the Eemhaven, he discovers that behind seemingly ordinary shipments lies a network where weapons, military electronics and international interests intersect. The documents are correct. The containers are sealed. The systems raise no alarm. And yet something is wrong.",
+        "As the investigation moves from the windswept Zeeland coast to the darker edges of the Port of Rotterdam, it becomes increasingly difficult to determine who is telling the truth and who is revealing just enough of it to remain invisible.",
+        "Shadows over Domburg is a contemporary Dutch thriller about power, international smuggling, technology and the vulnerability of a world that has learned to trust data, procedures and systems. A story in which the facts may be clear, the questions may seem logical, and the answers are anything but.",
       ],
       coverImage:
         "/images/schaduwen-over-domburg-literaire-thriller-ard-breure.webp",
@@ -223,7 +225,7 @@ export const books: Book[] = [
     genre: "Technothriller",
     author: "Ard Breure",
     tagline:
-      "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen.",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
     description:
       "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
     longDescription: [
@@ -291,7 +293,7 @@ export const books: Book[] = [
       subtitle: "A technothriller",
       genre: "Technothriller",
       tagline:
-        "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
       description:
         "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
       longDescription: [

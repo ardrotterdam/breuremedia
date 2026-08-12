@@ -32,6 +32,8 @@ const localizedBook: Book = {
   title: en.title,
   subtitle: en.subtitle,
   tagline: en.tagline,
+  description: en.description,
+  longDescription: en.longDescription,
   coverImage: en.coverImage ?? featuredBook.coverImage,
   coverAlt: en.coverAlt,
   formatNote: en.formatNote,

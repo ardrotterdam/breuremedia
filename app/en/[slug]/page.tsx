@@ -72,6 +72,8 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
     title: en.title,
     subtitle: en.subtitle,
     tagline: en.tagline,
+    description: en.description,
+    longDescription: en.longDescription,
     coverImage: en.coverImage ?? book.coverImage,
     coverAlt: en.coverAlt,
     formatNote: en.formatNote,
