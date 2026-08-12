@@ -130,8 +130,8 @@ function jsonFail(message: string, status: 400 | 500) {
   );
 }
 
-const RESEND_FROM = "Breure Media <onboarding@resend.dev>";
-const LEAD_TO = "ardrotterdam@gmail.com";
+const RESEND_FROM = "Breure Media <wachtlijst@breuremedia.com>";
+const LEAD_TO = "info@breuremedia.com";
 
 export async function POST(request: Request) {
   try {
@@ -213,7 +213,6 @@ export async function POST(request: Request) {
     // Confirmation is best-effort: lead already captured, so always succeed to the client.
     try {
       const confirmationResult = await resend.emails.send({
-        // Temporary: Resend onboarding sender until custom domain DNS is verified.
         from: RESEND_FROM,
         to: email,
         subject: confirmation.subject,
