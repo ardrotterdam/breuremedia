@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticTranslations: Record<string, string> = {
     "": "/en",
     "/boeken": "/en/books",
+    "/e-readers": "/en/e-readers",
     "/over-de-auteur": "/en/about",
     "/contact": "/en/contact",
     "/privacy": "/en/privacy",
@@ -49,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-08-12",
       priority: 0.8,
       changeFrequency: "weekly",
+    },
+    {
+      path: "/en/e-readers",
+      lastModified: "2026-08-12",
+      priority: 0.7,
+      changeFrequency: "monthly",
     },
     {
       path: "/en/about",
@@ -73,6 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const englishNlPath: Record<string, string> = {
     "/en": "",
     "/en/books": "/boeken",
+    "/en/e-readers": "/e-readers",
     "/en/about": "/over-de-auteur",
     "/en/contact": "/contact",
     "/en/privacy": "/privacy",

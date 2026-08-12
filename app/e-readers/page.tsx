@@ -35,6 +35,11 @@ export const metadata: Metadata = buildMetadata({
     "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg, op de achtergrond het Zeeuwse strand en de zee",
   imageWidth: 1600,
   imageHeight: 873,
+  languages: {
+    nl: "/e-readers",
+    en: "/en/e-readers",
+    "x-default": "/en/e-readers",
+  },
 });
 
 const breadcrumbs = [

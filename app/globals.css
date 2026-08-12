@@ -398,17 +398,25 @@ input:focus-visible {
 }
 
 .nav-dropdown-caret {
+  display: inline-block;
   width: 0;
   height: 0;
-  border-left: 3.5px solid transparent;
-  border-right: 3.5px solid transparent;
-  border-top: 4px solid currentColor;
-  opacity: 0.7;
-  transition: transform 200ms var(--ease-header);
+  border-left: 5.5px solid transparent;
+  border-right: 5.5px solid transparent;
+  border-top: 7px solid var(--color-gold);
+  opacity: 1;
+  flex-shrink: 0;
+  transition: transform 250ms var(--ease-header), border-top-color 200ms ease;
 }
 
 .nav-dropdown.is-open .nav-dropdown-caret {
   transform: rotate(180deg);
+  border-top-color: var(--color-gold-light);
+}
+
+.nav-dropdown-trigger:hover .nav-dropdown-caret,
+.nav-dropdown-trigger:focus-visible .nav-dropdown-caret {
+  border-top-color: var(--color-gold-light);
 }
 
 /* Inktlijn — underline die zichzelf tekent. Subtiel verloop van licht
@@ -1505,10 +1513,17 @@ input:focus-visible {
 
   .nav.is-open {
     display: flex;
+    min-height: calc(100dvh - var(--header-height));
     max-height: calc(100dvh - var(--header-height));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    background-color: var(--color-charcoal);
+  }
+
+  .site-header.is-scrolled .nav.is-open {
+    min-height: calc(100dvh - var(--header-height-scrolled));
+    max-height: calc(100dvh - var(--header-height-scrolled));
   }
 
   .nav > a,
@@ -1517,6 +1532,12 @@ input:focus-visible {
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     width: 100%;
     justify-content: space-between;
+  }
+
+  .nav-dropdown-caret {
+    border-left-width: 6.5px;
+    border-right-width: 6.5px;
+    border-top-width: 8px;
   }
 
   /* Inktlijn werkt niet op full-width menu-items; actieve pagina

@@ -10,9 +10,8 @@ export type Locale = "nl" | "en";
 
 /**
  * Navigation shown in the English (/en) section.
- * Only links to routes that exist under /en (books overview, titles,
- * about, contact). NL-only guides (e-readers, blog, theme pages) are
- * omitted so the language switch and mobile menu never hit a 404.
+ * Mirrors the core NL header: Books dropdown, E-readers, Author, Contact.
+ * NL-only guides (blog, theme pages) stay omitted until EN twins exist.
  */
 export const enNavLinks: readonly NavItem[] = [
   {
@@ -39,6 +38,7 @@ export const enNavLinks: readonly NavItem[] = [
       },
     ],
   },
+  { type: "link", href: "/en/e-readers", label: "E-readers" },
   { type: "link", href: "/en/about", label: "Author" },
   { type: "link", href: "/en/contact", label: "Contact" },
 ];
@@ -52,6 +52,7 @@ const routePairs: readonly (readonly [string, string])[] = [
   ["/boeken", "/en/books"],
   ["/boeken/schaduwen-over-domburg", "/en/shadows-over-domburg"],
   ["/boeken/zero-day-directive", "/en/zero-day-directive"],
+  ["/e-readers", "/en/e-readers"],
   ["/over-de-auteur", "/en/about"],
   ["/contact", "/en/contact"],
   ["/privacy", "/en/privacy"],
@@ -98,6 +99,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     tagline: "Independent imprint for books and original stories.",
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
+      { type: "link", href: "/en/e-readers", label: "E-readers" },
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },
       { type: "link", href: "/en/privacy", label: "Privacy" },
