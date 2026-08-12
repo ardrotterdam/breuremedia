@@ -86,6 +86,23 @@ function buildConfirmationHtml(body: string, language: Language): string {
 </html>`;
 }
 
+function buildLeadNotificationText(fields: {
+  email: string;
+  book: string;
+  language: Language;
+  pageUrl: string;
+  source: string;
+}): string {
+  return [
+    "New newsletter sign-up",
+    `Email: ${fields.email}`,
+    `Book: ${fields.book}`,
+    `Language: ${fields.language}`,
+    `Page: ${fields.pageUrl}`,
+    `Source: ${fields.source}`,
+  ].join("\n");
+}
+
 function buildDashboardSubject(book: string, language: Language): string {
   if (language === "EN") {
     return `New sign-up: ${book} (EN)`;
@@ -113,19 +130,8 @@ function jsonFail(message: string, status: 400 | 500) {
   );
 }
 
-async function readJsonSafe(
-  response: Response
-): Promise<{ data: Record<string, unknown> | null; raw: string }> {
-  const raw = await response.text();
-  if (!raw.trim()) {
-    return { data: null, raw };
-  }
-  try {
-    return { data: JSON.parse(raw) as Record<string, unknown>, raw };
-  } catch {
-    return { data: null, raw };
-  }
-}
+const RESEND_FROM = "Breure Media <onboarding@resend.dev>";
+const LEAD_TO = "info@breuremedia.com";
 
 export async function POST(request: Request) {
   try {
@@ -149,109 +155,68 @@ export async function POST(request: Request) {
       return jsonFail("Invalid email address.", 400);
     }
 
-    // Honeypot: pretend success without forwarding or emailing.
+    // Honeypot: pretend success without emailing.
     if (payload.botcheck) {
-      console.info("[newsletter] Honeypot triggered; skipping forward.");
+      console.info("[newsletter] Honeypot triggered; skipping send.");
       return jsonOk();
     }
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     const resendApiKey = process.env.RESEND_API_KEY;
 
-    if (!accessKey) {
-      console.error("[newsletter] Missing NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY");
+    if (!resendApiKey) {
+      console.error("[newsletter] Missing RESEND_API_KEY");
       return jsonFail("Server configuration error.", 500);
     }
 
-    const web3Body = {
-      access_key: accessKey,
-      subject: buildDashboardSubject(book, language),
-      from_name: "Breure Media website",
-      name: "Newsletter subscriber",
+    const resend = new Resend(resendApiKey);
+    const confirmation = buildConfirmation(book, language);
+    const leadText = buildLeadNotificationText({
       email,
-      message: [
-        `New newsletter sign-up`,
-        `Email: ${email}`,
-        `Book: ${book}`,
-        `Language: ${language}`,
-        `Page: ${pageUrl}`,
-        `Source: ${source}`,
-      ].join("\n"),
       book,
       language,
-      page_url: pageUrl,
+      pageUrl,
       source,
-    };
+    });
 
-    // 1) Always persist the lead in Web3Forms first (source of truth).
     try {
-      const web3Response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(web3Body),
-      });
+      const [leadResult, confirmationResult] = await Promise.all([
+        resend.emails.send({
+          from: RESEND_FROM,
+          to: LEAD_TO,
+          replyTo: email,
+          subject: buildDashboardSubject(book, language),
+          text: leadText,
+        }),
+        resend.emails.send({
+          // Temporary: Resend onboarding sender until custom domain DNS is verified.
+          from: RESEND_FROM,
+          to: email,
+          subject: confirmation.subject,
+          html: buildConfirmationHtml(confirmation.body, language),
+          text: confirmation.body,
+        }),
+      ]);
 
-      const { data: web3Data, raw: web3Raw } = await readJsonSafe(web3Response);
-      const web3Success = web3Response.ok && web3Data?.success === true;
-
-      if (!web3Success) {
-        console.error("[newsletter] Web3Forms submit failed:", {
-          status: web3Response.status,
-          statusText: web3Response.statusText,
-          data: web3Data,
-          raw: web3Raw.slice(0, 500),
+      if (leadResult.error) {
+        console.error("[newsletter] Lead notification failed:", {
+          error: leadResult.error,
           email,
           book,
           language,
           source,
           page_url: pageUrl,
         });
-        return jsonFail("Failed to store subscription.", 500);
+        return jsonFail("Failed to send subscription notification.", 500);
       }
-    } catch (error) {
-      console.error("[newsletter] Web3Forms request error:", {
-        error,
-        email,
-        book,
-        language,
-        source,
-        page_url: pageUrl,
-      });
-      return jsonFail("Failed to store subscription.", 500);
-    }
 
-    // 2) Confirmation email via Resend — best-effort; never undo a stored lead.
-    if (!resendApiKey) {
-      console.error(
-        "[newsletter] Missing RESEND_API_KEY — lead stored in Web3Forms; skipping confirmation email."
-      );
-      return jsonOk();
-    }
-
-    const confirmation = buildConfirmation(book, language);
-
-    try {
-      const resend = new Resend(resendApiKey);
-      const { error } = await resend.emails.send({
-        // Temporary: Resend onboarding sender until custom domain DNS is verified.
-        from: "Breure Media <onboarding@resend.dev>",
-        to: email,
-        subject: confirmation.subject,
-        html: buildConfirmationHtml(confirmation.body, language),
-        text: confirmation.body,
-      });
-
-      if (error) {
-        console.error("[newsletter] Resend send failed:", {
-          error,
+      if (confirmationResult.error) {
+        console.error("[newsletter] Confirmation email failed:", {
+          error: confirmationResult.error,
           email,
           book,
           language,
         });
-        // Lead is already in Web3Forms; still report success to the visitor.
+        return jsonFail("Failed to send confirmation email.", 500);
       }
     } catch (error) {
       console.error("[newsletter] Resend request error:", {
@@ -259,7 +224,10 @@ export async function POST(request: Request) {
         email,
         book,
         language,
+        source,
+        page_url: pageUrl,
       });
+      return jsonFail("Failed to send emails.", 500);
     }
 
     return jsonOk();
