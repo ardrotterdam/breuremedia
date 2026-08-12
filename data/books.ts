@@ -209,6 +209,134 @@ export const books: Book[] = [
       ],
     },
   },
+  {
+    slug: "zero-day-directive",
+    title: "Zero Day Directive",
+    subtitle: "Een technothriller",
+    genre: "Technothriller",
+    author: "Ard Breure",
+    tagline:
+      "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen.",
+    description:
+      "Een technothriller over stilzwijgen, systeemfouten en de rekening die altijd komt — in een wereld waar alles met elkaar verbonden is.",
+    longDescription: [
+      "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen. Zero Day Directive is een thriller over stilzwijgen, systeemfouten en de rekening die altijd komt.",
+      "Tussen fysieke en digitale werkelijkheid loopt een grens die steeds dunner wordt. Wie zwijgt, wie dekt af, en wie betaalt wanneer een onzichtbare fout openbaar wordt?",
+      "Zero Day Directive is een zelfstandige technothriller van Ard Breure — geschreven in dezelfde literaire traditie als Schaduwen over Domburg: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
+    ],
+    coverImage: "/assets/zerodaydirective.png",
+    coverAlt: "Boekomslag van Zero Day Directive door Ard Breure",
+    price: 29.95,
+    priceFormatted: "€29,95",
+    currency: "EUR",
+    language: "nl",
+    format: "Paperback",
+    formatNote:
+      "Zero Day Directive verschijnt naar verwachting najaar 2027. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
+    setting: "Nederland — de grens tussen fysieke en digitale werkelijkheid",
+    themes: [
+      "Technologie en kwetsbaarheid",
+      "Stilzwijgen en geheimen",
+      "Morele keuzes in een digitale wereld",
+    ],
+    keywords: [
+      "technothriller",
+      "Nederlandse thriller",
+      "literaire thriller",
+      "cyberthriller",
+      "Zero Day Directive",
+      "Ard Breure",
+    ],
+    faq: [
+      {
+        question: "Wanneer verschijnt Zero Day Directive?",
+        answer:
+          "Zero Day Directive verschijnt naar verwachting najaar 2027. Schrijf je in voor de wachtlijst om als eerste op de hoogte te worden gebracht.",
+      },
+      {
+        question: "Wat is Zero Day Directive over?",
+        answer:
+          "Een technothriller over de kwetsbaarheid van onze verbonden wereld. Een verhaal over stilzwijgen, systeemfouten en de rekening die altijd komt.",
+      },
+      {
+        question:
+          "Is Zero Day Directive een vervolg op Schaduwen over Domburg?",
+        answer:
+          "Nee, Zero Day Directive is een zelfstandige thriller. Wel geschreven in dezelfde literaire traditie.",
+      },
+      {
+        question: "Hoe kan ik Zero Day Directive bestellen?",
+        answer:
+          "Zero Day Directive verschijnt naar verwachting najaar 2027. De bestelfunctionaliteit volgt zodra de verschijningsdatum vaststaat. Schrijf je in via het formulier op deze pagina of neem contact op via info@breuremedia.com om als eerste bericht te ontvangen.",
+      },
+      {
+        question: "Wat kost het boek?",
+        answer:
+          "De adviesprijs is €29,95. Het boek verschijnt naar verwachting najaar 2027; de definitieve uitvoering (paperback of hardcover) en het exacte verschijningsmoment worden nader bekendgemaakt.",
+      },
+    ],
+    en: {
+      slug: "zero-day-directive",
+      title: "Zero Day Directive",
+      subtitle: "A technothriller",
+      genre: "Technothriller",
+      tagline:
+        "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming.",
+      description:
+        "A technothriller about silence, system failures, and the debt that always comes due — in a world where everything is connected.",
+      longDescription: [
+        "In a world where everything is connected, the most dangerous vulnerability is the one no one sees coming. Zero Day Directive is a thriller about silence, system failures, and the debt that always comes due.",
+        "Between physical and digital reality runs a border that grows thinner by the day. Who stays silent, who covers up, and who pays when an invisible failure becomes public?",
+        "Zero Day Directive is a standalone technothriller by Ard Breure — written in the same literary tradition as Shadows over Domburg: cool, precise, and unflinchingly honest about the things people never tell one another.",
+      ],
+      coverAlt: "Book cover of Zero Day Directive by Ard Breure",
+      formatNote:
+        "Zero Day Directive is expected to be published in autumn 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
+      setting:
+        "The Netherlands — the border between physical and digital reality",
+      themes: [
+        "Technology and vulnerability",
+        "Silence and secrets",
+        "Moral choices in a digital world",
+      ],
+      keywords: [
+        "technothriller",
+        "Dutch thriller",
+        "literary thriller",
+        "cyber thriller",
+        "Zero Day Directive",
+        "Ard Breure",
+      ],
+      faq: [
+        {
+          question: "When will Zero Day Directive be published?",
+          answer:
+            "Zero Day Directive is expected to be published in autumn 2027. Join the waiting list to be notified first.",
+        },
+        {
+          question: "What is Zero Day Directive about?",
+          answer:
+            "A technothriller about the vulnerability of our connected world. A story about silence, system failures, and the debt that always comes due.",
+        },
+        {
+          question:
+            "Is Zero Day Directive a sequel to Shadows over Domburg?",
+          answer:
+            "No, Zero Day Directive is a standalone thriller. Written in the same literary tradition.",
+        },
+        {
+          question: "How can I order Zero Day Directive?",
+          answer:
+            "Zero Day Directive is expected in autumn 2027. Ordering will open once the release date is confirmed. Sign up through the form on this page or write to info@breuremedia.com to be the first to know.",
+        },
+        {
+          question: "What does the book cost?",
+          answer:
+            "The recommended price is €29.95. The book is expected in autumn 2027; the final edition (paperback or hardcover) and the exact release date will be announced later.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getAllBooks(): Book[] {
