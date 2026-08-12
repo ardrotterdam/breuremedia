@@ -17,7 +17,7 @@ export const metadata: Metadata = buildMetadata({
   title: `${en.title} | ${author.name} | ${siteConfig.name}`,
   description: en.description,
   path: "/en",
-  image: featuredBook.coverImage,
+  image: en.coverImage ?? featuredBook.coverImage,
   imageAlt: en.coverAlt,
   locale: "en_US",
   languages: {
@@ -32,6 +32,7 @@ const localizedBook: Book = {
   title: en.title,
   subtitle: en.subtitle,
   tagline: en.tagline,
+  coverImage: en.coverImage ?? featuredBook.coverImage,
   coverAlt: en.coverAlt,
   formatNote: en.formatNote,
   priceFormatted: "€29.95",
@@ -67,6 +68,7 @@ export default function EnglishHomePage() {
             ...upcomingBook,
             title: upcomingEn.title,
             subtitle: upcomingEn.subtitle,
+            coverImage: upcomingEn.coverImage ?? upcomingBook.coverImage,
             coverAlt: upcomingEn.coverAlt,
           }}
           copy={{

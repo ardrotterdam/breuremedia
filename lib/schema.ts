@@ -31,12 +31,9 @@ export function personSchema(jobTitle: string = "Auteur") {
 }
 
 export function bookSchema(book: Book) {
-  // Prefer the full English description for Schema.org when available;
-  // fall back to the Dutch long description joined as a single string.
+  // Use the Dutch long description for the Dutch Book schema (inLanguage: nl).
   const schemaDescription =
-    book.en?.longDescription.join(" ") ??
-    book.longDescription.join(" ") ??
-    book.description;
+    book.longDescription.join(" ") || book.description;
 
   return {
     "@type": "Book",
@@ -94,7 +91,7 @@ export function englishBookSchema(book: Book & { en: BookTranslation }) {
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    image: absoluteUrl(book.coverImage),
+    image: absoluteUrl(en.coverImage ?? book.coverImage),
     url: enUrl,
     workExample: {
       "@type": "Book",

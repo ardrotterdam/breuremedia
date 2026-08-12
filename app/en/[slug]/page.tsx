@@ -42,7 +42,7 @@ export async function generateMetadata({
     title: bookPageTitle(en.title, book.author),
     description: en.description,
     path: `/en/${en.slug}`,
-    image: book.coverImage,
+    image: en.coverImage ?? book.coverImage,
     imageAlt: en.coverAlt,
     type: "article",
     keywords: en.keywords,
@@ -66,12 +66,13 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
   const en = book.en;
 
   // Localised view of the book for the shared hero, using the English text and
-  // an English-formatted price. Commercial fields (cover, format) are shared.
+  // an English-formatted price. Format/price stay shared; cover may be EN-specific.
   const localizedBook: Book = {
     ...book,
     title: en.title,
     subtitle: en.subtitle,
     tagline: en.tagline,
+    coverImage: en.coverImage ?? book.coverImage,
     coverAlt: en.coverAlt,
     formatNote: en.formatNote,
     priceFormatted: "€29.95",

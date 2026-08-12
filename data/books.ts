@@ -6,8 +6,9 @@ export interface FaqItem {
 /**
  * Optional English translation of a book's editorial content. Only titles
  * the author publishes in English carry this block; Dutch-only titles leave
- * it undefined. Structural/commercial fields (slug, price, currency, format,
- * cover image) are shared and stay on the parent Book.
+ * it undefined. Structural/commercial fields (slug, price, currency, format)
+ * are shared and stay on the parent Book. Cover image may be overridden when
+ * the English edition has its own artwork.
  */
 export interface BookTranslation {
   /** English URL slug, used under /en/<slug>. */
@@ -18,6 +19,8 @@ export interface BookTranslation {
   tagline: string;
   description: string;
   longDescription: string[];
+  /** English-edition cover; falls back to the parent Book coverImage when omitted. */
+  coverImage?: string;
   coverAlt: string;
   formatNote: string;
   setting: string;
@@ -81,7 +84,8 @@ export const books: Book[] = [
       "Schaduwen over Domburg is een literaire thriller over stilte, schuld en de rekening die altijd komt — geschreven in de traditie van Mulisch en Hermans: koel, precies, en genadeloos eerlijk over wat mensen elkaar niet vertellen.",
     ],
     coverImage: "/assets/schaduwen-over-domburg-cover.webp",
-    coverAlt: "Boekomslag van Schaduwen over Domburg door Ard Breure",
+    coverAlt:
+      "Boekomslag Schaduwen over Domburg, een literaire thriller van Ard Breure met een donker strand, watertoren en skyline",
     price: 29.95,
     priceFormatted: "€29,95",
     currency: "EUR",
@@ -156,7 +160,10 @@ export const books: Book[] = [
         "Together with the Danish detective Larsen, Jansen follows a trail of shipping containers, missing weapon parts and men who go by assumed names — back to the harbour where he once swore his oath, and to a lie larger than himself.",
         "Shadows over Domburg is a literary thriller about silence, guilt and the reckoning that always comes — written in the tradition of Mulisch and Hermans: cool, precise and unflinchingly honest about the things people never tell one another.",
       ],
-      coverAlt: "Book cover of Shadows over Domburg by Ard Breure",
+      coverImage:
+        "/images/schaduwen-over-domburg-literaire-thriller-ard-breure.webp",
+      coverAlt:
+        "Book cover of Shadows Over Domburg, a literary thriller novel by Ard Breure featuring a dark beach, lighthouse, and skyline",
       formatNote:
         "Shadows over Domburg is expected in autumn 2026. Sign up for the newsletter to be the first to hear the exact release date, price and an exclusive preview.",
       setting: "Domburg, Zeeland — the Dutch coast",
@@ -218,13 +225,13 @@ export const books: Book[] = [
     tagline:
       "In een wereld waar alles met elkaar verbonden is, is de gevaarlijkste kwetsbaarheid degene die niemand ziet aankomen.",
     description:
-      "Een zero-day exploit slaat toe in het hart van de Europese democratie. De klok tikt — en de grens tussen loyaliteit en verraad vervaagt.",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
     longDescription: [
-      "Een zero-day exploit slaat toe in het hart van de Europese democratie. De klok tikt — en de grens tussen loyaliteit en verraad vervaagt.",
-      "Wanneer een verwoestende cyberaanval het Europees Parlement lamlegt, staat Europa met de rug tegen de muur. Terwijl Brussel zich voorbereidt op een historische stemming over digitale soevereiniteit — kiezend tussen zijn traditionele bondgenootschap met Amerika en een onafhankelijke toekomst — eist Iran de aanval op, met de dreiging de Straat van Hormuz te sluiten om Europese neutraliteit af te dwingen.",
-      "Slechts één cybersecurity-analist in Brussel stuit op de gevaarlijke waarheid die verscholen ligt in de code. Maar terwijl hij door een labyrint van staatsgesponsorde hacking, politieke spionage en digitale oorlogsvoering raast, wordt de stemming zelf stiekem gemanipuleerd. Als de uitslag omslaat, zal het geopolitieke machtsevenwicht voor altijd verschuiven.",
-      "Boordevol authentieke techspanning, hartslagversnellende actie en realistische geopolitiek is Zero Day Directive een meeslepende technothriller voor fans van Tom Clancy, Daniel Silva en William Gibson.",
-      "Zal de waarheid aan het licht komen voordat de democratie wordt herschreven?",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
+      "Wanneer een verwoestende cyberaanval het Europees Parlement verlamt, wordt Europa in een hoek gedreven. Terwijl Brussel zich voorbereidt op een historische stemming over digitale souvereiniteit—waarin gekozen moet worden tussen de traditionele alliantie met Amerika en een onafhankelijke koers—eist Iran de aanval op en dreigt de Straat van Hormuz te sluiten om Europese neutraliteit af te dwingen.",
+      "Slechts één cybersecurity-analist in Brussel stuit op de gevaarlijke waarheid die in de code verborgen zit. Maar terwijl hij zich een weg baant door een labyrint van staatshacking, politieke spionage en digitale oorlogsvoering, wordt de stemming zelf in het geheim gemanipuleerd. Als de uitslag kantelt, verschuift het geopolitieke machtsevenwicht voorgoed.",
+      "Boordevol authentieke tech-spanning, zenuwslopende actie en realistische geopolitiek is Zero Day Directive een meeslepende techno-thriller voor liefhebbers van Tom Clancy, Daniel Silva en William Gibson.",
+      "Komt de waarheid boven tafel voordat de democratie wordt herschreven?",
     ],
     coverImage: "/assets/zero-day-directive.webp",
     coverAlt:
