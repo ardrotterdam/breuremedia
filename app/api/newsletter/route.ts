@@ -131,21 +131,14 @@ export async function POST(request: Request) {
   const resendApiKey = process.env.RESEND_API_KEY;
 
   if (!accessKey) {
-    console.error("Missing NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY");
+    console.error("[newsletter] Missing NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY");
     return NextResponse.json(
       { success: false, message: "Server configuration error." },
       { status: 500 }
     );
   }
 
-  if (!resendApiKey) {
-    console.error("Missing RESEND_API_KEY");
-    return NextResponse.json(
-      { success: false, message: "Server configuration error." },
-      { status: 500 }
-    );
-  }
-
+  // 1) Always persist the lead in Web3Forms first (source of truth).
   try {
     const web3Response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -171,18 +164,29 @@ export async function POST(request: Request) {
     };
 
     if (!web3Response.ok || !web3Data.success) {
-      console.error("Web3Forms submit failed:", web3Data);
+      console.error("[newsletter] Web3Forms submit failed:", {
+        status: web3Response.status,
+        data: web3Data,
+      });
       return NextResponse.json(
         { success: false, message: "Failed to store subscription." },
         { status: 502 }
       );
     }
   } catch (error) {
-    console.error("Web3Forms request error:", error);
+    console.error("[newsletter] Web3Forms request error:", error);
     return NextResponse.json(
       { success: false, message: "Failed to store subscription." },
       { status: 502 }
     );
+  }
+
+  // 2) Confirmation email via Resend — best-effort; never undo a stored lead.
+  if (!resendApiKey) {
+    console.error(
+      "[newsletter] Missing RESEND_API_KEY — lead stored in Web3Forms; skipping confirmation email."
+    );
+    return NextResponse.json({ success: true });
   }
 
   const confirmation = buildConfirmation(book, language);
@@ -190,7 +194,8 @@ export async function POST(request: Request) {
 
   try {
     const { error } = await resend.emails.send({
-      from: `Breure Media <${siteConfig.email}>`,
+      // Temporary: Resend onboarding sender until custom domain DNS is verified.
+      from: "Breure Media <onboarding@resend.dev>",
       to: email,
       subject: confirmation.subject,
       html: buildConfirmationHtml(confirmation.body, language),
@@ -198,11 +203,11 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error("Resend send failed:", error);
+      console.error("[newsletter] Resend send failed:", error);
       // Lead is already in Web3Forms; still report success to the visitor.
     }
   } catch (error) {
-    console.error("Resend request error:", error);
+    console.error("[newsletter] Resend request error:", error);
   }
 
   return NextResponse.json({ success: true });
