@@ -322,6 +322,17 @@ export default function WaterdichteEReaderPage() {
             steeds goed in een tas past. De 32 GB opslag is voor gewone e-books
             zeer ruim.
           </p>
+          <figure className="content-section">
+            <Image
+              src="/assets/waterdichte-ereader-kobo-libra-colour-zwembad.webp"
+              alt="Waterdichte e-reader Kobo Libra Colour gebruikt in het zwembad"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 48rem"
+              style={{ width: "100%", height: "auto" }}
+              loading="lazy"
+            />
+          </figure>
           <p className="content-paragraph">
             Het belangrijkste voordeel aan het water zijn de{" "}
             <strong>fysieke bladerknoppen</strong>. Een touchscreen kan door

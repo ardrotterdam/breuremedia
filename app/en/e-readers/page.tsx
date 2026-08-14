@@ -306,6 +306,23 @@ export default function EnglishEReadersPage() {
             <h2 id={`${model.slug}-heading`} className="content-heading">
               {model.title}
             </h2>
+            {model.slug === "kobo-libra-colour" ? (
+              <figure className="content-section">
+                <Image
+                  src="/assets/waterdichte-ereader-kobo-libra-colour-zwembad.webp"
+                  alt="Waterproof Kobo Libra Colour e-reader used in a swimming pool"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                  style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
+                />
+                <figcaption className="content-meta">
+                  The waterproof Kobo Libra Colour is suitable for reading by
+                  the pool.
+                </figcaption>
+              </figure>
+            ) : null}
             {model.body.map((paragraph) => (
               <p key={paragraph.slice(0, 48)} className="content-paragraph">
                 {paragraph}
