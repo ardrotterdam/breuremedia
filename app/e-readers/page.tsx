@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContentBadge } from "@/components/ContentBadge";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
@@ -287,6 +288,7 @@ export default function EReadersPage() {
             <table className="content-table">
             <thead>
               <tr>
+                <th scope="col">#</th>
                 <th scope="col">Model</th>
                 <th scope="col">Voor wie</th>
                 <th scope="col">Scherm</th>
@@ -295,37 +297,55 @@ export default function EReadersPage() {
             </thead>
             <tbody>
               <tr>
-                <td>Kindle Paperwhite</td>
+                <td>1</td>
+                <td>
+                  <a href="#kindle-paperwhite">Kindle Paperwhite</a>
+                </td>
                 <td>De meeste lezers — beste koop</td>
                 <td>7&quot;, zwart-wit</td>
                 <td>Ja</td>
               </tr>
               <tr>
-                <td>Kindle (basismodel)</td>
+                <td>2</td>
+                <td>
+                  <a href="#kindle-basis">Kindle (basismodel)</a>
+                </td>
                 <td>Kleinste budget</td>
                 <td>6&quot;, zwart-wit</td>
                 <td>Nee</td>
               </tr>
               <tr>
-                <td>Kobo Libra Colour</td>
+                <td>3</td>
+                <td>
+                  <a href="#kobo-libra-colour">Kobo Libra Colour</a>
+                </td>
                 <td>Wie kleur en bladerknoppen wil, zonder Amazon</td>
                 <td>7&quot;, kleur</td>
                 <td>Ja</td>
               </tr>
               <tr>
-                <td>Kobo Clara BW</td>
+                <td>4</td>
+                <td>
+                  <a href="#kobo-clara-bw">Kobo Clara BW</a>
+                </td>
                 <td>Compact en betaalbaar, zonder Amazon</td>
                 <td>6&quot;, zwart-wit</td>
                 <td>Ja</td>
               </tr>
               <tr>
-                <td>Kindle Scribe</td>
+                <td>5</td>
+                <td>
+                  <a href="#kindle-scribe">Kindle Scribe</a>
+                </td>
                 <td>Notities maken op groot scherm</td>
                 <td>10,2&quot;, met pen</td>
                 <td>Nee</td>
               </tr>
               <tr>
-                <td>Kindle Colorsoft</td>
+                <td>6</td>
+                <td>
+                  <a href="#kindle-colorsoft">Kindle Colorsoft</a>
+                </td>
                 <td>Kleur binnen het Kindle-ecosysteem</td>
                 <td>7&quot;, kleur</td>
                 <td>Ja</td>
@@ -340,9 +360,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kindle-paperwhite-heading"
         >
-          <h2 id="kindle-paperwhite-heading" className="content-heading">
-            Kindle Paperwhite — de beste e-reader voor de meeste mensen
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kindle-paperwhite-heading" className="content-heading">
+              1. Kindle Paperwhite: de beste e-reader voor de meeste mensen
+            </h2>
+            <ContentBadge>Beste koop</ContentBadge>
+          </div>
           <p className="content-paragraph">
             Als iemand mij op een verjaardag vraagt &quot;welke e-reader moet
             ik kopen?&quot;, is dit negen van de tien keer het antwoord. Het
@@ -372,9 +395,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kindle-basis-heading"
         >
-          <h2 id="kindle-basis-heading" className="content-heading">
-            Kindle (basismodel) — de slimste instap
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kindle-basis-heading" className="content-heading">
+              2. Kindle (basismodel): de slimste instap
+            </h2>
+            <ContentBadge>Beste instap</ContentBadge>
+          </div>
           <p className="content-paragraph">
             De goedkoopste Kindle is de laatste jaren stilletjes heel goed
             geworden: hetzelfde scherpe schermtype als de Paperwhite, licht
@@ -428,9 +454,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kobo-libra-colour-heading"
         >
-          <h2 id="kobo-libra-colour-heading" className="content-heading">
-            Kobo Libra Colour review: de beste e-reader buiten Amazon
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kobo-libra-colour-heading" className="content-heading">
+              3. Kobo Libra Colour: de beste e-reader buiten Amazon
+            </h2>
+            <ContentBadge>Beste zonder Amazon</ContentBadge>
+          </div>
           <p className="content-paragraph">
             Er zijn lezers die hun boeken kopen waar het uitkomt: de ene keer
             bij bol, dan bij de Kobo-winkel, soms gratis geleend bij de
@@ -506,9 +535,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kobo-clara-bw-heading"
         >
-          <h2 id="kobo-clara-bw-heading" className="content-heading">
-            Kobo Clara BW review: klein, licht en verrassend compleet
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kobo-clara-bw-heading" className="content-heading">
+              4. Kobo Clara BW: klein, licht en verrassend compleet
+            </h2>
+            <ContentBadge>Beste compact</ContentBadge>
+          </div>
           <p className="content-paragraph">
             Niet iedereen wil het grootste scherm of een kleurendisplay. Er is
             een grote groep lezers die maar één ding vraagt: een licht apparaat
@@ -576,9 +608,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kindle-scribe-heading"
         >
-          <h2 id="kindle-scribe-heading" className="content-heading">
-            Kindle Scribe review: de e-reader waar je óók op schrijft
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kindle-scribe-heading" className="content-heading">
+              5. Kindle Scribe: de e-reader waar je óók op schrijft
+            </h2>
+            <ContentBadge>Beste om op te schrijven</ContentBadge>
+          </div>
           <p className="content-paragraph">
             Sommige lezers lezen niet alleen — ze werken met hun boeken.
             Aantekeningen in de kantlijn, onderstrepingen, gedachten die meteen
@@ -646,9 +681,12 @@ export default function EReadersPage() {
           className="content-section"
           aria-labelledby="kindle-colorsoft-heading"
         >
-          <h2 id="kindle-colorsoft-heading" className="content-heading">
-            Kindle Colorsoft review: de Paperwhite, maar dan in kleur
-          </h2>
+          <div className="content-heading-group">
+            <h2 id="kindle-colorsoft-heading" className="content-heading">
+              6. Kindle Colorsoft: de Paperwhite, maar dan in kleur
+            </h2>
+            <ContentBadge>Beste Kindle in kleur</ContentBadge>
+          </div>
           <p className="content-paragraph">
             Wie al jaren tevreden in het Kindle-ecosysteem leest en maar één
             ding mist — kleur — hoeft niet meer te kiezen. De Kindle Colorsoft
