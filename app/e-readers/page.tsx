@@ -15,13 +15,14 @@ import {
   breadcrumbSchema,
   buildJsonLd,
   collectionPageSchema,
+  faqSchema,
   itemListSchema,
 } from "@/lib/schema";
 
 const pageTitle =
   "Beste e-reader 2026: Kindle of Kobo? Eerlijke vergelijking | Breure Media";
 const pageDescription =
-  "In deze gids vergelijk ik de zes e-readers die er in 2026 echt toe doen, en vertel ik welke ik zelf zou kopen, afhankelijk van hoe jij leest.";
+  "In deze gids vergelijk ik de zes e-readers die er in 2026 wat mij betreft echt toe doen, vooral op de vraag: voor welk type lezer is dit de beste keuze?";
 const pagePath = "/e-readers";
 const heroImage =
   "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp";
@@ -75,112 +76,112 @@ const faqItems = [
   {
     question: "Is een e-reader beter voor je ogen dan een tablet?",
     answer:
-      "Ja. E-ink weerkaatst licht zoals papier, in plaats van licht in je ogen te stralen zoals een telefoon of tablet. Daarom lees je er urenlang op zonder vermoeide ogen, ook in de zon.",
+      "E-ink werkt anders dan het gewone lcd- of oledscherm van een telefoon of tablet. Het scherm oogt daardoor veel meer als papier en blijft ook in fel zonlicht goed leesbaar. Voor lange leessessies vinden veel mensen dat prettiger en rustiger dan een traditioneel beeldscherm.",
   },
   {
-    question: "Hoe lang gaat de batterij mee?",
+    question: "Hoe lang gaat de batterij van een e-reader mee?",
     answer:
-      "Weken, geen uren. Afhankelijk van model en gebruik: vier tot twaalf weken op één lading.",
+      "Denk eerder aan weken dan aan uren. Afhankelijk van het model, hoe vaak je leest en hoeveel verlichting je gebruikt, kom je grofweg uit op vier tot twaalf weken per lading. Dat is voor mij trouwens een van de fijnste eigenschappen van een e-reader: batterijstress speelt nauwelijks een rol.",
   },
   {
     question: "Kan ik bibliotheekboeken lezen op een e-reader?",
     answer:
-      "Voor e-books van de Nederlandse online Bibliotheek heb je doorgaans een geschikte e-reader, Adobe Digital Editions en een Windows- of Mac-computer nodig. Kindle ondersteunt de gebruikte Adobe DRM-beveiliging niet. In sommige andere landen kun je via OverDrive wel rechtstreeks vanaf een Kobo lenen. Dat geldt niet voor de Nederlandse online Bibliotheek.",
+      "Ja, maar niet op iedere e-reader op dezelfde manier. Voor e-books van de Nederlandse online Bibliotheek heb je doorgaans een geschikte e-reader, Adobe Digital Editions en een Windows- of Mac-computer nodig. Kindle ondersteunt de Adobe DRM-beveiliging die daarvoor wordt gebruikt niet. In sommige andere landen kun je met Kobo via OverDrive rechtstreeks boeken lenen. Dat werkt niet op dezelfde manier bij de Nederlandse online Bibliotheek.",
   },
   {
     question: "Welke e-reader is het beste voor Nederlandse boeken?",
     answer:
-      "Beide ecosystemen hebben een ruim Nederlands aanbod. Kobo heeft van oudsher sterke banden met de Nederlandse markt; Kindle heeft de grootste totale winkel.",
+      "Zowel Kindle als Kobo heeft een ruim aanbod Nederlandstalige boeken. Kobo heeft historisch een sterke positie op de Nederlandse markt en is bovendien flexibeler als je boeken uit verschillende bronnen gebruikt. Kindle heeft daartegenover een bijzonder grote internationale winkel. Ik zou de keuze daarom niet alleen laten afhangen van hoeveel Nederlandse titels er zijn, maar vooral van waar jij je boeken wilt kopen en lenen.",
   },
   {
     question: "Hoeveel batterijduur heeft de Kindle (basismodel)?",
     answer:
-      "Tot 6 weken op één volle lading, afhankelijk van gebruik.",
+      "Volgens Amazon gaat de batterij tot ongeveer zes weken mee op één volledige lading. Hoe lang je daar in de praktijk mee doet, hangt natuurlijk af van hoeveel je leest en hoe fel je de verlichting gebruikt.",
   },
   {
     question: "Is de Kindle (basismodel) waterdicht?",
     answer:
-      "Nee. Alleen de Kindle Paperwhite en duurdere modellen zijn waterdicht. Wil je een waterdichte e-reader, kies dan de Paperwhite of de Kobo Libra Colour.",
+      "Nee. Dat is een van de duidelijke verschillen met de Paperwhite. Lees je graag in bad, bij het zwembad of op vakantie aan het water, dan zou ik eerder naar de Kindle Paperwhite of Kobo Libra Colour kijken.",
   },
   {
     question: "Is het kleurenscherm van de Kobo Libra Colour net zo goed als een tablet?",
     answer:
-      "Nee, en dat is bewust. E Ink Kaleido 3 toont rustige, papierachtige kleuren zonder schittering of blauw licht: ideaal voor urenlang lezen, maar niet bedoeld voor video of felle graphics. Zie het als een gedrukt boek met kleurenillustraties, niet als een iPad.",
+      "Niet als je met \"goed\" bedoelt: helder, verzadigd en geschikt voor video. Maar dat probeert Kobo ook helemaal niet te maken. E Ink Kaleido 3 geeft veel rustigere, meer papierachtige kleuren. Voor lezen vind ik dat juist logisch: het scherm moet niet concurreren met een iPad. Zie het eerder als een gedrukt boek met kleurenillustraties.",
   },
   {
     question: "Kan ik met een Kobo e-reader boeken lenen bij de Nederlandse bibliotheek?",
     answer:
-      "Ja. Op een Kobo kun je e-books van de Nederlandse online Bibliotheek lezen, in tegenstelling tot een Kindle, die de Adobe DRM-beveiliging niet ondersteunt. Je leent via de website en zet de boeken met Adobe Digital Editions vanaf een Windows- of Mac-computer op je e-reader. Rechtstreeks lenen vanaf het apparaat, zoals OverDrive in sommige andere landen, hoort daar niet bij.",
+      "Ja. Op Kobo-modellen kun je e-books van de Nederlandse online Bibliotheek lezen via Adobe Digital Editions. Je leent het boek via de website en zet het vervolgens vanaf een Windows- of Mac-computer op je e-reader. Het rechtstreeks lenen vanaf de Kobo zelf, zoals dat via OverDrive in bepaalde landen mogelijk is, werkt niet op dezelfde manier voor de Nederlandse online Bibliotheek.",
   },
   {
     question: "Hoe lang gaat de batterij van de Kobo Libra Colour mee?",
     answer:
-      "Weken, bij normaal leesgebruik. E-ink verbruikt alleen stroom bij het omslaan van een pagina, dus één lading via USB-C is genoeg voor een hele vakantie.",
+      "Bij normaal gebruik gaat de batterij weken mee. Hoe lang precies hangt af van onder meer schermverlichting, Bluetooth en hoeveel je daadwerkelijk leest. Voor een normale vakantie hoef je in ieder geval niet voortdurend achter een stopcontact aan.",
   },
   {
     question: "Is de Kobo Libra Colour waterdicht?",
     answer:
-      "Ja, volgens de IPX8-norm: tot 60 minuten in maximaal 2 meter diep water. Lezen in bad, aan het zwembad of op het strand kan zonder zorgen.",
+      "Ja. De Kobo Libra Colour heeft een IPX8-classificatie en is ontworpen om tot 60 minuten in maximaal twee meter diep water te kunnen doorstaan. Dat maakt hem geschikt voor lezen in bad, aan het zwembad of op het strand.",
   },
   {
     question: "Wat is het verschil tussen de Kobo Clara BW en de Kobo Libra Colour?",
     answer:
-      "De Clara BW is kleiner (6 inch), lichter en goedkoper, met een zwart-witscherm en bediening via touchscreen. De Libra Colour heeft een 7-inch kleurenscherm, fysieke bladerknoppen en meer opslag. Beide zijn waterdicht en geschikt voor e-books van de Nederlandse online Bibliotheek via Adobe Digital Editions.",
+      "De Clara BW is kleiner, lichter en goedkoper. Hij heeft een 6-inch zwart-witscherm en je bedient hem volledig via het touchscreen. De Libra Colour heeft een groter 7-inch kleurenscherm, fysieke bladerknoppen en meer opslag. Beide modellen zijn waterdicht en kunnen gebruikt worden voor e-books van de Nederlandse online Bibliotheek via Adobe Digital Editions. Kort gezegd: Clara voor eenvoud en compactheid, Libra voor meer comfort en mogelijkheden.",
   },
   {
     question: "Is de Kobo Clara BW geschikt voor luisterboeken?",
     answer:
-      "Ja. De Clara BW heeft ingebouwde Bluetooth, waarmee je Kobo-luisterboeken afspeelt via een koptelefoon of speaker. De 16 GB opslag biedt ruimte aan zo'n 75 luisterboeken.",
+      "Ja. De Clara BW heeft Bluetooth, waardoor je Kobo-luisterboeken kunt afspelen via een draadloze koptelefoon of speaker. Met 16 GB opslag is er naast gewone e-books ook ruimte voor een flinke verzameling luisterboeken.",
   },
   {
     question: "Is de Kobo Clara BW waterdicht?",
     answer:
-      "Ja, volgens de IPX8-norm: tot 60 minuten in maximaal 2 meter diep water. Uitzonderlijk voor een e-reader in deze prijsklasse: lezen in bad of aan het zwembad kan zonder zorgen.",
+      "Ja. Ook de relatief compacte Clara BW heeft een IPX8-classificatie: tot 60 minuten in maximaal twee meter water. Dat vind ik een sterk punt van dit model, omdat waterdichtheid bij een betaalbare e-reader zeker niet vanzelfsprekend is.",
   },
   {
     question: "Hoe lang gaat de batterij van de Kobo Clara BW mee?",
     answer:
-      "Weken, bij normaal leesgebruik. Het e-ink-scherm verbruikt alleen stroom bij het omslaan van een pagina, dus één lading is genoeg voor een lange vakantie.",
+      "Bij normaal leesgebruik gaat de accu weken mee. Zoals bij iedere e-reader hangt het exacte aantal dagen af van onder meer de verlichting, Bluetooth en hoeveel uren je per dag leest.",
   },
   {
     question: "Kun je op de Kindle Scribe schrijven zoals op papier?",
     answer:
-      "Het komt dichtbij. De Premium Pen (inbegrepen, hoeft nooit opgeladen) schrijft met lichte weerstand op het ontspiegelde scherm, wat natuurlijker aanvoelt dan een gladde tablet. Handgeschreven notities zijn om te zetten in getypte tekst.",
+      "Niet letterlijk, maar het komt een stuk dichter in de buurt dan schrijven op een glad tabletscherm. De Premium Pen hoeft niet opgeladen te worden en het oppervlak biedt een lichte weerstand tijdens het schrijven. Handgeschreven notities kun je bovendien omzetten naar getypte tekst.",
   },
   {
     question: "Wat is het verschil tussen de Kindle Scribe en een gewone Kindle?",
     answer:
-      "De Scribe heeft een veel groter scherm (10,2 inch), een pen om mee te schrijven en een ingebouwd notitieboek. Een gewone Kindle is compacter, goedkoper en puur op lezen gericht. Voor alleen romans lezen is een Paperwhite praktischer.",
+      "Vooral formaat en functie. De Scribe heeft een groot 10,2-inch scherm, ondersteunt een pen en heeft uitgebreide notitiefuncties. Een gewone Kindle is kleiner, goedkoper en vooral bedoeld om boeken op te lezen. Wil je alleen romans lezen? Dan zou ik vrijwel altijd voor de Paperwhite kiezen. Wil je ook documenten bewerken en veel schrijven? Dan begint de Scribe interessant te worden.",
   },
   {
     question: "Is de Kindle Scribe waterdicht?",
     answer:
-      "Nee. In tegenstelling tot de Kindle Paperwhite en de Kobo-modellen in deze lijst heeft de Scribe geen waterdichtheidscertificering. Voor bad of zwembad is dit niet het juiste apparaat.",
+      "Nee. In tegenstelling tot de Kindle Paperwhite en de waterdichte Kobo-modellen uit deze lijst heeft de Scribe geen waterdichtheidscertificering. Voor lezen in bad of naast het zwembad is dit dus niet het model dat ik zou pakken.",
   },
   {
     question: "Moet ik wachten op de Kindle Scribe Colorsoft?",
     answer:
-      "Alleen als je per se in kleur wilt markeren. De Scribe Colorsoft is aanzienlijk duurder, terwijl deze Scribe hetzelfde schrijfgevoel en dezelfde notitiefuncties biedt tegen een scherpere prijs.",
+      "Alleen als kleur voor jouw manier van werken echt belangrijk is. De Scribe Colorsoft is duurder, terwijl de gewone Scribe al dezelfde kernervaring biedt: lezen, schrijven en notities maken op een groot e-inkscherm. Wil je vooral schrijven en zwart-wit lezen, dan vind ik de gewone Scribe financieel logischer.",
   },
   {
     question: "Wat is het verschil tussen de Kindle Colorsoft en de Kindle Paperwhite?",
     answer:
-      "Het scherm. De Colorsoft toont papierachtige kleuren voor omslagen, afbeeldingen en markeringen; de Paperwhite is zwart-wit met een nét iets witter scherm en een lagere prijs. Formaat, waterdichtheid en batterijduur zijn vrijwel gelijk.",
+      "Vooral het scherm. De Colorsoft toont kleur bij omslagen, afbeeldingen en markeringen. De Paperwhite blijft volledig zwart-wit, heeft daardoor een iets lichtere achtergrond en kost minder. Qua formaat, waterdichtheid en algemene Kindle-ervaring lijken ze sterk op elkaar.",
   },
   {
     question: "Wat is het verschil tussen de Kindle Colorsoft en de Kobo Libra Colour?",
     answer:
-      "Beide hebben een 7-inch kleuren-e-inkscherm. De Kobo biedt fysieke bladerknoppen, open EPUB-ondersteuning en e-books van de online Bibliotheek via Adobe Digital Editions; de Kindle biedt de grootste boekwinkel en naadloze integratie voor wie al Kindle-boeken bezit. De keuze is vooral: welk ecosysteem past bij jou?",
+      "Beide hebben een 7-inch kleuren-e-inkscherm, maar de keuze gaat eigenlijk minder over het scherm dan over het systeem eromheen. De Kobo Libra Colour geeft je fysieke bladerknoppen, meer vrijheid met EPUB-bestanden en ondersteuning voor Nederlandse bibliotheekboeken via Adobe Digital Editions. De Kindle Colorsoft sluit juist naadloos aan op de Kindle Store en je bestaande Kindle-bibliotheek. Dus stel jezelf vooral deze vraag: wil ik Kindle, of wil ik meer vrijheid met mijn bestanden?",
   },
   {
     question: "Is de Kindle Colorsoft waterdicht?",
     answer:
-      "Ja. Amazon adverteert de Colorsoft als waterdicht en zorgeloos: lezen naast het zwembad of in bad kan zonder problemen.",
+      "Ja. Amazon verkoopt de Colorsoft als waterdichte e-reader, waardoor je hem ook bij het zwembad of in bad kunt gebruiken.",
   },
   {
     question: "Hoe lang gaat de batterij van de Kindle Colorsoft mee?",
     answer:
-      "Tot acht weken op één lading via USB-C, afhankelijk van gebruik en verlichting. Het kleurenscherm verbruikt nauwelijks meer dan een zwart-wit e-inkscherm omdat het alleen stroom trekt bij het omslaan van pagina's.",
+      "Amazon noemt een batterijduur van maximaal acht weken op één USB-C-lading. In de praktijk hangt dat af van hoe vaak je leest en hoeveel schermverlichting je gebruikt.",
   },
 ];
 
@@ -204,7 +205,8 @@ export default function EReadersPage() {
         url: absoluteUrl(`${pagePath}#${item.slug}`),
         description: item.korteOmschrijving,
       }))
-    )
+    ),
+    faqSchema(faqItems)
   );
 
 
@@ -221,26 +223,42 @@ export default function EReadersPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Ik lees veel. Als schrijver moet dat, maar eerlijk gezegd las ik al
-            zo voordat ik ooit een woord op papier zette. De afgelopen jaren is
-            een groot deel van dat lezen verschoven naar e-readers: in de
-            trein, &apos;s avonds op de bank, op vakantie met dertig boeken in
-            mijn jaszak. In deze gids vergelijk ik de zes e-readers die er in
-            2026 echt toe doen, en vertel ik welke ik zelf zou kopen,
-            afhankelijk van hoe jij leest.
+            Ik lees veel. Dat hoort natuurlijk een beetje bij het
+            schrijverschap, maar eerlijk gezegd deed ik dat al lang voordat ik
+            zelf aan een boek begon. De afgelopen jaren is steeds meer van dat
+            lezen verschoven naar een e-reader. In de trein, &apos;s avonds op
+            de bank en op vakantie, wanneer je liever dertig boeken meeneemt
+            zonder daar ook dertig boeken voor te hoeven tillen.
           </p>
           <p className="content-paragraph">
-            <strong>Kort samengevat:</strong> voor de meeste lezers is de{" "}
-            <strong>Kindle Paperwhite</strong> de beste koop. Wil je niet aan
-            Amazon vastzitten, kies dan de <strong>Kobo Libra Colour</strong>.
-            Op zoek naar de goedkoopste goede optie? De{" "}
-            <strong>basis-Kindle</strong>. Alles hieronder legt uit waarom.
+            En precies daar zit voor mij de kracht van een goede e-reader: hij
+            moet vooral niet in de weg zitten. Je wilt hem pakken, je boek
+            openen en verder lezen.
           </p>
           <p className="content-paragraph">
-            Speciaal op zoek naar een model voor bad, strand of zwembad? Lees
-            de aparte gids over de{" "}
+            In deze gids vergelijk ik de zes e-readers die er in 2026 wat mij
+            betreft echt toe doen. Niet alleen op specificaties, maar vooral op
+            de vraag:{" "}
+            <strong>
+              voor welk type lezer is dit nou de beste keuze?
+            </strong>
+          </p>
+          <p className="content-paragraph">
+            Wil je meteen het korte antwoord? Voor de meeste mensen zou ik de{" "}
+            <strong>Kindle Paperwhite</strong> kiezen. Wil je liever buiten het
+            Amazon-ecosysteem blijven, dan vind ik de{" "}
+            <strong>Kobo Libra Colour</strong> interessanter. En wil je vooral
+            goedkoop kennismaken met e-lezen, dan is de gewone{" "}
+            <strong>Kindle</strong> moeilijk te verslaan.
+          </p>
+          <p className="content-paragraph">Hieronder leg ik uit waarom.</p>
+          <p className="content-paragraph">
+            Specifiek op zoek naar een model waarmee je zonder stress in bad,
+            aan het zwembad of op het strand kunt lezen? Bekijk dan ook mijn
+            aparte gids over de{" "}
             <Link href="/waterdichte-e-reader">waterdichte e-reader</Link>,
-            met IPX8-uitleg en gerichte aanbevelingen.
+            waarin ik uitgebreider inga op IPX8 en de beste modellen voor dat
+            gebruik.
           </p>
         </section>
 
@@ -271,7 +289,7 @@ export default function EReadersPage() {
             style={{ marginBottom: "0.875rem", maxWidth: "none" }}
           >
             Mijn nummer 1 aanbeveling: lees hieronder waarom, of bekijk hem
-            meteen:
+            meteen.
           </p>
           <AffiliateButton
             amazonUrl={getEreaderUrl("kindle-paperwhite")}
@@ -302,16 +320,16 @@ export default function EReadersPage() {
                   <a href="#kindle-paperwhite">Kindle Paperwhite</a>
                 </td>
                 <td>De meeste lezers (beste koop)</td>
-                <td>7&quot;, zwart-wit</td>
+                <td>7 inch, zwart-wit</td>
                 <td>Ja</td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>
-                  <a href="#kindle-basis">Kindle (basismodel)</a>
+                  <a href="#kindle-basis">Kindle</a>
                 </td>
-                <td>Kleinste budget</td>
-                <td>6&quot;, zwart-wit</td>
+                <td>Wie zo goedkoop mogelijk wil beginnen</td>
+                <td>6 inch, zwart-wit</td>
                 <td>Nee</td>
               </tr>
               <tr>
@@ -320,7 +338,7 @@ export default function EReadersPage() {
                   <a href="#kobo-libra-colour">Kobo Libra Colour</a>
                 </td>
                 <td>Wie kleur en bladerknoppen wil, zonder Amazon</td>
-                <td>7&quot;, kleur</td>
+                <td>7 inch, kleur</td>
                 <td>Ja</td>
               </tr>
               <tr>
@@ -328,8 +346,8 @@ export default function EReadersPage() {
                 <td>
                   <a href="#kobo-clara-bw">Kobo Clara BW</a>
                 </td>
-                <td>Compact en betaalbaar, zonder Amazon</td>
-                <td>6&quot;, zwart-wit</td>
+                <td>Wie compact en betaalbaar wil, zonder Amazon</td>
+                <td>6 inch, zwart-wit</td>
                 <td>Ja</td>
               </tr>
               <tr>
@@ -337,8 +355,8 @@ export default function EReadersPage() {
                 <td>
                   <a href="#kindle-scribe">Kindle Scribe</a>
                 </td>
-                <td>Notities maken op groot scherm</td>
-                <td>10,2&quot;, met pen</td>
+                <td>Wie ook aantekeningen wil maken</td>
+                <td>10,2 inch, met pen</td>
                 <td>Nee</td>
               </tr>
               <tr>
@@ -346,8 +364,8 @@ export default function EReadersPage() {
                 <td>
                   <a href="#kindle-colorsoft">Kindle Colorsoft</a>
                 </td>
-                <td>Kleur binnen het Kindle-ecosysteem</td>
-                <td>7&quot;, kleur</td>
+                <td>Wie kleur wil binnen Kindle</td>
+                <td>7 inch, kleur</td>
                 <td>Ja</td>
               </tr>
             </tbody>
@@ -367,25 +385,61 @@ export default function EReadersPage() {
             <ContentBadge>Beste koop</ContentBadge>
           </div>
           <p className="content-paragraph">
-            Als iemand mij op een verjaardag vraagt &quot;welke e-reader moet
-            ik kopen?&quot;, is dit negen van de tien keer het antwoord. Het
-            scherm van 7 inch is groot genoeg om prettig te lezen en klein
-            genoeg om in één hand te houden. De verlichting is warm instelbaar,
-            zodat je &apos;s avonds leest zonder dat het voelt als naar een
-            telefoon staren. Hij is waterdicht (badkuip, zwembad, Nederlandse
-            regen) en de batterij gaat wekenlang mee, niet urenlang. Op
-            Amazon scoort de Paperwhite 4,6 sterren op basis van ruim 15.700
-            beoordelingen, voor een prijs rond de €179,99 (16 GB).
+            Als iemand mij vraagt:{" "}
+            <em>&quot;Welke e-reader zou jij gewoon kopen?&quot;</em>, dan kom
+            ik meestal bij de Kindle Paperwhite uit.
           </p>
           <p className="content-paragraph">
-            Wat je moet weten: je zit in het Amazon-ecosysteem. Boeken koop je
-            in de Kindle-winkel, en die is enorm, maar EPUB-bestanden van elders
-            zet je er niet zomaar op. Voor wie gewoon romans en thrillers leest
-            en niet moeilijk wil doen, is dat geen nadeel maar juist het gemak.
+            Niet omdat hij op ieder onderdeel de meest spectaculaire e-reader
+            is. Juist omdat hij bijna nergens vervelend wordt.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> iedereen die gewoon veel wil lezen en één
-            keer een goede keuze wil maken.
+            Het scherm van 7 inch vind ik daarin een mooie middenweg. Groot
+            genoeg om ontspannen te lezen, maar nog steeds compact genoeg om
+            makkelijk vast te houden. Zeker als je langere tijd leest, merk je
+            hoe prettig dat formaat is.
+          </p>
+          <p className="content-paragraph">
+            De verlichting kun je warmer instellen voor de avond. Dat klinkt
+            misschien als zo&apos;n specificatie waar fabrikanten graag mee
+            schermen, maar tijdens het lezen is het daadwerkelijk prettig. Het
+            scherm voelt daardoor veel minder als een fel apparaat dat vlak
+            voor je gezicht staat.
+          </p>
+          <p className="content-paragraph">
+            Daarnaast is de Paperwhite waterdicht. Geen functie die je iedere
+            dag nodig hebt, maar wel eentje waarvan je blij bent dat hij erop
+            zit zodra je in bad leest, hem naast het zwembad legt of in een
+            typisch Nederlandse regenbui terechtkomt.
+          </p>
+          <p className="content-paragraph">
+            En de batterij? Die gaat gewoon weken mee. Dat is precies zoals het
+            bij een e-reader hoort te zijn: je hoeft niet iedere avond na te
+            denken of dat ding nog aan de lader moet.
+          </p>
+          <p className="content-paragraph">
+            Op Amazon staat de Paperwhite rond de €179,99 voor de 16GB-versie
+            en krijgt hij 4,6 sterren op basis van ruim 15.700 beoordelingen.
+          </p>
+          <p className="content-paragraph">
+            Er is wel één belangrijke kanttekening:{" "}
+            <strong>Kindle betekent Amazon</strong>.
+          </p>
+          <p className="content-paragraph">
+            Boeken koop je vooral via de Kindle Store. Die bibliotheek is enorm
+            en het hele systeem werkt soepel, maar als je graag EPUB-bestanden
+            uit allerlei verschillende bronnen gebruikt of Nederlandse
+            bibliotheekboeken wilt lenen, is Kobo flexibeler.
+          </p>
+          <p className="content-paragraph">
+            Voor iemand die vooral romans, thrillers of non-fictie koopt en
+            gewoon zonder gedoe wil lezen, zie ik dat overigens niet direct als
+            een probleem. Dan is dat gesloten ecosysteem juist onderdeel van
+            het gemak.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> lezers die veel lezen, weinig willen
+            instellen en gewoon één keer een goede e-reader willen kopen.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-paperwhite")} />
         </section>
@@ -402,15 +456,39 @@ export default function EReadersPage() {
             <ContentBadge>Beste instap</ContentBadge>
           </div>
           <p className="content-paragraph">
-            De goedkoopste Kindle is de laatste jaren stilletjes heel goed
-            geworden: hetzelfde scherpe schermtype als de Paperwhite, licht
-            als een pocketboek, met USB-C en tot 6 weken batterijduur op één
-            lading. Er is 16 GB opslag (genoeg voor duizenden boeken) en
-            Amazon maakt hem tegenwoordig van 75% gerecycled plastic en 90%
-            gerecycled magnesium. Op Amazon zelf staat hij rond de €120,
-            beoordeeld met 4,6 sterren op basis van ruim 14.500 reviews. Wat je
-            inlevert ten opzichte van de Paperwhite: geen waterdichtheid, geen
-            warme verlichting, en een iets kleiner scherm van 6 inch.
+            De goedkoopste Kindle heeft een beetje een saai imago. Het is niet
+            de luxe versie, er zitten geen spectaculaire extra&apos;s op en
+            Amazon zet de Paperwhite natuurlijk liever in de etalage.
+          </p>
+          <p className="content-paragraph">
+            Maar juist daarom vind ik hem interessant.
+          </p>
+          <p className="content-paragraph">
+            Voor relatief weinig geld krijg je inmiddels gewoon een heel goede
+            leesmachine. Het scherm is scherp, het apparaat is licht, opladen
+            gaat via USB-C en volgens Amazon houdt de batterij het tot ongeveer
+            zes weken vol.
+          </p>
+          <p className="content-paragraph">
+            Je krijgt bovendien 16 GB opslag. Voor gewone e-books is dat zo veel
+            ruimte dat de meeste lezers nooit serieus hoeven na te denken over
+            opslag.
+          </p>
+          <p className="content-paragraph">
+            Amazon gebruikt tegenwoordig ook 75% gerecycled plastic en 90%
+            gerecycled magnesium voor het apparaat.
+          </p>
+          <p className="content-paragraph">
+            Op Amazon zelf zit de prijs rond de €120 en krijgt het model 4,6
+            sterren uit ruim 14.500 beoordelingen.
+          </p>
+          <p className="content-paragraph">
+            Waar zit het verschil met de Paperwhite dan?
+          </p>
+          <p className="content-paragraph">
+            Vooral in de dingen die je pas mist als je ze eenmaal gewend bent.
+            De gewone Kindle is niet waterdicht, heeft geen warme
+            schermverlichting en het scherm is met 6 inch iets kleiner.
           </p>
           <figure className="content-section">
             <Image
@@ -421,11 +499,11 @@ export default function EReadersPage() {
               sizes="(max-width: 768px) 100vw, 48rem"
               style={{ width: "100%", height: "auto" }}
             />
-            <figcaption className="content-meta">
-              Sfeerbeeld: de voorkantverlichting van de Kindle werkt in elke
-              lichtomstandigheid.
-            </figcaption>
           </figure>
+          <p className="content-paragraph">
+            De verlichting blijft ondertussen prima leesbaar, zowel in een
+            donkere kamer als buiten.
+          </p>
           <p className="content-paragraph">
             <a
               href={getEreaderUrl("kindle-basis")}
@@ -437,14 +515,25 @@ export default function EReadersPage() {
             </a>
           </p>
           <p className="content-paragraph">
-            Mijn eerlijke advies: als het prijsverschil met de Paperwhite je
-            niet uitmaakt, neem de Paperwhite. Maar als je twijfelt of e-lezen
-            iets voor je is en het eerst wilt proberen, is dit de instap zonder
-            spijt.
+            Mijn advies is daarom vrij simpel.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> twijfelaars, studenten, en iedereen die
-            het eerst wil proberen voor een klein bedrag.
+            Is het prijsverschil met de Paperwhite voor jou geen probleem? Neem
+            dan de Paperwhite. Je krijgt net wat meer comfort en hebt daar
+            waarschijnlijk jarenlang plezier van.
+          </p>
+          <p className="content-paragraph">
+            Maar weet je nog helemaal niet of e-lezen iets voor je is? Dan zou
+            ik juist niet te ingewikkeld doen. Met deze Kindle kun je relatief
+            goedkoop ontdekken of je dat lezen op e-ink prettig vindt.
+          </p>
+          <p className="content-paragraph">
+            En als het bevalt, heb je nog steeds gewoon een goede e-reader.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> beginnende e-readergebruikers,
+            studenten, prijsbewuste lezers en iedereen die eerst wil ontdekken
+            of e-lezen bij hem of haar past.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-basis")} />
         </section>
@@ -461,13 +550,27 @@ export default function EReadersPage() {
             <ContentBadge>Beste zonder Amazon</ContentBadge>
           </div>
           <p className="content-paragraph">
-            Er zijn lezers die hun boeken kopen waar het uitkomt: de ene keer
-            bij bol, dan bij de Kobo-winkel, soms gratis geleend bij de
-            openbare bibliotheek. Voor die lezers is er eigenlijk maar één
-            serieus topmodel, en dat is de Kobo Libra Colour. Geen gesloten
-            ecosysteem, geen gedwongen winkel: gewoon EPUB-bestanden,
-            e-books van de Nederlandse online Bibliotheek via Adobe Digital
-            Editions, en lezen zoals jij dat wilt.
+            Niet iedereen wil zijn complete boekenkast aan één winkel koppelen.
+          </p>
+          <p className="content-paragraph">
+            Misschien koop je het ene boek bij Kobo, haal je ergens anders een
+            EPUB vandaan en leen je tussendoor boeken bij de online
+            Bibliotheek. Als je zo leest, vind ik Kobo eigenlijk logischer dan
+            Kindle.
+          </p>
+          <p className="content-paragraph">
+            En binnen Kobo is de <strong>Libra Colour</strong> wat mij betreft
+            het interessantste complete model.
+          </p>
+          <p className="content-paragraph">
+            Je krijgt veel meer vrijheid met bestanden dan bij Kindle.
+            EPUB-bestanden zijn geen probleem en ook e-books van de Nederlandse
+            online Bibliotheek kun je via Adobe Digital Editions op het
+            apparaat zetten.
+          </p>
+          <p className="content-paragraph">
+            Dat klinkt misschien wat technisch, maar het belangrijkste verschil
+            is simpel: <strong>je zit minder vast aan één winkel.</strong>
           </p>
           <p className="content-paragraph">
             <a
@@ -479,21 +582,38 @@ export default function EReadersPage() {
               → Bekijk de actuele prijs van de Kobo Libra Colour op Amazon
             </a>
           </p>
+          <p className="content-paragraph">Dan het kleurenscherm.</p>
           <p className="content-paragraph">
-            Het 7-inch E Ink Kaleido 3-scherm is het eerste kleurenscherm dat
-            écht aanvoelt als papier. Verwacht geen tabletkleuren: de tinten
-            zijn rustig en gedempt, alsof je een aquarel bekijkt in plaats van
-            een beeldscherm. Boekomslagen, strips, graphic novels en je eigen
-            markeringen komen tot leven, terwijl het scherm niet spiegelt in fel
-            zonlicht en &apos;s avonds een donkere leesmodus heeft die je ogen
-            spaart.
+            De Libra Colour gebruikt een 7-inch E Ink Kaleido 3-scherm. Verwacht
+            daarbij absoluut geen iPad. De kleuren zijn rustiger en wat
+            gedempter.
           </p>
           <p className="content-paragraph">
-            Wat de Libra Colour onderscheidt van vrijwel elke concurrent: de
-            fysieke bladerknoppen en de asymmetrische vorm. Het klinkt als een
-            detail, tot je een winteravond lang met één hand (de andere om een
-            mok) hoofdstuk na hoofdstuk wegtikt zonder het scherm aan te raken.
-            Het apparaat draait automatisch mee als je van hand wisselt.
+            En eerlijk gezegd hoort dat ook een beetje bij e-ink.
+          </p>
+          <p className="content-paragraph">
+            Het lijkt eerder op een pagina waarop in kleur is gedrukt dan op
+            een fel beeldscherm. Voor boekomslagen, illustraties, strips en
+            markeringen werkt dat erg mooi, terwijl je wel het rustige karakter
+            van een e-reader houdt.
+          </p>
+          <p className="content-paragraph">
+            Wat ik persoonlijk een sterk punt van de Libra vind, zijn de{" "}
+            <strong>fysieke bladerknoppen</strong>.
+          </p>
+          <p className="content-paragraph">
+            Dat lijkt op papier bijna onbelangrijk. Je kunt immers ook gewoon
+            op het scherm tikken.
+          </p>
+          <p className="content-paragraph">
+            Maar wanneer je lang achter elkaar leest en de e-reader met één
+            hand vasthoudt, zijn echte knoppen ineens verrassend prettig. Je
+            duim blijft op dezelfde plek en je bladert door zonder telkens het
+            scherm te hoeven aanraken.
+          </p>
+          <p className="content-paragraph">
+            De asymmetrische behuizing helpt daar ook bij. Wissel je van hand,
+            dan draait het scherm automatisch mee.
           </p>
           <figure className="content-section">
             <Image
@@ -506,26 +626,41 @@ export default function EReadersPage() {
             />
           </figure>
           <p className="content-paragraph">
-            Praktisch zit het ruim in orde: 32 GB opslag (goed voor zo&apos;n
-            24.000 e-books of 150 luisterboeken), een batterij die weken meegaat
-            op één lading, en IPX8-waterdichtheid: tot 60 minuten in twee
-            meter water, dus bad en strand zijn geen risico. Wie graag
-            aantekeningen maakt, kan met de los verkrijgbare Kobo Stylus 2
-            direct in kleur markeren en schrijven. Op Amazon wordt het model
-            beoordeeld met 4,5 sterren op basis van bijna 2.400 beoordelingen,
-            voor een prijs rond de €260.
+            Praktisch gezien krijg je 32 GB opslag, genoeg voor ongeveer 24.000
+            e-books of 150 luisterboeken. De batterij gaat weken mee en de
+            Libra Colour heeft een IPX8-classificatie: hij kan tot 60 minuten
+            in maximaal twee meter water overleven.
           </p>
           <p className="content-paragraph">
-            De keerzijde is er ook. Een kleurenscherm van e-ink heeft een iets
-            grijzere achtergrond dan het beste zwart-witscherm, en de
-            Kobo-winkel is kleiner dan die van Amazon. Voor wie veel bij de
-            bibliotheek leent of zijn boeken uit meerdere bronnen haalt, weegt
-            de vrijheid daar ruimschoots tegenop.
+            Voor lezen in bad of bij het zwembad is dat vooral geruststellend.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> bibliotheekleners, EPUB-verzamelaars,
-            strip- en graphic novel-lezers, en iedereen die bewust niet aan één
-            winkel vast wil zitten.
+            Wil je aantekeningen maken, dan kun je daarnaast de Kobo Stylus 2
+            gebruiken. Die wordt los verkocht en maakt het mogelijk om direct
+            te schrijven en in kleur te markeren.
+          </p>
+          <p className="content-paragraph">
+            Op Amazon krijgt de Libra Colour 4,5 sterren uit bijna 2.400
+            beoordelingen en ligt de prijs rond de €260.
+          </p>
+          <p className="content-paragraph">Natuurlijk is hij niet perfect.</p>
+          <p className="content-paragraph">
+            Een kleuren-e-inkscherm heeft een iets grijzere achtergrond dan een
+            echt goed zwart-witscherm. Lees je uitsluitend romans, dan kun je
+            jezelf dus afvragen hoeveel je daadwerkelijk aan kleur hebt.
+          </p>
+          <p className="content-paragraph">
+            Ook is de Kobo-winkel kleiner dan Amazons Kindle Store.
+          </p>
+          <p className="content-paragraph">
+            Maar voor lezers die juist boeken uit verschillende bronnen halen,
+            vind ik die extra vrijheid belangrijker dan de omvang van één
+            winkel.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> bibliotheeklezers, mensen met een
+            verzameling EPUB-bestanden, strip- en graphic-novellezers en
+            iedereen die bewust niet volledig aan Amazon vast wil zitten.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kobo-libra-colour")} />
         </section>
@@ -542,13 +677,26 @@ export default function EReadersPage() {
             <ContentBadge>Beste compact</ContentBadge>
           </div>
           <p className="content-paragraph">
-            Niet iedereen wil het grootste scherm of een kleurendisplay. Er is
-            een grote groep lezers die maar één ding vraagt: een licht apparaat
-            dat in elke jaszak past, wekenlang meegaat en gewoon heel goed
-            zwart-op-wit leest. Voor die lezers is de Kobo Clara BW het slimste
-            instapmodel van dit moment, met dezelfde vrijheid als zijn grote
-            broer: EPUB-bestanden, e-books van de online Bibliotheek via Adobe
-            Digital Editions, geen gedwongen winkel.
+            Groter is niet automatisch beter.
+          </p>
+          <p className="content-paragraph">
+            Sterker nog: voor een e-reader kan een kleiner apparaat juist
+            heerlijk zijn. Minder gewicht, makkelijker meenemen en je houdt hem
+            zonder problemen lang met één hand vast.
+          </p>
+          <p className="content-paragraph">
+            Dat is precies waar de <strong>Kobo Clara BW</strong> goed in is.
+          </p>
+          <p className="content-paragraph">
+            Hij heeft geen kleurenscherm en geen fysieke bladerknoppen. Wat je
+            wél krijgt, is een compacte 6-inch e-reader die eigenlijk alles kan
+            wat een gewone boekenlezer nodig heeft.
+          </p>
+          <p className="content-paragraph">
+            Net als bij de Libra Colour zit je niet vast aan één winkel.
+            EPUB-bestanden kun je gebruiken en boeken van de Nederlandse
+            online Bibliotheek zijn via Adobe Digital Editions op het apparaat
+            te zetten.
           </p>
           <p className="content-paragraph">
             <a
@@ -561,12 +709,18 @@ export default function EReadersPage() {
             </a>
           </p>
           <p className="content-paragraph">
-            Het 6-inch scherm gebruikt E Ink Carta 1300, de nieuwste generatie
-            zwart-wit e-ink: scherpe letters, snelle pagina-omslagen en geen
-            spiegeling in fel zonlicht. De ComfortLight PRO-verlichting past
-            helderheid én kleurtemperatuur aan: overdag koel wit, &apos;s avonds
-            warm en met minder blauw licht, zodat je ogen rustig blijven tot de
-            laatste bladzijde. Een instelbare donkere leesmodus zit er ook op.
+            Het scherm gebruikt E Ink Carta 1300. Letters zien er scherp uit,
+            pagina&apos;s slaan snel om en het scherm blijft buiten goed
+            leesbaar doordat het nauwelijks spiegelt.
+          </p>
+          <p className="content-paragraph">
+            De ComfortLight PRO-verlichting kan niet alleen feller en zachter,
+            maar ook warmer worden ingesteld. Vooral &apos;s avonds vind ik dat
+            relevanter dan allerlei spectaculaire functies die uiteindelijk
+            nauwelijks iets met lezen te maken hebben.
+          </p>
+          <p className="content-paragraph">
+            Er is ook een donkere leesmodus.
           </p>
           <figure className="content-section">
             <Image
@@ -579,26 +733,49 @@ export default function EReadersPage() {
             />
           </figure>
           <p className="content-paragraph">
-            Verrassend voor een instapmodel: de Clara BW is volledig waterdicht
-            volgens de IPX8-norm (tot 60 minuten in twee meter water) en heeft
-            Bluetooth aan boord voor Kobo-luisterboeken: koptelefoon of speaker
-            aansluiten en luisteren maar. De 16 GB opslag is goed voor
-            zo&apos;n 12.000 e-books, en de batterij gaat weken mee op één
-            lading. Op Amazon scoort het model 4,6 sterren op basis van ruim 2.600
-            beoordelingen, voor een prijs rond de €170.
+            Wat ik sterk vind aan de Clara BW, is dat Kobo ondanks de compacte
+            prijs en het formaat niet op waterdichtheid heeft bezuinigd.
           </p>
           <p className="content-paragraph">
-            De keerzijde: geen fysieke bladerknoppen (alles gaat via het
-            touchscreen) en het scherm is met 6 inch echt compact: fijn voor
-            onderweg, minder voor wie graag met grote letters leest. Wie dat
-            comfort zoekt, kijkt naar de Libra Colour. Maar als draagbare,
-            zorgeloze leesmachine voor dit geld is de Clara BW moeilijk te
-            verslaan.
+            Ook dit model heeft IPX8: tot 60 minuten in maximaal twee meter
+            water.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> forenzen en reizigers, bibliotheekleners
-            met een kleiner budget, en iedereen die een compacte, waterdichte
-            e-reader zoekt zonder aan één winkel vast te zitten.
+            Daarnaast zit er Bluetooth op voor Kobo-luisterboeken. Je kunt dus
+            een koptelefoon of speaker aansluiten als je liever luistert dan
+            leest.
+          </p>
+          <p className="content-paragraph">
+            Met 16 GB opslag is er ruimte voor ongeveer 12.000 e-books.
+          </p>
+          <p className="content-paragraph">
+            De batterij gaat weken mee.
+          </p>
+          <p className="content-paragraph">
+            Op Amazon krijgt het model 4,6 sterren uit ruim 2.600 beoordelingen
+            en ligt de prijs rond de €170.
+          </p>
+          <p className="content-paragraph">Waar lever je dan op in?</p>
+          <p className="content-paragraph">Vooral formaat en bediening.</p>
+          <p className="content-paragraph">
+            Er zijn geen fysieke bladerknoppen, dus alles gaat via het
+            touchscreen. En 6 inch is echt compact. Zelf vind ik dat juist
+            aantrekkelijk als je veel onderweg bent, maar gebruik je grotere
+            letters of wil je meer tekst tegelijk op het scherm, dan voelt 7
+            inch waarschijnlijk comfortabeler.
+          </p>
+          <p className="content-paragraph">
+            In dat geval is de Libra Colour de logischere stap omhoog.
+          </p>
+          <p className="content-paragraph">
+            Maar zoek je vooral een kleine, degelijke en waterdichte e-reader
+            zonder verplichte Amazon-winkel, dan is de Clara BW een heel
+            sterke keuze.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> forenzen, reizigers, bibliotheeklezers
+            met een kleiner budget en iedereen die vooral een compacte e-reader
+            zoekt.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kobo-clara-bw")} />
         </section>
@@ -615,11 +792,25 @@ export default function EReadersPage() {
             <ContentBadge>Beste om op te schrijven</ContentBadge>
           </div>
           <p className="content-paragraph">
-            Sommige lezers lezen niet alleen: ze werken met hun boeken.
-            Aantekeningen in de kantlijn, onderstrepingen, gedachten die meteen
-            op papier moeten voor ze vervliegen. Voor die lezers bestaat er maar
-            één Kindle: de Scribe, een e-reader en notitieboek in één, geleverd
-            met de Premium Pen die je nooit hoeft op te laden.
+            De Kindle Scribe is eigenlijk een ander soort apparaat dan de
+            modellen hierboven.
+          </p>
+          <p className="content-paragraph">
+            Een Paperwhite koop je om boeken te lezen.
+          </p>
+          <p className="content-paragraph">
+            Een Scribe koop je wanneer je tijdens dat lezen ook voortdurend
+            dingen wilt <strong>opschrijven</strong>.
+          </p>
+          <p className="content-paragraph">
+            Denk aan studenten die aantekeningen maken, mensen die documenten
+            doornemen, schrijvers die ideeën vastleggen of iemand die zijn
+            papieren notitieboek het liefst thuislaat.
+          </p>
+          <p className="content-paragraph">
+            De Scribe combineert een e-reader met een digitaal notitieboek en
+            wordt geleverd met de Premium Pen. Die pen hoef je niet op te
+            laden.
           </p>
           <p className="content-paragraph">
             <a
@@ -632,13 +823,23 @@ export default function EReadersPage() {
             </a>
           </p>
           <p className="content-paragraph">
-            Het 10,2-inch scherm is met afstand het grootste in deze lijst: 300
-            ppi, ontspiegeld en verlicht, zodat je binnen én buiten leest en
-            schrijft. Schrijven voelt verrassend echt. De pen glijdt niet weg
-            zoals op een tablet, maar heeft de lichte weerstand van papier.
-            Schrijf je in een boek, dan schuift het &quot;Dynamisch canvas&quot;
-            de tekst opzij voor je notitie; klap je de marge dicht, dan is de
-            pagina weer gewoon een pagina.
+            Het 10,2-inch scherm is met afstand het grootste scherm in deze
+            vergelijking.
+          </p>
+          <p className="content-paragraph">
+            Met 300 ppi is tekst scherp en het scherm is ontspiegeld en
+            verlicht, zodat je zowel binnen als buiten kunt werken.
+          </p>
+          <p className="content-paragraph">
+            Schrijven op e-ink voelt bovendien anders dan schrijven op een
+            glazen tablet. De pen heeft wat weerstand op het oppervlak. Daardoor
+            voelt het eerder alsof je daadwerkelijk iets opschrijft dan alsof
+            je met plastic over een stuk glas glijdt.
+          </p>
+          <p className="content-paragraph">
+            Met het Dynamisch canvas kun je tijdens het lezen notities tussen
+            de tekst plaatsen. De pagina maakt daar ruimte voor en wanneer je
+            de notitie weer inklapt, schuift de tekst terug.
           </p>
           <figure className="content-section">
             <Image
@@ -651,27 +852,46 @@ export default function EReadersPage() {
             />
           </figure>
           <p className="content-paragraph">
-            Daarnaast is het een volwaardig notitieboek: vergadernotities,
-            takenlijsten, een dagboek: alles op één apparaat, zonder meldingen
-            of sociale media die om aandacht vragen. Handgeschreven notities zet
-            je om in getypte tekst en mail je direct naar jezelf of anderen. Op
-            Amazon scoort de Scribe 4,3 sterren op basis van ruim 1.800
-            beoordelingen, voor een prijs rond de €450 (32 GB, inclusief Premium
-            Pen).
+            Daarnaast kun je de Scribe als los notitieboek gebruiken.
           </p>
           <p className="content-paragraph">
-            Eerlijk is eerlijk: dit is geen apparaat voor de strandtas. Het is
-            groot, niet waterdicht, en fors duurder dan een gewone e-reader. Er
-            bestaat inmiddels ook een nieuwere Kindle Scribe Colorsoft met
-            kleurenscherm: mooi voor wie in kleur wil markeren, maar ook weer
-            een flink stuk prijziger. Voor de meeste schrijvende lezers is deze
-            Scribe de verstandige keuze: bewezen, compleet en scherper
-            geprijsd.
+            Vergadernotities, takenlijsten, losse ideeën, een dagboek: het kan
+            allemaal op hetzelfde apparaat.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> studenten en onderzoekers, professionals
-            die documenten annoteren, dagboekschrijvers, en iedereen die lezen
-            en schrijven op één afleidingsvrij apparaat wil.
+            En daar zit voor mij ook een deel van de aantrekkingskracht: er
+            zijn geen WhatsApp-berichten, TikTok-video&apos;s of andere
+            meldingen die ineens door je notities heen komen denderen.
+          </p>
+          <p className="content-paragraph">
+            Je kunt handgeschreven tekst bovendien omzetten naar getypte tekst
+            en vervolgens per e-mail delen.
+          </p>
+          <p className="content-paragraph">
+            Op Amazon krijgt de Scribe 4,3 sterren uit ruim 1.800
+            beoordelingen. De 32GB-versie met Premium Pen kost rond de €450.
+          </p>
+          <p className="content-paragraph">
+            Dat maakt meteen duidelijk waarom hij niet voor iedereen is.
+          </p>
+          <p className="content-paragraph">
+            De Scribe is groot. Hij is niet waterdicht. En als je eigenlijk
+            alleen maar romans wilt lezen, sleep je een hoop apparaat mee waar
+            je weinig aan hebt.
+          </p>
+          <p className="content-paragraph">
+            Er bestaat inmiddels ook een nieuwere Kindle Scribe Colorsoft met
+            kleurenscherm. Interessant als kleurmarkeringen belangrijk voor je
+            zijn, maar ook aanzienlijk duurder.
+          </p>
+          <p className="content-paragraph">
+            Voor de meeste mensen die vooral willen schrijven én lezen, vind ik
+            deze gewone Scribe daarom de verstandigere keuze.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> studenten, onderzoekers, professionals
+            die documenten annoteren, mensen die veel notities maken en lezers
+            die één apparaat willen voor lezen én schrijven.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-scribe")} />
         </section>
@@ -688,12 +908,25 @@ export default function EReadersPage() {
             <ContentBadge>Beste Kindle in kleur</ContentBadge>
           </div>
           <p className="content-paragraph">
-            Wie al jaren tevreden in het Kindle-ecosysteem leest en maar één
-            ding mist (kleur) hoeft niet meer te kiezen. De Kindle Colorsoft
-            is in essentie een Paperwhite met een kleurenscherm: dezelfde
-            compacte vorm, dezelfde zorgeloosheid, maar boekomslagen die
-            eruitzien zoals de ontwerper ze bedoelde en markeringen in geel,
-            oranje, blauw en roze in plaats van grijs.
+            Stel: je vindt Kindle eigenlijk al prima.
+          </p>
+          <p className="content-paragraph">
+            Je hebt boeken in je Kindle-bibliotheek, je kent het systeem en je
+            hebt geen behoefte om naar Kobo over te stappen.
+          </p>
+          <p className="content-paragraph">Je mist alleen kleur.</p>
+          <p className="content-paragraph">
+            Dan is de <strong>Kindle Colorsoft</strong> waarschijnlijk precies
+            het model waar je naar kijkt.
+          </p>
+          <p className="content-paragraph">
+            In de basis voelt hij als een luxere Paperwhite met een
+            kleurenscherm. De bediening is vertrouwd, het formaat is compact en
+            je blijft gewoon binnen het Kindle-ecosysteem.
+          </p>
+          <p className="content-paragraph">
+            Het verschil zie je vooral bij omslagen, afbeeldingen en
+            markeringen.
           </p>
           <p className="content-paragraph">
             <a
@@ -706,14 +939,25 @@ export default function EReadersPage() {
             </a>
           </p>
           <p className="content-paragraph">
-            Het 7-inch Colorsoft-scherm toont papierachtige, gedempte kleuren
-            met hoog contrast: geen schreeuwerig tabletscherm, maar e-ink dat
-            oogvriendelijk blijft tijdens lange leessessies. Het licht is
-            instelbaar van koel wit naar warm amber, zodat je zowel in fel
-            zonlicht als &apos;s avonds in bed comfortabel leest. Slim detail: de
-            functie Paginakleur keert zwarte tekst en witte achtergrond om voor
-            rustig avondlezen, terwijl omslagen en afbeeldingen gewoon in kleur
-            blijven.
+            Het 7-inch Colorsoft-scherm gebruikt rustige e-inkkleuren.
+          </p>
+          <p className="content-paragraph">
+            Ook hier geldt: verwacht geen tablet.
+          </p>
+          <p className="content-paragraph">
+            Dat is geen tekortkoming, maar simpelweg hoe kleuren-e-ink werkt.
+            De kleuren zijn zachter en papierachtiger, waardoor het scherm veel
+            rustiger oogt dan een telefoon of iPad.
+          </p>
+          <p className="content-paragraph">
+            De verlichting kun je instellen van koel wit naar warmer amber.
+            Daardoor is het scherm zowel buiten als &apos;s avonds prettig te
+            gebruiken.
+          </p>
+          <p className="content-paragraph">
+            Een aardig detail is de functie Paginakleur. Daarmee kun je voor
+            avondlezen de lichte en donkere delen van de pagina omkeren,
+            terwijl illustraties en covers hun kleur behouden.
           </p>
           <figure className="content-section">
             <Image
@@ -726,26 +970,44 @@ export default function EReadersPage() {
             />
           </figure>
           <p className="content-paragraph">
-            Verder is het alles wat een moderne Kindle hoort te zijn: volledig
-            waterdicht, dus zwembad en bad zijn geen risico, een batterij die
-            tot acht weken meegaat op één USB-C-lading, en directe toegang tot
-            miljoenen titels in de Kindle Store. Op Amazon scoort de Colorsoft
-            4,5 sterren op basis van ruim 2.400 beoordelingen, voor een prijs
-            rond de €270 (16 GB).
+            Verder krijg je vrijwel alles wat je van een moderne Kindle
+            verwacht.
           </p>
           <p className="content-paragraph">
-            De keerzijde is dezelfde als bij elk kleuren-e-inkscherm: de
-            achtergrond is een fractie grijzer dan bij de beste
-            zwart-witschermen, en je betaalt zo&apos;n honderd euro meer dan
-            voor een Paperwhite. Lees je vrijwel alleen romans zonder
-            illustraties, dan is die meerprijs het niet waard. Lees je strips,
-            kookboeken, tijdschriftartikelen of markeer je veel in kleur, dan
-            is dit de fijnste Kindle van dit moment.
+            Hij is waterdicht, de batterij gaat volgens Amazon tot acht weken
+            mee en je hebt direct toegang tot de Kindle Store.
           </p>
           <p className="content-paragraph">
-            <strong>Voor wie:</strong> trouwe Kindle-lezers die kleur willen,
-            strip- en kookboeklezers, studenten die in kleur markeren, en
-            iedereen die boekomslagen wil zien zoals ze bedoeld zijn.
+            Op Amazon krijgt de Colorsoft 4,5 sterren uit ruim 2.400
+            beoordelingen en ligt de prijs rond de €270 voor 16 GB.
+          </p>
+          <p className="content-paragraph">
+            Maar hier zou ik wel even kritisch naar je eigen leesgedrag kijken.
+          </p>
+          <p className="content-paragraph">
+            Lees je bijna uitsluitend romans?
+          </p>
+          <p className="content-paragraph">
+            Dan betaal je ongeveer honderd euro extra voor een kleurenscherm
+            dat op de meeste pagina&apos;s nauwelijks iets toevoegt. In dat
+            geval zou ik persoonlijk gewoon de Paperwhite nemen.
+          </p>
+          <p className="content-paragraph">
+            Lees je juist strips, kookboeken of artikelen met afbeeldingen? Of
+            markeer je graag verschillende passages in verschillende kleuren?
+            Dan heeft Colorsoft opeens veel meer bestaansrecht.
+          </p>
+          <p className="content-paragraph">
+            Dat is eigenlijk de kern van deze e-reader:{" "}
+            <strong>kleur moet iets toevoegen aan wat jij leest.</strong>
+          </p>
+          <p className="content-paragraph">
+            Anders betaal je vooral voor de mogelijkheid dat het kan.
+          </p>
+          <p className="content-paragraph">
+            <strong>Voor wie:</strong> bestaande Kindle-gebruikers die kleur
+            willen, lezers van strips en kookboeken en mensen die veel met
+            gekleurde markeringen werken.
           </p>
           <AffiliateButton amazonUrl={getEreaderUrl("kindle-colorsoft")} />
         </section>
@@ -758,20 +1020,59 @@ export default function EReadersPage() {
             Zo kies je: drie vragen
           </h2>
           <p className="content-paragraph">
-            <strong>1. Waar komen je boeken vandaan?</strong> Koop je gewoon
-            bij de grootste winkel: Kindle. Leen je bij de Nederlandse online
-            Bibliotheek of verzamel je EPUB&apos;s: Kobo. Kindle ondersteunt
-            die beveiligde bibliotheekboeken niet.
+            Na al die modellen en specificaties kun je de keuze eigenlijk
+            terugbrengen tot drie vrij simpele vragen.
+          </p>
+          <h3 id="choose-books-heading" className="content-heading">
+            1. Waar komen je boeken vandaan?
+          </h3>
+          <p className="content-paragraph">
+            Koop je je boeken vooral bij één grote winkel en wil je zo weinig
+            mogelijk gedoe? Dan is Kindle waarschijnlijk de makkelijkste
+            keuze.
           </p>
           <p className="content-paragraph">
-            <strong>2. Zwart-wit of kleur?</strong> Voor romans en thrillers:
-            zwart-wit, altijd. Scherper, goedkoper, langere batterij. Kleur is
-            er voor strips en tijdschriften.
+            Gebruik je regelmatig EPUB-bestanden of leen je e-books bij de
+            Nederlandse online Bibliotheek? Dan past Kobo beter.
           </p>
           <p className="content-paragraph">
-            <strong>3. Hoeveel wil je uitgeven?</strong> Instapmodel om te
-            proberen, Paperwhite of Libra Colour als je weet dat je blijft
-            lezen.
+            Kindle ondersteunt de Adobe DRM-beveiliging van die Nederlandse
+            bibliotheekboeken niet.
+          </p>
+          <h3 id="choose-color-heading" className="content-heading">
+            2. Heb je kleur echt nodig?
+          </h3>
+          <p className="content-paragraph">
+            Voor romans en thrillers zou ik zonder twijfel zwart-wit kiezen.
+          </p>
+          <p className="content-paragraph">
+            Het scherm is scherper, meestal goedkoper en je mist tijdens het
+            lezen eigenlijk niets.
+          </p>
+          <p className="content-paragraph">
+            Kleur wordt vooral interessant zodra de inhoud zelf kleur bevat:
+            strips, illustraties, tijdschriften, kookboeken of gekleurde
+            markeringen.
+          </p>
+          <p className="content-paragraph">
+            Koop dus geen kleuren-e-reader alleen omdat kleur nieuwer klinkt.
+          </p>
+          <h3 id="choose-budget-heading" className="content-heading">
+            3. Hoeveel wil je uitgeven?
+          </h3>
+          <p className="content-paragraph">
+            Weet je nog niet of een e-reader iets voor je is? Begin dan bij een
+            betaalbaar instapmodel.
+          </p>
+          <p className="content-paragraph">
+            Lees je al veel en weet je dat je het apparaat jarenlang gaat
+            gebruiken? Dan vind ik het makkelijker om extra geld uit te geven
+            aan een Paperwhite of Libra Colour.
+          </p>
+          <p className="content-paragraph">
+            Een e-reader is uiteindelijk zo&apos;n apparaat dat je honderden
+            uren in je handen kunt hebben. Een paar tientjes verschil wordt dan
+            opeens een stuk minder belangrijk.
           </p>
         </section>
       </div>
@@ -789,7 +1090,8 @@ export default function EReadersPage() {
             .
           </p>
           <p className="content-meta">
-            Benieuwd hoe lang een gemiddeld e-book is? Bekijk{" "}
+            Benieuwd hoeveel pagina&apos;s of woorden een gemiddeld digitaal
+            boek heeft? Bekijk dan ook{" "}
             <Link href="/lengte-van-ebook">
               de lengte van een e-book per genre
             </Link>
@@ -811,7 +1113,7 @@ export default function EReadersPage() {
               <Link href="/boeken/schaduwen-over-domburg">
                 Schaduwen over Domburg
               </Link>
-              , die naar verwachting najaar 2026 verschijnt.
+              , die naar verwachting in het najaar van 2026 verschijnt.
             </em>
           </p>
         </section>
