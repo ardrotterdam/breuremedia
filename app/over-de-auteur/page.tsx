@@ -63,7 +63,7 @@ export default function AboutAuthorPage() {
           <p className="content-paragraph">
             {siteConfig.name} is een onafhankelijk Nederlands label voor
             literaire thrillers. Het richt zich op boeken waarin spanning,
-            taal en psychologische diepgang samenkomen — verhalen die blijven
+            taal en psychologische diepgang samenkomen, verhalen die blijven
             nazinderen, lang nadat de laatste pagina is omgeslagen. Daarnaast
             verschijnen hier leeslijsten en gidsen over boeken, over plekken
             als Rotterdam en Zeeland, en over e-readers.
@@ -82,14 +82,12 @@ export default function AboutAuthorPage() {
           <p className="content-paragraph">
             <Link href="/boeken/schaduwen-over-domburg">
               <em>Schaduwen over Domburg</em>
-            </Link>{" "}
-            — literaire thriller, verschijnt bij {siteConfig.name}.
+            </Link>: literaire thriller, verschijnt bij {siteConfig.name}.
           </p>
           <p className="content-paragraph">
             <Link href="/boeken/zero-day-directive">
               <em>Zero Day Directive</em>
-            </Link>{" "}
-            — cyberthriller / techno-thriller, verschijnt bij {siteConfig.name}.
+            </Link>: cyberthriller / techno-thriller, verschijnt bij {siteConfig.name}.
           </p>
         </section>
 

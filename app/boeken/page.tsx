@@ -44,7 +44,7 @@ export default function BooksOverviewPage() {
       <PageHeader
         eyebrow="Catalogus"
         title="Boeken"
-        description="Literaire thrillers van Breure Media — verhalen waarin spanning, taal en psychologie samenkomen."
+        description="Literaire thrillers van Breure Media: verhalen waarin spanning, taal en psychologie samenkomen."
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />

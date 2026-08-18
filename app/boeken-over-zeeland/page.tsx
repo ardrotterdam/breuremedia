@@ -19,7 +19,7 @@ import {
 } from "@/lib/schema";
 
 const pageDescription =
-  "Romans, verhalen en reisgidsen over Zeeland — van de literaire thriller Schaduwen over Domburg en de Zeelandthrillers Duivelskruid en Spoorloos van Ellen de Vriend tot praktische gidsen als Time to Momo Zeeland en 111 plekken in Zeeland. Een groeiende leeslijst van auteur Ard Breure.";
+  "Romans, verhalen en reisgidsen over Zeeland: van de literaire thriller Schaduwen over Domburg en de Zeelandthrillers Duivelskruid en Spoorloos van Ellen de Vriend tot praktische gidsen als Time to Momo Zeeland en 111 plekken in Zeeland. Een groeiende leeslijst van auteur Ard Breure.";
 
 const dutchMonths: Record<string, string> = {
   januari: "01",
@@ -152,7 +152,7 @@ const faqItems = [
   {
     question: "Welke boeken spelen zich af in Zeeland?",
     answer:
-      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Duivelskruid van Ellen de Vriend (2025) speelt zich af in Vlissingen; het vervolg Spoorloos (2026) in Bruinisse op Schouwen-Duiveland. Deze leeslijst groeit — meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
+      "De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels aan de Zeeuwse kust, met Domburg als decor. Duivelskruid van Ellen de Vriend (2025) speelt zich af in Vlissingen; het vervolg Spoorloos (2026) in Bruinisse op Schouwen-Duiveland. Deze leeslijst groeit: meer romans en verhalen die Zeeland als personage gebruiken volgen hier.",
   },
   {
     question: "In welke volgorde lees ik de Zeelandthrillers van Ellen de Vriend?",
@@ -167,7 +167,7 @@ const faqItems = [
   {
     question: "Is Schaduwen over Domburg ook interessant als reisliteratuur?",
     answer:
-      "Het is geen reisgids, maar wie het boek leest voordat hij naar Domburg gaat, kijkt anders naar het strand, de duinen en de vuurtoren — de plekken uit het verhaal bestaan echt.",
+      "Het is geen reisgids, maar wie het boek leest voordat hij naar Domburg gaat, kijkt anders naar het strand, de duinen en de vuurtoren. De plekken uit het verhaal bestaan echt.",
   },
   {
     question: "Wat maakt Zeeland een goed decor voor verhalen?",
@@ -258,7 +258,7 @@ export default function BoekenOverZeelandPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Ik ben opgegroeid in Zeeland — de wijdsheid van het strand, de
+            Ik ben opgegroeid in Zeeland: de wijdsheid van het strand, de
             polders, de dreiging van water dat ooit won en ooit weer kan
             winnen. Op deze pagina verzamel ik boeken over die provincie in de
             breedste zin: romans en verhalen die Zeeland als decor of
@@ -274,19 +274,19 @@ export default function BoekenOverZeelandPage() {
           aria-labelledby="schaduwen-over-domburg-heading"
         >
           <h2 id="schaduwen-over-domburg-heading" className="content-heading">
-            Schaduwen over Domburg — Ard Breure
+            Schaduwen over Domburg: Ard Breure
           </h2>
           <p className="content-paragraph">
-            Ik begin schaamteloos bij mijn eigen boek — het staat hier omdat
+            Ik begin schaamteloos bij mijn eigen boek: het staat hier omdat
             het hier hoort. <em>Schaduwen over Domburg</em> is een literaire
             thriller over een zaak die begint met een lichaam op het strand
             van Domburg, maar die een spoor trekt naar de Rotterdamse haven en
             een netwerk dat onzichtbaar blijft. De duinen, de vuurtoren en de
-            stilte van de Zeeuwse kust zijn geen decor — ze zijn onderdeel van
+            stilte van de Zeeuwse kust zijn geen decor: ze zijn onderdeel van
             het verhaal.
           </p>
           <p className="content-paragraph">
-            Dit is een aankomend boek — het is nog niet af en nu niet te koop.
+            Dit is een aankomend boek. Het is nog niet af en nu niet te koop.
             Het verschijnt naar verwachting najaar 2026. Schrijf je in op de
             wachtlijst en ontvang je een e-mail zodra het boek beschikbaar is.
             Op de{" "}
@@ -315,7 +315,7 @@ export default function BoekenOverZeelandPage() {
           </h2>
           <p className="content-paragraph">
             Laat je e-mailadres achter en je ontvangt één bericht zodra{" "}
-            <em>Schaduwen over Domburg</em> verschijnt — met de
+            <em>Schaduwen over Domburg</em> verschijnt, met de
             verschijningsdatum en een exclusieve voorpublicatie.
           </p>
           <NewsletterForm
@@ -334,7 +334,7 @@ export default function BoekenOverZeelandPage() {
             id="duivelskruid-ellen-de-vriend-heading"
             className="content-heading"
           >
-            Duivelskruid — Ellen de Vriend
+            Duivelskruid: Ellen de Vriend
           </h2>
           <p className="content-meta">
             Uit 2025 · Zeeland-thriller · Deel 1 van de serie{" "}
@@ -344,7 +344,7 @@ export default function BoekenOverZeelandPage() {
             <Image
               src="/assets/duivelskruid-ellen-de-vriend-lifestyle-lezen-aan-de-zeeuwse-haven.webp"
               alt="Vrouw leest Duivelskruid van Ellen de Vriend aan een sfeervolle Zeeuwse haven."
-              title="Duivelskruid – Ellen de Vriend | Lezen aan een Zeeuwse haven"
+              title="Duivelskruid: Ellen de Vriend | Lezen aan een Zeeuwse haven"
               width={1672}
               height={941}
               sizes="(max-width: 768px) 100vw, 48rem"
@@ -360,7 +360,7 @@ export default function BoekenOverZeelandPage() {
           <p className="content-paragraph">
             De dader lijkt telkens een stap voor te blijven. Terwijl de spanning
             oploopt en de tijd begint te dringen, ontdekt Roos dat niets is wat
-            het lijkt — iedereen lijkt iets te verbergen.{" "}
+            het lijkt: iedereen lijkt iets te verbergen.{" "}
             <em>Duivelskruid</em> is het eerste deel van de Zeelandthriller-serie
             van Ellen de Vriend: een goed startpunt voor wie spanning, mysterie
             en onverwachte plotwendingen zoekt.
@@ -375,12 +375,12 @@ export default function BoekenOverZeelandPage() {
           <p className="content-paragraph">
             <strong>Voor wie:</strong> liefhebbers van Nederlandse thrillers,
             fans van Zeeland en de Zeeuwse kust, en lezers van Kiki van Dijk,
-            Mathijs Deen en Linda van Rijn — en iedereen die houdt van spanning,
+            Mathijs Deen en Linda van Rijn, en iedereen die houdt van spanning,
             recherchewerk en verrassende ontknopingen.
           </p>
           <p className="content-paragraph">
             Ellen de Vriend zet met <em>Duivelskruid</em> een sterke serie neer
-            die de sfeer van Zeeland combineert met een meeslepend verhaal — en
+            die de sfeer van Zeeland combineert met een meeslepend verhaal, en
             uitnodigt om ook het vervolg te lezen.
           </p>
           <p className="content-paragraph">
@@ -408,7 +408,7 @@ export default function BoekenOverZeelandPage() {
               className="book-cover"
               src="/assets/duivelskruid-ellen-de-vriend-zeeland-thriller-boekcover.webp"
               alt="Boekcover Duivelskruid van Ellen de Vriend, deel 1 van de Zeelandthriller-serie in Vlissingen."
-              title="Duivelskruid – Ellen de Vriend | Zeeland-thriller"
+              title="Duivelskruid: Ellen de Vriend | Zeeland-thriller"
               width={277}
               height={425}
               sizes="280px"
@@ -430,7 +430,7 @@ export default function BoekenOverZeelandPage() {
             id="spoorloos-ellen-de-vriend-heading"
             className="content-heading"
           >
-            Spoorloos — Ellen de Vriend
+            Spoorloos: Ellen de Vriend
           </h2>
           <p className="content-meta">
             Nieuw in 2026 · Zeeland-thriller · Deel 2 van de serie{" "}
@@ -440,7 +440,7 @@ export default function BoekenOverZeelandPage() {
             <Image
               src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-lifestyle-lezen-aan-zee.webp"
               alt="Vrouw leest Spoorloos van Ellen de Vriend aan de Zeeuwse kust bij zonsondergang."
-              title="Spoorloos – Ellen de Vriend | Lifestyle aan de Zeeuwse kust"
+              title="Spoorloos: Ellen de Vriend | Lifestyle aan de Zeeuwse kust"
               width={1536}
               height={1024}
               sizes="(max-width: 768px) 100vw, 48rem"
@@ -469,7 +469,7 @@ export default function BoekenOverZeelandPage() {
           <p className="content-paragraph">
             <strong>Voor wie:</strong> liefhebbers van spannende Nederlandse
             thrillers, fans van Zeeland en de Zeeuwse kust, en lezers van Kiki
-            van Dijk, Linda van Rijn en Mathijs Deen — en iedereen die houdt
+            van Dijk, Linda van Rijn en Mathijs Deen, en iedereen die houdt
             van mysteries en onverwachte plotwendingen.
           </p>
           <p className="content-paragraph">
@@ -508,7 +508,7 @@ export default function BoekenOverZeelandPage() {
               className="book-cover"
               src="/assets/spoorloos-ellen-de-vriend-zeeland-thriller-boekcover.webp"
               alt="Boekcover van Spoorloos door Ellen de Vriend, een spannende Zeeland-thriller die zich afspeelt op Schouwen-Duiveland."
-              title="Spoorloos – Ellen de Vriend | Zeeland-thriller"
+              title="Spoorloos: Ellen de Vriend | Zeeland-thriller"
               width={600}
               height={920}
               sizes="280px"
@@ -527,7 +527,7 @@ export default function BoekenOverZeelandPage() {
           aria-labelledby="time-to-momo-zeeland-heading"
         >
           <h2 id="time-to-momo-zeeland-heading" className="content-heading">
-            Time to Momo Zeeland — Kim van Zweeden en Melanie van Zweeden
+            Time to Momo Zeeland: Kim van Zweeden en Melanie van Zweeden
           </h2>
           <figure className="content-section">
             <Image
@@ -546,14 +546,14 @@ export default function BoekenOverZeelandPage() {
             tripje naar Zeeland? <em>Time to Momo Zeeland</em>, geschreven
             door Kim van Zweeden en Melanie van Zweeden, is zo&apos;n gids:
             met tips van locals neemt het boek je mee naar de mooiste
-            stranden, sfeervolle stadjes en dorpen, en goede horeca — van
+            stranden, sfeervolle stadjes en dorpen, en goede horeca: van
             gezellige terrasjes tot de vis die zo vanuit zee op je bord
             belandt. Ook de bekendere Zeeuwse hoogtepunten, van de Zeeuwse
             kust tot de Deltawerken, komen aan bod.
           </p>
           <p className="content-paragraph">
             <strong>Voor wie:</strong> wie eerst wil reizen en pas daarna wil
-            lezen — of andersom, en na <em>Schaduwen over Domburg</em> zelf
+            lezen, of andersom, en na <em>Schaduwen over Domburg</em> zelf
             naar het strand van Domburg toe wil.
           </p>
           <p className="content-meta">
@@ -591,7 +591,7 @@ export default function BoekenOverZeelandPage() {
           aria-labelledby="111-plekken-in-zeeland-heading"
         >
           <h2 id="111-plekken-in-zeeland-heading" className="content-heading">
-            111 plekken in Zeeland die je gezien moet hebben — Jan Kuipers
+            111 plekken in Zeeland die je gezien moet hebben: Jan Kuipers
           </h2>
           <p className="content-meta">
             Reisgids · 111 verrassende plekken · Ook leuk als cadeau
@@ -635,7 +635,7 @@ export default function BoekenOverZeelandPage() {
             <strong>Voor wie:</strong> mensen die een vakantie of weekend in
             Zeeland plannen, inwoners die hun eigen provincie beter willen
             leren kennen, liefhebbers van lokale geschiedenis en cultuur,
-            wandelaars, fietsers en dagjesmensen — en iedereen die graag buiten
+            wandelaars, fietsers en dagjesmensen, en iedereen die graag buiten
             de gebaande paden reist.
           </p>
           <p className="content-paragraph">
@@ -666,7 +666,7 @@ export default function BoekenOverZeelandPage() {
               className="book-cover"
               src="/assets/111-plekken-in-zeeland-kuipers-dekker-boekomslag.webp"
               alt="Boekomslag van 111 plekken in Zeeland die je gezien moet hebben van Jan Kuipers en Heleen Dekker"
-              title="111 plekken in Zeeland die je gezien moet hebben – Jan Kuipers"
+              title="111 plekken in Zeeland die je gezien moet hebben: Jan Kuipers"
               width={532}
               height={809}
               sizes="280px"

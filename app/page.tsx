@@ -17,7 +17,7 @@ export const metadata: Metadata = buildMetadata({
     "Onafhankelijk Nederlands label voor literaire thrillers. Ontdek onze publicaties van Ard Breure.",
   path: "/",
   image: "/images/og-breure-media-general.jpg",
-  imageAlt: "Breure Media — literaire thrillers",
+  imageAlt: "Breure Media: literaire thrillers",
   imageWidth: 1200,
   imageHeight: 630,
   languages: {

@@ -103,28 +103,28 @@ export default function WaterdichteEReaderPage() {
           name: "Kobo Libra Colour",
           url: absoluteUrl("/waterdichte-e-reader#kobo-libra-colour"),
           description:
-            "Waterdichte kleuren-e-reader (IPX8) met fysieke bladerknoppen, 7-inch scherm en 32 GB opslag — de meest veelzijdige keuze aan het water.",
+            "Waterdichte kleuren-e-reader (IPX8) met fysieke bladerknoppen, 7-inch scherm en 32 GB opslag: de meest veelzijdige keuze aan het water.",
           image: "/assets/kobo-libra-colour-waterdicht-lezen-in-bad.webp",
         },
         {
           name: "Kobo Clara BW",
           url: absoluteUrl("/waterdichte-e-reader#kobo-clara-bw"),
           description:
-            "Compacte, betaalbare waterdichte e-reader (IPX8) met scherp 6-inch zwart-witscherm en 16 GB opslag — de verstandigste keuze voor romans.",
+            "Compacte, betaalbare waterdichte e-reader (IPX8) met scherp 6-inch zwart-witscherm en 16 GB opslag: de verstandigste keuze voor romans.",
           image: "/assets/kobo-clara-bw-lezen-in-zonlicht-strand.webp",
         },
         {
           name: "Kindle Paperwhite",
           url: absoluteUrl("/waterdichte-e-reader#kindle-paperwhite"),
           description:
-            "Waterdichte 7-inch Kindle (IPX8) met 16 GB opslag — de beste keuze voor wie zijn boeken bij Amazon koopt.",
+            "Waterdichte 7-inch Kindle (IPX8) met 16 GB opslag: de beste keuze voor wie zijn boeken bij Amazon koopt.",
           image: "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp",
         },
         {
           name: "Kindle Colorsoft",
           url: absoluteUrl("/waterdichte-e-reader#kindle-colorsoft"),
           description:
-            "Waterdichte 7-inch Kindle (IPX8) met kleuren-e-inkscherm en 16 GB opslag — kleur binnen het Amazon-ecosysteem.",
+            "Waterdichte 7-inch Kindle (IPX8) met kleuren-e-inkscherm en 16 GB opslag: kleur binnen het Amazon-ecosysteem.",
           image: "/assets/kindle-colorsoft-kleurenscherm-warm-licht.webp",
         },
       ]
@@ -313,7 +313,7 @@ export default function WaterdichteEReaderPage() {
           aria-labelledby="kobo-libra-colour-heading"
         >
           <h2 id="kobo-libra-colour-heading" className="content-heading">
-            1. Kobo Libra Colour — de beste allround keuze aan het water
+            1. Kobo Libra Colour: de beste allround keuze aan het water
           </h2>
           <p className="content-paragraph">
             De Kobo Libra Colour is mijn eerste keuze voor wie regelmatig in
@@ -364,7 +364,7 @@ export default function WaterdichteEReaderPage() {
           </ul>
           <p className="content-paragraph">
             <strong>Voor wie?</strong> Voor de lezer die één veelzijdige
-            e-reader wil voor thuis, vakantie, strips en gewone boeken — en
+            e-reader wil voor thuis, vakantie, strips en gewone boeken, en
             fysieke bladerknoppen belangrijk vindt.
           </p>
           <AffiliateButton
@@ -379,7 +379,7 @@ export default function WaterdichteEReaderPage() {
           aria-labelledby="kobo-clara-bw-heading"
         >
           <h2 id="kobo-clara-bw-heading" className="content-heading">
-            2. Kobo Clara BW — de verstandigste keuze voor romans
+            2. Kobo Clara BW: de verstandigste keuze voor romans
           </h2>
           <p className="content-paragraph">
             De Kobo Clara BW is minder opvallend, maar voor veel lezers eigenlijk
@@ -442,7 +442,7 @@ export default function WaterdichteEReaderPage() {
           aria-labelledby="kindle-paperwhite-heading"
         >
           <h2 id="kindle-paperwhite-heading" className="content-heading">
-            3. Kindle Paperwhite — de beste keuze binnen Amazon
+            3. Kindle Paperwhite: de beste keuze binnen Amazon
           </h2>
           <p className="content-paragraph">
             Koop je je e-books voornamelijk bij Amazon, dan is de Kindle
@@ -508,7 +508,7 @@ export default function WaterdichteEReaderPage() {
           aria-labelledby="kindle-colorsoft-heading"
         >
           <h2 id="kindle-colorsoft-heading" className="content-heading">
-            4. Kindle Colorsoft — kleur voor de Kindle-lezer
+            4. Kindle Colorsoft: kleur voor de Kindle-lezer
           </h2>
           <p className="content-paragraph">
             De Kindle Colorsoft voegt kleur toe aan de vertrouwde
@@ -677,7 +677,7 @@ export default function WaterdichteEReaderPage() {
             {
               href: "/e-readers",
               label: "Beste e-readers 2026",
-              description: "Kindle of Kobo — complete vergelijking",
+              description: "Kindle of Kobo: complete vergelijking",
             },
             {
               href: "/lengte-van-ebook",

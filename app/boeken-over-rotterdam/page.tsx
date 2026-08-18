@@ -21,9 +21,9 @@ import {
 
 const pageTitle = "Boeken over Rotterdam: 5 romans & thrillers (gids)";
 const pageDescription =
-  "5 boeken die Rotterdam écht vangen — van Karakter tot haven-thrillers. Lees de gids en kies je volgende boek.";
+  "5 boeken die Rotterdam écht vangen: van Karakter tot haven-thrillers. Lees de gids en kies je volgende boek.";
 const pageDescriptionLong =
-  "Vijf boeken die Rotterdam echt vangen — van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.";
+  "Vijf boeken die Rotterdam echt vangen: van Karakter en Jules Deelder tot de haven-thriller Schaduwen over Domburg. Een persoonlijke leeslijst van auteur Ard Breure.";
 
 const rotterdamBookDetails: Record<
   string,
@@ -89,7 +89,7 @@ const faqItems = [
   {
     question: "Zijn er thrillers die zich in de Rotterdamse haven afspelen?",
     answer:
-      "Ja — de haven is een geliefd decor voor Nederlandse misdaadromans. De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels in en rond de Rotterdamse haven.",
+      "Ja, de haven is een geliefd decor voor Nederlandse misdaadromans. De literaire thriller Schaduwen over Domburg van Ard Breure (verwacht najaar 2026) speelt grotendeels in en rond de Rotterdamse haven.",
   },
   {
     question: "Welk boek moet ik lezen om Rotterdam te begrijpen?",
@@ -125,7 +125,7 @@ const bookIndex = [
     title: "De Coolsingel bleef leeg",
     author: "Hugo Borst",
     summary:
-      "Voetbal, Feyenoord en Rotterdamse identiteit — tribune en stad in één.",
+      "Voetbal, Feyenoord en Rotterdamse identiteit: tribune en stad in één.",
   },
   {
     slug: "rotterdam-wederopbouw-groenendijk",
@@ -216,7 +216,7 @@ export default function BoekenOverRotterdamPage() {
         <section className="content-section">
           <p className="content-paragraph">
             Op zoek naar <strong>boeken over Rotterdam</strong>? Hieronder vind
-            je vijf titels die de stad echt vangen — romans, thrillers en
+            je vijf titels die de stad echt vangen: romans, thrillers en
             verhalen waarin Rotterdam geen decor is, maar een personage. Van
             Bordewijk tot Deelder, van voetbal tot wederopbouw, en een
             haven-thriller die van Zeeland naar de Maasvlakte loopt.
@@ -271,10 +271,10 @@ export default function BoekenOverRotterdamPage() {
           aria-labelledby="schaduwen-over-domburg-heading"
         >
           <h2 id="schaduwen-over-domburg-heading" className="content-heading">
-            Schaduwen over Domburg — Ard Breure
+            Schaduwen over Domburg: Ard Breure
           </h2>
           <p className="content-paragraph">
-            Ik begin schaamteloos bij mijn eigen boek — het staat hier omdat het
+            Ik begin schaamteloos bij mijn eigen boek: het staat hier omdat het
             hier hoort. <em>Schaduwen over Domburg</em> is een literaire
             thriller over een zaak die begint met een lichaam op een Zeeuws
             strand, maar die een spoor trekt dwars door de Rotterdamse haven:
@@ -283,7 +283,7 @@ export default function BoekenOverRotterdamPage() {
             geheimen bewaren dan mensen.
           </p>
           <p className="content-paragraph">
-            Dit is een aankomend boek — het is nog niet af en nu niet te koop.
+            Dit is een aankomend boek. Het is nog niet af en nu niet te koop.
             Het verschijnt naar verwachting najaar 2026. Schrijf je in op de
             wachtlijst en ontvang je een e-mail zodra het boek beschikbaar is.
             Op de{" "}
@@ -312,7 +312,7 @@ export default function BoekenOverRotterdamPage() {
           </h2>
           <p className="content-paragraph">
             Laat je e-mailadres achter en je ontvangt één bericht zodra{" "}
-            <em>Schaduwen over Domburg</em> verschijnt — met de
+            <em>Schaduwen over Domburg</em> verschijnt, met de
             verschijningsdatum en een exclusieve voorpublicatie.
           </p>
           <NewsletterForm
@@ -328,14 +328,14 @@ export default function BoekenOverRotterdamPage() {
           aria-labelledby="karakter-bordewijk-heading"
         >
           <h2 id="karakter-bordewijk-heading" className="content-heading">
-            Karakter — F. Bordewijk
+            Karakter: F. Bordewijk
           </h2>
           <p className="content-paragraph">
             Geen boek over Rotterdam is zo vaak genoemd en zo weinig herlezen
             als <em>Karakter</em>. Bordewijk schreef in 1938 het verhaal van
             Jacob Willem Katadreuffe, buitenechtelijke zoon van de
             onverzettelijke deurwaarder Dreverhaven, die zich in het
-            vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk —
+            vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk,
             dwars tegen zijn eigen vader in. Geen gezellige haven hier, maar een
             stad van kantoren, incasso&apos;s en onbuigzame wilskracht. De stijl
             is kil en precies, bijna juridisch, en juist daardoor
@@ -359,7 +359,7 @@ export default function BoekenOverRotterdamPage() {
           />
           <AffiliateButton
             amazonUrl={getBoekUrl("karakter-bordewijk")}
-            label="MEER OVER KARAKTER — BESTEL HIER"
+            label="MEER OVER KARAKTER: BESTEL HIER"
           />
         </section>
 
@@ -369,7 +369,7 @@ export default function BoekenOverRotterdamPage() {
           aria-labelledby="jules-deelder-heading"
         >
           <h2 id="jules-deelder-heading" className="content-heading">
-            De dikke van Deelder — Jules Deelder
+            De dikke van Deelder: Jules Deelder
           </h2>
           <figure className="content-section">
             <Image
@@ -387,7 +387,7 @@ export default function BoekenOverRotterdamPage() {
             Over Rotterdam schrijven zonder Deelder te noemen is als over de
             stad lopen zonder de Maas over te steken. De nachtburgemeester ving
             de stad in gedichten en verhalen die je hardop wilt lezen, met dat
-            onnavolgbare ritme — droog, snel, en altijd nét iets waarachtiger
+            onnavolgbare ritme: droog, snel, en altijd nét iets waarachtiger
             dan je verwacht. Een verzamelbundel is de beste plek om te beginnen.
           </p>
           <p className="content-paragraph">
@@ -421,11 +421,11 @@ export default function BoekenOverRotterdamPage() {
           aria-labelledby="hugo-borst-heading"
         >
           <h2 id="hugo-borst-heading" className="content-heading">
-            Hugo Borst — Rotterdam en voetbal
+            Hugo Borst: Rotterdam en voetbal
           </h2>
           <p className="content-paragraph">
             Geen stad waar voetbal en identiteit zo in elkaar grijpen als hier,
-            en niemand schrijft daar zo goed over als Hugo Borst — Spartaan,
+            en niemand schrijft daar zo goed over als Hugo Borst, Spartaan,
             columnist, en een van de beste sportschrijvers van het land. Zijn
             werk gaat over voetbal zoals <em>Karakter</em> over een
             advocatenkantoor gaat: het onderwerp is het voertuig, de stad en
@@ -456,16 +456,16 @@ export default function BoekenOverRotterdamPage() {
             id="rotterdam-wederopbouw-groenendijk-heading"
             className="content-heading"
           >
-            Rotterdam Wederopbouw — Paul Groenendijk (red.)
+            Rotterdam Wederopbouw: Paul Groenendijk (red.)
           </h2>
           <p className="content-paragraph">
             Wie Rotterdam zegt, denkt aan bouwen. Na het bombardement van 14 mei
-            1940 werd de stad letterlijk opnieuw opgebouwd — vier dagen na de
+            1940 werd de stad letterlijk opnieuw opgebouwd: vier dagen na de
             verwoesting kreeg stadsarchitect Witteveen al opdracht voor een
             wederopbouwplan. Deze gids brengt honderd projecten uit die periode
             samen, van het Groothandelsgebouw tot de Maastorenflat, van
             Pendrecht tot Ommoord, met historische foto&apos;s naast de huidige
-            situatie. Geen roman, geen verhaal met personages — maar wel het
+            situatie. Geen roman, geen verhaal met personages, maar wel het
             fundament onder elk boek dat wél over deze stad geschreven wordt.
           </p>
           <p className="content-paragraph">
@@ -483,7 +483,7 @@ export default function BoekenOverRotterdamPage() {
           />
           <AffiliateButton
             amazonUrl={getBoekUrl("rotterdam-wederopbouw-groenendijk")}
-            label="MEER OVER ROTTERDAM WEDEROPBOUW — BESTEL HIER"
+            label="MEER OVER ROTTERDAM WEDEROPBOUW: BESTEL HIER"
           />
         </section>
 

@@ -43,7 +43,7 @@ export default function AffiliatePage() {
           </h2>
           <p className="content-paragraph">
             {siteConfig.name} publiceert redactionele inhoud over boeken,
-            e-readers en aanverwant leeswerk — van eigen publicaties tot
+            e-readers en aanverwant leeswerk: van eigen publicaties tot
             leeslijsten en koopgidsen.
           </p>
         </section>

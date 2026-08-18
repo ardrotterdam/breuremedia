@@ -28,7 +28,7 @@ export function RelatedGuides({
         {guides.map((guide) => (
           <li key={guide.href}>
             <Link href={guide.href}>{guide.label}</Link>
-            {guide.description ? ` — ${guide.description}` : null}
+            {guide.description ? `: ${guide.description}` : null}
           </li>
         ))}
       </ul>

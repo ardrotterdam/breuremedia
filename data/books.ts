@@ -81,7 +81,7 @@ export const books: Book[] = [
       "Een lichaam spoelt aan op het strand van Domburg. Wat op het eerste gezicht een geïsoleerde zaak lijkt, blijkt het begin van iets veel groters.",
       "Tom Jansen, voormalig politieman met jarenlange ervaring in de Rotterdamse haven, heeft zijn actieve loopbaan achter zich gelaten. Maar wanneer sporen van de zaak richting Rotterdam leiden, wordt hij opnieuw geconfronteerd met een wereld die hij maar al te goed kent: containers, expediteurs, douanecontroles en handelsroutes waar enorme hoeveelheden goederen dagelijks vrijwel ongezien passeren.",
       "In de Eemhaven ontdekt hij dat achter ogenschijnlijk gewone vracht een netwerk schuilgaat waarin wapens, militaire elektronica en internationale belangen samenkomen. Documenten kloppen. Containers zijn verzegeld. Systemen geven geen alarm. En toch klopt er iets niet.",
-      "Terwijl het onderzoek zich verplaatst van de Zeeuwse kust naar de donkere randen van de Rotterdamse haven, wordt steeds moeilijker vast te stellen wie de waarheid spreekt en wie slechts precies genoeg waarheid vertelt om buiten beeld te blijven.",
+      "Terwijl het onderzoek zich verplaatst van de Zeeuwse kust naar de donkere randen van de Rotterdamse haven, wordt het steeds moeilijker vast te stellen wie de waarheid spreekt en wie slechts precies genoeg waarheid vertelt om buiten beeld te blijven.",
       "Schaduwen over Domburg is een moderne Nederlandse thriller over macht, internationale smokkel, technologie en de kwetsbaarheid van een wereld die vertrouwt op data, procedures en systemen. Een verhaal waarin de feiten helder kunnen zijn, de vragen logisch lijken en de antwoorden allesbehalve duidelijk zijn.",
     ],
     coverImage: "/assets/schaduwen-over-domburg-cover.webp",
@@ -94,7 +94,7 @@ export const books: Book[] = [
     format: "Paperback",
     formatNote:
       "Schaduwen over Domburg verschijnt naar verwachting najaar 2026. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
-    setting: "Domburg, Zeeland — Nederlandse kust",
+    setting: "Domburg, Zeeland: Nederlandse kust",
     themes: [
       "Stilte en spanning",
       "Morele keuzes",
@@ -117,7 +117,7 @@ export const books: Book[] = [
       {
         question: "Wat is een literaire thriller?",
         answer:
-          "Een literaire thriller combineert spanning met verzorgde taal, diepgaande personages en thema's die verder gaan dan de misdaad zelf. De nadruk ligt op psychologie, sfeer en morele dilemma's — niet alleen op wie de dader is.",
+          "Een literaire thriller combineert spanning met verzorgde taal, diepgaande personages en thema's die verder gaan dan de misdaad zelf. De nadruk ligt op psychologie, sfeer en morele dilemma's, niet alleen op wie de dader is.",
       },
       {
         question: "Waar speelt Schaduwen over Domburg zich af?",
@@ -225,12 +225,12 @@ export const books: Book[] = [
     genre: "Technothriller",
     author: "Ard Breure",
     tagline:
-      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt. En de grens tussen loyaliteit en verraad vervaagt.",
     description:
-      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt. En de grens tussen loyaliteit en verraad vervaagt.",
     longDescription: [
-      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt—en de grens tussen loyaliteit en verraad vervaagt.",
-      "Wanneer een verwoestende cyberaanval het Europees Parlement verlamt, wordt Europa in een hoek gedreven. Terwijl Brussel zich voorbereidt op een historische stemming over digitale souvereiniteit—waarin gekozen moet worden tussen de traditionele alliantie met Amerika en een onafhankelijke koers—eist Iran de aanval op en dreigt de Straat van Hormuz te sluiten om Europese neutraliteit af te dwingen.",
+      "Een zero-day exploit treft het hart van de Europese democratie. De tijd tikt. En de grens tussen loyaliteit en verraad vervaagt.",
+      "Wanneer een verwoestende cyberaanval het Europees Parlement verlamt, wordt Europa in een hoek gedreven. Terwijl Brussel zich voorbereidt op een historische stemming over digitale souvereiniteit, waarin gekozen moet worden tussen de traditionele alliantie met Amerika en een onafhankelijke koers, eist Iran de aanval op en dreigt de Straat van Hormuz te sluiten om Europese neutraliteit af te dwingen.",
       "Slechts één cybersecurity-analist in Brussel stuit op de gevaarlijke waarheid die in de code verborgen zit. Maar terwijl hij zich een weg baant door een labyrint van staatshacking, politieke spionage en digitale oorlogsvoering, wordt de stemming zelf in het geheim gemanipuleerd. Als de uitslag kantelt, verschuift het geopolitieke machtsevenwicht voorgoed.",
       "Boordevol authentieke tech-spanning, zenuwslopende actie en realistische geopolitiek is Zero Day Directive een meeslepende techno-thriller voor liefhebbers van Tom Clancy, Daniel Silva en William Gibson.",
       "Komt de waarheid boven tafel voordat de democratie wordt herschreven?",
@@ -245,7 +245,7 @@ export const books: Book[] = [
     format: "Paperback",
     formatNote:
       "Zero Day Directive verschijnt naar verwachting januari 2027. Schrijf je in voor de nieuwsbrief om als eerste bericht te ontvangen over de exacte verschijningsdatum, prijs en een exclusieve voorpublicatie.",
-    setting: "Nederland — de grens tussen fysieke en digitale werkelijkheid",
+    setting: "Nederland: de grens tussen fysieke en digitale werkelijkheid",
     themes: [
       "Technologie en kwetsbaarheid",
       "Stilzwijgen en geheimen",

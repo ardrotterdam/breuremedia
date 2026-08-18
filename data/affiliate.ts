@@ -45,7 +45,7 @@ export const ereaders: Ereader[] = [
     slug: "kobo-clara-bw",
     naam: "Kobo Clara BW",
     korteOmschrijving:
-      "De Clara BW is het kleine broertje: 6 inch, zwart-wit, maar met het nieuwste en scherpste schermtype dat er is — nieuwer zelfs dan wat in de basis-Kindle zit.",
+      "De Clara BW is het kleine broertje: 6 inch, zwart-wit, maar met het nieuwste en scherpste schermtype dat er is, nieuwer zelfs dan wat in de basis-Kindle zit.",
     amazonUrl: "https://amzn.to/4fdZ8nd",
   },
   {
@@ -67,16 +67,16 @@ export const ereaders: Ereader[] = [
 export const rotterdamBoeken: RotterdamBoek[] = [
   {
     slug: "schaduwen-over-domburg",
-    naam: "Schaduwen over Domburg — Ard Breure",
+    naam: "Schaduwen over Domburg: Ard Breure",
     korteOmschrijving:
-      "Een literaire thriller over een zaak die begint met een lichaam op een Zeeuws strand, maar die een spoor trekt dwars door de Rotterdamse haven — naar een netwerk dat onzichtbaar blijft.",
+      "Een literaire thriller over een zaak die begint met een lichaam op een Zeeuws strand, maar die een spoor trekt dwars door de Rotterdamse haven, naar een netwerk dat onzichtbaar blijft.",
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {
     slug: "karakter-bordewijk",
-    naam: "Karakter — F. Bordewijk",
+    naam: "Karakter: F. Bordewijk",
     korteOmschrijving:
-      "Het verhaal van Jacob Willem Katadreuffe, buitenechtelijke zoon van deurwaarder Dreverhaven, die zich in het vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk — dwars tegen zijn eigen vader in.",
+      "Het verhaal van Jacob Willem Katadreuffe, buitenechtelijke zoon van deurwaarder Dreverhaven, die zich in het vooroorlogse Rotterdam omhoogvecht naar een advocatenpraktijk, dwars tegen zijn eigen vader in.",
     amazonUrl: "https://amzn.to/3T0STeX",
   },
   {
@@ -88,16 +88,16 @@ export const rotterdamBoeken: RotterdamBoek[] = [
   },
   {
     slug: "hugo-borst",
-    naam: "Hugo Borst — Rotterdam en voetbal",
+    naam: "Hugo Borst: Rotterdam en voetbal",
     korteOmschrijving:
-      "Geen stad waar voetbal en identiteit zo in elkaar grijpen als hier, en niemand schrijft daar zo goed over als Hugo Borst — Spartaan, columnist, en een van de beste sportschrijvers van het land.",
+      "Geen stad waar voetbal en identiteit zo in elkaar grijpen als hier, en niemand schrijft daar zo goed over als Hugo Borst, Spartaan, columnist, en een van de beste sportschrijvers van het land.",
     amazonUrl: "https://amzn.to/4gxPZIp",
   },
   {
     slug: "rotterdam-wederopbouw-groenendijk",
-    naam: "Rotterdam Wederopbouw — Paul Groenendijk (red.)",
+    naam: "Rotterdam Wederopbouw: Paul Groenendijk (red.)",
     korteOmschrijving:
-      "Gids met honderd wederopbouwprojecten uit Rotterdam — van het Groothandelsgebouw tot Pendrecht en Ommoord, met historische foto's naast de huidige situatie.",
+      "Gids met honderd wederopbouwprojecten uit Rotterdam: van het Groothandelsgebouw tot Pendrecht en Ommoord, met historische foto's naast de huidige situatie.",
     amazonUrl: "https://amzn.to/4w0zclU",
   },
 ];
@@ -121,16 +121,16 @@ export interface ZeelandBoek {
 export const zeelandBoeken: ZeelandBoek[] = [
   {
     slug: "schaduwen-over-domburg",
-    naam: "Schaduwen over Domburg — Ard Breure",
+    naam: "Schaduwen over Domburg: Ard Breure",
     korteOmschrijving:
-      "Een literaire thriller die begint met een lichaam op het strand van Domburg en een spoor naar de Rotterdamse haven — een verhaal dat de Zeeuwse kust als personage gebruikt.",
+      "Een literaire thriller die begint met een lichaam op het strand van Domburg en een spoor naar de Rotterdamse haven: een verhaal dat de Zeeuwse kust als personage gebruikt.",
     internalUrl: "/boeken/schaduwen-over-domburg",
   },
   {
     slug: "duivelskruid-ellen-de-vriend",
-    naam: "Duivelskruid — Ellen de Vriend",
+    naam: "Duivelskruid: Ellen de Vriend",
     korteOmschrijving:
-      "Deel 1 van de serie Een Zeelandthriller. Aan de rand van Vlissingen wordt een hardloopster aangevallen — en rechercheur Roos Latuheru krijgt haar eerste grote moordzaak toegewezen, terwijl de dader telkens een stap voor lijkt te blijven.",
+      "Deel 1 van de serie Een Zeelandthriller. Aan de rand van Vlissingen wordt een hardloopster aangevallen. En rechercheur Roos Latuheru krijgt haar eerste grote moordzaak toegewezen, terwijl de dader telkens een stap voor lijkt te blijven.",
     authors: ["Ellen de Vriend"],
     category: "Thriller",
     publisher: "Uitgeverij De Fontein",
@@ -143,9 +143,9 @@ export const zeelandBoeken: ZeelandBoek[] = [
   },
   {
     slug: "spoorloos-ellen-de-vriend",
-    naam: "Spoorloos — Ellen de Vriend",
+    naam: "Spoorloos: Ellen de Vriend",
     korteOmschrijving:
-      "Deel 2 van de serie Een Zeelandthriller. Wanneer de jonge onderneemster Carice Romeijn uit Bruinisse spoorloos verdwijnt, lijkt het een vermissingszaak — tot rechercheur Roos Latuheru ontdekt dat vrijwel iedereen in het hechte Zeeuwse dorp iets achterhoudt.",
+      "Deel 2 van de serie Een Zeelandthriller. Wanneer de jonge onderneemster Carice Romeijn uit Bruinisse spoorloos verdwijnt, lijkt het een vermissingszaak, tot rechercheur Roos Latuheru ontdekt dat vrijwel iedereen in het hechte Zeeuwse dorp iets achterhoudt.",
     authors: ["Ellen de Vriend"],
     category: "Thriller",
     publisher: "Uitgeverij De Fontein",
@@ -160,7 +160,7 @@ export const zeelandBoeken: ZeelandBoek[] = [
     slug: "time-to-momo-zeeland",
     naam: "Time to Momo Zeeland",
     korteOmschrijving:
-      "Zoek je geen roman maar een praktische gids voor je volgende tripje naar Zeeland? Time to Momo Zeeland neemt je mee naar de leukste stranden, verrassende hotspots en goede horeca — van gezellige terrasjes tot de vis die zo vanuit zee op je bord belandt. Met tips van locals haal je alles uit je bezoek aan 'het Zeeuwse'.",
+      "Zoek je geen roman maar een praktische gids voor je volgende tripje naar Zeeland? Time to Momo Zeeland neemt je mee naar de leukste stranden, verrassende hotspots en goede horeca: van gezellige terrasjes tot de vis die zo vanuit zee op je bord belandt. Met tips van locals haal je alles uit je bezoek aan 'het Zeeuwse'.",
     authors: ["Kim van Zweeden", "Melanie van Zweeden"],
     category: "Reisgids",
     publisher: "Mo’Media",
@@ -175,7 +175,7 @@ export const zeelandBoeken: ZeelandBoek[] = [
     slug: "111-plekken-in-zeeland",
     naam: "111 plekken in Zeeland die je gezien moet hebben",
     korteOmschrijving:
-      "Reisgids met 111 verrassende en onverwachte plekken in Zeeland — van verborgen natuurgebieden en lokale verhalen tot bijzondere musea en typisch Zeeuwse curiosa, buiten de bekende toeristische routes.",
+      "Reisgids met 111 verrassende en onverwachte plekken in Zeeland: van verborgen natuurgebieden en lokale verhalen tot bijzondere musea en typisch Zeeuwse curiosa, buiten de bekende toeristische routes.",
     authors: ["Jan Kuipers"],
     category: "Reisgids",
     publisher: "Uitgeverij Thoth",

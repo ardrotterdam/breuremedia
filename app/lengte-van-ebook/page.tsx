@@ -16,7 +16,7 @@ import {
 
 const pageTitle = "Lengte van een e-book: woorden & pagina's per genre";
 const pageDescription =
-  "Hoe lang is een e-book? Bekijk gemiddelde woord- en pagina-aantallen per genre. Direct overzicht — kies de juiste lengte.";
+  "Hoe lang is een e-book? Bekijk gemiddelde woord- en pagina-aantallen per genre. Direct overzicht: kies de juiste lengte.";
 const pagePath = "/lengte-van-ebook";
 const datePublished = "2026-08-11";
 const dateModified = "2026-08-11";
@@ -156,7 +156,7 @@ export default function LengteVanEbookPage() {
         <section className="content-section">
           <p className="content-paragraph">
             De gemiddelde lengte van een e-book ligt tussen de{" "}
-            <strong>60.000 en 90.000 woorden</strong> — zo&apos;n 240 tot 360
+            <strong>60.000 en 90.000 woorden</strong>: zo&apos;n 240 tot 360
             pagina&apos;s, afhankelijk van genre en opmaak. Wie &quot;lengte van
             ebook&quot; googelt, wil meestal dat ene heldere antwoord, plus een
             overzicht per genre. Dat krijg je hier.
@@ -166,7 +166,7 @@ export default function LengteVanEbookPage() {
             lettergrootte, marges en schermformaat. Het{" "}
             <strong>woordenaantal</strong> is daarom de enige betrouwbare maat.
             Hieronder zie je wat uitgevers en genres doorgaans als gangbaar
-            beschouwen — handig voor lezers én voor schrijvers die hun
+            beschouwen: handig voor lezers én voor schrijvers die hun
             manuscript willen toetsen.
           </p>
         </section>
@@ -213,7 +213,7 @@ export default function LengteVanEbookPage() {
           <p className="content-paragraph">
             Op papier is een pagina een vaste eenheid. Op een e-reader niet. Zet
             je lettergrootte een streepje groter, dan springt &quot;pagina
-            312&quot; ineens naar &quot;pagina 400&quot; — terwijl de tekst
+            312&quot; ineens naar &quot;pagina 400&quot;, terwijl de tekst
             precies even lang is. Daarom gebruiken uitgevers, agenten en
             schrijvers woorden, niet pagina&apos;s, om manuscriptlengte te
             bespreken.
@@ -243,7 +243,7 @@ export default function LengteVanEbookPage() {
           <p className="content-paragraph">
             Wereldbouw kost woorden. Debuten liggen vaak rond de 90.000–110.000;
             gevestigde series lopen regelmatig over de 120.000. Langer is niet
-            automatisch beter — maar in deze genres is ruimte voor setting
+            automatisch beter, maar in deze genres is ruimte voor setting
             gebruikelijker dan in een strakke literaire thriller.
           </p>
           <h3 className="content-heading">Young adult en non-fictie</h3>
@@ -261,7 +261,7 @@ export default function LengteVanEbookPage() {
           </h2>
           <p className="content-paragraph">
             Een manuscript van 55.000 woorden is niet &quot;te kort&quot; als het
-            een novelle of young-adultverhaal is — en 110.000 is niet
+            een novelle of young-adultverhaal is. En 110.000 is niet
             &quot;te lang&quot; als je fantasy schrijft. Kijk eerst naar het
             genre, daarna naar het tempo van je verhaal. Liever een strak boek
             van 75.000 woorden dan een opgeblazen manuscript van 95.000.

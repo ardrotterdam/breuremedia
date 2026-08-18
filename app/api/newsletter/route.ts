@@ -52,7 +52,7 @@ function buildConfirmation(book: string, language: Language) {
 
   return {
     subject: `Bevestiging: ${bookTitle}`,
-    body: `Hartelijk dank voor je inschrijving — leuk dat je belangstelling hebt voor ${bookTitle}! Zodra er nieuws is over de verschijningsdatum en de exclusieve voorpublicatie, hoor je als eerste van ons.`,
+    body: `Hartelijk dank voor je inschrijving. Leuk dat je belangstelling hebt voor ${bookTitle}! Zodra er nieuws is over de verschijningsdatum en de exclusieve voorpublicatie, hoor je als eerste van ons.`,
   };
 }
 

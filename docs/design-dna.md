@@ -1,25 +1,25 @@
-# Breure Media — Design DNA
+# Breure Media: Design DNA
 
 > Dit document is wet. Elke pagina, elk component, elke animatie en elke zin
 > copy wordt hieraan getoetst vóór hij gebouwd wordt en nádat hij gebouwd is.
 > Bij twijfel wint dit document van snelheid.
 
 **Doelgroep:** developers, designers en Cursor-agents die werken aan
-`breuremedia.com` — de site, e-mails, social assets en alles wat onder de
+`breuremedia.com`: de site, e-mails, social assets en alles wat onder de
 uitgeverij-vlag valt.
 
 ---
 
 ## De ambitie
 
-Breure Media voelt als een serieuze literaire uitgeverij — niet als een
+Breure Media voelt als een serieuze literaire uitgeverij, niet als een
 webshop, niet als een zelfpublicatie-template, niet als een blog. De eerste
 reactie van een lezer die de site opent moet zijn: *dit is een boek dat ik
 wil vasthouden*. De site moet dezelfde rust en zelfvertrouwen uitstralen als
 een goed ontworpen hardcover op een nachttafel.
 
 We streven naar het niveau van premium editorial design: Type Directors Club,
-Dutch Design Awards, Awwwards — niet als show, maar als bewijs dat hier met
+Dutch Design Awards, Awwwards: niet als show, maar als bewijs dat hier met
 zorg is gewerkt. Elke pixel dient het boek en de lezer, niet de techniek.
 
 ---
@@ -30,7 +30,7 @@ zorg is gewerkt. Elke pixel dient het boek en de lezer, niet de techniek.
 - Een Nederlandse uitgeverij van literaire thrillers
 - Een merk dat kwaliteit boven volume stelt
 - Een plek waar één boek centraal staat, niet een catalogus van twintig titels
-- Een uitnodiging om te lezen — niet om te scrollen
+- Een uitnodiging om te lezen, niet om te scrollen
 
 **Breure Media is niet:**
 - Een generieke boekenwebshop (Bol.com-achtig)
@@ -43,15 +43,15 @@ zorg is gewerkt. Elke pixel dient het boek en de lezer, niet de techniek.
 ## De filosofie (Jobs-principes, vertaald naar Breure Media)
 
 1. **Design is hoe het wérkt.** De bestelknop, de nieuwsbrief, de
-   boekbeschrijving — dat ís het merk. Geen decoratie eromheen.
+   boekbeschrijving: dat ís het merk. Geen decoratie eromheen.
 2. **Weglaten is de hoogste vorm van verfijning.** Eén boek per pagina
    verdient de volle aandacht. Geen carrousels, geen pop-ups, geen drie
    call-to-actions waar één volstaat.
 3. **Zeg nee tegen 1.000 dingen.** Badges, sterren, "bestseller"-labels,
-   social-proof-banners — alles wat schreeuwt dat het boek niet voor zichzelf
+   social-proof-banners: alles wat schreeuwt dat het boek niet voor zichzelf
    spreekt, gaat eruit.
 4. **De achterkant van de kast is ook afgewerkt.** 404-pagina, foutmeldingen
-   bij het formulier, lege staten, bevestigingsmails — de schermen die
+   bij het formulier, lege staten, bevestigingsmails: de schermen die
    "niemand ziet" krijgen dezelfde zorg als de homepage.
 5. **Het moet vanzelfsprekend voelen.** Een lezer van 60 zonder
    tech-achtergrond moet zonder uitleg het boek kunnen bestellen en zich
@@ -63,7 +63,7 @@ zorg is gewerkt. Elke pixel dient het boek en de lezer, niet de techniek.
 
 **"De stilte vóór de eerste zin."** Literair, ingetogen, zelfverzekerd.
 Donker genoeg voor spanning, warm genoeg voor vertrouwen. Denk aan een
-goed verlichte boekwinkel na sluitingstijd — niet aan een thriller-filmposter.
+goed verlichte boekwinkel na sluitingstijd, niet aan een thriller-filmposter.
 
 **Stem:**
 - Kalm, nooit hysterisch
@@ -79,7 +79,7 @@ goed verlichte boekwinkel na sluitingstijd — niet aan een thriller-filmposter.
 
 ---
 
-## De visuele taal — "Goud op warm papier in donkere stilte"
+## De visuele taal: "Goud op warm papier in donkere stilte"
 
 ### Kleur
 
@@ -109,7 +109,7 @@ componenten of inline styles.
 
 **Regels:**
 - **Goud** is het enige accent. Maximaal één gouden highlight per scherm
-  (eyebrow, border, of hover — niet alles tegelijk).
+  (eyebrow, border, of hover: niet alles tegelijk).
 - **Charcoal** draagt autoriteit: header, primaire actie, auteurssectie, footer.
 - **Warm white** is de leesomgeving. Nooit koud wit (`#FFFFFF`) als
   pagina-achtergrond.
@@ -129,7 +129,7 @@ componenten of inline styles.
 - Koppen ademen. `hero-title`: `clamp(2.5rem, 5.5vw, 3.75rem)`.
   `page-title`: `clamp(2rem, 4vw, 3rem)`.
   Hiërarchie in maximaal drie niveaus per scherm.
-- Eyebrows zijn altijd uppercase, `letter-spacing: 0.18em`, goud — het zijn
+- Eyebrows zijn altijd uppercase, `letter-spacing: 0.18em`, goud: het zijn
   richtingaanwijzers, geen koppen.
 - Bodytekst: `line-height: 1.7`, maximaal ~65 tekens per regel (`max-width: 52ch`
   waar relevant).
@@ -142,7 +142,7 @@ componenten of inline styles.
 - Header: `--header-height: 64px`, fixed, charcoal.
 - Sectie-padding: `6rem` desktop, `4rem` mobiel. Geen "ongeveer goed".
 - Boekomslag: `aspect-ratio: 2/3`, subtiele schaduw, `border-radius: 2px`
-  (bijna rechthoekig — boeken zijn geen pillen).
+  (bijna rechthoekig: boeken zijn geen pillen).
 - Kaarten en vlakken: geen zware drop-shadows. Diepte via kleurcontrast
   (charcoal op warm white). Alleen de boekomslag krijgt een gelaagde,
   subtiele schaduw (`.book-cover`, `.book-card-cover img`).
@@ -177,19 +177,19 @@ Header: **Boeken** · **Auteur** · **Contact**
 
 Footer: Boeken · Over de auteur · Contact · Privacy
 
-Geen nieuwsbrief in de nav — die leeft op de homepage als sectie.
+Geen nieuwsbrief in de nav: die leeft op de homepage als sectie.
 
 ### Homepage (`app/page.tsx`)
 
-1. **Header** — fixed, charcoal, logo + nav
-2. **Hero** (`BookHero`) — boekomslag links (charcoal pane), titel + auteur +
+1. **Header**: fixed, charcoal, logo + nav
+2. **Hero** (`BookHero`): boekomslag links (charcoal pane), titel + auteur +
    tagline + prijs + formaatnotitie + bestelknop rechts (warm white pane)
-3. **Synopsis** — editorial rule, eyebrow "Over het boek", sectietitel,
+3. **Synopsis**: editorial rule, eyebrow "Over het boek", sectietitel,
    lange beschrijving (paragrafen uit `data/books.ts`)
-4. **Auteur** — charcoal sectie, bio + blockquote met motto, link naar
+4. **Auteur**: charcoal sectie, bio + blockquote met motto, link naar
    `/over-de-auteur`
-5. **Nieuwsbrief** — warm-white-muted achtergrond, formulier
-6. **Footer** — contact, tagline, nav, copyright
+5. **Nieuwsbrief**: warm-white-muted achtergrond, formulier
+6. **Footer**: contact, tagline, nav, copyright
 
 **Regel:** de homepage heeft één hoofdtaak: **het boek laten voelen alsof
 je het al vasthoudt.** Alles wat die taak niet dient, gaat eruit.
@@ -214,7 +214,7 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 
 ### Toon
 
-- Schrijf alsof je een brief aan een literaire lezer stuurt — niet als een
+- Schrijf alsof je een brief aan een literaire lezer stuurt, niet als een
   marketingafdeling.
 - Beschrijf het boek met zintuigen en sfeer, niet met superlatieven
   ("de beste thriller ooit").
@@ -247,7 +247,7 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 
 ### Logo
 
-- Tekst: `Breure Media` — Cormorant Garamond, `letter-spacing: 0.04em`
+- Tekst: `Breure Media`, Cormorant Garamond, `letter-spacing: 0.04em`
 - Op donkere achtergrond: `--color-warm-white`
 - Nooit een afbeelding-logo zonder dit document te herzien
 
@@ -316,12 +316,12 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 
 ### Editorial rule
 
-- `<hr class="editorial-rule">` — korte lijn boven secties
-- Footer-variant: `.editorial-rule--footer` — gouden tint, gecentreerd
+- `<hr class="editorial-rule">`: korte lijn boven secties
+- Footer-variant: `.editorial-rule--footer`, gouden tint, gecentreerd
 
 ### Text links
 
-- `.text-link` — uppercase, goud, `letter-spacing: 0.06em`
+- `.text-link`: uppercase, goud, `letter-spacing: 0.06em`
 - Hover: charcoal
 
 ### 404
@@ -337,7 +337,7 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 - **Stack:** Next.js 15 (App Router) + TypeScript + CSS (geen Tailwind)
 - **Tokens:** alle kleuren en fonts via CSS custom properties in `:root`
   (`app/globals.css`)
-- **Fonts:** Google Fonts via `next/font` — Cormorant Garamond + Inter
+- **Fonts:** Google Fonts via `next/font`: Cormorant Garamond + Inter
 - **Breakpoints:** `900px` (hero grid → single column), `640px` (mobiel nav)
 - **Server Components** by default; client components alleen voor interactiviteit
   (Header nav, NewsletterForm, OrderButton)
@@ -352,13 +352,13 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 
 ## De lat (checklist per pagina/component)
 
-- [ ] Voelt dit als een serieuze literaire uitgeverij — niet als een template?
+- [ ] Voelt dit als een serieuze literaire uitgeverij, niet als een template?
 - [ ] Is er precies één duidelijke hoofdactie?
 - [ ] Kan er iets weg zonder verlies? Dan gaat het weg.
-- [ ] Kloppen lege staat, laadstaat en foutstaat — en zijn ze verzorgd?
+- [ ] Kloppen lege staat, laadstaat en foutstaat, en zijn ze verzorgd?
 - [ ] Werkt en oogt het op mobiel net zo doordacht als op desktop?
 - [ ] Gebruikt het uitsluitend de tokens uit `globals.css` (geen losse hexcodes)?
-- [ ] Is de copy literair en kalm — geen marketing-taal?
+- [ ] Is de copy literair en kalm, geen marketing-taal?
 - [ ] Zou een Awwwards-jury dit serieus nemen als editorial design?
 
 ---
@@ -375,7 +375,7 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 - Losse hexcodes in componenten in plaats van CSS tokens
 - Engelse UI-labels op een Nederlandse site
 - Tailwind of andere utility-first frameworks (dit project gebruikt plain CSS)
-- "Tijdelijk lelijk, fixen we later" — nee. Het is meteen goed, of het wacht.
+- "Tijdelijk lelijk, fixen we later": nee. Het is meteen goed, of het wacht.
 
 ---
 
@@ -384,7 +384,7 @@ Alle inner pages delen `.page-header` (warm-white-muted achtergrond) en
 | Project | Relatie |
 |---|---|
 | **Schaduwen over Domburg** | Eerste titel op de site; auteur Ard Breure; prijs €29,95 |
-| **CoachBalie** | Zelfde DNA-structuur, ander merk — warm papier vs. baanblauw |
+| **CoachBalie** | Zelfde DNA-structuur, ander merk: warm papier vs. baanblauw |
 | **HormuzEye** | Zelfde editorial discipline, ander domein (finance vs. fictie) |
 
 Bij twijfel over merkscheiding: Breure Media = fictie en literaire spanning.
@@ -392,4 +392,4 @@ Geen kruisbestuiving van kleuren, fonts of toon met andere merken.
 
 ---
 
-*Laatst bijgewerkt: juli 2026 — versie 2.0 (Next.js)*
+*Laatst bijgewerkt: juli 2026, versie 2.0 (Next.js)*
