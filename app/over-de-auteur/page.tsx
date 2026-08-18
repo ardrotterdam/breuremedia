@@ -64,7 +64,9 @@ export default function AboutAuthorPage() {
             {siteConfig.name} is een onafhankelijk Nederlands label voor
             literaire thrillers. Het richt zich op boeken waarin spanning,
             taal en psychologische diepgang samenkomen — verhalen die blijven
-            nazinderen, lang nadat de laatste pagina is omgeslagen.
+            nazinderen, lang nadat de laatste pagina is omgeslagen. Daarnaast
+            verschijnen hier leeslijsten en gidsen over boeken, over plekken
+            als Rotterdam en Zeeland, en over e-readers.
           </p>
           <p className="content-paragraph">
             Na het debuut <em>Schaduwen over Domburg</em> verschijnt met{" "}

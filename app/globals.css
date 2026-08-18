@@ -1310,6 +1310,16 @@ input:focus-visible {
   max-width: 52ch;
 }
 
+.form-privacy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-privacy a:hover {
+  color: var(--color-charcoal);
+}
+
 /* Compacte formuliervariant voor tekstkolommen (content-pagina's):
    veld en knop naast elkaar op één regel binnen de tekstkolom. De
    introzin erboven (.content-paragraph) levert de verticale marge. */
@@ -1382,6 +1392,10 @@ input:focus-visible {
   color: rgba(232, 226, 216, 0.48);
   letter-spacing: 0.02em;
   line-height: var(--line-height-ui);
+}
+
+.footer-legal + .footer-legal {
+  margin-top: 0.5rem;
 }
 
 /* Responsive */

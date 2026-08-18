@@ -1,5 +1,5 @@
 import type { Book, BookTranslation } from "@/data/books";
-import { author, siteConfig } from "@/lib/site";
+import { author, operator, siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
 
 export interface BreadcrumbItem {
@@ -11,6 +11,7 @@ export function organizationSchema() {
   return {
     "@type": "Organization",
     name: siteConfig.name,
+    legalName: operator.legalName,
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,

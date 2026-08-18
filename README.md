@@ -53,6 +53,7 @@ public/
   assets/               # Static images (cover, favicon)
 docs/
   design-dna.md         # Brand & design guidelines
+  content-dna.md        # Editorial strategy, clusters, affiliate philosophy
 ```
 
 ## Adding a new book

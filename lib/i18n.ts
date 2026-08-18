@@ -56,6 +56,7 @@ const routePairs: readonly (readonly [string, string])[] = [
   ["/over-de-auteur", "/en/about"],
   ["/contact", "/en/contact"],
   ["/privacy", "/en/privacy"],
+  ["/affiliate", "/en/affiliate"],
 ];
 
 export function localeFromPathname(pathname: string): Locale {
@@ -76,6 +77,7 @@ export interface FooterCopy {
   rights: string;
   navLabel: string;
   country: string;
+  operator: string;
 }
 
 export const footerCopy: Record<Locale, FooterCopy> = {
@@ -90,10 +92,12 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/over-de-auteur", label: "Over de auteur" },
       { type: "link", href: "/contact", label: "Contact" },
       { type: "link", href: "/privacy", label: "Privacy" },
+      { type: "link", href: "/affiliate", label: "Affiliate" },
     ],
     rights: "Alle rechten voorbehouden.",
     navLabel: "Voettekstnavigatie",
     country: "Nederland",
+    operator: "Breure Media wordt geëxploiteerd door ABshops.nl · KvK 72037628",
   },
   en: {
     tagline: "Independent imprint for books and original stories.",
@@ -103,10 +107,12 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },
       { type: "link", href: "/en/privacy", label: "Privacy" },
+      { type: "link", href: "/en/affiliate", label: "Affiliate" },
     ],
     rights: "All rights reserved.",
     navLabel: "Footer navigation",
     country: "The Netherlands",
+    operator: "Breure Media is operated by ABshops.nl · KvK 72037628",
   },
 };
 

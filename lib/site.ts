@@ -11,6 +11,17 @@ export const siteConfig = {
   motto: "Verhalen die de stilte doorbreken.",
 } as const;
 
+/** Legal operator of the website. Do not add a BTW-id until the owner supplies one. */
+export const operator = {
+  legalName: "ABshops.nl",
+  kvk: "72037628",
+  streetAddress: "Weena 70",
+  postalCode: "3012 CM",
+  city: "Rotterdam",
+  country: "Nederland",
+  countryEn: "The Netherlands",
+} as const;
+
 /** English counterparts of the site-level strings, used in the /en section. */
 export const siteEn = {
   tagline: "Publisher of literary thrillers",

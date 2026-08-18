@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import { localeFromPathname } from "@/lib/i18n";
 
@@ -231,7 +232,12 @@ export function NewsletterForm({
       >
         {message}
       </p>
-      <p className="form-privacy">{t.privacy}</p>
+      <p className="form-privacy">
+        {t.privacy}{" "}
+        <Link href={locale === "en" ? "/en/privacy" : "/privacy"}>
+          {locale === "en" ? "Privacy policy" : "Privacybeleid"}
+        </Link>
+      </p>
     </form>
   );
 }

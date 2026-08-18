@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/over-de-auteur": "/en/about",
     "/contact": "/en/contact",
     "/privacy": "/en/privacy",
+    "/affiliate": "/en/affiliate",
   };
 
   const englishStaticPages: ContentPageEntry[] = [
@@ -65,13 +66,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/en/contact",
-      lastModified: "2026-08-07",
+      lastModified: "2026-08-18",
       priority: 0.5,
       changeFrequency: "yearly",
     },
     {
       path: "/en/privacy",
-      lastModified: "2026-08-07",
+      lastModified: "2026-08-18",
+      priority: 0.3,
+      changeFrequency: "yearly",
+    },
+    {
+      path: "/en/affiliate",
+      lastModified: "2026-08-18",
       priority: 0.3,
       changeFrequency: "yearly",
     },
@@ -84,6 +91,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/about": "/over-de-auteur",
     "/en/contact": "/contact",
     "/en/privacy": "/privacy",
+    "/en/affiliate": "/affiliate",
   };
 
   const staticEntries = contentPages

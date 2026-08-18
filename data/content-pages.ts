@@ -71,13 +71,19 @@ export const contentPages: ContentPageEntry[] = [
   },
   {
     path: "/contact",
-    lastModified: "2026-08-07",
+    lastModified: "2026-08-18",
     priority: 0.6,
     changeFrequency: "yearly",
   },
   {
     path: "/privacy",
-    lastModified: "2026-08-07",
+    lastModified: "2026-08-18",
+    priority: 0.3,
+    changeFrequency: "yearly",
+  },
+  {
+    path: "/affiliate",
+    lastModified: "2026-08-18",
     priority: 0.3,
     changeFrequency: "yearly",
   },

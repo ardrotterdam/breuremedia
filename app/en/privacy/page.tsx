@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { siteConfig } from "@/lib/site";
+import { operator, siteConfig } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 
@@ -45,6 +45,30 @@ export default function EnglishPrivacyPage() {
           </Link>
         </p>
 
+        <section className="content-section" aria-labelledby="privacy-controller-heading">
+          <h2 id="privacy-controller-heading" className="content-heading">
+            Controller
+          </h2>
+          <p className="content-paragraph">
+            {siteConfig.name} is operated by {operator.legalName}.
+          </p>
+          <p className="content-paragraph">
+            {operator.legalName}
+            <br />
+            {operator.streetAddress}
+            <br />
+            {operator.postalCode} {operator.city}
+            <br />
+            {operator.countryEn}
+            <br />
+            Chamber of Commerce (KvK): {operator.kvk}
+          </p>
+          <p className="content-paragraph">
+            Contact:{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </p>
+        </section>
+
         <section className="content-section" aria-labelledby="privacy-intro-heading">
           <h2 id="privacy-intro-heading" className="content-heading">
             Introduction
@@ -60,15 +84,44 @@ export default function EnglishPrivacyPage() {
             What data do we collect?
           </h2>
           <p className="content-paragraph">
-            Through this website, {siteConfig.name} collects only the email
-            address you enter yourself when subscribing to the newsletter. This
-            happens with your explicit consent.
+            This website does not use Google Analytics or comparable tracking
+            analytics.
           </p>
           <p className="content-paragraph">
-            We use your email address solely to inform you about the release of
-            Shadows over Domburg and other {siteConfig.name} publications. We do
-            not share your data with third parties for marketing purposes. You
-            can unsubscribe at any time.
+            If you subscribe to the newsletter or waitlist, we process, with
+            your consent, the email address you enter, the title or topic you
+            signed up for, the language of the page, the URL of the page where
+            you subscribed, and the source of the subscription (for example the
+            homepage or a book page).
+          </p>
+          <p className="content-paragraph">
+            We use this information to send you updates about {siteConfig.name}{" "}
+            publications. Messages are sent through Resend, an email service. We
+            do not share your data with third parties for their own marketing.
+            You can unsubscribe at any time.
+          </p>
+        </section>
+
+        <section className="content-section" aria-labelledby="privacy-contact-data-heading">
+          <h2 id="privacy-contact-data-heading" className="content-heading">
+            Email correspondence
+          </h2>
+          <p className="content-paragraph">
+            If you email {siteConfig.name}, we use the information you send in
+            that message in order to reply.
+          </p>
+        </section>
+
+        <section className="content-section" aria-labelledby="privacy-affiliate-heading">
+          <h2 id="privacy-affiliate-heading" className="content-heading">
+            Affiliate links
+          </h2>
+          <p className="content-paragraph">
+            This website may contain links to external retailers such as Amazon
+            and, in future, possibly bol.com. If you click such a link, you leave
+            our site. The retailer has its own privacy and cookie policies.{" "}
+            {siteConfig.name} does not control cookies or data processing on that
+            retailer&apos;s site after you leave.
           </p>
         </section>
 
@@ -77,8 +130,9 @@ export default function EnglishPrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            This website does not use tracking cookies or advertising networks.
-            Technically necessary cookies may be used for the site to function.
+            This website does not set tracking cookies and does not use
+            advertising networks. Technically necessary cookies may be used for
+            the site to function.
           </p>
         </section>
 
@@ -88,7 +142,8 @@ export default function EnglishPrivacyPage() {
           </h2>
           <p className="content-paragraph">
             Under the General Data Protection Regulation (GDPR) you have the
-            right to access, correct and delete your personal data. Contact us at{" "}
+            right, among other things, to access, correct and delete your
+            personal data. Contact us at{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> for
             questions about your data.
           </p>
@@ -103,7 +158,7 @@ export default function EnglishPrivacyPage() {
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
           <p className="content-paragraph content-meta">
-            Last updated: July 2026
+            Last updated: August 2026
           </p>
         </section>
       </div>

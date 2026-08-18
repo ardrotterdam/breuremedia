@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { siteConfig } from "@/lib/site";
+import { operator, siteConfig } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 
@@ -37,6 +37,30 @@ export default function PrivacyPage() {
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
 
+        <section className="content-section" aria-labelledby="privacy-controller-heading">
+          <h2 id="privacy-controller-heading" className="content-heading">
+            Verantwoordelijke
+          </h2>
+          <p className="content-paragraph">
+            {siteConfig.name} wordt geëxploiteerd door {operator.legalName}.
+          </p>
+          <p className="content-paragraph">
+            {operator.legalName}
+            <br />
+            {operator.streetAddress}
+            <br />
+            {operator.postalCode} {operator.city}
+            <br />
+            {operator.country}
+            <br />
+            KvK: {operator.kvk}
+          </p>
+          <p className="content-paragraph">
+            Contact:{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </p>
+        </section>
+
         <section className="content-section" aria-labelledby="privacy-intro-heading">
           <h2 id="privacy-intro-heading" className="content-heading">
             Inleiding
@@ -53,15 +77,44 @@ export default function PrivacyPage() {
             Welke gegevens verzamelen wij?
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} verzamelt via deze website alleen het e-mailadres
-            dat u zelf invult bij inschrijving voor de nieuwsbrief. Dit gebeurt
-            met uw uitdrukkelijke toestemming.
+            Deze website gebruikt geen Google Analytics en geen vergelijkbare
+            trackinganalytics.
           </p>
           <p className="content-paragraph">
-            Wij gebruiken uw e-mailadres uitsluitend om u te informeren over de
-            verschijning van Schaduwen over Domburg en andere publicaties van
-            {siteConfig.name}. Wij delen uw gegevens niet met derden voor
-            marketingdoeleinden. U kunt zich op elk moment uitschrijven.
+            Als u zich inschrijft voor de nieuwsbrief of wachtlijst, verwerken
+            wij met uw toestemming het e-mailadres dat u invult, de titel of het
+            onderwerp waarop u zich inschrijft, de taal van de pagina, de URL
+            van de pagina waarop u zich inschrijft, en de bron van de
+            inschrijving (bijvoorbeeld de homepage of een boekpagina).
+          </p>
+          <p className="content-paragraph">
+            Wij gebruiken deze gegevens om u te informeren over publicaties van{" "}
+            {siteConfig.name}. De berichten worden verzonden via Resend, een
+            e-maildienst. Wij delen uw gegevens niet met derden voor hun eigen
+            marketing. U kunt zich op elk moment uitschrijven.
+          </p>
+        </section>
+
+        <section className="content-section" aria-labelledby="privacy-contact-data-heading">
+          <h2 id="privacy-contact-data-heading" className="content-heading">
+            Contact per e-mail
+          </h2>
+          <p className="content-paragraph">
+            Als u {siteConfig.name} e-mailt, gebruiken wij de informatie die u
+            in dat bericht meestuurt om te antwoorden.
+          </p>
+        </section>
+
+        <section className="content-section" aria-labelledby="privacy-affiliate-heading">
+          <h2 id="privacy-affiliate-heading" className="content-heading">
+            Affiliatelinks
+          </h2>
+          <p className="content-paragraph">
+            Op deze website kunnen links staan naar externe winkels, zoals
+            Amazon en in de toekomst mogelijk bol.com. Als u op zo&apos;n link
+            klikt, verlaat u onze site. De winkel heeft een eigen privacy- en
+            cookiebeleid. {siteConfig.name} heeft geen controle over cookies of
+            gegevensverwerking bij die winkel nadat u de website heeft verlaten.
           </p>
         </section>
 
@@ -70,7 +123,7 @@ export default function PrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            Deze website maakt geen gebruik van trackingcookies of
+            Deze website plaatst geen trackingcookies en gebruikt geen
             advertentienetwerken. Technisch noodzakelijke cookies kunnen worden
             gebruikt voor het functioneren van de site.
           </p>
@@ -82,7 +135,7 @@ export default function PrivacyPage() {
           </h2>
           <p className="content-paragraph">
             Op grond van de Algemene Verordening Gegevensbescherming (AVG) heeft
-            u recht op inzage, correctie en verwijdering van uw
+            u onder meer recht op inzage, correctie en verwijdering van uw
             persoonsgegevens. Neem contact op via{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> voor
             vragen over uw gegevens.
@@ -98,7 +151,7 @@ export default function PrivacyPage() {
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
           <p className="content-paragraph content-meta">
-            Laatst bijgewerkt: juli 2026
+            Laatst bijgewerkt: augustus 2026
           </p>
         </section>
       </div>

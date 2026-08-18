@@ -30,6 +30,7 @@ export function Footer() {
           </p>
           <p>{t.country}</p>
         </div>
+        <p className="footer-legal">{t.operator}</p>
         <p className="footer-legal">
           &copy; {year} {siteConfig.name}. {t.rights}
         </p>

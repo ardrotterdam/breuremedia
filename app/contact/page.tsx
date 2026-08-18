@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { siteConfig } from "@/lib/site";
+import { operator, siteConfig } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 
@@ -64,6 +64,29 @@ export default function ContactPage() {
             <li>Samenwerking en distributie</li>
             <li>Algemene vragen over Breure Media</li>
           </ul>
+        </section>
+
+        <section className="content-section" aria-labelledby="contact-company-heading">
+          <h2 id="contact-company-heading" className="content-heading">
+            Bedrijfsgegevens
+          </h2>
+          <p className="content-paragraph">
+            {siteConfig.name} wordt geëxploiteerd door {operator.legalName}.
+          </p>
+          <p className="content-paragraph">
+            {operator.legalName}
+            <br />
+            {operator.streetAddress}
+            <br />
+            {operator.postalCode} {operator.city}
+            <br />
+            {operator.country}
+          </p>
+          <p className="content-paragraph">KvK: {operator.kvk}</p>
+          <p className="content-paragraph">
+            E-mail:{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </p>
         </section>
       </div>
     </main>
