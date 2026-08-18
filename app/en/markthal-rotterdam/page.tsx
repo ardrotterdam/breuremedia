@@ -65,8 +65,6 @@ const dateModified = "2026-08-18";
  * fill these slots with scraped third-party photographs.
  *
  * Remaining filenames:
- * - markthal-rotterdam-food-stalls.webp
- * - rotterdam-cube-houses-blaak.webp
  * - markthal-rotterdam-architecture-exterior.webp
  */
 const articleImages = {
@@ -87,17 +85,17 @@ const articleImages = {
       "The Horn of Plenty, the ceiling mural by Arno Coenen and Iris Roskam.",
   },
   food: {
-    src: null,
-    alt: "Food stalls and shoppers inside the covered market hall of Markthal Rotterdam",
-    width: 1600,
-    height: 900,
+    src: "/images/markthal-rotterdam-food-market-interior.webp",
+    alt: "Food stalls inside Markthal Rotterdam with cheese, bread, seafood and visitors in the market hall",
+    width: 1536,
+    height: 1024,
     caption: "A working market hall: stalls, produce and cooked food under the arch.",
   },
   nearby: {
-    src: null,
-    alt: "The Cube Houses next to Markthal Rotterdam at Blaak",
-    width: 1600,
-    height: 900,
+    src: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
+    alt: "Cube Houses at Blaak near Markthal Rotterdam with pedestrians and city architecture",
+    width: 1536,
+    height: 1024,
     caption:
       "Piet Blom's Cube Houses stand beside Markthal on the Blaak square.",
   },
