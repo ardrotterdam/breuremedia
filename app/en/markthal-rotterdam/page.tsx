@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
@@ -9,6 +10,46 @@ import { author, siteConfig } from "@/lib/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd, faqSchema } from "@/lib/schema";
 
+interface ArticleImage {
+  /** Public path, or null until a licensed/owned file is added. */
+  src: string | null;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+}
+
+function ArticleFigure({
+  image,
+  priority = false,
+}: {
+  image: ArticleImage;
+  priority?: boolean;
+}) {
+  if (!image.src) {
+    return null;
+  }
+
+  return (
+    <figure className="content-section">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        priority={priority}
+        fetchPriority={priority ? "high" : undefined}
+        loading={priority ? undefined : "lazy"}
+        sizes="(max-width: 768px) 100vw, 48rem"
+        style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+      />
+      {image.caption ? (
+        <figcaption className="content-meta">{image.caption}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
 const pagePath = "/en/markthal-rotterdam";
 const pageTitle = "Markthal Rotterdam: What to See, Eat & Know Before You Go";
 const pageHeadline =
@@ -18,12 +59,83 @@ const pageDescription =
 const datePublished = "2026-08-18";
 const dateModified = "2026-08-18";
 
+/**
+ * IMAGE TODO: add licensed or owned WebP files to `public/assets/` or
+ * `public/images/`, then set `src` and the real pixel width/height. Do not
+ * fill these slots with scraped third-party photographs.
+ *
+ * Remaining filenames:
+ * - markthal-rotterdam-food-stalls.webp
+ * - rotterdam-cube-houses-blaak.webp
+ * - markthal-rotterdam-architecture-exterior.webp
+ */
+const articleImages = {
+  hero: {
+    src: "/images/markthal-rotterdam-exterior-hero.webp",
+    alt: "Exterior of Markthal Rotterdam with its iconic arched glass facade and city plaza",
+    width: 1536,
+    height: 1024,
+    caption:
+      "Markthal Rotterdam: apartments bent into an arch over a covered market square.",
+  },
+  ceiling: {
+    src: "/images/markthal-rotterdam-interior-horn-of-plenty.webp",
+    alt: "Interior of Markthal Rotterdam with the colourful Horn of Plenty artwork across the arched ceiling",
+    width: 1536,
+    height: 1024,
+    caption:
+      "The Horn of Plenty, the ceiling mural by Arno Coenen and Iris Roskam.",
+  },
+  food: {
+    src: null,
+    alt: "Food stalls and shoppers inside the covered market hall of Markthal Rotterdam",
+    width: 1600,
+    height: 900,
+    caption: "A working market hall: stalls, produce and cooked food under the arch.",
+  },
+  nearby: {
+    src: null,
+    alt: "The Cube Houses next to Markthal Rotterdam at Blaak",
+    width: 1600,
+    height: 900,
+    caption:
+      "Piet Blom's Cube Houses stand beside Markthal on the Blaak square.",
+  },
+  architecture: {
+    src: null,
+    alt: "Architectural exterior of Markthal Rotterdam, showing the housing arch and glass facade",
+    width: 1600,
+    height: 900,
+    caption:
+      "Private housing makes the public hall: the arch seen from outside.",
+  },
+  rotterdamContext: {
+    src: "/assets/rotterdam-maas-lezen-sfeerbeeld.webp",
+    alt: "Illustration of reading by the Maas in Rotterdam with the Erasmusbrug in the background",
+    width: 1600,
+    height: 600,
+    caption:
+      "Rotterdam beyond the market: the river city that Markthal introduces.",
+  },
+} as const satisfies Record<string, ArticleImage>;
+
+const heroImage = articleImages.hero;
+
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: pagePath,
   type: "article",
   locale: "en_US",
+  ...(heroImage.src
+    ? {
+        image: heroImage.src,
+        imageAlt: heroImage.alt,
+        imageWidth: heroImage.width,
+        imageHeight: heroImage.height,
+        imageType: "image/webp",
+      }
+    : {}),
   keywords: [
     "Markthal Rotterdam",
     "Markthal",
@@ -80,6 +192,7 @@ const articleSchema = {
   datePublished,
   dateModified,
   inLanguage: "en",
+  ...(heroImage.src ? { image: absoluteUrl(heroImage.src) } : {}),
   author: {
     "@type": "Person",
     name: author.name,
@@ -120,6 +233,8 @@ export default function MarkthalRotterdamPage() {
           <Link href="/en/about">Ard Breure</Link>, author of{" "}
           <Link href="/en/shadows-over-domburg">Shadows over Domburg</Link>
         </p>
+
+        <ArticleFigure image={articleImages.hero} priority />
 
         <section className="content-section" aria-labelledby="intro-heading">
           <h2 id="intro-heading" className="content-heading">
@@ -177,6 +292,7 @@ export default function MarkthalRotterdamPage() {
           <h2 id="what-makes-special-heading" className="content-heading">
             What makes Markthal special?
           </h2>
+          <ArticleFigure image={articleImages.ceiling} />
           <p className="content-paragraph">
             The first thing most people notice is the ceiling. The mural known
             as the Horn of Plenty, also called Cornucopia, is the work of Arno
@@ -207,6 +323,7 @@ export default function MarkthalRotterdamPage() {
           <h2 id="what-to-eat-heading" className="content-heading">
             What can you eat at Markthal?
           </h2>
+          <ArticleFigure image={articleImages.food} />
           <p className="content-paragraph">
             Eat as you would in a working market, not as you would in a
             restaurant with a fixed menu for tourists. The hall is built for
@@ -281,6 +398,7 @@ export default function MarkthalRotterdamPage() {
           <h2 id="nearby-heading" className="content-heading">
             What to see near Markthal
           </h2>
+          <ArticleFigure image={articleImages.nearby} />
           <p className="content-paragraph">
             Almost everything worth pairing with Markthal is within a short
             walk of Station Blaak.
@@ -322,6 +440,7 @@ export default function MarkthalRotterdamPage() {
           <h2 id="architecture-heading" className="content-heading">
             Markthal and Rotterdam architecture
           </h2>
+          <ArticleFigure image={articleImages.architecture} />
           <p className="content-paragraph">
             Rotterdam is a city that had its centre taken from it. On 14 May
             1940 the bombing emptied the middle of the town. What followed was
@@ -381,6 +500,7 @@ export default function MarkthalRotterdamPage() {
           <h2 id="books-rotterdam-heading" className="content-heading">
             Books about Rotterdam
           </h2>
+          <ArticleFigure image={articleImages.rotterdamContext} />
           <p className="content-paragraph">
             A visit to Markthal is a way into the city. Books are the slower
             way. If the hall leaves you wanting the harbour, the pre-war
