@@ -240,6 +240,8 @@ export default function BoekenOverZeelandPage() {
           Door{" "}
           <Link href="/over-de-auteur">Ard Breure</Link>, auteur van{" "}
           <Link href="/boeken/schaduwen-over-domburg">Schaduwen over Domburg</Link>
+          {" · "}
+          Laatst bijgewerkt 18 augustus 2026
         </p>
 
         <AffiliateDisclosure />

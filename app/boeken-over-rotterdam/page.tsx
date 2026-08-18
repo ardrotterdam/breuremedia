@@ -196,7 +196,7 @@ export default function BoekenOverRotterdamPage() {
           <Link href="/over-de-auteur">Ard Breure</Link>, auteur van{" "}
           <Link href="/boeken/schaduwen-over-domburg">Schaduwen over Domburg</Link>
           {" · "}
-          Laatst bijgewerkt 11 augustus 2026
+          Laatst bijgewerkt 18 augustus 2026
         </p>
 
         <AffiliateDisclosure />

@@ -19,7 +19,7 @@ const pageDescription =
 const heroImage = "/images/beste-waterdichte-e-reader-2026.webp";
 const heroAlt = "Waterdichte e-reader naast een zwembad voor lezen op vakantie";
 const datePublished = "2026-08-07";
-const dateModified = "2026-08-11";
+const dateModified = "2026-08-18";
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
@@ -138,7 +138,7 @@ export default function WaterdichteEReaderPage() {
       <PageHeader
         eyebrow="Koopgids"
         title="Welke waterdichte e-reader is het beste voor bad, strand en vakantie?"
-        description="Door Ard Breure, auteur van Schaduwen over Domburg · Laatst bijgewerkt 11 augustus 2026"
+        description="Door Ard Breure, auteur van Schaduwen over Domburg · Laatst bijgewerkt 18 augustus 2026"
       />
 
       <div className="container content-page">

@@ -19,7 +19,7 @@ const pageDescription =
   "Hoe lang is een e-book? Bekijk gemiddelde woord- en pagina-aantallen per genre. Direct overzicht: kies de juiste lengte.";
 const pagePath = "/lengte-van-ebook";
 const datePublished = "2026-08-11";
-const dateModified = "2026-08-11";
+const dateModified = "2026-08-18";
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
@@ -147,7 +147,7 @@ export default function LengteVanEbookPage() {
       <PageHeader
         eyebrow="Schrijfgids"
         title="Hoe lang is een e-book? Lengte in woorden en pagina's per genre"
-        description="Door Ard Breure · Laatst bijgewerkt 11 augustus 2026"
+        description="Door Ard Breure · Laatst bijgewerkt 18 augustus 2026"
       />
 
       <div className="container content-page">

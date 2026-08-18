@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     imageAlt:
       "Kindle Paperwhite e-reader met de cover van Schaduwen over Domburg aan de Zeeuwse kust",
     publishedAt: "2026-08-11",
-    updatedAt: "2026-08-11",
+    updatedAt: "2026-08-18",
   },
   {
     href: "/waterdichte-e-reader",
@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     imageAlt:
       "Waterdichte e-reader naast een zwembad voor lezen op vakantie",
     publishedAt: "2026-08-07",
-    updatedAt: "2026-08-11",
+    updatedAt: "2026-08-18",
   },
 ];
 
