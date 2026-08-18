@@ -82,6 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
       changeFrequency: "yearly",
     },
+    {
+      path: "/en/markthal-rotterdam",
+      lastModified: "2026-08-18",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
   ];
 
   const englishNlPath: Record<string, string> = {
@@ -156,16 +162,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  const englishStaticEntries = englishStaticPages.map((page) =>
-    toSitemapEntry(page, {
-      alternates: {
-        languages: {
-          nl: `${siteConfig.url}${englishNlPath[page.path] ?? ""}`,
-          en: `${siteConfig.url}${page.path}`,
-        },
-      },
-    })
-  );
+  const englishStaticEntries = englishStaticPages.map((page) => {
+    const nlPath = englishNlPath[page.path];
+    return toSitemapEntry(
+      page,
+      nlPath === undefined
+        ? undefined
+        : {
+            alternates: {
+              languages: {
+                nl: `${siteConfig.url}${nlPath}`,
+                en: `${siteConfig.url}${page.path}`,
+              },
+            },
+          }
+    );
+  });
 
   return [
     ...staticEntries,
