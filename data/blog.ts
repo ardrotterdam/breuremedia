@@ -21,6 +21,18 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    href: "/markthal-rotterdam",
+    title: "Markthal Rotterdam: wat te zien, eten en weten voor je bezoek",
+    excerpt:
+      "Bezoek je de Markthal Rotterdam? Ontdek wat je er kunt zien en eten, hoeveel tijd je nodig hebt en welke bezienswaardigheden dichtbij liggen.",
+    category: "Rotterdam",
+    image: "/images/markthal-rotterdam-exterior-hero.webp",
+    imageAlt:
+      "Buitenkant van de Markthal Rotterdam met de herkenbare glazen boog en het stadsplein",
+    locale: "nl",
+    publishedAt: "2026-08-18",
+  },
+  {
     href: "/lengte-van-ebook",
     title: "Lengte van een e-book: woorden & pagina's per genre",
     excerpt:

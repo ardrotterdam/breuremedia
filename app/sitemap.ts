@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact": "/en/contact",
     "/privacy": "/en/privacy",
     "/affiliate": "/en/affiliate",
+    "/markthal-rotterdam": "/en/markthal-rotterdam",
   };
 
   const englishStaticPages: ContentPageEntry[] = [
@@ -106,6 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/contact": "/contact",
     "/en/privacy": "/privacy",
     "/en/affiliate": "/affiliate",
+    "/en/markthal-rotterdam": "/markthal-rotterdam",
   };
 
   const staticEntries = contentPages

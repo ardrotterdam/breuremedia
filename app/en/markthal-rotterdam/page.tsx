@@ -141,6 +141,11 @@ export const metadata: Metadata = buildMetadata({
     "what to eat at Markthal",
     "Rotterdam architecture",
   ],
+  languages: {
+    nl: "/markthal-rotterdam",
+    en: pagePath,
+    "x-default": pagePath,
+  },
 });
 
 const breadcrumbs = [

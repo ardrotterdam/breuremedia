@@ -469,6 +469,13 @@ export default function BoekenOverRotterdamPage() {
             fundament onder elk boek dat wél over deze stad geschreven wordt.
           </p>
           <p className="content-paragraph">
+            Wie die geschiedenis eerst in de stad zelf wil zien, begin bij de{" "}
+            <Link href="/markthal-rotterdam">Markthal</Link>
+            : een overdekte markt onder een woonboog, pal naast Blaak. Daar is
+            de wederopbouw geen museumstuk, maar een publieke ruimte waar je
+            kunt eten, kijken en de stad in één beweging begrijpen.
+          </p>
+          <p className="content-paragraph">
             <strong>Voor wie:</strong> wie wil begrijpen waaróm Rotterdam is
             zoals het is, voordat je leest hoe het voelt.
           </p>

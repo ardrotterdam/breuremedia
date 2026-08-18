@@ -35,9 +35,15 @@ export const contentPages: ContentPageEntry[] = [
   },
   {
     path: "/blog",
-    lastModified: "2026-08-11",
+    lastModified: "2026-08-18",
     priority: 0.8,
     changeFrequency: "weekly",
+  },
+  {
+    path: "/markthal-rotterdam",
+    lastModified: "2026-08-18",
+    priority: 0.7,
+    changeFrequency: "monthly",
   },
   {
     path: "/lengte-van-ebook",
