@@ -162,10 +162,9 @@ export const books: Book[] = [
         "As the investigation moves from the windswept Zeeland coast to the darker edges of the Port of Rotterdam, it becomes increasingly difficult to determine who is telling the truth and who is revealing just enough of it to remain invisible.",
         "Shadows over Domburg is a contemporary Dutch thriller about power, international smuggling, technology and the vulnerability of a world that has learned to trust data, procedures and systems. A story in which the facts may be clear, the questions may seem logical, and the answers are anything but.",
       ],
-      coverImage:
-        "/images/schaduwen-over-domburg-literaire-thriller-ard-breure.webp",
+      coverImage: "/assets/shadows-over-domburg-book-cover.webp",
       coverAlt:
-        "Book cover of Shadows Over Domburg, a literary thriller novel by Ard Breure featuring a dark beach, lighthouse, and skyline",
+        "English book cover of Shadows over Domburg by Ard Breure",
       formatNote:
         "Shadows over Domburg is expected in autumn 2026. Sign up for the newsletter to be the first to hear the exact release date, price and an exclusive preview.",
       setting: "Domburg, Zeeland — the Dutch coast",
