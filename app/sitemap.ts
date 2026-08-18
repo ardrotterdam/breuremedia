@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "": "/en",
     "/boeken": "/en/books",
     "/e-readers": "/en/e-readers",
+    "/blog": "/en/blog",
     "/over-de-auteur": "/en/about",
     "/contact": "/en/contact",
     "/privacy": "/en/privacy",
@@ -57,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-08-12",
       priority: 0.7,
       changeFrequency: "monthly",
+    },
+    {
+      path: "/en/blog",
+      lastModified: "2026-08-18",
+      priority: 0.8,
+      changeFrequency: "weekly",
     },
     {
       path: "/en/about",
@@ -94,6 +101,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en": "",
     "/en/books": "/boeken",
     "/en/e-readers": "/e-readers",
+    "/en/blog": "/blog",
     "/en/about": "/over-de-auteur",
     "/en/contact": "/contact",
     "/en/privacy": "/privacy",
@@ -121,8 +129,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     });
 
-  // Blog posts that are not already covered by contentPages (path match).
-  const contentPaths = new Set(contentPages.map((page) => page.path));
+  // Blog posts that are not already covered by static NL/EN page lists.
+  const contentPaths = new Set([
+    ...contentPages.map((page) => page.path),
+    ...englishStaticPages.map((page) => page.path),
+  ]);
   const blogEntries = getPublishedBlogPosts()
     .filter((post) => !contentPaths.has(post.href))
     .map((post) =>

@@ -226,14 +226,15 @@ function itemListItemSchema(
 export function collectionPageSchema(
   name: string,
   url: string,
-  description?: string
+  description?: string,
+  inLanguage: string = siteConfig.language
 ) {
   return {
     "@type": "CollectionPage",
     name,
     url,
     ...(description && { description }),
-    inLanguage: siteConfig.language,
+    inLanguage,
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,

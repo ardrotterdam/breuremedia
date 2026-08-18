@@ -3,6 +3,19 @@ import Link from "next/link";
 import type { BlogPost } from "@/data/blog";
 import { formatBlogDate } from "@/data/blog";
 
+const cardCopy = {
+  nl: {
+    updated: "Bijgewerkt",
+    published: "Gepubliceerd",
+    cta: "Lees het artikel",
+  },
+  en: {
+    updated: "Updated",
+    published: "Published",
+    cta: "Read the article",
+  },
+} as const;
+
 interface BlogPostCardProps {
   post: BlogPost;
   /** Eager-load the first above-the-fold card image. */
@@ -10,11 +23,12 @@ interface BlogPostCardProps {
 }
 
 export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
+  const copy = cardCopy[post.locale];
   const displayDate = post.updatedAt ?? post.publishedAt;
   const dateLabel =
     post.updatedAt && post.updatedAt !== post.publishedAt
-      ? "Bijgewerkt"
-      : "Gepubliceerd";
+      ? copy.updated
+      : copy.published;
 
   return (
     <article className="blog-card">
@@ -36,11 +50,11 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
           <p className="blog-card-excerpt">{post.excerpt}</p>
           <p className="blog-card-meta">
             <time dateTime={displayDate}>
-              {dateLabel} {formatBlogDate(displayDate)}
+              {dateLabel} {formatBlogDate(displayDate, post.locale)}
             </time>
           </p>
           <span className="blog-card-cta" aria-hidden="true">
-            Lees het artikel
+            {copy.cta}
           </span>
         </div>
       </Link>

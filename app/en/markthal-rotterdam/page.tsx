@@ -145,6 +145,7 @@ export const metadata: Metadata = buildMetadata({
 
 const breadcrumbs = [
   { name: "Home", path: "/en" },
+  { name: "Blog", path: "/en/blog" },
   { name: "Markthal Rotterdam", path: pagePath },
 ];
 

@@ -12,20 +12,21 @@ import {
   itemListSchema,
 } from "@/lib/schema";
 
-const pageTitle = "Blog over boeken, e-readers en schrijven | Breure Media";
+const pageTitle = "Blog | Books, E-readers and Rotterdam | Breure Media";
 const pageDescription =
-  "Artikelen over e-booklengte, waterdichte e-readers en meer. Lees de gidsen van Breure Media. Start hier.";
-const pagePath = "/blog";
+  "Guides to books, e-readers and Rotterdam, plus reading recommendations from Breure Media. Start here.";
+const pagePath = "/en/blog";
 const intro =
-  "Verhalen beginnen niet alleen op de eerste pagina. Hier lees je artikelen over boeken, e-readers, schrijven en de plaatsen die de verhalen van Breure Media vormgeven.";
+  "Stories do not begin only on the first page. Here you will find articles about books, e-readers, Rotterdam and the places that shape the stories of Breure Media.";
 
-const posts = getPublishedBlogPosts("nl");
+const posts = getPublishedBlogPosts("en");
 const featuredImage = posts[0];
 
 export const metadata: Metadata = buildMetadata({
   title: pageTitle,
   description: pageDescription,
   path: pagePath,
+  locale: "en_US",
   ...(featuredImage && {
     image: featuredImage.image,
     imageAlt: featuredImage.imageAlt,
@@ -34,23 +35,28 @@ export const metadata: Metadata = buildMetadata({
     imageType: "image/webp",
   }),
   languages: {
-    nl: pagePath,
-    en: "/en/blog",
-    "x-default": "/en/blog",
+    nl: "/blog",
+    en: pagePath,
+    "x-default": pagePath,
   },
 });
 
 const breadcrumbs = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/en" },
   { name: "Blog", path: pagePath },
 ];
 
-export default function BlogPage() {
+export default function EnglishBlogPage() {
   const jsonLd = buildJsonLd(
-    collectionPageSchema("Blog", absoluteUrl(pagePath), pageDescription),
+    collectionPageSchema(
+      "Blog",
+      absoluteUrl(pagePath),
+      pageDescription,
+      "en"
+    ),
     breadcrumbSchema(breadcrumbs),
     itemListSchema(
-      "Artikelen van Breure Media",
+      "Articles from Breure Media",
       posts.map((post) => ({
         name: post.title,
         url: absoluteUrl(post.href),
@@ -62,12 +68,12 @@ export default function BlogPage() {
   );
 
   return (
-    <main>
+    <main lang="en">
       <JsonLd data={jsonLd} />
       <PageHeader title="Blog" description={intro} />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />
-        <section aria-label="Artikelen" className="blog-grid-section">
+        <section aria-label="Articles" className="blog-grid-section">
           <ul className="blog-grid">
             {posts.map((post, index) => (
               <li key={post.href} className="blog-grid-item">

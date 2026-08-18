@@ -10,8 +10,8 @@ export type Locale = "nl" | "en";
 
 /**
  * Navigation shown in the English (/en) section.
- * Mirrors the core NL header: Books dropdown, E-readers, Author, Contact.
- * NL-only guides (blog, theme pages) stay omitted until EN twins exist.
+ * Mirrors the core NL header: Books dropdown, E-readers, Blog, Author, Contact.
+ * NL-only theme pages stay omitted until EN twins exist.
  */
 export const enNavLinks: readonly NavItem[] = [
   {
@@ -26,8 +26,8 @@ export const enNavLinks: readonly NavItem[] = [
         type: "link",
         href: "/en/shadows-over-domburg",
         label: "Shadows over Domburg",
-        coverImage: "/assets/schaduwen-over-domburg-cover.webp",
-        coverAlt: "Cover of Shadows over Domburg",
+        coverImage: "/assets/shadows-over-domburg-book-cover.webp",
+        coverAlt: "English book cover of Shadows over Domburg by Ard Breure",
       },
       {
         type: "link",
@@ -39,13 +39,14 @@ export const enNavLinks: readonly NavItem[] = [
     ],
   },
   { type: "link", href: "/en/e-readers", label: "E-readers" },
+  { type: "link", href: "/en/blog", label: "Blog" },
   { type: "link", href: "/en/about", label: "Author" },
   { type: "link", href: "/en/contact", label: "Contact" },
 ];
 
 /**
  * NL ↔ EN equivalents for the language switch. Pages without a counterpart
- * (affiliate/blog guides without an EN twin) fall back to the other locale's home.
+ * (one-language articles and guides) fall back to the other locale's home.
  */
 const routePairs: readonly (readonly [string, string])[] = [
   ["/", "/en"],
@@ -53,6 +54,7 @@ const routePairs: readonly (readonly [string, string])[] = [
   ["/boeken/schaduwen-over-domburg", "/en/shadows-over-domburg"],
   ["/boeken/zero-day-directive", "/en/zero-day-directive"],
   ["/e-readers", "/en/e-readers"],
+  ["/blog", "/en/blog"],
   ["/over-de-auteur", "/en/about"],
   ["/contact", "/en/contact"],
   ["/privacy", "/en/privacy"],
@@ -104,6 +106,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
       { type: "link", href: "/en/e-readers", label: "E-readers" },
+      { type: "link", href: "/en/blog", label: "Blog" },
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },
       { type: "link", href: "/en/privacy", label: "Privacy" },
