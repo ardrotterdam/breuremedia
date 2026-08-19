@@ -46,6 +46,12 @@ export const contentPages: ContentPageEntry[] = [
     changeFrequency: "monthly",
   },
   {
+    path: "/kubuswoningen-rotterdam",
+    lastModified: "2026-08-19",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/lengte-van-ebook",
     lastModified: "2026-08-18",
     priority: 0.8,

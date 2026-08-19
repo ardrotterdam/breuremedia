@@ -406,7 +406,11 @@ export default function MarkthalRotterdamPage() {
               <strong>Kubuswoningen.</strong> De gele kubussen van Piet Blom
               staan pal naast de hal. Ze zijn makkelijk te fotograferen vanaf
               het plein. Het museumhuis Kijk-Kubus is de plek om het interieur
-              te zien als die nieuwsgierigheid bij het bezoek hoort.
+              te zien als die nieuwsgierigheid bij het bezoek hoort. Onze{" "}
+              <Link href="/kubuswoningen-rotterdam">
+                gids over de Kubuswoningen
+              </Link>{" "}
+              vertelt wat je ziet en hoeveel tijd je nodig hebt.
             </li>
             <li>
               <strong>Weekmarkt op de Binnenrotte.</strong> Op dinsdag en
