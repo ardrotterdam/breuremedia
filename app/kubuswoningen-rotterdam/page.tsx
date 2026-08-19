@@ -63,10 +63,10 @@ const englishPath = "/en/cube-houses-rotterdam";
 
 const articleImages = {
   hero: {
-    src: null,
-    alt: "Rij gele kubuswoningen van Piet Blom aan het Overblaak in Rotterdam, gezien vanaf het plein onder de gekantelde kubussen",
-    width: 1536,
-    height: 1024,
+    src: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
+    alt: "Kubuswoningen Rotterdam: gele gekantelde huizen van Piet Blom aan het Overblaak onder een blauwe lucht",
+    width: 1024,
+    height: 682,
     caption:
       "Kubuswoningen Rotterdam: gekantelde huizen op palen die samen een architectonisch bos vormen in het hart van de stad.",
   },

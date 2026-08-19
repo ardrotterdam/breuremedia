@@ -27,6 +27,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.",
     category: "Rotterdam",
+    image: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
+    imageAlt:
+      "Kubuswoningen Rotterdam: gele gekantelde huizen van Piet Blom aan het Overblaak onder een blauwe lucht",
     locale: "nl",
     publishedAt: "2026-08-19",
   },
@@ -74,6 +77,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.",
     category: "Rotterdam",
+    image: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
+    imageAlt:
+      "Cube Houses Rotterdam: yellow tilted Kubuswoningen by Piet Blom on Overblaak under a blue sky",
     locale: "en",
     publishedAt: "2026-08-19",
   },

@@ -71,10 +71,10 @@ const dateModified = "2026-08-19";
  */
 const articleImages = {
   hero: {
-    src: null,
-    alt: "Row of yellow cube houses by Piet Blom on the Overblaak in Rotterdam, seen from the square beneath the tilted cubes",
-    width: 1536,
-    height: 1024,
+    src: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
+    alt: "Cube Houses Rotterdam: yellow tilted Kubuswoningen by Piet Blom on Overblaak under a blue sky",
+    width: 1024,
+    height: 682,
     caption:
       "Cube Houses Rotterdam: tilted homes on pylons that together form an architectural forest in the heart of the city.",
   },
