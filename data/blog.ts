@@ -71,6 +71,18 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-08-18",
   },
   {
+    href: "/en/cube-houses-rotterdam",
+    title: "Cube Houses Rotterdam: What to See, Experience and Know Before You Go",
+    excerpt:
+      "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.",
+    category: "Rotterdam",
+    image: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
+    imageAlt:
+      "The yellow Cube Houses by Piet Blom at Blaak station in Rotterdam",
+    locale: "en",
+    publishedAt: "2026-08-19",
+  },
+  {
     href: "/en/markthal-rotterdam",
     title: "Markthal Rotterdam: What to See, Eat and Know Before You Go",
     excerpt:
