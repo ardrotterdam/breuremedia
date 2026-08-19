@@ -10,8 +10,9 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   category: string;
-  image: string;
-  imageAlt: string;
+  /** Card thumbnail. Omitted until a licensed/owned file exists. */
+  image?: string;
+  imageAlt?: string;
   locale: Locale;
   /** ISO date YYYY-MM-DD */
   publishedAt: string;
@@ -26,9 +27,6 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.",
     category: "Rotterdam",
-    image: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
-    imageAlt:
-      "De gele kubuswoningen van Piet Blom bij station Blaak in Rotterdam",
     locale: "nl",
     publishedAt: "2026-08-19",
   },
@@ -76,9 +74,6 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.",
     category: "Rotterdam",
-    image: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
-    imageAlt:
-      "The yellow Cube Houses by Piet Blom at Blaak station in Rotterdam",
     locale: "en",
     publishedAt: "2026-08-19",
   },

@@ -63,8 +63,8 @@ const englishPath = "/en/cube-houses-rotterdam";
 
 const articleImages = {
   hero: {
-    src: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
-    alt: "De gele kubuswoningen van Piet Blom bij station Blaak in Rotterdam",
+    src: null,
+    alt: "Rij gele kubuswoningen van Piet Blom aan het Overblaak in Rotterdam, gezien vanaf het plein onder de gekantelde kubussen",
     width: 1536,
     height: 1024,
     caption:
@@ -111,11 +111,15 @@ export const metadata: Metadata = buildMetadata({
   description: pageDescription,
   path: pagePath,
   type: "article",
-  image: heroImage.src,
-  imageAlt: heroImage.alt,
-  imageWidth: heroImage.width,
-  imageHeight: heroImage.height,
-  imageType: "image/webp",
+  ...(heroImage.src
+    ? {
+        image: heroImage.src,
+        imageAlt: heroImage.alt,
+        imageWidth: heroImage.width,
+        imageHeight: heroImage.height,
+        imageType: "image/webp",
+      }
+    : {}),
   keywords: [
     "Kubuswoningen Rotterdam",
     "kubuswoningen",
