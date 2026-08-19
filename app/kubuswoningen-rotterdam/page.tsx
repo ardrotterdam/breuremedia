@@ -58,7 +58,7 @@ const pageHeadline = pageTitle;
 const pageDescription =
   "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.";
 const datePublished = "2026-08-19";
-const dateModified = "2026-08-19";
+const dateModified = "2026-08-20";
 const englishPath = "/en/cube-houses-rotterdam";
 
 const articleImages = {
@@ -70,6 +70,14 @@ const articleImages = {
     caption:
       "Kubuswoningen Rotterdam: gekantelde huizen op palen die samen een architectonisch bos vormen in het hart van de stad.",
   },
+  overview: {
+    src: "/images/kubuswoningen-rotterdam-drone-overzicht.webp",
+    alt: "Kubuswoningen Rotterdam: gele gekantelde huizen van Piet Blom, luchtfoto met Willemsbrug",
+    width: 1024,
+    height: 682,
+    caption:
+      "Het Blaakse Bos van boven: gele kubussen op palen, met de Willemsbrug en Het Potlood in de skyline.",
+  },
   promenade: {
     src: null,
     alt: "De wandelpromenade onder de kubuswoningen aan het Overblaak in Rotterdam",
@@ -79,10 +87,10 @@ const articleImages = {
       "De promenade van het Blaakse Bos: publieke ruimte onder de private woningen.",
   },
   interior: {
-    src: null,
-    alt: "Interieur van de Kijk-Kubus museumwoning met schuine wanden en maatmeubilair",
-    width: 1536,
-    height: 1024,
+    src: "/images/kubuswoningen-rotterdam-kijk-kubus-interieur.webp",
+    alt: "Kubuswoningen Rotterdam: interieur van de Kijk-Kubus met schuine wanden, houten vloer en uitzicht op de stad",
+    width: 1024,
+    height: 682,
     caption:
       "Binnen in de Kijk-Kubus: geen rechte muur, en toch een woning die werkt.",
   },
@@ -283,6 +291,7 @@ export default function KubuswoningenRotterdamPage() {
           <h2 id="what-are-cubes-heading" className="content-heading">
             Wat zijn de Kubuswoningen?
           </h2>
+          <ArticleFigure image={articleImages.overview} />
           <p className="content-paragraph">
             De Kubuswoningen, ook het Blaakse Bos genoemd, liggen bij station
             Blaak, pal naast de{" "}

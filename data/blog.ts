@@ -32,6 +32,7 @@ export const blogPosts: BlogPost[] = [
       "Kubuswoningen Rotterdam: gele gekantelde huizen van Piet Blom aan het Overblaak onder een blauwe lucht",
     locale: "nl",
     publishedAt: "2026-08-19",
+    updatedAt: "2026-08-20",
   },
   {
     href: "/markthal-rotterdam",
@@ -82,6 +83,7 @@ export const blogPosts: BlogPost[] = [
       "Cube Houses Rotterdam: yellow tilted Kubuswoningen by Piet Blom on Overblaak under a blue sky",
     locale: "en",
     publishedAt: "2026-08-19",
+    updatedAt: "2026-08-20",
   },
   {
     href: "/en/markthal-rotterdam",

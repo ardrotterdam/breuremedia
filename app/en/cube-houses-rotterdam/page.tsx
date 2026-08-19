@@ -60,14 +60,14 @@ const pageHeadline =
 const pageDescription =
   "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.";
 const datePublished = "2026-08-19";
-const dateModified = "2026-08-19";
+const dateModified = "2026-08-20";
 
 /**
  * IMAGE TODO: add licensed or owned WebP files to `public/images/`, then set
  * `src` and the real pixel width/height. Do not fill these slots with scraped
  * third-party photographs.
  *
- * Remaining slots: promenade, interior, nearby.
+ * Remaining slots: promenade, nearby.
  */
 const articleImages = {
   hero: {
@@ -78,6 +78,14 @@ const articleImages = {
     caption:
       "Cube Houses Rotterdam: tilted homes on pylons that together form an architectural forest in the heart of the city.",
   },
+  overview: {
+    src: "/images/kubuswoningen-rotterdam-drone-overzicht.webp",
+    alt: "Cube Houses Rotterdam: yellow tilted houses by Piet Blom, aerial view with Willemsbrug",
+    width: 1024,
+    height: 682,
+    caption:
+      "The Blaakse Bos from above: yellow cubes on pylons, with Willemsbrug and The Pencil on the skyline.",
+  },
   promenade: {
     src: null,
     alt: "The pedestrian promenade beneath the Cube Houses on the Overblaak in Rotterdam",
@@ -87,10 +95,10 @@ const articleImages = {
       "The promenade of the Blaakse Bos: public space underneath private homes.",
   },
   interior: {
-    src: null,
-    alt: "Interior of the Kijk-Kubus museum house with sloping walls and custom-built furniture",
-    width: 1536,
-    height: 1024,
+    src: "/images/kubuswoningen-rotterdam-kijk-kubus-interieur.webp",
+    alt: "Cube Houses Rotterdam: Kijk-Kubus interior with tilted walls, wooden floor and city view",
+    width: 1024,
+    height: 682,
     caption:
       "Inside the Kijk-Kubus: not one straight wall, and still a home that works.",
   },
@@ -297,6 +305,7 @@ export default function CubeHousesRotterdamPage() {
           <h2 id="what-are-cubes-heading" className="content-heading">
             What are the Cube Houses?
           </h2>
+          <ArticleFigure image={articleImages.overview} />
           <p className="content-paragraph">
             The Cube Houses, also known as the Blaakse Bos, stand at Blaak
             station, right beside{" "}
