@@ -508,6 +508,11 @@ export default function BoekenOverRotterdamPage() {
               description: "De literaire thriller over haven en kust",
             },
             {
+              href: "/kubuswoningen-rotterdam",
+              label: "Kubuswoningen Rotterdam",
+              description: "De gids bij het Blaakse Bos van Piet Blom",
+            },
+            {
               href: "/e-readers",
               label: "E-reader gids",
               description: "Kindle of Kobo voor je volgende Rotterdam-boek",

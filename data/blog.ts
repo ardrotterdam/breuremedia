@@ -21,6 +21,18 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    href: "/kubuswoningen-rotterdam",
+    title: "Kubuswoningen Rotterdam: wat te zien, ervaren en weten voor je bezoek",
+    excerpt:
+      "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.",
+    category: "Rotterdam",
+    image: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
+    imageAlt:
+      "De gele kubuswoningen van Piet Blom bij station Blaak in Rotterdam",
+    locale: "nl",
+    publishedAt: "2026-08-19",
+  },
+  {
     href: "/markthal-rotterdam",
     title: "Markthal Rotterdam: wat te zien, eten en weten voor je bezoek",
     excerpt:
