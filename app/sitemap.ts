@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy": "/en/privacy",
     "/affiliate": "/en/affiliate",
     "/markthal-rotterdam": "/en/markthal-rotterdam",
+    "/kubuswoningen-rotterdam": "/en/cube-houses-rotterdam",
   };
 
   const englishStaticPages: ContentPageEntry[] = [
@@ -96,6 +97,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "monthly",
     },
+    {
+      path: "/en/cube-houses-rotterdam",
+      lastModified: "2026-08-19",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
   ];
 
   const englishNlPath: Record<string, string> = {
@@ -108,6 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/privacy": "/privacy",
     "/en/affiliate": "/affiliate",
     "/en/markthal-rotterdam": "/markthal-rotterdam",
+    "/en/cube-houses-rotterdam": "/kubuswoningen-rotterdam",
   };
 
   const staticEntries = contentPages

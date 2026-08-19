@@ -59,6 +59,7 @@ const pageDescription =
   "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.";
 const datePublished = "2026-08-19";
 const dateModified = "2026-08-19";
+const englishPath = "/en/cube-houses-rotterdam";
 
 const articleImages = {
   hero: {
@@ -124,6 +125,11 @@ export const metadata: Metadata = buildMetadata({
     "kubuswoningen bezoeken",
     "Rotterdam architectuur",
   ],
+  languages: {
+    nl: pagePath,
+    en: englishPath,
+    "x-default": englishPath,
+  },
 });
 
 const breadcrumbs = [

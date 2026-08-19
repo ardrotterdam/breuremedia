@@ -412,7 +412,11 @@ export default function MarkthalRotterdamPage() {
               <strong>Cube Houses (Kubuswoningen).</strong> Piet Blom&apos;s
               yellow cubes stand beside the hall. They are easy to photograph
               from the square. The Kijk-Kubus museum house is the place to see
-              the interior if that curiosity is part of the visit.
+              the interior if that curiosity is part of the visit. Our{" "}
+              <Link href="/en/cube-houses-rotterdam">
+                guide to the Cube Houses
+              </Link>{" "}
+              covers what you see and how long you need.
             </li>
             <li>
               <strong>Binnenrotte market.</strong> On Tuesday and Saturday the
