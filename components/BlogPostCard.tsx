@@ -33,17 +33,19 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
   return (
     <article className="blog-card">
       <Link href={post.href} className="blog-card-link">
-        <div className="blog-card-media">
-          <Image
-            src={post.image}
-            alt={post.imageAlt}
-            width={1200}
-            height={675}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            priority={priority}
-            loading={priority ? undefined : "lazy"}
-          />
-        </div>
+        {post.image ? (
+          <div className="blog-card-media">
+            <Image
+              src={post.image}
+              alt={post.imageAlt ?? ""}
+              width={1200}
+              height={675}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={priority}
+              loading={priority ? undefined : "lazy"}
+            />
+          </div>
+        ) : null}
         <div className="blog-card-body">
           <p className="blog-card-category">{post.category}</p>
           <h2 className="blog-card-title">{post.title}</h2>

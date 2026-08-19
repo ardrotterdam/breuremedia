@@ -86,7 +86,7 @@ const articleImages = {
       "Een werkende markthal: kramen, verse waar en bereid eten onder de boog.",
   },
   nearby: {
-    src: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
+    src: null,
     alt: "Kubuswoningen bij Blaak vlak bij de Markthal Rotterdam",
     width: 1536,
     height: 1024,

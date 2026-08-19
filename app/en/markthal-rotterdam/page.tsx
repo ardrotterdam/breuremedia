@@ -92,7 +92,7 @@ const articleImages = {
     caption: "A working market hall: stalls, produce and cooked food under the arch.",
   },
   nearby: {
-    src: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
+    src: null,
     alt: "Cube Houses at Blaak near Markthal Rotterdam with pedestrians and city architecture",
     width: 1536,
     height: 1024,

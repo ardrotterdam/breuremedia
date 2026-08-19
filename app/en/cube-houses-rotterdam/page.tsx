@@ -71,8 +71,8 @@ const dateModified = "2026-08-19";
  */
 const articleImages = {
   hero: {
-    src: "/images/cube-houses-blaak-near-markthal-rotterdam.webp",
-    alt: "The yellow Cube Houses by Piet Blom at Blaak station in Rotterdam",
+    src: null,
+    alt: "Row of yellow cube houses by Piet Blom on the Overblaak in Rotterdam, seen from the square beneath the tilted cubes",
     width: 1536,
     height: 1024,
     caption:
@@ -120,11 +120,15 @@ export const metadata: Metadata = buildMetadata({
   path: pagePath,
   type: "article",
   locale: "en_US",
-  image: heroImage.src,
-  imageAlt: heroImage.alt,
-  imageWidth: heroImage.width,
-  imageHeight: heroImage.height,
-  imageType: "image/webp",
+  ...(heroImage.src
+    ? {
+        image: heroImage.src,
+        imageAlt: heroImage.alt,
+        imageWidth: heroImage.width,
+        imageHeight: heroImage.height,
+        imageType: "image/webp",
+      }
+    : {}),
   keywords: [
     "Cube Houses Rotterdam",
     "cube houses",
