@@ -18,6 +18,17 @@
   --transition: 0.3s ease;
   --ease-header: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-ink: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-glow: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-glow: 0.35s;
+  --duration-aura: 0.4s;
+  /* Ambient gold — site tokens #b8975a / #d4b87a, never neon yellow */
+  --glow-text-nav:
+    0 0 8px rgba(212, 184, 122, 0.42),
+    0 0 18px rgba(184, 151, 90, 0.2);
+  --glow-inset-dropdown: inset 0 0 12px rgba(184, 151, 90, 0.12);
+  --glow-aura:
+    0 10px 25px -5px rgba(30, 30, 30, 0.28),
+    0 0 16px 2px rgba(184, 151, 90, 0.18);
   --container-max: 1120px;
   --header-height: 96px;
   --header-height-scrolled: 64px;
@@ -185,7 +196,11 @@ input:focus-visible {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  transition:
+    background-color var(--duration-aura) ease,
+    color var(--duration-aura) ease,
+    border-color var(--duration-aura) ease,
+    box-shadow var(--duration-aura) ease;
 }
 
 .btn-primary {
@@ -196,6 +211,7 @@ input:focus-visible {
 .btn-primary:hover {
   background-color: var(--color-gold);
   color: var(--color-charcoal);
+  box-shadow: var(--glow-aura);
 }
 
 .btn-secondary {
@@ -208,6 +224,7 @@ input:focus-visible {
 .btn-secondary:hover {
   border-color: var(--color-gold);
   color: var(--color-charcoal);
+  box-shadow: var(--glow-aura);
 }
 
 /* Gedeeld hover-effect (OrderButton + compacte form-knop): subtiele
@@ -218,16 +235,18 @@ input:focus-visible {
 .btn-shine {
   --shine-color: rgba(245, 240, 232, 0.18);
   --btn-lift: -2px;
-  /* Warme, donkere schaduw afgeleid van het goud — geen hard zwart */
-  --btn-hover-shadow: 0 14px 30px -10px rgba(74, 58, 30, 0.45);
+  /* Warme, donkere schaduw + zacht gouden aura — geen hard zwart, geen neon */
+  --btn-hover-shadow:
+    0 10px 25px -5px rgba(74, 58, 30, 0.4),
+    0 0 16px 2px rgba(184, 151, 90, 0.2);
   position: relative;
   overflow: hidden;
   transition:
     background-color var(--transition),
     color var(--transition),
     border-color var(--transition),
-    transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform var(--duration-aura) var(--ease-glow),
+    box-shadow var(--duration-aura) var(--ease-glow);
 }
 
 .btn-shine::before {
@@ -310,7 +329,16 @@ input:focus-visible {
 }
 
 .logo {
-  transition: font-size 350ms var(--ease-header);
+  transition:
+    font-size 350ms var(--ease-header),
+    color var(--duration-glow) var(--ease-glow),
+    text-shadow var(--duration-glow) var(--ease-glow);
+}
+
+.logo:hover,
+.logo:focus-visible {
+  color: var(--color-warm-white);
+  text-shadow: var(--glow-text-nav);
 }
 
 .site-header.is-scrolled .logo {
@@ -375,7 +403,7 @@ input:focus-visible {
   }
 }
 
-.nav a,
+.nav > a,
 .nav-dropdown-trigger {
   position: relative;
   font-size: var(--font-size-ui);
@@ -384,6 +412,10 @@ input:focus-visible {
   text-transform: uppercase;
   color: rgba(232, 226, 216, 0.72);
   white-space: nowrap;
+  transition:
+    color var(--duration-glow) var(--ease-glow),
+    text-shadow var(--duration-glow) var(--ease-glow),
+    transform var(--duration-glow) var(--ease-glow);
 }
 
 .nav-dropdown-trigger {
@@ -422,7 +454,7 @@ input:focus-visible {
 /* Inktlijn — underline die zichzelf tekent. Subtiel verloop van licht
    naar dieper goud, in de tekenrichting (links → rechts). */
 
-.nav a::after,
+.nav > a::after,
 .nav-dropdown-trigger-label::after {
   content: "";
   position: absolute;
@@ -445,17 +477,29 @@ input:focus-visible {
   display: inline-block;
 }
 
-.nav a:hover,
-.nav a:focus-visible,
+.nav > a:hover,
+.nav > a:focus-visible,
 .nav-dropdown-trigger:hover,
 .nav-dropdown-trigger:focus-visible,
 .nav-dropdown.is-open .nav-dropdown-trigger,
 .nav-dropdown.is-active .nav-dropdown-trigger {
-  color: var(--color-gold-light);
+  color: var(--color-warm-white);
 }
 
-.nav a:hover::after,
-.nav a:focus-visible::after,
+.nav > a:hover,
+.nav > a:focus-visible,
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger:focus-visible {
+  text-shadow: var(--glow-text-nav);
+  transform: translateY(-1px);
+}
+
+.nav-dropdown.is-open .nav-dropdown-trigger {
+  text-shadow: var(--glow-text-nav);
+}
+
+.nav > a:hover::after,
+.nav > a:focus-visible::after,
 .nav-dropdown-trigger:hover .nav-dropdown-trigger-label::after,
 .nav-dropdown-trigger:focus-visible .nav-dropdown-trigger-label::after,
 .nav-dropdown.is-open .nav-dropdown-trigger-label::after,
@@ -463,16 +507,16 @@ input:focus-visible {
   transform: scaleX(1);
 }
 
-.nav a:focus-visible,
+.nav > a:focus-visible,
 .nav-dropdown-trigger:focus-visible {
   outline: none;
 }
 
-.nav a[aria-current="page"] {
+.nav > a[aria-current="page"] {
   color: var(--color-warm-white);
 }
 
-.nav a[aria-current="page"]::after {
+.nav > a[aria-current="page"]::after {
   height: 2px;
   transform: scaleX(1);
 }
@@ -536,11 +580,12 @@ input:focus-visible {
 }
 
 .nav-dropdown-link {
+  --dropdown-pad-left: 0.85rem;
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0.55rem 0.85rem;
+  padding: 0.55rem 0.85rem 0.55rem var(--dropdown-pad-left);
   margin: 0 0.15rem;
   border-radius: 0.55rem;
   font-size: var(--font-size-caption);
@@ -549,8 +594,10 @@ input:focus-visible {
   color: rgba(232, 226, 216, 0.78);
   white-space: nowrap;
   transition:
-    color 200ms var(--ease-header),
-    background-color 200ms var(--ease-header);
+    color var(--duration-glow) var(--ease-glow),
+    background-color var(--duration-glow) var(--ease-glow),
+    box-shadow var(--duration-glow) var(--ease-glow),
+    padding-left var(--duration-glow) var(--ease-glow);
 }
 
 .nav-dropdown-link::after {
@@ -575,18 +622,14 @@ input:focus-visible {
 
 .nav-dropdown-link-label {
   display: inline-block;
-  transition: transform 200ms ease-out;
 }
 
 .nav-dropdown-link:hover,
 .nav-dropdown-link:focus-visible {
   color: var(--color-gold-light);
   background-color: rgba(184, 151, 90, 0.08);
-}
-
-.nav-dropdown-link:hover .nav-dropdown-link-label,
-.nav-dropdown-link:focus-visible .nav-dropdown-link-label {
-  transform: translateX(3px);
+  box-shadow: var(--glow-inset-dropdown);
+  padding-left: calc(var(--dropdown-pad-left) + 4px);
 }
 
 .nav-dropdown-link:not(.nav-dropdown-link--book):hover::before,
@@ -599,6 +642,7 @@ input:focus-visible {
 .nav-dropdown-link[aria-current="page"] {
   color: var(--color-gold-light);
   background-color: rgba(184, 151, 90, 0.12);
+  box-shadow: var(--glow-inset-dropdown);
 }
 
 .nav-dropdown-link--book {
@@ -630,6 +674,7 @@ input:focus-visible {
 .nav-dropdown-link--book[aria-current="page"] .nav-dropdown-thumb {
   box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.4),
+    0 0 10px 1px rgba(184, 151, 90, 0.28),
     0 0 0 1px rgba(184, 151, 90, 0.4);
 }
 
@@ -665,6 +710,9 @@ input:focus-visible {
 
 .lang-switch .lang-link {
   color: rgba(232, 226, 216, 0.55);
+  transition:
+    color var(--duration-glow) var(--ease-glow),
+    text-shadow var(--duration-glow) var(--ease-glow);
 }
 
 .lang-switch a::after {
@@ -673,7 +721,8 @@ input:focus-visible {
 
 .lang-switch .lang-link:hover,
 .lang-switch .lang-link:focus-visible {
-  color: var(--color-gold-light);
+  color: var(--color-warm-white);
+  text-shadow: var(--glow-text-nav);
 }
 
 .lang-switch .lang-current {
@@ -822,15 +871,15 @@ input:focus-visible {
 
 .publication-cover-link .publication-cover {
   transition:
-    box-shadow var(--transition),
-    transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow var(--duration-aura) ease,
+    transform var(--duration-aura) ease;
 }
 
 .publication-cover-link:hover .publication-cover {
   transform: translateY(-4px);
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.18),
-    0 24px 56px rgba(0, 0, 0, 0.4),
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 0 16px 2px rgba(184, 151, 90, 0.2),
     0 0 0 1px rgba(184, 151, 90, 0.18);
 }
 
@@ -926,14 +975,18 @@ input:focus-visible {
     0 2px 4px rgba(0, 0, 0, 0.12),
     0 16px 48px rgba(0, 0, 0, 0.28),
     0 0 0 1px rgba(255, 255, 255, 0.04);
-  transition: box-shadow var(--transition);
+  transition:
+    box-shadow var(--duration-aura) ease,
+    transform var(--duration-aura) ease;
 }
 
-.book-cover:hover {
+.book-cover:hover,
+.book-cover-link:hover .book-cover {
+  transform: translateY(-2px);
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.12),
-    0 20px 56px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(184, 151, 90, 0.08);
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 0 16px 2px rgba(184, 151, 90, 0.2),
+    0 0 0 1px rgba(184, 151, 90, 0.12);
 }
 
 .hero-content-pane {
@@ -1061,16 +1114,16 @@ input:focus-visible {
 
 .upcoming-cover-link .book-cover {
   transition:
-    box-shadow var(--transition),
-    transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow var(--duration-aura) ease,
+    transform var(--duration-aura) ease;
 }
 
 .upcoming-cover-link:hover .book-cover {
   transform: translateY(-4px);
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.12),
-    0 22px 56px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(184, 151, 90, 0.1);
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 0 16px 2px rgba(184, 151, 90, 0.2),
+    0 0 0 1px rgba(184, 151, 90, 0.12);
 }
 
 .upcoming-title {
@@ -1118,6 +1171,7 @@ input:focus-visible {
   border-color: var(--color-gold);
   color: var(--color-charcoal);
   background-color: var(--color-gold-subtle);
+  box-shadow: var(--glow-aura);
 }
 
 /* Author */
@@ -1277,7 +1331,9 @@ input:focus-visible {
 /* Rustiger lift dan de grote hoofd-CTA */
 .newsletter-form .btn-shine {
   --btn-lift: -1px;
-  --btn-hover-shadow: 0 10px 22px -10px rgba(74, 58, 30, 0.35);
+  --btn-hover-shadow:
+    0 10px 22px -10px rgba(74, 58, 30, 0.35),
+    0 0 14px 2px rgba(184, 151, 90, 0.16);
 }
 
 /* De meldingsregel reserveert exact één tekstregel, zodat succes- en
@@ -1383,8 +1439,16 @@ input:focus-visible {
   margin-bottom: 0.25rem;
 }
 
-.footer-details a:hover {
-  color: var(--color-gold-light);
+.footer-details a {
+  transition:
+    color var(--duration-glow) var(--ease-glow),
+    text-shadow var(--duration-glow) var(--ease-glow);
+}
+
+.footer-details a:hover,
+.footer-details a:focus-visible {
+  color: var(--color-warm-white);
+  text-shadow: var(--glow-text-nav);
 }
 
 .footer-legal {
@@ -1604,9 +1668,10 @@ input:focus-visible {
   }
 
   .nav-dropdown-link {
+    --dropdown-pad-left: 2.5rem;
     margin: 0;
     border-radius: 0;
-    padding: 0.7rem 1.5rem 0.7rem 2.5rem;
+    padding: 0.7rem 1.5rem 0.7rem var(--dropdown-pad-left);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: var(--font-size-ui);
@@ -1625,13 +1690,21 @@ input:focus-visible {
 
   .nav-dropdown-link:hover,
   .nav-dropdown-link:focus-visible {
-    background: transparent;
+    background-color: rgba(184, 151, 90, 0.08);
+    box-shadow: var(--glow-inset-dropdown);
   }
 
   .nav-dropdown-link[aria-current="page"] {
     color: var(--color-gold-light);
     box-shadow: inset 2px 0 0 var(--color-gold);
-    background: transparent;
+    background-color: rgba(184, 151, 90, 0.1);
+  }
+
+  .nav-dropdown-link[aria-current="page"]:hover,
+  .nav-dropdown-link[aria-current="page"]:focus-visible {
+    box-shadow:
+      inset 2px 0 0 var(--color-gold),
+      inset 0 0 12px rgba(184, 151, 90, 0.12);
   }
 
   .nav-dropdown-divider {
@@ -2016,13 +2089,17 @@ input:focus-visible {
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.08),
     0 12px 32px rgba(0, 0, 0, 0.12);
-  transition: box-shadow var(--transition);
+  transition:
+    box-shadow var(--duration-aura) ease,
+    transform var(--duration-aura) ease;
 }
 
-.book-card-link:hover .book-card-cover img {
+.book-card-link:hover .book-card-cover img,
+.book-card-link:focus-visible .book-card-cover img {
+  transform: translateY(-2px);
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.08),
-    0 16px 40px rgba(0, 0, 0, 0.16);
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 0 16px 2px rgba(184, 151, 90, 0.2);
 }
 
 .book-card-content {
@@ -2103,7 +2180,9 @@ input:focus-visible {
   height: 100%;
   color: inherit;
   border-radius: 2px;
-  transition: color var(--transition);
+  transition:
+    color var(--duration-aura) ease,
+    box-shadow var(--duration-aura) ease;
 }
 
 .blog-card-link:hover {
@@ -2121,6 +2200,7 @@ input:focus-visible {
   overflow: hidden;
   border-radius: 2px;
   background-color: var(--color-warm-white-muted);
+  transition: box-shadow var(--duration-aura) ease;
 }
 
 .blog-card-media img {
@@ -2128,7 +2208,14 @@ input:focus-visible {
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
-  transition: opacity var(--transition);
+  transition:
+    opacity var(--duration-aura) ease,
+    transform var(--duration-aura) ease;
+}
+
+.blog-card-link:hover .blog-card-media,
+.blog-card-link:focus-visible .blog-card-media {
+  box-shadow: var(--glow-aura);
 }
 
 .blog-card-link:hover .blog-card-media img,
@@ -2336,10 +2423,17 @@ input:focus-visible {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(232, 226, 216, 0.72);
+  transition:
+    color var(--duration-glow) var(--ease-glow),
+    text-shadow var(--duration-glow) var(--ease-glow),
+    transform var(--duration-glow) var(--ease-glow);
 }
 
-.footer-nav a:hover {
-  color: var(--color-gold-light);
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--color-warm-white);
+  text-shadow: var(--glow-text-nav);
+  transform: translateY(-1px);
 }
 
 /* 404 */
@@ -2402,12 +2496,15 @@ input:focus-visible {
     animation: none;
   }
 
-  .nav-dropdown-link:hover .nav-dropdown-link-label,
-  .nav-dropdown-link:focus-visible .nav-dropdown-link-label {
+  .nav-dropdown-link:hover,
+  .nav-dropdown-link:focus-visible {
     transform: none;
+    padding-left: var(--dropdown-pad-left);
+    box-shadow: none;
   }
 
   .book-cover:hover,
+  .book-cover-link:hover .book-cover,
   .book-card-link:hover .book-card-cover img,
   .upcoming-cover-link:hover .book-cover,
   .publication-cover-link:hover .publication-cover {
@@ -2416,6 +2513,30 @@ input:focus-visible {
       0 16px 48px rgba(0, 0, 0, 0.28),
       0 0 0 1px rgba(255, 255, 255, 0.04);
     transform: none;
+  }
+
+  .blog-card-link:hover .blog-card-media,
+  .blog-card-link:focus-visible .blog-card-media {
+    box-shadow: none;
+  }
+
+  .logo:hover,
+  .logo:focus-visible,
+  .nav > a:hover,
+  .nav > a:focus-visible,
+  .nav-dropdown-trigger:hover,
+  .nav-dropdown-trigger:focus-visible,
+  .lang-switch .lang-link:hover,
+  .footer-nav a:hover,
+  .footer-details a:hover {
+    transform: none;
+    text-shadow: none;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .upcoming-waitlist:hover {
+    box-shadow: none;
   }
 
   /* Geen shine of lift — kleurverandering bij hover blijft */
