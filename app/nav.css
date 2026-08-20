@@ -69,15 +69,18 @@ body.is-nav-locked {
 .logo {
   position: relative;
   z-index: 2;
+  transform-origin: left center;
   transition:
     color var(--duration-hover) var(--ease-hover),
-    text-shadow var(--duration-hover) var(--ease-hover);
+    text-shadow var(--duration-hover) var(--ease-hover),
+    transform 0.25s ease;
 }
 
 .logo:hover,
 .logo:focus-visible {
   color: var(--color-gold-bright);
   text-shadow: var(--glow-text-logo);
+  transform: scale(1.04);
 }
 
 .site-header.is-scrolled .logo {
@@ -794,5 +797,10 @@ body.is-nav-locked {
   .mega-link:focus-visible,
   .mega-link[aria-current="page"] {
     text-shadow: none;
+  }
+
+  .logo:hover,
+  .logo:focus-visible {
+    transform: none;
   }
 }

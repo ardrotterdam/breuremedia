@@ -12,6 +12,7 @@
   --color-gold-light: #d4b87a;
   --color-gold-pale: #e8c79a;
   --color-gold-bright: #f2dca4;
+  --color-gold-deep: #8a6d3a;
   --color-gold-subtle: rgba(184, 151, 90, 0.15);
   --color-text: #2c2c2c;
   --color-text-muted: #6b6560;
@@ -114,7 +115,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 button {
@@ -246,8 +247,7 @@ input:focus-visible {
 .btn-secondary:hover,
 .btn-secondary:focus-visible {
   border-color: var(--color-gold);
-  color: var(--color-gold-bright);
-  text-shadow: var(--glow-strong);
+  color: var(--color-gold-deep);
 }
 
 /* Gedeeld hover-effect voor affiliate/CTA-knoppen op lichte achtergronden:
@@ -703,9 +703,8 @@ input:focus-visible {
 .upcoming-waitlist:hover,
 .upcoming-waitlist:focus-visible {
   border-color: var(--color-gold);
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
   background-color: var(--color-gold-subtle);
-  text-shadow: var(--glow-strong);
 }
 
 /* Author */
@@ -902,7 +901,7 @@ input:focus-visible {
 
 .form-privacy a:hover,
 .form-privacy a:focus-visible {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 /* Compacte formuliervariant voor tekstkolommen (content-pagina's):
@@ -1318,15 +1317,12 @@ input:focus-visible {
   text-transform: uppercase;
   color: var(--color-gold);
   text-decoration: none;
-  transition:
-    color var(--duration-hover) var(--ease-hover),
-    text-shadow var(--duration-hover) var(--ease-hover);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .text-link:hover,
 .text-link:focus-visible {
-  color: var(--color-gold-bright);
-  text-shadow: var(--glow-strong);
+  color: var(--color-gold-deep);
 }
 
 /*
@@ -1359,8 +1355,8 @@ input:focus-visible {
 .affiliate-disclosure a:not(.btn):hover,
 .content-table a:not(.btn):hover,
 .content-inline-link:hover {
-  color: var(--color-gold-bright);
-  text-decoration-color: var(--color-gold);
+  color: var(--color-gold-deep);
+  text-decoration-color: var(--color-gold-deep);
   text-decoration-thickness: 2px;
 }
 
@@ -1372,7 +1368,7 @@ input:focus-visible {
 }
 
 .related-guides-list a:hover::after {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 /* Breadcrumbs */
@@ -1401,7 +1397,7 @@ input:focus-visible {
 
 .breadcrumbs-item a:hover,
 .breadcrumbs-item a:focus-visible {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 .breadcrumbs-item span {
@@ -1462,7 +1458,7 @@ input:focus-visible {
 
 .book-card-link:hover .book-card-title,
 .book-card-link:focus-visible .book-card-title {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 .book-card-author {
@@ -1605,7 +1601,7 @@ input:focus-visible {
 
 .blog-card-link:hover .blog-card-title,
 .blog-card-link:focus-visible .blog-card-title {
-  color: var(--color-gold-bright);
+  color: var(--color-gold-deep);
 }
 
 .blog-card-excerpt {
@@ -1629,15 +1625,12 @@ input:focus-visible {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-gold);
-  transition:
-    color var(--duration-hover) var(--ease-hover),
-    text-shadow var(--duration-hover) var(--ease-hover);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .blog-card-link:hover .blog-card-cta,
 .blog-card-link:focus-visible .blog-card-cta {
-  color: var(--color-gold-bright);
-  text-shadow: var(--glow-strong);
+  color: var(--color-gold-deep);
 }
 
 /* Book detail */
@@ -1713,8 +1706,7 @@ input:focus-visible {
 
 .faq-trigger:hover .faq-question,
 .faq-trigger:focus-visible .faq-question {
-  color: var(--color-gold-bright);
-  text-shadow: var(--glow-strong);
+  color: var(--color-gold-deep);
 }
 
 .faq-question {
@@ -1724,9 +1716,7 @@ input:focus-visible {
   color: var(--color-charcoal);
   line-height: 1.4;
   overflow-wrap: break-word;
-  transition:
-    color var(--duration-hover) var(--ease-hover),
-    text-shadow var(--duration-hover) var(--ease-hover);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .faq-icon {
@@ -1886,13 +1876,7 @@ input:focus-visible {
   .nav-dropdown-trigger:hover,
   .mega-link:hover,
   .btn:hover,
-  .btn:focus-visible,
-  .text-link:hover,
-  .text-link:focus-visible,
-  .faq-trigger:hover .faq-question,
-  .faq-trigger:focus-visible .faq-question,
-  .blog-card-link:hover .blog-card-cta,
-  .blog-card-link:focus-visible .blog-card-cta {
+  .btn:focus-visible {
     transform: none;
     text-shadow: none;
   }
