@@ -56,9 +56,11 @@ export interface NavLinkItem {
   type: "link";
   href: string;
   label: string;
-  /** Optional cover thumb shown in the books mega-dropdown. */
+  /** Optional cover thumb shown in the books mega menu. */
   coverImage?: string;
   coverAlt?: string;
+  /** Optional genre / kicker shown on featured mega-menu book cards. */
+  subtitle?: string;
 }
 
 /** Non-interactive group label inside a dropdown. */
@@ -98,6 +100,7 @@ export const navLinks: readonly NavItem[] = [
         type: "link",
         href: "/boeken/schaduwen-over-domburg",
         label: "Schaduwen over Domburg",
+        subtitle: "Literaire thriller",
         coverImage: "/assets/schaduwen-over-domburg-cover.webp",
         coverAlt: "Cover van Schaduwen over Domburg",
       },
@@ -105,6 +108,7 @@ export const navLinks: readonly NavItem[] = [
         type: "link",
         href: "/boeken/zero-day-directive",
         label: "Zero Day Directive",
+        subtitle: "Technothriller",
         coverImage: "/assets/zero-day-directive.webp",
         coverAlt: "Cover van Zero Day Directive",
       },
@@ -113,12 +117,12 @@ export const navLinks: readonly NavItem[] = [
       {
         type: "link",
         href: "/boeken-over-rotterdam",
-        label: "Boeken over Rotterdam",
+        label: "Rotterdam",
       },
       {
         type: "link",
         href: "/boeken-over-zeeland",
-        label: "Boeken over Zeeland",
+        label: "Zeeland",
       },
     ],
   },

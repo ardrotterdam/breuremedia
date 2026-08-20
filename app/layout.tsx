@@ -7,6 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 import { buildJsonLd, organizationSchema, webSiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
+import "./nav.css";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],

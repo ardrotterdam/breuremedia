@@ -26,6 +26,7 @@ export const enNavLinks: readonly NavItem[] = [
         type: "link",
         href: "/en/shadows-over-domburg",
         label: "Shadows over Domburg",
+        subtitle: "Literary thriller",
         coverImage: "/assets/shadows-over-domburg-book-cover.webp",
         coverAlt: "English book cover of Shadows over Domburg by Ard Breure",
       },
@@ -33,6 +34,7 @@ export const enNavLinks: readonly NavItem[] = [
         type: "link",
         href: "/en/zero-day-directive",
         label: "Zero Day Directive",
+        subtitle: "Technothriller",
         coverImage: "/assets/zero-day-directive.webp",
         coverAlt: "Cover of Zero Day Directive",
       },
@@ -145,6 +147,10 @@ export const headerCopy: Record<
     closeMenu: string;
     switchTo: string;
     booksMenu: string;
+    exploreLabel: string;
+    themesLabel: string;
+    featuredLabel: string;
+    exploreLead: string;
   }
 > = {
   nl: {
@@ -152,13 +158,21 @@ export const headerCopy: Record<
     openMenu: "Menu openen",
     closeMenu: "Menu sluiten",
     switchTo: "Read this page in English",
-    booksMenu: "Boeken-submenu",
+    booksMenu: "Boeken-menu",
+    exploreLabel: "Ontdekken",
+    themesLabel: "Thema's",
+    featuredLabel: "Uitgelicht",
+    exploreLead: "Literaire thrillers en oorspronkelijke verhalen.",
   },
   en: {
     navLabel: "Main navigation",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     switchTo: "Lees deze pagina in het Nederlands",
-    booksMenu: "Books submenu",
+    booksMenu: "Books menu",
+    exploreLabel: "Explore",
+    themesLabel: "Themes",
+    featuredLabel: "Featured",
+    exploreLead: "Literary thrillers and original stories.",
   },
 };
