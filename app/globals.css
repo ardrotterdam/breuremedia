@@ -11,20 +11,33 @@
   --color-gold: #b8975a;
   --color-gold-light: #d4b87a;
   --color-gold-pale: #e8c79a;
+  --color-gold-bright: #f2dca4;
   --color-gold-subtle: rgba(184, 151, 90, 0.15);
   --color-text: #2c2c2c;
   --color-text-muted: #6b6560;
   /* Font families injected by next/font via layout.tsx */
-  --transition: 0.3s ease;
+  --transition: 0.2s ease;
+  --duration-hover: 0.2s;
+  --ease-hover: ease;
+  --hover-lift: -2px;
   --ease-header: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-ink: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-glow: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-glow: 0.35s;
   --duration-aura: 0.4s;
-  /* Ambient gold — site tokens #b8975a / #d4b87a, never neon yellow */
-  --glow-text-nav:
-    0 0 8px rgba(212, 184, 122, 0.42),
-    0 0 18px rgba(184, 151, 90, 0.2);
+  /* Hover glow — site tokens #b8975a / #d4b87a / #f2dca4, never neon yellow */
+  --glow-strong:
+    0 0 8px rgba(212, 184, 122, 0.85),
+    0 0 20px rgba(184, 151, 90, 0.45);
+  --glow-card:
+    0 4px 24px rgba(184, 151, 90, 0.25),
+    0 0 0 1px rgba(212, 184, 122, 0.3);
+  --hover-fill: rgba(184, 151, 90, 0.18);
+  --hover-stroke: rgba(212, 184, 122, 0.35);
+  --glow-text-nav: var(--glow-strong);
+  --glow-text-logo:
+    0 0 10px rgba(212, 184, 122, 0.85),
+    0 0 28px rgba(184, 151, 90, 0.45);
   --glow-inset-dropdown: inset 0 0 12px rgba(184, 151, 90, 0.12);
   --glow-aura:
     0 10px 25px -5px rgba(30, 30, 30, 0.28),
@@ -97,11 +110,11 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 a:hover {
-  color: var(--color-gold);
+  color: var(--color-gold-bright);
 }
 
 button {
@@ -204,10 +217,12 @@ input:focus-visible {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition:
-    background-color var(--duration-aura) ease,
-    color var(--duration-aura) ease,
-    border-color var(--duration-aura) ease,
-    box-shadow var(--duration-aura) ease;
+    background-color var(--duration-hover) var(--ease-hover),
+    color var(--duration-hover) var(--ease-hover),
+    border-color var(--duration-hover) var(--ease-hover),
+    box-shadow var(--duration-hover) var(--ease-hover),
+    text-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
 .btn-primary {
@@ -215,10 +230,10 @@ input:focus-visible {
   color: var(--color-warm-white);
 }
 
-.btn-primary:hover {
-  background-color: var(--color-gold);
-  color: var(--color-charcoal);
-  box-shadow: var(--glow-aura);
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
 .btn-secondary {
@@ -228,32 +243,34 @@ input:focus-visible {
   white-space: nowrap;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
   border-color: var(--color-gold);
-  color: var(--color-charcoal);
-  box-shadow: var(--glow-aura);
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
-/* Gedeeld hover-effect (OrderButton + compacte form-knop): subtiele
-   lift met warme schaduw en een diagonale lichtstreep die over de knop
-   glijdt. Kleur/lift/schaduw zijn per variant stuurbaar via custom
-   properties, zodat timing en easing op één plek blijven. */
+/* Gedeeld hover-effect voor affiliate/CTA-knoppen op lichte achtergronden:
+   lift + diepere schaduw, één shine-sweep, warm goudaccent.
+   Geen text-glow (dat is voor donkere navigatie). */
 
 .btn-shine {
-  --shine-color: rgba(245, 240, 232, 0.18);
+  --shine-color: rgba(255, 255, 255, 0.25);
   --btn-lift: -2px;
-  /* Warme, donkere schaduw + zacht gouden aura — geen hard zwart, geen neon */
-  --btn-hover-shadow:
-    0 10px 25px -5px rgba(74, 58, 30, 0.4),
-    0 0 16px 2px rgba(184, 151, 90, 0.2);
+  --btn-rest-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --btn-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  border: 1px solid transparent;
+  box-shadow: var(--btn-rest-shadow);
   transition:
-    background-color var(--transition),
-    color var(--transition),
-    border-color var(--transition),
-    transform var(--duration-aura) var(--ease-glow),
-    box-shadow var(--duration-aura) var(--ease-glow);
+    background-color var(--duration-hover) var(--ease-hover),
+    color var(--duration-hover) var(--ease-hover),
+    border-color var(--duration-hover) var(--ease-hover),
+    text-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover),
+    box-shadow var(--duration-hover) var(--ease-hover);
 }
 
 .btn-shine::before {
@@ -267,17 +284,28 @@ input:focus-visible {
     transparent 65%
   );
   transform: translateX(-150%);
-  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s ease;
   pointer-events: none;
+  z-index: 1;
 }
 
-.btn-shine:hover {
+.btn-shine:hover,
+.btn-shine:focus-visible {
   transform: translateY(var(--btn-lift));
   box-shadow: var(--btn-hover-shadow);
+  border-color: rgba(184, 151, 90, 0.5);
 }
 
-.btn-shine:hover::before {
+.btn-shine:hover::before,
+.btn-shine:focus-visible::before {
   transform: translateX(150%);
+}
+
+.btn-primary.btn-shine:not(.publication-cta):hover,
+.btn-primary.btn-shine:not(.publication-cta):focus-visible {
+  background-color: color-mix(in srgb, var(--color-charcoal) 78%, var(--color-gold));
+  color: var(--color-warm-white);
+  text-shadow: none;
 }
 
 /* Verfijnde CTA-variant (OrderButton): royalere maat en letter-spacing */
@@ -380,16 +408,14 @@ input:focus-visible {
 
 .publication-cover-link .publication-cover {
   transition:
-    box-shadow var(--duration-aura) ease,
-    transform var(--duration-aura) ease;
+    box-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
-.publication-cover-link:hover .publication-cover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.3),
-    0 0 16px 2px rgba(184, 151, 90, 0.2),
-    0 0 0 1px rgba(184, 151, 90, 0.18);
+.publication-cover-link:hover .publication-cover,
+.publication-cover-link:focus-visible .publication-cover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--glow-card);
 }
 
 .publication-copy {
@@ -441,9 +467,11 @@ input:focus-visible {
   color: var(--color-charcoal);
 }
 
-.publication-cta:hover {
-  background-color: var(--color-gold-light);
+.publication-cta:hover,
+.publication-cta:focus-visible {
+  background-color: var(--color-gold-bright);
   color: var(--color-charcoal);
+  text-shadow: none;
 }
 
 /* Hero */
@@ -485,17 +513,15 @@ input:focus-visible {
     0 16px 48px rgba(0, 0, 0, 0.28),
     0 0 0 1px rgba(255, 255, 255, 0.04);
   transition:
-    box-shadow var(--duration-aura) ease,
-    transform var(--duration-aura) ease;
+    box-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
 .book-cover:hover,
-.book-cover-link:hover .book-cover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.3),
-    0 0 16px 2px rgba(184, 151, 90, 0.2),
-    0 0 0 1px rgba(184, 151, 90, 0.12);
+.book-cover-link:hover .book-cover,
+.book-cover-link:focus-visible .book-cover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--glow-card);
 }
 
 .hero-content-pane {
@@ -623,16 +649,14 @@ input:focus-visible {
 
 .upcoming-cover-link .book-cover {
   transition:
-    box-shadow var(--duration-aura) ease,
-    transform var(--duration-aura) ease;
+    box-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
-.upcoming-cover-link:hover .book-cover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.3),
-    0 0 16px 2px rgba(184, 151, 90, 0.2),
-    0 0 0 1px rgba(184, 151, 90, 0.12);
+.upcoming-cover-link:hover .book-cover,
+.upcoming-cover-link:focus-visible .book-cover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--glow-card);
 }
 
 .upcoming-title {
@@ -676,11 +700,12 @@ input:focus-visible {
   color: var(--color-charcoal);
 }
 
-.upcoming-waitlist:hover {
+.upcoming-waitlist:hover,
+.upcoming-waitlist:focus-visible {
   border-color: var(--color-gold);
-  color: var(--color-charcoal);
+  color: var(--color-gold-bright);
   background-color: var(--color-gold-subtle);
-  box-shadow: var(--glow-aura);
+  text-shadow: var(--glow-strong);
 }
 
 /* Author */
@@ -827,22 +852,16 @@ input:focus-visible {
   color: var(--color-warm-white);
 }
 
-.btn-submit:hover {
+.btn-submit:hover,
+.btn-submit:focus-visible {
   background-color: #101010;
-  color: var(--color-warm-white);
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
 .btn-submit:disabled {
   opacity: 0.55;
   cursor: default;
-}
-
-/* Rustiger lift dan de grote hoofd-CTA */
-.newsletter-form .btn-shine {
-  --btn-lift: -1px;
-  --btn-hover-shadow:
-    0 10px 22px -10px rgba(74, 58, 30, 0.35),
-    0 0 14px 2px rgba(184, 151, 90, 0.16);
 }
 
 /* De meldingsregel reserveert exact één tekstregel, zodat succes- en
@@ -881,8 +900,9 @@ input:focus-visible {
   text-underline-offset: 2px;
 }
 
-.form-privacy a:hover {
-  color: var(--color-charcoal);
+.form-privacy a:hover,
+.form-privacy a:focus-visible {
+  color: var(--color-gold-bright);
 }
 
 /* Compacte formuliervariant voor tekstkolommen (content-pagina's):
@@ -949,15 +969,12 @@ input:focus-visible {
 }
 
 .footer-details a {
-  transition:
-    color var(--duration-glow) var(--ease-glow),
-    text-shadow var(--duration-glow) var(--ease-glow);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .footer-details a:hover,
 .footer-details a:focus-visible {
-  color: var(--color-warm-white);
-  text-shadow: var(--glow-text-nav);
+  color: var(--color-gold-bright);
 }
 
 .footer-legal {
@@ -1301,10 +1318,15 @@ input:focus-visible {
   text-transform: uppercase;
   color: var(--color-gold);
   text-decoration: none;
+  transition:
+    color var(--duration-hover) var(--ease-hover),
+    text-shadow var(--duration-hover) var(--ease-hover);
 }
 
-.text-link:hover {
-  color: var(--color-charcoal);
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
 /*
@@ -1325,9 +1347,9 @@ input:focus-visible {
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
   transition:
-    color var(--transition),
-    text-decoration-color var(--transition),
-    text-decoration-thickness var(--transition);
+    color var(--duration-hover) var(--ease-hover),
+    text-decoration-color var(--duration-hover) var(--ease-hover),
+    text-decoration-thickness var(--duration-hover) var(--ease-hover);
 }
 
 .content-paragraph a:not(.btn):not(.text-link):not(.book-cover-link):hover,
@@ -1337,8 +1359,8 @@ input:focus-visible {
 .affiliate-disclosure a:not(.btn):hover,
 .content-table a:not(.btn):hover,
 .content-inline-link:hover {
-  color: var(--color-gold);
-  text-decoration-color: var(--color-charcoal);
+  color: var(--color-gold-bright);
+  text-decoration-color: var(--color-gold);
   text-decoration-thickness: 2px;
 }
 
@@ -1350,7 +1372,7 @@ input:focus-visible {
 }
 
 .related-guides-list a:hover::after {
-  color: var(--color-charcoal);
+  color: var(--color-gold-bright);
 }
 
 /* Breadcrumbs */
@@ -1377,8 +1399,9 @@ input:focus-visible {
   color: var(--color-warm-white-muted);
 }
 
-.breadcrumbs-item a:hover {
-  color: var(--color-gold);
+.breadcrumbs-item a:hover,
+.breadcrumbs-item a:focus-visible {
+  color: var(--color-gold-bright);
 }
 
 .breadcrumbs-item span {
@@ -1396,6 +1419,13 @@ input:focus-visible {
 
 .book-card-link {
   display: block;
+  transition: transform var(--duration-hover) var(--ease-hover);
+}
+
+.book-card-link:hover,
+.book-card-link:focus-visible {
+  color: inherit;
+  transform: translateY(var(--hover-lift));
 }
 
 .book-card-cover img {
@@ -1408,16 +1438,13 @@ input:focus-visible {
     0 2px 4px rgba(0, 0, 0, 0.08),
     0 12px 32px rgba(0, 0, 0, 0.12);
   transition:
-    box-shadow var(--duration-aura) ease,
-    transform var(--duration-aura) ease;
+    box-shadow var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
 .book-card-link:hover .book-card-cover img,
 .book-card-link:focus-visible .book-card-cover img {
-  transform: translateY(-2px);
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.3),
-    0 0 16px 2px rgba(184, 151, 90, 0.2);
+  box-shadow: var(--glow-card);
 }
 
 .book-card-content {
@@ -1430,6 +1457,12 @@ input:focus-visible {
   font-weight: 400;
   color: var(--color-charcoal);
   margin-bottom: 0.25rem;
+  transition: color var(--duration-hover) var(--ease-hover);
+}
+
+.book-card-link:hover .book-card-title,
+.book-card-link:focus-visible .book-card-title {
+  color: var(--color-gold-bright);
 }
 
 .book-card-author {
@@ -1499,12 +1532,14 @@ input:focus-visible {
   color: inherit;
   border-radius: 2px;
   transition:
-    color var(--duration-aura) ease,
-    box-shadow var(--duration-aura) ease;
+    color var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
-.blog-card-link:hover {
+.blog-card-link:hover,
+.blog-card-link:focus-visible {
   color: inherit;
+  transform: translateY(var(--hover-lift));
 }
 
 .blog-card-link:focus-visible {
@@ -1518,7 +1553,7 @@ input:focus-visible {
   overflow: hidden;
   border-radius: 2px;
   background-color: var(--color-warm-white-muted);
-  transition: box-shadow var(--duration-aura) ease;
+  transition: box-shadow var(--duration-hover) var(--ease-hover);
 }
 
 .blog-card-media img {
@@ -1527,13 +1562,13 @@ input:focus-visible {
   object-fit: cover;
   border-radius: 2px;
   transition:
-    opacity var(--duration-aura) ease,
-    transform var(--duration-aura) ease;
+    opacity var(--duration-hover) var(--ease-hover),
+    transform var(--duration-hover) var(--ease-hover);
 }
 
 .blog-card-link:hover .blog-card-media,
 .blog-card-link:focus-visible .blog-card-media {
-  box-shadow: var(--glow-aura);
+  box-shadow: var(--glow-card);
 }
 
 .blog-card-link:hover .blog-card-media img,
@@ -1565,12 +1600,12 @@ input:focus-visible {
   color: var(--color-charcoal);
   margin-bottom: 0.75rem;
   overflow-wrap: break-word;
-  transition: color var(--transition);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .blog-card-link:hover .blog-card-title,
 .blog-card-link:focus-visible .blog-card-title {
-  color: var(--color-gold);
+  color: var(--color-gold-bright);
 }
 
 .blog-card-excerpt {
@@ -1594,11 +1629,15 @@ input:focus-visible {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-gold);
+  transition:
+    color var(--duration-hover) var(--ease-hover),
+    text-shadow var(--duration-hover) var(--ease-hover);
 }
 
 .blog-card-link:hover .blog-card-cta,
 .blog-card-link:focus-visible .blog-card-cta {
-  color: var(--color-charcoal);
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
 /* Book detail */
@@ -1672,8 +1711,10 @@ input:focus-visible {
   color: inherit;
 }
 
-.faq-trigger:hover .faq-question {
-  color: var(--color-gold);
+.faq-trigger:hover .faq-question,
+.faq-trigger:focus-visible .faq-question {
+  color: var(--color-gold-bright);
+  text-shadow: var(--glow-strong);
 }
 
 .faq-question {
@@ -1683,6 +1724,9 @@ input:focus-visible {
   color: var(--color-charcoal);
   line-height: 1.4;
   overflow-wrap: break-word;
+  transition:
+    color var(--duration-hover) var(--ease-hover),
+    text-shadow var(--duration-hover) var(--ease-hover);
 }
 
 .faq-icon {
@@ -1741,17 +1785,12 @@ input:focus-visible {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(232, 226, 216, 0.72);
-  transition:
-    color var(--duration-glow) var(--ease-glow),
-    text-shadow var(--duration-glow) var(--ease-glow),
-    transform var(--duration-glow) var(--ease-glow);
+  transition: color var(--duration-hover) var(--ease-hover);
 }
 
 .footer-nav a:hover,
 .footer-nav a:focus-visible {
-  color: var(--color-warm-white);
-  text-shadow: var(--glow-text-nav);
-  transform: translateY(-1px);
+  color: var(--color-gold-bright);
 }
 
 /* 404 */
@@ -1808,13 +1847,30 @@ input:focus-visible {
 
   .book-cover:hover,
   .book-cover-link:hover .book-cover,
-  .book-card-link:hover .book-card-cover img,
+  .book-cover-link:focus-visible .book-cover,
   .upcoming-cover-link:hover .book-cover,
-  .publication-cover-link:hover .publication-cover {
+  .upcoming-cover-link:focus-visible .book-cover,
+  .publication-cover-link:hover .publication-cover,
+  .publication-cover-link:focus-visible .publication-cover {
     box-shadow:
       0 2px 4px rgba(0, 0, 0, 0.12),
       0 16px 48px rgba(0, 0, 0, 0.28),
       0 0 0 1px rgba(255, 255, 255, 0.04);
+    transform: none;
+  }
+
+  .book-card-link:hover,
+  .book-card-link:focus-visible,
+  .blog-card-link:hover,
+  .blog-card-link:focus-visible {
+    transform: none;
+  }
+
+  .book-card-link:hover .book-card-cover img,
+  .book-card-link:focus-visible .book-card-cover img {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      0 12px 32px rgba(0, 0, 0, 0.12);
     transform: none;
   }
 
@@ -1826,25 +1882,35 @@ input:focus-visible {
   .logo:hover,
   .logo:focus-visible,
   .lang-switch .lang-link:hover,
-  .footer-nav a:hover,
-  .footer-details a:hover {
+  .nav-desktop .nav-link:hover,
+  .nav-dropdown-trigger:hover,
+  .mega-link:hover,
+  .btn:hover,
+  .btn:focus-visible,
+  .text-link:hover,
+  .text-link:focus-visible,
+  .faq-trigger:hover .faq-question,
+  .faq-trigger:focus-visible .faq-question,
+  .blog-card-link:hover .blog-card-cta,
+  .blog-card-link:focus-visible .blog-card-cta {
     transform: none;
     text-shadow: none;
   }
 
-  .btn-primary:hover,
+  .btn-primary:hover:not(.btn-shine),
   .btn-secondary:hover,
   .upcoming-waitlist:hover {
     box-shadow: none;
   }
 
-  /* Geen shine of lift — kleurverandering bij hover blijft */
+  /* Geen shine of lift — schaduw en kleurverandering bij hover blijven */
   .btn-shine::before {
     display: none;
   }
 
-  .btn-shine:hover {
+  .btn-shine:hover,
+  .btn-shine:focus-visible {
     transform: none;
-    box-shadow: none;
+    box-shadow: var(--btn-hover-shadow);
   }
 }
