@@ -562,9 +562,9 @@ input:focus-visible {
 }
 
 .nav-dropdown-panel-inner {
-  background-color: rgba(26, 26, 26, 0.9);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 50;
+  background-color: #1c1b18;
   border: 1px solid rgba(184, 151, 90, 0.22);
   border-radius: 1rem;
   box-shadow:
