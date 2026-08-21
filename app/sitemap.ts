@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/affiliate": "/en/affiliate",
     "/markthal-rotterdam": "/en/markthal-rotterdam",
     "/kubuswoningen-rotterdam": "/en/cube-houses-rotterdam",
+    "/domburg": "/en/domburg",
   };
 
   const englishStaticPages: ContentPageEntry[] = [
@@ -103,6 +104,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "monthly",
     },
+    {
+      path: "/en/domburg",
+      lastModified: "2026-08-21",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
   ];
 
   const englishNlPath: Record<string, string> = {
@@ -116,6 +123,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/affiliate": "/affiliate",
     "/en/markthal-rotterdam": "/markthal-rotterdam",
     "/en/cube-houses-rotterdam": "/kubuswoningen-rotterdam",
+    "/en/domburg": "/domburg",
   };
 
   const staticEntries = contentPages

@@ -59,6 +59,7 @@ const routePairs: readonly (readonly [string, string])[] = [
   ["/blog", "/en/blog"],
   ["/markthal-rotterdam", "/en/markthal-rotterdam"],
   ["/kubuswoningen-rotterdam", "/en/cube-houses-rotterdam"],
+  ["/domburg", "/en/domburg"],
   ["/over-de-auteur", "/en/about"],
   ["/contact", "/en/contact"],
   ["/privacy", "/en/privacy"],

@@ -63,6 +63,7 @@ function ArticleFigure({
 }
 
 const pagePath = "/domburg";
+const englishPath = "/en/domburg";
 const pageHeadline = "Domburg: het badplaatsje achter Schaduwen over Domburg";
 const pageTitle = `${pageHeadline} | ${siteConfig.name}`;
 const pageDescription =
@@ -149,6 +150,11 @@ export const metadata: Metadata = buildMetadata({
     "badplaats Domburg",
     "Domburgsche Golfclub",
   ],
+  languages: {
+    nl: pagePath,
+    en: englishPath,
+    "x-default": englishPath,
+  },
 });
 
 const breadcrumbs = [

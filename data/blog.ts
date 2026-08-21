@@ -86,6 +86,18 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-08-18",
   },
   {
+    href: "/en/domburg",
+    title: "Domburg: the seaside village behind Shadows over Domburg",
+    excerpt:
+      "Domburg through the eyes of thriller author Ard Breure: Zeeland's oldest seaside resort, and the setting of Shadows over Domburg.",
+    category: "Zeeland",
+    image: "/images/strandovergang-domburg-november.webp",
+    imageAlt:
+      "Beach access path between the dunes near Domburg under a grey November sky",
+    locale: "en",
+    publishedAt: "2026-08-21",
+  },
+  {
     href: "/en/cube-houses-rotterdam",
     title: "Cube Houses Rotterdam: why this city is the setting of my thrillers",
     excerpt:
