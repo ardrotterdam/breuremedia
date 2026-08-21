@@ -80,7 +80,7 @@ const imageFiles: Record<
 > = {
   hero: "paalhoofden-domburg-strand-november.webp",
   pavilion: "badpaviljoen-domburg-hoge-hil.webp",
-  golf: null,
+  golf: "golfbaan-domburg-bunkers-bomkraters.webp",
   beach: null,
   watertower: "watertoren-domburg-boulevard-van-schagen.webp",
 };
@@ -103,10 +103,11 @@ const articleImages = {
   },
   golf: {
     src: imageSrc(imageFiles.golf),
-    alt: "Grasbunkers op de Domburgsche Golfclub, ontstaan uit bomkraters",
-    width: 1536,
-    height: 1024,
-    caption: "Grasbunkers op de Domburgsche Golfclub, ontstaan uit bomkraters",
+    alt: "Het gepokte terrein van de Domburgsche Golfclub, waar de bunkers uit bomkraters zijn ontstaan",
+    width: 1672,
+    height: 941,
+    caption:
+      "De baan van de Domburgsche, waar 437 bomkraters littekens in het land achterlieten",
   },
   beach: {
     src: imageSrc(imageFiles.beach),
