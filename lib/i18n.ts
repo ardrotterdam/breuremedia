@@ -10,7 +10,7 @@ export type Locale = "nl" | "en";
 
 /**
  * Navigation shown in the English (/en) section.
- * Mirrors the core NL header: Books dropdown, E-readers, Blog, Author, Contact.
+ * Mirrors the core NL header: Books dropdown, Reading, Blog, Author, Contact.
  * NL-only theme pages stay omitted until EN twins exist.
  */
 export const enNavLinks: readonly NavItem[] = [
@@ -40,7 +40,7 @@ export const enNavLinks: readonly NavItem[] = [
       },
     ],
   },
-  { type: "link", href: "/en/e-readers", label: "E-readers" },
+  { type: "link", href: "/en/e-readers", label: "Reading" },
   { type: "link", href: "/en/blog", label: "Blog" },
   { type: "link", href: "/en/about", label: "Author" },
   { type: "link", href: "/en/contact", label: "Contact" },
@@ -91,7 +91,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     tagline: "Onafhankelijk label voor boeken en oorspronkelijke verhalen.",
     nav: [
       { type: "link", href: "/boeken", label: "Boeken" },
-      { type: "link", href: "/e-readers", label: "E-readers" },
+      { type: "link", href: "/e-readers", label: "Lezen" },
       { type: "link", href: "/blog", label: "Blog" },
       { type: "link", href: "/boeken-over-rotterdam", label: "Boeken over Rotterdam" },
       { type: "link", href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
@@ -109,7 +109,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     tagline: "Independent imprint for books and original stories.",
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
-      { type: "link", href: "/en/e-readers", label: "E-readers" },
+      { type: "link", href: "/en/e-readers", label: "Reading" },
       { type: "link", href: "/en/blog", label: "Blog" },
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },

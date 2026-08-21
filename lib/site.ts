@@ -126,7 +126,7 @@ export const navLinks: readonly NavItem[] = [
       },
     ],
   },
-  { type: "link", href: "/e-readers", label: "E-readers" },
+  { type: "link", href: "/e-readers", label: "Lezen" },
   { type: "link", href: "/blog", label: "Blog" },
   { type: "link", href: "/over-de-auteur", label: "Auteur" },
   { type: "link", href: "/contact", label: "Contact" },
