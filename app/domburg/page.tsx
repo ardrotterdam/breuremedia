@@ -82,7 +82,7 @@ const imageFiles: Record<
   pavilion: "badpaviljoen-domburg-hoge-hil.webp",
   golf: null,
   beach: null,
-  watertower: null,
+  watertower: "watertoren-domburg-boulevard-van-schagen.webp",
 };
 
 const articleImages = {
@@ -117,10 +117,10 @@ const articleImages = {
   },
   watertower: {
     src: imageSrc(imageFiles.watertower),
-    alt: "De watertoren van Domburg gezien vanaf de Boulevard van Schagen",
-    width: 1536,
-    height: 1024,
-    caption: "De watertoren van Domburg gezien vanaf de Boulevard van Schagen",
+    alt: "De watertoren van Domburg tussen de duinen en de zee",
+    width: 1668,
+    height: 943,
+    caption: "De watertoren, stille wachter tussen dorp en zee",
   },
 } as const satisfies Record<string, ArticleImage>;
 
