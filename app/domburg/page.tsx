@@ -81,7 +81,7 @@ const imageFiles: Record<
   hero: "paalhoofden-domburg-strand-november.webp",
   pavilion: "badpaviljoen-domburg-hoge-hil.webp",
   golf: "golfbaan-domburg-bunkers-bomkraters.webp",
-  beach: null,
+  beach: "strandovergang-domburg-november.webp",
   watertower: "watertoren-domburg-boulevard-van-schagen.webp",
 };
 
@@ -111,10 +111,11 @@ const articleImages = {
   },
   beach: {
     src: imageSrc(imageFiles.beach),
-    alt: "Strandovergang Domburg in de herfst",
-    width: 1536,
-    height: 1024,
-    caption: "Strandovergang Domburg in de herfst",
+    alt: "Strandovergang tussen de duinen bij Domburg onder een grijze novemberlucht",
+    width: 1537,
+    height: 1023,
+    caption:
+      "De strandovergang aan de stille kant van Domburg: waar het verhaal begint",
   },
   watertower: {
     src: imageSrc(imageFiles.watertower),
