@@ -75,10 +75,11 @@ const dateModified = "2026-08-21";
  * Voorbeeld: golf: "domburg-grasbunkers.webp"
  */
 const imageFiles: Record<
-  "hero" | "golf" | "beach" | "watertower",
+  "hero" | "pavilion" | "golf" | "beach" | "watertower",
   string | null
 > = {
   hero: "paalhoofden-domburg-strand-november.webp",
+  pavilion: "badpaviljoen-domburg-hoge-hil.webp",
   golf: null,
   beach: null,
   watertower: null,
@@ -92,6 +93,13 @@ const articleImages = {
     height: 941,
     caption:
       "Paalhoofden op het strand van Domburg in november, dubbele palenrij richting de Noordzee",
+  },
+  pavilion: {
+    src: imageSrc(imageFiles.pavilion),
+    alt: "Het Badpaviljoen van Domburg uit 1889 op het duin, met witte veranda's en hoektoren met lantaarn",
+    width: 1536,
+    height: 1021,
+    caption: "Het Badpaviljoen (1889), middelpunt van het mondaine Domburg",
   },
   golf: {
     src: imageSrc(imageFiles.golf),
@@ -231,6 +239,8 @@ export default function DomburgPage() {
             was.
           </p>
         </section>
+
+        <ArticleFigure image={articleImages.pavilion} />
 
         <section
           className="content-section"
