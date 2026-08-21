@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { formatBlogDate } from "@/data/blog";
 import { author, siteConfig } from "@/lib/site";
@@ -52,12 +53,12 @@ function ArticleFigure({
 }
 
 const pagePath = "/markthal-rotterdam";
-const pageTitle = "Markthal Rotterdam: wat te zien, eten en weten voor je bezoek";
+const pageTitle = "Markthal Rotterdam: de rauwe glans van een stad vol verhalen";
 const pageHeadline = pageTitle;
 const pageDescription =
-  "Bezoek je de Markthal Rotterdam? Ontdek wat je er kunt zien en eten, hoeveel tijd je nodig hebt en welke bezienswaardigheden dichtbij liggen.";
+  "Markthal Rotterdam door de ogen van thrillerauteur Ard Breure: de rauwe glans van een stad vol verhalen, het decor van zijn serie.";
 const datePublished = "2026-08-18";
-const dateModified = "2026-08-18";
+const dateModified = "2026-08-21";
 const englishPath = "/en/markthal-rotterdam";
 
 const articleImages = {
@@ -237,9 +238,10 @@ export default function MarkthalRotterdamPage() {
             Introductie
           </h2>
           <p className="content-paragraph">
-            De Markthal is het gebouw dat veel bezoekers het eerst treffen in
-            Rotterdam: een boog van appartementen over een overdekte markt, een
-            plafond van fruit en vis, de geur van brood die opstijgt in een
+            Rotterdam is het decor van mijn thrillerserie — dit is de stad zoals
+            ik haar ken. De Markthal Rotterdam is daar een van de scherpste
+            gezichten van: een boog van appartementen over een overdekte markt,
+            een plafond van fruit en vis, de geur van brood die opstijgt in een
             publieke ruimte. Het fotografeert goed. Dat is niet waarom het
             ertoe doet.
           </p>
@@ -247,9 +249,8 @@ export default function MarkthalRotterdamPage() {
             Rotterdam is een stad die zichzelf moest uitvinden nadat het
             centrum was verwoest. De Markthal is een van de duidelijkste recente
             antwoorden op die geschiedenis: wonen, eten en een plein gestapeld
-            tot één idee. Deze gids vertelt wat je kunt zien, wat je kunt eten,
-            hoeveel tijd je nodig hebt, en hoe je het gebouw als architectuur
-            leest in plaats van als een eethal met een muurschildering.
+            tot één idee. Hoe je het gebouw als architectuur leest — en niet als
+            een eethal met een muurschildering — volgt hieronder.
           </p>
         </section>
 
@@ -674,6 +675,8 @@ export default function MarkthalRotterdamPage() {
             .
           </p>
         </section>
+
+        <FirstChapterCTA source="markthal-rotterdam" />
 
         <RelatedGuides
           title="Verder lezen"

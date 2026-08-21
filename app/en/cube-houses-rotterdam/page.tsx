@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { PageHeader } from "@/components/PageHeader";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { formatBlogDate } from "@/data/blog";
@@ -54,13 +55,12 @@ function ArticleFigure({
 const pagePath = "/en/cube-houses-rotterdam";
 const dutchPath = "/kubuswoningen-rotterdam";
 const pageTitle =
-  "Cube Houses Rotterdam: What to See, Experience & Know Before You Go";
-const pageHeadline =
-  "Cube Houses Rotterdam: What to See, Experience and Know Before You Go";
+  "Cube Houses Rotterdam: why this city is the setting of my thrillers";
+const pageHeadline = pageTitle;
 const pageDescription =
-  "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.";
+  "Cube Houses Rotterdam through the eyes of thriller author Ard Breure: why this city is the setting of his thrillers.";
 const datePublished = "2026-08-19";
-const dateModified = "2026-08-20";
+const dateModified = "2026-08-21";
 
 /**
  * IMAGE TODO: add licensed or owned WebP files to `public/images/`, then set
@@ -282,18 +282,17 @@ export default function CubeHousesRotterdamPage() {
             Introduction
           </h2>
           <p className="content-paragraph">
-            The Cube Houses are one of the most photographed corners of
-            Rotterdam. Where the rest of the skyline reaches upwards in glass
-            and steel, this yellow complex on a bridge above a busy road
-            demands attention with angles of forty-five degrees. It photographs
-            brilliantly. That is not the whole story.
+            Rotterdam is the setting of my thriller series — this is the city
+            as I know it. Cube Houses Rotterdam are one of the reasons why:
+            yellow homes on pylons, forty-five degrees off true, a forest of
+            architecture above a traffic artery. It photographs brilliantly.
+            That is not the whole story.
           </p>
           <p className="content-paragraph">
             Rotterdam is a city that chose experiment over nostalgia after its
             centre was destroyed. The Cube Houses are a late-1970s answer to
             the cool, large-scale reconstruction architecture that followed.
-            This guide tells you what to see, how to look inside, how long you
-            need, and how to read the design as what it wanted to be: a village
+            The design wanted to be what reconstruction had left out: a village
             inside the big city.
           </p>
         </section>
@@ -670,6 +669,8 @@ export default function CubeHousesRotterdamPage() {
           </p>
         </section>
 
+        <FirstChapterCTA source="en-cube-houses-rotterdam" locale="en" />
+
         <RelatedGuides
           title="Further reading"
           guides={[
@@ -677,7 +678,7 @@ export default function CubeHousesRotterdamPage() {
               href: "/en/markthal-rotterdam",
               label: "Markthal Rotterdam",
               description:
-                "What to see, eat and know before you go, directly opposite the cubes",
+                "The raw shine of a city full of stories, directly opposite the cubes",
             },
             {
               href: "/boeken-over-rotterdam",

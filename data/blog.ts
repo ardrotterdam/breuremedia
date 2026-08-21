@@ -23,28 +23,29 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     href: "/kubuswoningen-rotterdam",
-    title: "Kubuswoningen Rotterdam: wat te zien, ervaren en weten voor je bezoek",
+    title: "Kubuswoningen Rotterdam: waarom deze stad het decor van mijn thrillers is",
     excerpt:
-      "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.",
+      "Kubuswoningen Rotterdam door de ogen van thrillerauteur Ard Breure: waarom deze stad het decor van zijn thrillers is.",
     category: "Rotterdam",
     image: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
     imageAlt:
       "Kubuswoningen Rotterdam: gele gekantelde huizen van Piet Blom aan het Overblaak onder een blauwe lucht",
     locale: "nl",
     publishedAt: "2026-08-19",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-08-21",
   },
   {
     href: "/markthal-rotterdam",
-    title: "Markthal Rotterdam: wat te zien, eten en weten voor je bezoek",
+    title: "Markthal Rotterdam: de rauwe glans van een stad vol verhalen",
     excerpt:
-      "Bezoek je de Markthal Rotterdam? Ontdek wat je er kunt zien en eten, hoeveel tijd je nodig hebt en welke bezienswaardigheden dichtbij liggen.",
+      "Markthal Rotterdam door de ogen van thrillerauteur Ard Breure: de rauwe glans van een stad vol verhalen, het decor van zijn serie.",
     category: "Rotterdam",
     image: "/images/markthal-rotterdam-exterior-hero.webp",
     imageAlt:
       "Buitenkant van de Markthal Rotterdam met de herkenbare glazen boog en het stadsplein",
     locale: "nl",
     publishedAt: "2026-08-18",
+    updatedAt: "2026-08-21",
   },
   {
     href: "/lengte-van-ebook",
@@ -74,28 +75,29 @@ export const blogPosts: BlogPost[] = [
   },
   {
     href: "/en/cube-houses-rotterdam",
-    title: "Cube Houses Rotterdam: What to See, Experience and Know Before You Go",
+    title: "Cube Houses Rotterdam: why this city is the setting of my thrillers",
     excerpt:
-      "Visiting the Cube Houses in Rotterdam? Discover what you see, how to look inside at the Kijk-Kubus, how long you need and what lies nearby.",
+      "Cube Houses Rotterdam through the eyes of thriller author Ard Breure: why this city is the setting of his thrillers.",
     category: "Rotterdam",
     image: "/images/kubuswoningen-rotterdam-exterior-hero.webp",
     imageAlt:
       "Cube Houses Rotterdam: yellow tilted Kubuswoningen by Piet Blom on Overblaak under a blue sky",
     locale: "en",
     publishedAt: "2026-08-19",
-    updatedAt: "2026-08-20",
+    updatedAt: "2026-08-21",
   },
   {
     href: "/en/markthal-rotterdam",
-    title: "Markthal Rotterdam: What to See, Eat and Know Before You Go",
+    title: "Markthal Rotterdam: the raw shine of a city full of stories",
     excerpt:
-      "Visiting Markthal Rotterdam? Discover what to see and eat, how long you need, nearby attractions and practical tips for planning your visit.",
+      "Markthal Rotterdam through the eyes of thriller author Ard Breure: the raw shine of a city full of stories, the setting of his series.",
     category: "Rotterdam",
     image: "/images/markthal-rotterdam-exterior-hero.webp",
     imageAlt:
       "Exterior of Markthal Rotterdam with its iconic arched glass facade and city plaza",
     locale: "en",
     publishedAt: "2026-08-18",
+    updatedAt: "2026-08-21",
   },
 ];
 

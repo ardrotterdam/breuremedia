@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/en/blog",
-      lastModified: "2026-08-18",
+      lastModified: "2026-08-21",
       priority: 0.8,
       changeFrequency: "weekly",
     },
@@ -93,13 +93,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/en/markthal-rotterdam",
-      lastModified: "2026-08-18",
+      lastModified: "2026-08-21",
       priority: 0.7,
       changeFrequency: "monthly",
     },
     {
       path: "/en/cube-houses-rotterdam",
-      lastModified: "2026-08-19",
+      lastModified: "2026-08-21",
       priority: 0.7,
       changeFrequency: "monthly",
     },

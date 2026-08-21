@@ -4,8 +4,10 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { PageHeader } from "@/components/PageHeader";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { formatBlogDate } from "@/data/blog";
 import { author, siteConfig } from "@/lib/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd, faqSchema } from "@/lib/schema";
@@ -51,13 +53,12 @@ function ArticleFigure({
 }
 
 const pagePath = "/en/markthal-rotterdam";
-const pageTitle = "Markthal Rotterdam: What to See, Eat & Know Before You Go";
-const pageHeadline =
-  "Markthal Rotterdam: What to See, Eat and Know Before You Go";
+const pageTitle = "Markthal Rotterdam: the raw shine of a city full of stories";
+const pageHeadline = pageTitle;
 const pageDescription =
-  "Visiting Markthal Rotterdam? Discover what to see and eat, how long you need, nearby attractions and practical tips for planning your visit.";
+  "Markthal Rotterdam through the eyes of thriller author Ard Breure: the raw shine of a city full of stories, the setting of his series.";
 const datePublished = "2026-08-18";
-const dateModified = "2026-08-18";
+const dateModified = "2026-08-21";
 
 /**
  * IMAGE TODO: add licensed or owned WebP files to `public/assets/` or
@@ -226,7 +227,7 @@ export default function MarkthalRotterdamPage() {
       <PageHeader
         eyebrow="Rotterdam"
         title={pageHeadline}
-        description="By Ard Breure · Last updated 18 August 2026"
+        description={`By Ard Breure · Last updated ${formatBlogDate(dateModified, "en")}`}
       />
 
       <div className="container content-page">
@@ -245,7 +246,8 @@ export default function MarkthalRotterdamPage() {
             Introduction
           </h2>
           <p className="content-paragraph">
-            Markthal is the building many visitors meet first in Rotterdam: an
+            Rotterdam is the setting of my thriller series — this is the city
+            as I know it. Markthal Rotterdam is one of its sharpest faces: an
             arch of apartments over a covered market, a ceiling of fruit and
             fish, the smell of bread rising into a public room. It photographs
             well. That is not why it matters.
@@ -254,9 +256,8 @@ export default function MarkthalRotterdamPage() {
             Rotterdam is a city that had to invent itself after the centre was
             destroyed. Markthal is one of the clearest recent answers to that
             history: housing, food and a square stacked into a single idea.
-            This guide tells you what to see, what to eat, how long you need,
-            and how to read the building as architecture rather than as a food
-            court with a mural.
+            How to read the building as architecture — and not as a food court
+            with a mural — follows below.
           </p>
         </section>
 
@@ -653,6 +654,8 @@ export default function MarkthalRotterdamPage() {
             .
           </p>
         </section>
+
+        <FirstChapterCTA source="en-markthal-rotterdam" locale="en" />
 
         <RelatedGuides
           title="Further reading"

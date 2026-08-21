@@ -35,19 +35,19 @@ export const contentPages: ContentPageEntry[] = [
   },
   {
     path: "/blog",
-    lastModified: "2026-08-18",
+    lastModified: "2026-08-21",
     priority: 0.8,
     changeFrequency: "weekly",
   },
   {
     path: "/markthal-rotterdam",
-    lastModified: "2026-08-18",
+    lastModified: "2026-08-21",
     priority: 0.7,
     changeFrequency: "monthly",
   },
   {
     path: "/kubuswoningen-rotterdam",
-    lastModified: "2026-08-19",
+    lastModified: "2026-08-21",
     priority: 0.7,
     changeFrequency: "monthly",
   },

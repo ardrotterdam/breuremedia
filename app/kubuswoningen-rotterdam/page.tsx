@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { formatBlogDate } from "@/data/blog";
 import { author, siteConfig } from "@/lib/site";
@@ -53,12 +54,12 @@ function ArticleFigure({
 
 const pagePath = "/kubuswoningen-rotterdam";
 const pageTitle =
-  "Kubuswoningen Rotterdam: wat te zien, ervaren en weten voor je bezoek";
+  "Kubuswoningen Rotterdam: waarom deze stad het decor van mijn thrillers is";
 const pageHeadline = pageTitle;
 const pageDescription =
-  "Bezoek je de Kubuswoningen Rotterdam? Ontdek wat je ziet, hoe je de Kijk-Kubus van binnen bekijkt, hoeveel tijd je nodig hebt en wat er in de buurt ligt.";
+  "Kubuswoningen Rotterdam door de ogen van thrillerauteur Ard Breure: waarom deze stad het decor van zijn thrillers is.";
 const datePublished = "2026-08-19";
-const dateModified = "2026-08-20";
+const dateModified = "2026-08-21";
 const englishPath = "/en/cube-houses-rotterdam";
 
 const articleImages = {
@@ -267,20 +268,18 @@ export default function KubuswoningenRotterdamPage() {
             Introductie
           </h2>
           <p className="content-paragraph">
-            De Kubuswoningen zijn een van de meest gefotografeerde stukjes
-            Rotterdam. Waar de rest van de skyline de hoogte in jaagt met glas
-            en staal, eist dit gele complex op een brug over een drukke
-            verkeersader de aandacht op met hoeken van vijfenveertig graden.
-            Het fotografeert briljant. Dat is niet het hele verhaal.
+            Rotterdam is het decor van mijn thrillerserie — dit is de stad zoals
+            ik haar ken. De Kubuswoningen Rotterdam zijn een van de redenen
+            waarom: gele huizen op palen, vijfenveertig graden uit het lood, een
+            bos van architectuur boven een verkeersader. Het fotografeert
+            briljant. Dat is niet het hele verhaal.
           </p>
           <p className="content-paragraph">
             Rotterdam is een stad die na de verwoesting van haar centrum koos
             voor experiment in plaats van nostalgie. De Kubuswoningen zijn een
             antwoord uit de late jaren zeventig op de kille, grootschalige
-            wederopbouwarchitectuur die daarop volgde. Deze gids vertelt wat je
-            kunt zien, hoe je binnen kunt kijken, hoeveel tijd je nodig hebt, en
-            hoe je dit ontwerp leest als wat het wilde zijn: een dorp in de
-            grote stad.
+            wederopbouwarchitectuur die daarop volgde. Het ontwerp wilde zijn
+            wat de wederopbouw had weggelaten: een dorp in de grote stad.
           </p>
         </section>
 
@@ -661,6 +660,8 @@ export default function KubuswoningenRotterdamPage() {
           </p>
         </section>
 
+        <FirstChapterCTA source="kubuswoningen-rotterdam" />
+
         <RelatedGuides
           title="Verder lezen"
           guides={[
@@ -674,7 +675,7 @@ export default function KubuswoningenRotterdamPage() {
               href: "/markthal-rotterdam",
               label: "Markthal Rotterdam",
               description:
-                "Wat te zien, eten en weten voor je bezoek, recht tegenover de kubussen",
+                "De rauwe glans van een stad vol verhalen, recht tegenover de kubussen",
             },
             {
               href: "/boeken/schaduwen-over-domburg",
