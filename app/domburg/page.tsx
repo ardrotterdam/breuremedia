@@ -133,7 +133,6 @@ export const metadata: Metadata = buildMetadata({
   description: pageDescription,
   path: pagePath,
   type: "article",
-  noIndex: true,
   ...(heroImage.src
     ? {
         image: heroImage.src,

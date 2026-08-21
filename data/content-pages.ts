@@ -52,6 +52,12 @@ export const contentPages: ContentPageEntry[] = [
     changeFrequency: "monthly",
   },
   {
+    path: "/domburg",
+    lastModified: "2026-08-21",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/lengte-van-ebook",
     lastModified: "2026-08-18",
     priority: 0.8,

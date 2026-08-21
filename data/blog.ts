@@ -22,6 +22,18 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    href: "/domburg",
+    title: "Domburg: het badplaatsje achter Schaduwen over Domburg",
+    excerpt:
+      "Domburg door de ogen van thrillerauteur Ard Breure: de oudste badplaats van Zeeland, en het decor van Schaduwen over Domburg.",
+    category: "Zeeland",
+    image: "/images/strandovergang-domburg-november.webp",
+    imageAlt:
+      "Strandovergang tussen de duinen bij Domburg onder een grijze novemberlucht",
+    locale: "nl",
+    publishedAt: "2026-08-21",
+  },
+  {
     href: "/kubuswoningen-rotterdam",
     title: "Kubuswoningen Rotterdam: waarom deze stad het decor van mijn thrillers is",
     excerpt:
