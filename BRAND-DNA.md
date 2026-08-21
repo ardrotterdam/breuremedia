@@ -71,6 +71,8 @@ Alleen wat een **romanschrijver geloofwaardig kan aanbevelen**:
 
 **Toon: auteursperspectief, niet reisgids.** De schrijver laat zijn stad/decor zien. Vermijd reisblogger-taal ("ontdek", "voor je bezoek"). SEO-zoekwoord blijft vooraan in de titel; de invalshoek is literair en persoonlijk. Brugzin in intro's: *"Rotterdam is het decor van mijn thrillerserie — dit is de stad zoals ik haar ken."*
 
+**Stijlregel: geen gedachtestreepjes in teksten, nooit.** Vermijd formuleringen die als AI-gegenereerd ogen. Korte zinnen, dubbele punten en komma's in plaats van streepjes. Dit geldt voor alle content: blogposts, pagina's, meta descriptions en UI-teksten.
+
 **Waarover wél bloggen:**
 1. Rotterdam- en Zeeland-locaties vanuit auteursperspectief (Domburg, Markthal, Kubuswoningen, haven).
 2. Haven/onderwereld/research-onderwerpen die de thriller geloofwaardig maken — de onderscheidende categorie.

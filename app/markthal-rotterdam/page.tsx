@@ -590,7 +590,7 @@ export default function MarkthalRotterdamPage() {
             <a
               href="https://markthal.nl/bezoek-markthal/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
               bezoekpagina van de Markthal
             </a>

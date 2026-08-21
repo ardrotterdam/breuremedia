@@ -296,7 +296,16 @@ export default function KubuswoningenRotterdamPage() {
             Blaak, pal naast de{" "}
             <Link href="/markthal-rotterdam">Markthal</Link> en boven de brede
             verkeersader de Blaak. Ze zijn ontworpen door architect Piet Blom en
-            gebouwd tussen 1982 en 1984.
+            gebouwd tussen 1982 en 1984. De architectuur en de bouwgeschiedenis
+            van het complex staan beschreven in het{" "}
+            <a
+              href="https://nl.wikipedia.org/wiki/Kubuswoningen_(Rotterdam)"
+              target="_blank"
+              rel="noopener"
+            >
+              Wikipedia-artikel over de Kubuswoningen
+            </a>
+            .
           </p>
           <p className="content-paragraph">
             Het complex bestaat uit achtendertig reguliere kubuswoningen, twee
@@ -576,11 +585,11 @@ export default function KubuswoningenRotterdamPage() {
             Openingstijden en prijzen kunnen wijzigen en verschillen per seizoen.
             Controleer voor je vertrekt de actuele gegevens op de{" "}
             <a
-              href="https://www.kubuswoning.nl/bezoeken.html"
+              href="https://www.rotterdam.info/nl/visit/finder-locations/kubuswoningen-kijk-kubus-museumwoning"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
-              bezoekpagina van de Kijk-Kubus
+              Kijk-Kubus-pagina van Rotterdam.info
             </a>
             .
           </p>

@@ -310,7 +310,16 @@ export default function CubeHousesRotterdamPage() {
             station, right beside{" "}
             <Link href="/en/markthal-rotterdam">Markthal</Link> and above the
             broad traffic artery called the Blaak. They were designed by
-            architect Piet Blom and built between 1982 and 1984.
+            architect Piet Blom and built between 1982 and 1984. The
+            architecture and building history of the complex are set out in the{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Kubuswoningen"
+              target="_blank"
+              rel="noopener"
+            >
+              Wikipedia article on the Cube Houses
+            </a>
+            .
           </p>
           <p className="content-paragraph">
             The complex consists of thirty-eight regular cube houses, two
@@ -585,11 +594,11 @@ export default function CubeHousesRotterdamPage() {
             Opening hours and prices can change and vary by season. Check the
             current details on the{" "}
             <a
-              href="https://kubuswoning.nl/en/visit.html"
+              href="https://www.rotterdam.info/en/visit/finder-locations/kubuswoningen-kijk-kubus-museumwoning"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
-              Kijk-Kubus visitor page
+              Kijk-Kubus page on Rotterdam.info
             </a>{" "}
             before you set out.
           </p>
