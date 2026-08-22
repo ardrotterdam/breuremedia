@@ -9,7 +9,7 @@ export function AffiliateDisclosure({
     locale === "en"
       ? "As an Amazon Associate I earn from qualifying purchases. This costs you nothing extra."
       : locale === "de"
-        ? "[DE-VERTALING VOLGT]"
+        ? "Als Amazon-Partner verdiene ich an qualifizierten Käufen. Das kostet Sie nichts extra."
         : "Als Amazon-partner verdien ik aan aankopen die aan de voorwaarden voldoen. Dit kost jou niets extra's.";
 
   return (

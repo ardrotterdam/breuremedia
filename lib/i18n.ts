@@ -16,8 +16,6 @@ export const homePaths: Record<Locale, string> = {
   de: "/de",
 };
 
-export const DE_PLACEHOLDER = "[DE-VERTALING VOLGT]";
-
 /**
  * Navigation shown in the English (/en) section.
  * Mirrors the core NL header: Books dropdown, Reading, Blog, Author, Contact.
@@ -221,7 +219,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     operator: "Breure Media is operated by ABshops.nl · KvK 72037628",
   },
   de: {
-    tagline: DE_PLACEHOLDER,
+    tagline: "Unabhängiges Label für Bücher und originale Geschichten.",
     nav: [
       { type: "link", href: "/de/schatten-ueber-domburg", label: "Bücher" },
       { type: "link", href: "/de/domburg", label: "Domburg" },
@@ -253,12 +251,14 @@ export const englishNewsletterCopy = {
 /** German copy for the newsletter form, shared across /de pages. */
 export const germanNewsletterCopy = {
   emailLabel: "E-Mail-Adresse",
-  placeholder: "du@email.de",
+  placeholder: "name@email.de",
   submit: "Benachrichtigen Sie mich",
   submitting: "Einen Moment…",
   invalidEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-  error: DE_PLACEHOLDER,
-  privacy: DE_PLACEHOLDER,
+  error:
+    "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut oder schreiben Sie an info@breuremedia.com.",
+  privacy:
+    "Ihre E-Mail-Adresse verwenden wir nur für Nachrichten zu Veröffentlichungen von Breure Media. Kein Spam; abmelden können Sie sich jederzeit.",
 };
 
 /** UI strings for the header, per locale. */
@@ -307,6 +307,6 @@ export const headerCopy: Record<
     exploreLabel: "Entdecken",
     themesLabel: "Themen",
     featuredLabel: "Empfohlen",
-    exploreLead: DE_PLACEHOLDER,
+    exploreLead: "Literarische Thriller und originale Geschichten.",
   },
 };

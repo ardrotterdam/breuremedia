@@ -3,16 +3,17 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
-import { author, siteConfig, authorDe } from "@/lib/site";
-import { buildMetadata, sitePageTitle } from "@/lib/seo";
-import { DE_PLACEHOLDER, localeAlternates } from "@/lib/i18n";
+import { author, siteConfig, authorDe, siteDe } from "@/lib/site";
+import { buildMetadata } from "@/lib/seo";
+import { localeAlternates } from "@/lib/i18n";
 import { breadcrumbSchema, buildJsonLd, personSchema } from "@/lib/schema";
 
 const pagePath = "/de/ueber-den-autor";
 
 export const metadata: Metadata = buildMetadata({
-  title: sitePageTitle("Über den Autor"),
-  description: authorDe.shortBio,
+  title: "Ard Breure | Autor | Zeeland Krimi",
+  description:
+    "Ard Breure wuchs in Zeeland auf und lebt in Rotterdam. Autor von Schatten über Domburg, einem literarischen Thriller an der zeeländischen Küste.",
   path: pagePath,
   locale: "de_DE",
   languages: localeAlternates(pagePath),
@@ -33,7 +34,7 @@ export default function GermanAboutPage() {
     <main lang="de">
       <JsonLd data={jsonLd} />
       <PageHeader
-        eyebrow="Über den Autor"
+        eyebrow="Autor"
         title={author.name}
         description={authorDe.shortBio}
       />
@@ -65,23 +66,39 @@ export default function GermanAboutPage() {
           <h2 id="author-label-heading" className="content-heading">
             {siteConfig.name}
           </h2>
-          <p className="content-paragraph">{DE_PLACEHOLDER}</p>
+          <p className="content-paragraph">
+            {siteConfig.name} ist ein unabhängiges niederländisches Label für
+            literarische Thriller. Hier kommen Spannung, Sprache und
+            psychologische Tiefe zusammen: Geschichten, die nachklingen, lange
+            nachdem die letzte Seite umgeschlagen ist. Die zeeländische Küste
+            und der Rotterdamer Hafen gehören zu diesem Werk dazu.
+          </p>
+          <p className="content-paragraph">
+            Nach dem Debüt <em>Schatten über Domburg</em> erscheint unter diesem
+            Label auch <em>Zero Day Directive</em>, ein Techno-Thriller.
+          </p>
         </section>
 
         <section className="content-section" aria-labelledby="author-books-heading">
           <h2 id="author-books-heading" className="content-heading">
-            Bücher
+            Veröffentlichungen
           </h2>
           <p className="content-paragraph">
             <Link href="/de/schatten-ueber-domburg">
-              <em>{DE_PLACEHOLDER}</em>
-            </Link>{" "}
-            — {siteConfig.name}.
+              <em>Schatten über Domburg</em>
+            </Link>
+            : literarischer Thriller, erscheint bei {siteConfig.name}.
+          </p>
+          <p className="content-paragraph">
+            <Link href="/en/zero-day-directive">
+              <em>Zero Day Directive</em>
+            </Link>
+            : Techno-Thriller, erscheint bei {siteConfig.name}.
           </p>
         </section>
 
         <aside className="author-accent author-accent--inline" aria-label="Motto">
-          <blockquote>&ldquo;{DE_PLACEHOLDER}&rdquo;</blockquote>
+          <blockquote>&ldquo;{siteDe.motto}&rdquo;</blockquote>
         </aside>
       </div>
     </main>

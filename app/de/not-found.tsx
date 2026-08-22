@@ -6,7 +6,10 @@ export default function GermanNotFound() {
       <div className="container not-found-inner">
         <p className="section-eyebrow">404</p>
         <h1 className="page-title">Seite nicht gefunden</h1>
-        <p className="page-description">[DE-VERTALING VOLGT]</p>
+        <p className="page-description">
+          Diese Seite existiert nicht oder wurde verschoben. Kehren Sie zum Buch
+          oder zur Startseite zurück.
+        </p>
         <div className="not-found-actions">
           <Link href="/de" className="btn btn-primary">
             Zur Startseite

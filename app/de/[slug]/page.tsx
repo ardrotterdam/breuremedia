@@ -7,9 +7,9 @@ import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { getBookByGermanSlug, getGermanBooks, type Book } from "@/data/books";
-import { bookPageTitle, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 import { author, siteConfig } from "@/lib/site";
-import { DE_PLACEHOLDER, localeAlternates } from "@/lib/i18n";
+import { localeAlternates } from "@/lib/i18n";
 import {
   breadcrumbSchema,
   buildJsonLd,
@@ -39,8 +39,9 @@ export async function generateMetadata({
   const de = book.de;
 
   return buildMetadata({
-    title: bookPageTitle(de.title, book.author),
-    description: de.description,
+    title: "Schatten über Domburg | Zeeland Krimi",
+    description:
+      "Ein Körper treibt an den Strand von Domburg. Schatten über Domburg, ein Zeeland Krimi zwischen der zeeländischen Küste und dem Rotterdamer Hafen.",
     path: `/de/${de.slug}`,
     image: de.coverImage ?? book.coverImage,
     imageAlt: de.coverAlt,
@@ -108,7 +109,7 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
           </p>
 
           <h2 id="book-about-heading" className="section-title">
-            {DE_PLACEHOLDER}
+            Über dieses Buch
           </h2>
           {de.longDescription.map((paragraph) => (
             <p key={paragraph} className="content-paragraph">
@@ -116,9 +117,9 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
             </p>
           ))}
 
-          <h2 className="content-heading">{DE_PLACEHOLDER}</h2>
+          <h2 className="content-heading">Schauplatz und Themen</h2>
           <p className="content-paragraph">
-            <strong>{DE_PLACEHOLDER}</strong> {de.setting}
+            <strong>Schauplatz:</strong> {de.setting}
           </p>
           <ul className="theme-list">
             {de.themes.map((theme) => (
@@ -128,7 +129,11 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
 
           <h2 className="content-heading">Über den Autor</h2>
           <p className="content-paragraph">
-            {author.name}. {siteConfig.name}. {DE_PLACEHOLDER}
+            {author.name} wuchs in Zeeland auf, der Provinz, die in{" "}
+            <em>{de.title}</em> zum Schauplatz wird. Mit fünfundzwanzig Jahren
+            tauschte er Zeeland gegen Rotterdam. Die Stille der zeeländischen
+            Küste und die Rauheit des Hafens bilden das Rückgrat seiner Arbeit,
+            die unter {siteConfig.name} erscheint.
           </p>
         </div>
       </section>
@@ -138,9 +143,16 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
         source={`de-${de.slug}`}
         book={de.title}
         locale="de"
+        eyebrow="Warteliste"
+        title="Zuerst erfahren, wann das Buch erscheint?"
+        description={`Wenn ${de.title} Sie interessiert, hinterlassen Sie Ihre E-Mail-Adresse. Sie erfahren zuerst den Erscheinungstermin und erhalten eine Vorveröffentlichung.`}
       />
 
-      <FaqSection items={de.faq} locale="de" />
+      <FaqSection
+        items={de.faq}
+        locale="de"
+        title={`Häufige Fragen zu ${de.title}`}
+      />
     </main>
   );
 }

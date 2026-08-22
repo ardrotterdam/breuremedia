@@ -48,9 +48,15 @@ function buildConfirmation(book: string, language: Language) {
   }
 
   if (language === "DE") {
+    if (general) {
+      return {
+        subject: "Bestätigung Ihrer Anmeldung bei Breure Media",
+        body: "Vielen Dank für Ihre Anmeldung. Sobald es Neuigkeiten zu neuen Büchern von Breure Media gibt, hören Sie zuerst von uns.",
+      };
+    }
     return {
-      subject: "[DE-VERTALING VOLGT]",
-      body: "[DE-VERTALING VOLGT]",
+      subject: `Bestätigung: ${bookTitle}`,
+      body: `Vielen Dank für Ihre Anmeldung. Schön, dass ${bookTitle} Sie interessiert. Sobald es Neuigkeiten zum Erscheinungstermin und zur Vorveröffentlichung gibt, hören Sie zuerst von uns.`,
     };
   }
 
@@ -69,12 +75,12 @@ function buildConfirmation(book: string, language: Language) {
 
 function buildConfirmationHtml(body: string, language: Language): string {
   const greeting =
-    language === "EN" ? "Hello," : language === "DE" ? "Hallo," : "Hallo,";
+    language === "EN" ? "Hello," : language === "DE" ? "Guten Tag," : "Hallo,";
   const signOff =
     language === "EN"
       ? "Kind regards,<br />Breure Media"
       : language === "DE"
-        ? "[DE-VERTALING VOLGT]<br />Breure Media"
+        ? "Mit freundlichen Grüßen,<br />Breure Media"
         : "Met vriendelijke groet,<br />Breure Media";
   const htmlLang =
     language === "EN" ? "en" : language === "DE" ? "de" : "nl";

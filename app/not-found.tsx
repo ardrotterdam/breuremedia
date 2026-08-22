@@ -25,7 +25,8 @@ const copy = {
   },
   de: {
     title: "Seite nicht gefunden",
-    description: "[DE-VERTALING VOLGT]",
+    description:
+      "Diese Seite existiert nicht oder wurde verschoben. Kehren Sie zum Buch oder zur Startseite zurück.",
     home: "Zur Startseite",
     books: "Bücher",
     homeHref: "/de",

@@ -16,16 +16,13 @@ const FEATURED_BOOK_SLUG = "schaduwen-over-domburg";
 
 function bookTitleForLocale(locale: Locale): string {
   const book = getBookBySlug(FEATURED_BOOK_SLUG);
-  if (!book) {
-    return "Schaduwen over Domburg";
-  }
   if (locale === "en") {
-    return book.en?.title ?? book.title;
+    return book?.en?.title ?? book?.title ?? "Shadows over Domburg";
   }
   if (locale === "de") {
-    return book.de?.title ?? "[DE-VERTALING VOLGT]";
+    return book?.de?.title ?? "Schatten über Domburg";
   }
-  return book.title;
+  return book?.title ?? "Schaduwen over Domburg";
 }
 
 function copyFor(locale: Locale) {
@@ -46,13 +43,13 @@ function copyFor(locale: Locale) {
 
   if (locale === "de") {
     return {
-      heading: "[DE-VERTALING VOLGT]",
-      body: "[DE-VERTALING VOLGT]",
+      heading: `Lesen Sie das erste Kapitel von ${title} kostenlos`,
+      body: `Die zeeländische Küste ist der Schauplatz von ${title}. Beginnen Sie mit dem ersten Kapitel. Wir senden es per E-Mail.`,
       book: title,
       form: {
         ...germanNewsletterCopy,
-        submit: "[DE-VERTALING VOLGT]",
-        success: "[DE-VERTALING VOLGT]",
+        submit: "KAPITEL SENDEN",
+        success: `Danke. Wir senden Ihnen das erste Kapitel von ${title}.`,
       },
     };
   }

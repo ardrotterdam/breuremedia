@@ -17,7 +17,7 @@ interface OrderButtonProps {
 const labels: Record<Locale, string> = {
   nl: "Meld je aan voor bericht bij verschijning",
   en: "Sign up to be notified on release",
-  de: "[DE-VERTALING VOLGT]",
+  de: "Bei Erscheinen benachrichtigen",
 };
 
 export function OrderButton({

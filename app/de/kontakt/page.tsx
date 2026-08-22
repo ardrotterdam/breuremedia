@@ -4,15 +4,16 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { operator, siteConfig } from "@/lib/site";
-import { buildMetadata, sitePageTitle } from "@/lib/seo";
-import { DE_PLACEHOLDER, localeAlternates } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
+import { localeAlternates } from "@/lib/i18n";
 import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 
 const pagePath = "/de/kontakt";
 
 export const metadata: Metadata = buildMetadata({
-  title: sitePageTitle("Kontakt"),
-  description: DE_PLACEHOLDER,
+  title: "Kontakt | Zeeland Krimi | Breure Media",
+  description:
+    "Schreiben Sie an Breure Media. Fragen zu Schatten über Domburg, zu Presse oder Zusammenarbeit. Antwort per E-Mail aus Rotterdam, Niederlande.",
   path: pagePath,
   locale: "de_DE",
   languages: localeAlternates(pagePath),
@@ -31,8 +32,8 @@ export default function GermanContactPage() {
       <JsonLd data={jsonLd} />
       <PageHeader
         eyebrow="Kontakt"
-        title="Kontakt"
-        description={DE_PLACEHOLDER}
+        title="Schreiben Sie uns"
+        description="Fragen zum Buch, zur Presse oder zu einer Zusammenarbeit? Wir hören gern von Ihnen."
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} locale="de" />
@@ -49,9 +50,13 @@ export default function GermanContactPage() {
 
         <section className="content-section" aria-labelledby="contact-info-heading">
           <h2 id="contact-info-heading" className="content-heading">
-            Kontakt
+            Erreichbarkeit
           </h2>
-          <p className="content-paragraph">{DE_PLACEHOLDER}</p>
+          <p className="content-paragraph">
+            {siteConfig.name} ist ein unabhängiges niederländisches
+            Verlagslabel. Bei Fragen zu Veröffentlichungen, Bestellungen oder
+            Presse erreichen Sie uns per E-Mail.
+          </p>
           <p className="content-paragraph">
             <a href={`mailto:${siteConfig.email}`} className="text-link">
               {siteConfig.email}
@@ -62,19 +67,22 @@ export default function GermanContactPage() {
 
         <section className="content-section" aria-labelledby="contact-topics-heading">
           <h2 id="contact-topics-heading" className="content-heading">
-            {DE_PLACEHOLDER}
+            Wobei können wir helfen?
           </h2>
           <ul className="theme-list">
-            <li>{DE_PLACEHOLDER}</li>
+            <li>Fragen zu Schatten über Domburg und zum Erscheinungstermin</li>
+            <li>Presseanfragen und Interviewwünsche</li>
+            <li>Zusammenarbeit und Vertrieb</li>
+            <li>Allgemeine Fragen zu Breure Media</li>
           </ul>
         </section>
 
         <section className="content-section" aria-labelledby="contact-company-heading">
           <h2 id="contact-company-heading" className="content-heading">
-            {DE_PLACEHOLDER}
+            Angaben zum Unternehmen
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} · {operator.legalName}
+            {siteConfig.name} wird betrieben von {operator.legalName}.
           </p>
           <p className="content-paragraph">
             {operator.legalName}
@@ -85,10 +93,9 @@ export default function GermanContactPage() {
             <br />
             Niederlande
           </p>
+          <p className="content-paragraph">KvK: {operator.kvk}</p>
           <p className="content-paragraph">
-            KvK: {operator.kvk}
-          </p>
-          <p className="content-paragraph">
+            E-Mail:{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
           </p>
         </section>

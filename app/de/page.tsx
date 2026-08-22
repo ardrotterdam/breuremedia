@@ -5,12 +5,12 @@ import { PublicationsHero } from "@/components/PublicationsHero";
 import { getBookByGermanSlug, type Book } from "@/data/books";
 import { author, siteConfig, siteDe, authorDe } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { DE_PLACEHOLDER, localeAlternates } from "@/lib/i18n";
+import { localeAlternates } from "@/lib/i18n";
 
 function requireGermanFeaturedBook() {
   const book = getBookByGermanSlug("schatten-ueber-domburg");
   if (!book) {
-    throw new Error("German edition of Schaduwen over Domburg is missing.");
+    throw new Error("German edition of Schatten über Domburg is missing.");
   }
   return book;
 }
@@ -19,11 +19,12 @@ const featuredBook = requireGermanFeaturedBook();
 const de = featuredBook.de;
 
 export const metadata: Metadata = buildMetadata({
-  title: `${siteConfig.name} | ${DE_PLACEHOLDER}`,
-  description: siteDe.description,
+  title: "Breure Media | Literarische Thriller",
+  description:
+    "Unabhängiges niederländisches Label für literarische Thriller. Zeeländische Küste, Rotterdamer Hafen. Schatten über Domburg, ein Zeeland Krimi.",
   path: "/de",
   image: "/images/og-breure-media-general.jpg",
-  imageAlt: DE_PLACEHOLDER,
+  imageAlt: "Breure Media: literarische Thriller an der zeeländischen Küste",
   imageWidth: 1200,
   imageHeight: 630,
   locale: "de_DE",
@@ -46,15 +47,15 @@ export default function GermanHomePage() {
   return (
     <main lang="de">
       <PublicationsHero
-        eyebrow="Bücher"
+        eyebrow="Unsere Bücher"
         brand={siteConfig.name}
-        lead={siteDe.tagline}
+        lead="Literarische Thriller, wo die zeeländische Küste den Rotterdamer Hafen berührt."
         publications={[
           {
             book: featuredLocalized,
             href: `/de/${de.slug}`,
             pitch: de.tagline,
-            ctaLabel: "Bücher",
+            ctaLabel: "Zum Buch",
             priority: true,
           },
         ]}
@@ -63,7 +64,7 @@ export default function GermanHomePage() {
       <section className="synopsis" aria-labelledby="synopsis-heading">
         <div className="container synopsis-inner">
           <hr className="editorial-rule" aria-hidden="true" />
-          <p className="section-eyebrow">Bücher</p>
+          <p className="section-eyebrow">Über das Buch</p>
           <h2 id="synopsis-heading" className="section-title">
             {de.tagline}
           </h2>
@@ -86,7 +87,7 @@ export default function GermanHomePage() {
               <p key={paragraph}>{paragraph}</p>
             ))}
             <Link href="/de/ueber-den-autor" className="text-link">
-              Über den Autor
+              Mehr über den Autor
             </Link>
           </div>
           <aside className="author-accent" aria-label="Motto">

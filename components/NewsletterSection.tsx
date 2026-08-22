@@ -33,8 +33,9 @@ const sectionCopy: Record<
   },
   de: {
     eyebrow: "Breure Media",
-    title: "[DE-VERTALING VOLGT]",
-    description: "[DE-VERTALING VOLGT]",
+    title: "Neue Geschichten beginnen in der Stille.",
+    description:
+      "Sie erhalten Nachricht, wenn eine neue Veröffentlichung, Ausgabe oder ein besonderes Projekt erscheint.",
   },
 };
 

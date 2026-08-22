@@ -73,7 +73,7 @@ function buildSuccessMessage(book: string, locale: Locale): string {
       return "Thank you for subscribing! As soon as there is news about new books and releases from Breure Media, you'll be the first to know.";
     }
     if (locale === "de") {
-      return "[DE-VERTALING VOLGT]";
+      return "Danke für Ihre Anmeldung. Sobald es Neuigkeiten zu Büchern und Veröffentlichungen von Breure Media gibt, hören Sie zuerst von uns.";
     }
     return "Bedankt voor je inschrijving! Zodra er nieuws is over nieuwe boeken en publicaties van Breure Media, hoor je als eerste van ons.";
   }
@@ -82,7 +82,7 @@ function buildSuccessMessage(book: string, locale: Locale): string {
     return `Thank you for subscribing! You're on the list. As soon as there is news about ${book}, you'll be the first to know.`;
   }
   if (locale === "de") {
-    return "[DE-VERTALING VOLGT]";
+    return `Danke für Ihre Anmeldung. Sie stehen auf der Liste. Sobald es Neuigkeiten zu ${book} gibt, hören Sie zuerst von uns.`;
   }
   return `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
 }
