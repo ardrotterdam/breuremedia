@@ -23,6 +23,14 @@ const copy = {
     homeHref: "/en",
     booksHref: "/en/books",
   },
+  de: {
+    title: "Seite nicht gefunden",
+    description: "[DE-VERTALING VOLGT]",
+    home: "Zur Startseite",
+    books: "Bücher",
+    homeHref: "/de",
+    booksHref: "/de/schatten-ueber-domburg",
+  },
 } as const;
 
 export default function NotFound() {

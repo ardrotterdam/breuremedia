@@ -1,12 +1,43 @@
 import type { MetadataRoute } from "next";
-import { getAllBooks, getEnglishBooks } from "@/data/books";
+import { getAllBooks, getEnglishBooks, getGermanBooks } from "@/data/books";
 import {
   contentPages,
   parseContentDate,
   type ContentPageEntry,
 } from "@/data/content-pages";
 import { getPublishedBlogPosts } from "@/data/blog";
+import { localePaths, type Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
+
+function toAbs(path: string): string {
+  if (path === "" || path === "/") {
+    return siteConfig.url;
+  }
+  return `${siteConfig.url}${path}`;
+}
+
+function sitemapLanguageAlternates(
+  path: string
+): MetadataRoute.Sitemap[number]["alternates"] | undefined {
+  const paths = localePaths(path === "" ? "/" : path);
+  if (!paths) {
+    return undefined;
+  }
+
+  const languages: Record<string, string> = {};
+  for (const locale of ["nl", "en", "de"] as const satisfies readonly Locale[]) {
+    const href = paths[locale];
+    if (href) {
+      languages[locale] = toAbs(href);
+    }
+  }
+
+  if (Object.keys(languages).length === 0) {
+    return undefined;
+  }
+
+  return { languages };
+}
 
 function toSitemapEntry(
   page: ContentPageEntry,
@@ -15,7 +46,7 @@ function toSitemapEntry(
   }
 ): MetadataRoute.Sitemap[number] {
   return {
-    url: `${siteConfig.url}${page.path}`,
+    url: toAbs(page.path),
     lastModified: parseContentDate(page.lastModified),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
@@ -28,20 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // die nemen we dan niet op in de sitemap. Bij twee of meer titels is het
   // weer een echte pagina en verschijnt hij vanzelf terug.
   const hasBookOverview = getAllBooks().length > 1;
-
-  const staticTranslations: Record<string, string> = {
-    "": "/en",
-    "/boeken": "/en/books",
-    "/e-readers": "/en/e-readers",
-    "/blog": "/en/blog",
-    "/over-de-auteur": "/en/about",
-    "/contact": "/en/contact",
-    "/privacy": "/en/privacy",
-    "/affiliate": "/en/affiliate",
-    "/markthal-rotterdam": "/en/markthal-rotterdam",
-    "/kubuswoningen-rotterdam": "/en/cube-houses-rotterdam",
-    "/domburg": "/en/domburg",
-  };
 
   const englishStaticPages: ContentPageEntry[] = [
     {
@@ -112,19 +129,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const englishNlPath: Record<string, string> = {
-    "/en": "",
-    "/en/books": "/boeken",
-    "/en/e-readers": "/e-readers",
-    "/en/blog": "/blog",
-    "/en/about": "/over-de-auteur",
-    "/en/contact": "/contact",
-    "/en/privacy": "/privacy",
-    "/en/affiliate": "/affiliate",
-    "/en/markthal-rotterdam": "/markthal-rotterdam",
-    "/en/cube-houses-rotterdam": "/kubuswoningen-rotterdam",
-    "/en/domburg": "/domburg",
-  };
+  const germanStaticPages: ContentPageEntry[] = [
+    {
+      path: "/de",
+      lastModified: "2026-08-23",
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
+    {
+      path: "/de/domburg",
+      lastModified: "2026-08-23",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/de/ueber-den-autor",
+      lastModified: "2026-08-23",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/de/kontakt",
+      lastModified: "2026-08-23",
+      priority: 0.5,
+      changeFrequency: "yearly",
+    },
+  ];
 
   const staticEntries = contentPages
     .filter((page) => {
@@ -133,24 +163,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
       return page.include !== false;
     })
-    .map((page) => {
-      const enPath = staticTranslations[page.path];
-      return toSitemapEntry(page, {
-        ...(enPath && {
-          alternates: {
-            languages: {
-              nl: `${siteConfig.url}${page.path}`,
-              en: `${siteConfig.url}${enPath}`,
-            },
-          },
-        }),
-      });
-    });
+    .map((page) =>
+      toSitemapEntry(page, {
+        alternates: sitemapLanguageAlternates(page.path),
+      })
+    );
 
-  // Blog posts that are not already covered by static NL/EN page lists.
+  // Blog posts that are not already covered by static NL/EN/DE page lists.
   const contentPaths = new Set([
     ...contentPages.map((page) => page.path),
     ...englishStaticPages.map((page) => page.path),
+    ...germanStaticPages.map((page) => page.path),
   ]);
   const blogEntries = getPublishedBlogPosts()
     .filter((post) => !contentPaths.has(post.href))
@@ -163,56 +186,80 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })
     );
 
-  const bookPages = getAllBooks().map((book) => ({
-    url: `${siteConfig.url}/boeken/${book.slug}`,
-    lastModified: parseContentDate(book.published ?? "2026-08-07"),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-    ...(book.en && {
-      alternates: {
-        languages: {
-          nl: `${siteConfig.url}/boeken/${book.slug}`,
-          en: `${siteConfig.url}/en/${book.en.slug}`,
-        },
-      },
-    }),
-  }));
-
-  const englishBookPages = getEnglishBooks().map((book) => ({
-    url: `${siteConfig.url}/en/${book.en.slug}`,
-    lastModified: parseContentDate(book.published ?? "2026-08-07"),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-    alternates: {
-      languages: {
-        nl: `${siteConfig.url}/boeken/${book.slug}`,
-        en: `${siteConfig.url}/en/${book.en.slug}`,
-      },
-    },
-  }));
-
-  const englishStaticEntries = englishStaticPages.map((page) => {
-    const nlPath = englishNlPath[page.path];
-    return toSitemapEntry(
-      page,
-      nlPath === undefined
-        ? undefined
-        : {
-            alternates: {
-              languages: {
-                nl: `${siteConfig.url}${nlPath}`,
-                en: `${siteConfig.url}${page.path}`,
-              },
-            },
-          }
-    );
+  const bookPages = getAllBooks().map((book) => {
+    const languages: Record<string, string> = {
+      nl: toAbs(`/boeken/${book.slug}`),
+    };
+    if (book.en) {
+      languages.en = toAbs(`/en/${book.en.slug}`);
+    }
+    if (book.de) {
+      languages.de = toAbs(`/de/${book.de.slug}`);
+    }
+    return {
+      url: toAbs(`/boeken/${book.slug}`),
+      lastModified: parseContentDate(book.published ?? "2026-08-07"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+      ...(Object.keys(languages).length > 1 && {
+        alternates: { languages },
+      }),
+    };
   });
+
+  const englishBookPages = getEnglishBooks().map((book) => {
+    const languages: Record<string, string> = {
+      nl: toAbs(`/boeken/${book.slug}`),
+      en: toAbs(`/en/${book.en.slug}`),
+    };
+    if (book.de) {
+      languages.de = toAbs(`/de/${book.de.slug}`);
+    }
+    return {
+      url: toAbs(`/en/${book.en.slug}`),
+      lastModified: parseContentDate(book.published ?? "2026-08-07"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+      alternates: { languages },
+    };
+  });
+
+  const germanBookPages = getGermanBooks().map((book) => {
+    const languages: Record<string, string> = {
+      nl: toAbs(`/boeken/${book.slug}`),
+      de: toAbs(`/de/${book.de.slug}`),
+    };
+    if (book.en) {
+      languages.en = toAbs(`/en/${book.en.slug}`);
+    }
+    return {
+      url: toAbs(`/de/${book.de.slug}`),
+      lastModified: parseContentDate(book.published ?? "2026-08-07"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+      alternates: { languages },
+    };
+  });
+
+  const englishStaticEntries = englishStaticPages.map((page) =>
+    toSitemapEntry(page, {
+      alternates: sitemapLanguageAlternates(page.path),
+    })
+  );
+
+  const germanStaticEntries = germanStaticPages.map((page) =>
+    toSitemapEntry(page, {
+      alternates: sitemapLanguageAlternates(page.path),
+    })
+  );
 
   return [
     ...staticEntries,
     ...blogEntries,
     ...bookPages,
     ...englishBookPages,
+    ...germanBookPages,
     ...englishStaticEntries,
+    ...germanStaticEntries,
   ];
 }

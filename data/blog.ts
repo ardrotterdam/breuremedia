@@ -135,6 +135,7 @@ export function getPublishedBlogPosts(locale?: Locale): BlogPost[] {
 const dateLocales: Record<Locale, string> = {
   nl: "nl-NL",
   en: "en-GB",
+  de: "de-DE",
 };
 
 /** Long date for article cards, e.g. "7 augustus 2026" / "18 August 2026". */

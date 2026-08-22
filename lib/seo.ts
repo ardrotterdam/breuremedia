@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "./site";
+import { pathForLocale } from "./i18n";
 
 export interface PageSeoOptions {
   title: string;
@@ -18,8 +19,9 @@ export interface PageSeoOptions {
   locale?: string;
   /**
    * hreflang alternates, mapping language code → absolute-or-relative path,
-   * e.g. { nl: "/boeken/schaduwen-over-domburg", en: "/en/shadows-over-domburg" }.
+   * e.g. { nl: "/boeken/schaduwen-over-domburg", en: "/en/shadows-over-domburg", de: "/de/schatten-ueber-domburg" }.
    * Include an "x-default" entry to name the fallback for unmatched locales.
+   * When a German twin exists, `de` is added automatically if omitted.
    */
   languages?: Record<string, string>;
 }
@@ -51,9 +53,16 @@ export function buildMetadata({
   const ogImageAlt = imageAlt ?? title;
   const ogImageWidth = imageWidth ?? (image ? 800 : 1200);
   const ogImageHeight = imageHeight ?? (image ? 1200 : 630);
-  const hreflang = languages
+  const languagesWithDe =
+    languages && !languages.de
+      ? (() => {
+          const dePath = pathForLocale(path, "de");
+          return dePath ? { ...languages, de: dePath } : languages;
+        })()
+      : languages;
+  const hreflang = languagesWithDe
     ? Object.fromEntries(
-        Object.entries(languages).map(([lang, target]) => [
+        Object.entries(languagesWithDe).map(([lang, target]) => [
           lang,
           absoluteUrl(target),
         ])

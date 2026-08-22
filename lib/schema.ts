@@ -1,6 +1,7 @@
 import type { Book, BookTranslation } from "@/data/books";
-import { author, operator, siteConfig } from "@/lib/site";
+import { author, operator, siteConfig, siteDe, siteEn } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 
 export interface BreadcrumbItem {
   name: string;
@@ -18,11 +19,26 @@ export function organizationSchema() {
   };
 }
 
-export function personSchema(jobTitle: string = "Auteur") {
+const aboutPaths: Record<Locale, string> = {
+  nl: "/over-de-auteur",
+  en: "/en/about",
+  de: "/de/ueber-den-autor",
+};
+
+const siteDescriptions: Record<Locale, string> = {
+  nl: siteConfig.description,
+  en: siteEn.description,
+  de: siteDe.description,
+};
+
+export function personSchema(
+  jobTitle: string = "Auteur",
+  locale: Locale = "nl"
+) {
   return {
     "@type": "Person",
     name: author.name,
-    url: absoluteUrl("/over-de-auteur"),
+    url: absoluteUrl(aboutPaths[locale]),
     jobTitle,
     worksFor: {
       "@type": "Organization",
@@ -111,6 +127,51 @@ export function englishBookSchema(book: Book & { en: BookTranslation }) {
   };
 }
 
+/**
+ * Book schema for the German edition. Shares commercial fields with the
+ * Dutch book but uses the German title/description, inLanguage "de" and the
+ * /de URL, and links the Dutch edition via workExample.
+ */
+export function germanBookSchema(book: Book & { de: BookTranslation }) {
+  const de = book.de;
+  const deUrl = absoluteUrl(`/de/${de.slug}`);
+
+  return {
+    "@type": "Book",
+    name: de.title,
+    description: de.longDescription.join(" ") || de.description,
+    inLanguage: "de",
+    genre: de.genre,
+    bookFormat: "https://schema.org/Paperback",
+    author: {
+      "@type": "Person",
+      name: book.author,
+      url: absoluteUrl(aboutPaths.de),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    image: absoluteUrl(de.coverImage ?? book.coverImage),
+    url: deUrl,
+    workExample: {
+      "@type": "Book",
+      name: book.title,
+      inLanguage: book.language,
+      url: absoluteUrl(`/boeken/${book.slug}`),
+    },
+    ...(book.isbn && { isbn: book.isbn }),
+    offers: {
+      "@type": "Offer",
+      price: book.price.toFixed(2),
+      priceCurrency: book.currency,
+      availability: "https://schema.org/PreOrder",
+      url: deUrl,
+    },
+  };
+}
+
 export function breadcrumbSchema(items: BreadcrumbItem[]) {
   return {
     "@type": "BreadcrumbList",
@@ -137,13 +198,13 @@ export function faqSchema(faq: { question: string; answer: string }[]) {
   };
 }
 
-export function webSiteSchema() {
+export function webSiteSchema(locale: Locale = "nl") {
   return {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
-    inLanguage: siteConfig.language,
+    description: siteDescriptions[locale],
+    inLanguage: locale,
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,

@@ -1,5 +1,10 @@
 import { NewsletterForm } from "./NewsletterForm";
-import { englishNewsletterCopy, type Locale } from "@/lib/i18n";
+import {
+  englishNewsletterCopy,
+  germanNewsletterCopy,
+  type Locale,
+} from "@/lib/i18n";
+import { getBookBySlug } from "@/data/books";
 
 interface FirstChapterCTAProps {
   /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
@@ -7,27 +12,61 @@ interface FirstChapterCTAProps {
   locale?: Locale;
 }
 
-const copy = {
-  nl: {
-    heading: "Lees het eerste hoofdstuk van Schaduwen over Domburg gratis",
+const FEATURED_BOOK_SLUG = "schaduwen-over-domburg";
+
+function bookTitleForLocale(locale: Locale): string {
+  const book = getBookBySlug(FEATURED_BOOK_SLUG);
+  if (!book) {
+    return "Schaduwen over Domburg";
+  }
+  if (locale === "en") {
+    return book.en?.title ?? book.title;
+  }
+  if (locale === "de") {
+    return book.de?.title ?? "[DE-VERTALING VOLGT]";
+  }
+  return book.title;
+}
+
+function copyFor(locale: Locale) {
+  const title = bookTitleForLocale(locale);
+
+  if (locale === "en") {
+    return {
+      heading: `Read the first chapter of ${title} for free`,
+      body: "Rotterdam is the setting of my thriller series. Start with the first chapter — we'll send it by email.",
+      book: title,
+      form: {
+        ...englishNewsletterCopy,
+        submit: "SEND THE CHAPTER",
+        success: `Thank you. We'll send you the first chapter of ${title}.`,
+      },
+    };
+  }
+
+  if (locale === "de") {
+    return {
+      heading: "[DE-VERTALING VOLGT]",
+      body: "[DE-VERTALING VOLGT]",
+      book: title,
+      form: {
+        ...germanNewsletterCopy,
+        submit: "[DE-VERTALING VOLGT]",
+        success: "[DE-VERTALING VOLGT]",
+      },
+    };
+  }
+
+  return {
+    heading: `Lees het eerste hoofdstuk van ${title} gratis`,
     body: "Rotterdam is het decor van mijn thrillerserie. Begin bij het eerste hoofdstuk — je ontvangt het per e-mail.",
+    book: title,
     form: {
       submit: "STUUR HET HOOFDSTUK",
-      success:
-        "Bedankt. We sturen je het eerste hoofdstuk van Schaduwen over Domburg.",
+      success: `Bedankt. We sturen je het eerste hoofdstuk van ${title}.`,
     },
-  },
-  en: {
-    heading: "Read the first chapter of Schaduwen over Domburg for free",
-    body: "Rotterdam is the setting of my thriller series. Start with the first chapter — we'll send it by email.",
-    form: {
-      ...englishNewsletterCopy,
-      submit: "SEND THE CHAPTER",
-      success:
-        "Thank you. We'll send you the first chapter of Schaduwen over Domburg.",
-    },
-  },
-} as const;
+  };
+}
 
 /**
  * Compact aanmeldblok voor het eerste hoofdstuk van Schaduwen over Domburg.
@@ -37,7 +76,7 @@ export function FirstChapterCTA({
   source,
   locale = "nl",
 }: FirstChapterCTAProps) {
-  const t = copy[locale];
+  const t = copyFor(locale);
 
   return (
     <section
@@ -50,7 +89,7 @@ export function FirstChapterCTA({
       <p className="content-paragraph">{t.body}</p>
       <NewsletterForm
         source={source}
-        book="Schaduwen over Domburg"
+        book={t.book}
         compact
         copy={t.form}
       />

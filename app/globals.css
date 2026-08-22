@@ -391,6 +391,11 @@ input:focus-visible {
   align-items: start;
 }
 
+.publications-grid--single {
+  grid-template-columns: minmax(0, 20rem);
+  justify-content: center;
+}
+
 .publication-feature {
   display: flex;
   flex-direction: column;

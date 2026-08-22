@@ -14,6 +14,11 @@ const cardCopy = {
     published: "Published",
     cta: "Read the article",
   },
+  de: {
+    updated: "Aktualisiert",
+    published: "Veröffentlicht",
+    cta: "Artikel lesen",
+  },
 } as const;
 
 interface BlogPostCardProps {

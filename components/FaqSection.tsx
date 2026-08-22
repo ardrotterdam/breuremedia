@@ -2,18 +2,30 @@
 
 import { useId, useState } from "react";
 import type { FaqItem } from "@/data/books";
+import type { Locale } from "@/lib/i18n";
 
 interface FaqSectionProps {
   items: FaqItem[];
   title?: string;
   eyebrow?: string;
+  locale?: Locale;
 }
+
+const copy: Record<Locale, { title: string; eyebrow: string }> = {
+  nl: { title: "Veelgestelde vragen", eyebrow: "Vragen van lezers" },
+  en: { title: "Frequently asked questions", eyebrow: "Reader questions" },
+  de: { title: "Häufige Fragen", eyebrow: "Fragen der Leser" },
+};
 
 export function FaqSection({
   items,
-  title = "Veelgestelde vragen",
-  eyebrow = "Vragen van lezers",
+  title,
+  eyebrow,
+  locale = "nl",
 }: FaqSectionProps) {
+  const defaults = copy[locale];
+  const heading = title ?? defaults.title;
+  const kicker = eyebrow ?? defaults.eyebrow;
   const baseId = useId();
   const [openItems, setOpenItems] = useState<Set<number>>(() => new Set());
 
@@ -32,9 +44,9 @@ export function FaqSection({
   return (
     <section className="faq" aria-labelledby="faq-heading">
       <div className="container faq-inner">
-        <p className="section-eyebrow">{eyebrow}</p>
+        <p className="section-eyebrow">{kicker}</p>
         <h2 id="faq-heading" className="section-title">
-          {title}
+          {heading}
         </h2>
         <div className="faq-list">
           {items.map((item, index) => {

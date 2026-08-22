@@ -3,7 +3,12 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
-import { localeFromPathname } from "@/lib/i18n";
+import {
+  englishNewsletterCopy,
+  germanNewsletterCopy,
+  localeFromPathname,
+  type Locale,
+} from "@/lib/i18n";
 
 export interface NewsletterFormCopy {
   emailLabel: string;
@@ -29,6 +34,18 @@ const dutchCopy: NewsletterFormCopy = {
     "Je inschrijving is volledig vrijblijvend. We gebruiken je e-mailadres alleen voor berichten van Breure Media. Geen spam, en uitschrijven kan altijd.",
 };
 
+const copyByLocale: Record<Locale, NewsletterFormCopy> = {
+  nl: dutchCopy,
+  en: englishNewsletterCopy,
+  de: germanNewsletterCopy,
+};
+
+const privacyLink: Record<Locale, { href: string; label: string }> = {
+  nl: { href: "/privacy", label: "Privacybeleid" },
+  en: { href: "/en/privacy", label: "Privacy policy" },
+  de: { href: "/privacy", label: "Datenschutz" },
+};
+
 type NewsletterFormProps = {
   /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
   source?: string;
@@ -45,20 +62,29 @@ function isGeneralBook(book: string): boolean {
   return (
     normalized === "" ||
     normalized === "algemeen" ||
-    normalized === "general"
+    normalized === "general" ||
+    normalized === "allgemein"
   );
 }
 
-function buildSuccessMessage(book: string, language: "NL" | "EN"): string {
+function buildSuccessMessage(book: string, locale: Locale): string {
   if (isGeneralBook(book)) {
-    return language === "EN"
-      ? "Thank you for subscribing! As soon as there is news about new books and releases from Breure Media, you'll be the first to know."
-      : "Bedankt voor je inschrijving! Zodra er nieuws is over nieuwe boeken en publicaties van Breure Media, hoor je als eerste van ons.";
+    if (locale === "en") {
+      return "Thank you for subscribing! As soon as there is news about new books and releases from Breure Media, you'll be the first to know.";
+    }
+    if (locale === "de") {
+      return "[DE-VERTALING VOLGT]";
+    }
+    return "Bedankt voor je inschrijving! Zodra er nieuws is over nieuwe boeken en publicaties van Breure Media, hoor je als eerste van ons.";
   }
 
-  return language === "EN"
-    ? `Thank you for subscribing! You're on the list. As soon as there is news about ${book}, you'll be the first to know.`
-    : `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
+  if (locale === "en") {
+    return `Thank you for subscribing! You're on the list. As soon as there is news about ${book}, you'll be the first to know.`;
+  }
+  if (locale === "de") {
+    return "[DE-VERTALING VOLGT]";
+  }
+  return `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
 }
 
 export function NewsletterForm({
@@ -67,11 +93,11 @@ export function NewsletterForm({
   compact = false,
   copy,
 }: NewsletterFormProps) {
-  const t: NewsletterFormCopy = { ...dutchCopy, ...copy };
   const pathname = usePathname() ?? "/";
   const locale = localeFromPathname(pathname);
-  const language = locale === "en" ? "EN" : "NL";
-  const successMessage = t.success ?? buildSuccessMessage(book, language);
+  const t: NewsletterFormCopy = { ...copyByLocale[locale], ...copy };
+  const language = locale.toUpperCase();
+  const successMessage = t.success ?? buildSuccessMessage(book, locale);
 
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"success" | "error" | "info" | "">("");
@@ -234,8 +260,8 @@ export function NewsletterForm({
       </p>
       <p className="form-privacy">
         {t.privacy}{" "}
-        <Link href={locale === "en" ? "/en/privacy" : "/privacy"}>
-          {locale === "en" ? "Privacy policy" : "Privacybeleid"}
+        <Link href={privacyLink[locale].href}>
+          {privacyLink[locale].label}
         </Link>
       </p>
     </form>

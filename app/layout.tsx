@@ -40,6 +40,14 @@ export const metadata: Metadata = {
   },
 };
 
+/*
+ * The App Router root layout is shared by /, /en and /de. Next.js does not
+ * expose the request pathname here without middleware (disallowed for this
+ * i18n setup) or a client write to document.documentElement. Nested layouts
+ * under /de cannot replace the root <html>. Page-level <main lang="de"> plus
+ * header/footer lang attributes carry the language until a [locale] split
+ * exists. Leave html lang as the default site language (nl).
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

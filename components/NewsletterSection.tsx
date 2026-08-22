@@ -1,4 +1,5 @@
 import { NewsletterForm, type NewsletterFormCopy } from "./NewsletterForm";
+import type { Locale } from "@/lib/i18n";
 
 interface NewsletterSectionProps {
   source: string;
@@ -11,7 +12,31 @@ interface NewsletterSectionProps {
   id?: string;
   /** Overschrijf de formulierteksten (bijv. Engels op /en-pagina's). */
   formCopy?: Partial<NewsletterFormCopy>;
+  locale?: Locale;
 }
+
+const sectionCopy: Record<
+  Locale,
+  { eyebrow: string; title: string; description: string }
+> = {
+  nl: {
+    eyebrow: "Berichten uit Breure Media",
+    title: "Nieuwe verhalen beginnen in stilte.",
+    description:
+      "Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder project verschijnt.",
+  },
+  en: {
+    eyebrow: "From Breure Media",
+    title: "New stories begin in silence.",
+    description:
+      "Get a message when a new publication, edition or special project is released.",
+  },
+  de: {
+    eyebrow: "Breure Media",
+    title: "[DE-VERTALING VOLGT]",
+    description: "[DE-VERTALING VOLGT]",
+  },
+};
 
 /**
  * Volledige nieuwsbrief-band met het Web3Forms-formulier. Anker-CTA's
@@ -20,12 +45,15 @@ interface NewsletterSectionProps {
 export function NewsletterSection({
   source,
   book,
-  eyebrow = "Berichten uit Breure Media",
-  title = "Nieuwe verhalen beginnen in stilte.",
-  description = "Ontvang bericht wanneer een nieuwe publicatie, editie of bijzonder project verschijnt.",
+  eyebrow,
+  title,
+  description,
   id,
   formCopy,
+  locale = "nl",
 }: NewsletterSectionProps) {
+  const defaults = sectionCopy[locale];
+
   return (
     <section
       id={id}
@@ -34,11 +62,13 @@ export function NewsletterSection({
     >
       <div className="container newsletter-inner">
         <hr className="editorial-rule" aria-hidden="true" />
-        <p className="section-eyebrow">{eyebrow}</p>
+        <p className="section-eyebrow">{eyebrow ?? defaults.eyebrow}</p>
         <h2 id="newsletter-heading" className="section-title">
-          {title}
+          {title ?? defaults.title}
         </h2>
-        <p className="newsletter-description">{description}</p>
+        <p className="newsletter-description">
+          {description ?? defaults.description}
+        </p>
         <NewsletterForm source={source} book={book} copy={formCopy} />
       </div>
     </section>

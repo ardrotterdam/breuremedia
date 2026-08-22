@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Fragment,
   useCallback,
   useEffect,
   useId,
@@ -22,8 +23,10 @@ import {
 } from "@/lib/site";
 import {
   counterpartPath,
+  deNavLinks,
   enNavLinks,
   headerCopy,
+  homePaths,
   localeFromPathname,
   type Locale,
 } from "@/lib/i18n";
@@ -62,7 +65,7 @@ function childLinkHrefs(children: readonly NavChild[]): string[] {
 }
 
 function isPathActive(pathname: string, href: string): boolean {
-  if (href === "/" || href === "/en") {
+  if (href === "/" || href === "/en" || href === "/de") {
     return pathname === href;
   }
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -101,48 +104,46 @@ function splitMegaChildren(children: readonly NavChild[]): MegaGroups {
   return { explore, featured, themes };
 }
 
+const LANG_SWITCH_ITEMS: readonly { code: Locale; label: string }[] = [
+  { code: "nl", label: "NL" },
+  { code: "en", label: "EN" },
+  { code: "de", label: "DE" },
+];
+
 function LangSwitch({
   locale,
-  otherHref,
+  pathname,
   onNavigate,
 }: {
   locale: Locale;
-  otherHref: string;
+  pathname: string;
   onNavigate?: () => void;
 }) {
   return (
-    <span className="lang-switch" aria-label="Taal / Language">
-      {locale === "nl" ? (
-        <span className="lang-current" aria-current="true">
-          NL
-        </span>
-      ) : (
-        <Link
-          href={otherHref}
-          hrefLang="nl"
-          className="lang-link"
-          onClick={onNavigate}
-        >
-          NL
-        </Link>
-      )}
-      <span className="lang-sep" aria-hidden="true">
-        ·
-      </span>
-      {locale === "en" ? (
-        <span className="lang-current" aria-current="true">
-          EN
-        </span>
-      ) : (
-        <Link
-          href={otherHref}
-          hrefLang="en"
-          className="lang-link"
-          onClick={onNavigate}
-        >
-          EN
-        </Link>
-      )}
+    <span className="lang-switch" aria-label="Taal / Language / Sprache">
+      {LANG_SWITCH_ITEMS.map((item, index) => (
+        <Fragment key={item.code}>
+          {index > 0 ? (
+            <span className="lang-sep" aria-hidden="true">
+              ·
+            </span>
+          ) : null}
+          {locale === item.code ? (
+            <span className="lang-current" aria-current="true">
+              {item.label}
+            </span>
+          ) : (
+            <Link
+              href={counterpartPath(pathname, item.code)}
+              hrefLang={item.code}
+              className="lang-link"
+              onClick={onNavigate}
+            >
+              {item.label}
+            </Link>
+          )}
+        </Fragment>
+      ))}
     </span>
   );
 }
@@ -166,10 +167,14 @@ export function Header() {
   const hoveredItem = useRef<HTMLElement | null>(null);
 
   const locale = localeFromPathname(pathname);
-  const links = locale === "en" ? enNavLinks : navLinks;
+  const navByLocale: Record<Locale, readonly NavItem[]> = {
+    nl: navLinks,
+    en: enNavLinks,
+    de: deNavLinks,
+  };
+  const links = navByLocale[locale];
   const t = headerCopy[locale];
-  const homeHref = locale === "en" ? "/en" : "/";
-  const otherHref = counterpartPath(pathname);
+  const homeHref = homePaths[locale];
   const booksItem = links.find(
     (item): item is NavDropdownItem => item.type === "dropdown"
   );
@@ -616,7 +621,7 @@ export function Header() {
             />
             {links.map(renderDesktopItem)}
           </div>
-          <LangSwitch locale={locale} otherHref={otherHref} />
+          <LangSwitch locale={locale} pathname={pathname} />
         </nav>
 
         <button
@@ -687,7 +692,7 @@ export function Header() {
           {links.map(renderDrawerItem)}
           <LangSwitch
             locale={locale}
-            otherHref={otherHref}
+            pathname={pathname}
             onNavigate={closeMobile}
           />
         </div>

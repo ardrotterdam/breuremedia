@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Book } from "@/data/books";
+import type { Locale } from "@/lib/i18n";
 import { OrderButton } from "./OrderButton";
 
 interface BookHeroProps {
@@ -7,9 +8,15 @@ interface BookHeroProps {
   priority?: boolean;
   /** Label for the order/sign-up CTA; defaults to Dutch inside OrderButton. */
   orderLabel?: string;
+  locale?: Locale;
 }
 
-export function BookHero({ book, priority = false, orderLabel }: BookHeroProps) {
+export function BookHero({
+  book,
+  priority = false,
+  orderLabel,
+  locale = "nl",
+}: BookHeroProps) {
   return (
     <section className="hero">
       <div className="hero-layout">
@@ -39,7 +46,7 @@ export function BookHero({ book, priority = false, orderLabel }: BookHeroProps) 
             <p className="hero-format">
               {book.format} · {book.priceFormatted}
             </p>
-            <OrderButton label={orderLabel} />
+            <OrderButton label={orderLabel} locale={locale} />
           </div>
         </div>
       </div>

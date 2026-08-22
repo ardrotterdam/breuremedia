@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { siteConfig } from "@/lib/site";
 
-type Language = "NL" | "EN";
+type Language = "NL" | "EN" | "DE";
 
 interface NewsletterPayload {
   email: string;
@@ -18,12 +18,16 @@ function isGeneralBook(book: string): boolean {
   return (
     normalized === "" ||
     normalized === "algemeen" ||
-    normalized === "general"
+    normalized === "general" ||
+    normalized === "allgemein"
   );
 }
 
 function normalizeLanguage(value: string | undefined): Language {
-  return value?.toUpperCase() === "EN" ? "EN" : "NL";
+  const upper = value?.toUpperCase();
+  if (upper === "EN") return "EN";
+  if (upper === "DE") return "DE";
+  return "NL";
 }
 
 function buildConfirmation(book: string, language: Language) {
@@ -43,6 +47,13 @@ function buildConfirmation(book: string, language: Language) {
     };
   }
 
+  if (language === "DE") {
+    return {
+      subject: "[DE-VERTALING VOLGT]",
+      body: "[DE-VERTALING VOLGT]",
+    };
+  }
+
   if (general) {
     return {
       subject: "Bevestiging inschrijving Breure Media",
@@ -57,14 +68,19 @@ function buildConfirmation(book: string, language: Language) {
 }
 
 function buildConfirmationHtml(body: string, language: Language): string {
-  const greeting = language === "EN" ? "Hello," : "Hallo,";
+  const greeting =
+    language === "EN" ? "Hello," : language === "DE" ? "Hallo," : "Hallo,";
   const signOff =
     language === "EN"
       ? "Kind regards,<br />Breure Media"
-      : "Met vriendelijke groet,<br />Breure Media";
+      : language === "DE"
+        ? "[DE-VERTALING VOLGT]<br />Breure Media"
+        : "Met vriendelijke groet,<br />Breure Media";
+  const htmlLang =
+    language === "EN" ? "en" : language === "DE" ? "de" : "nl";
 
   return `<!DOCTYPE html>
-<html lang="${language === "EN" ? "en" : "nl"}">
+<html lang="${htmlLang}">
   <body style="margin:0;padding:0;background:#f7f4ef;font-family:Georgia,'Times New Roman',serif;color:#1a1a1a;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f4ef;padding:32px 16px;">
       <tr>
@@ -106,6 +122,9 @@ function buildLeadNotificationText(fields: {
 function buildDashboardSubject(book: string, language: Language): string {
   if (language === "EN") {
     return `New sign-up: ${book} (EN)`;
+  }
+  if (language === "DE") {
+    return `New sign-up: ${book} (DE)`;
   }
   return `Nieuwe inschrijving: ${book} (NL)`;
 }

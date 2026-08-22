@@ -4,14 +4,14 @@ export interface FaqItem {
 }
 
 /**
- * Optional English translation of a book's editorial content. Only titles
- * the author publishes in English carry this block; Dutch-only titles leave
- * it undefined. Structural/commercial fields (slug, price, currency, format)
+ * Optional translation of a book's editorial content. Only titles published
+ * in that language carry the matching block (`en` / `de`); others leave it
+ * undefined. Structural/commercial fields (slug, price, currency, format)
  * are shared and stay on the parent Book. Cover image may be overridden when
- * the English edition has its own artwork.
+ * the translated edition has its own artwork.
  */
 export interface BookTranslation {
-  /** English URL slug, used under /en/<slug>. */
+  /** Translated URL slug, used under /en/<slug> or /de/<slug>. */
   slug: string;
   title: string;
   subtitle: string;
@@ -60,6 +60,8 @@ export interface Book {
   relatedReadingLists?: { href: string; label: string }[];
   /** English edition content, when the book is also published in English. */
   en?: BookTranslation;
+  /** German edition content, when the book is also published in German. */
+  de?: BookTranslation;
 }
 
 /**
@@ -213,6 +215,77 @@ export const books: Book[] = [
           question: "What does the book cost?",
           answer:
             "The recommended price is €29.95. The book is expected in autumn 2026; the final edition (paperback or hardcover) and the exact release date will be announced later.",
+        },
+      ],
+    },
+    de: {
+      slug: "schatten-ueber-domburg",
+      title: "Schatten über Domburg",
+      subtitle: "Ein literarischer Thriller",
+      genre: "Literarischer Thriller",
+      tagline:
+        "Ein Körper am Strand. Eine Spur in den Rotterdamer Hafen. Und ein Netz, das unsichtbar bleibt.",
+      description:
+        "Ein Körper treibt an den Strand von Domburg. Was wie ein Einzelfall wirkt, ist der Anfang von etwas Größerem.",
+      longDescription: [
+        "Ein Körper treibt an den Strand von Domburg. Was wie ein Einzelfall wirkt, ist der Anfang von etwas Größerem.",
+        "Tom Jansen, früher Polizist mit langen Jahren im Rotterdamer Hafen, hat den aktiven Dienst hinter sich. Als die Spuren der Sache nach Rotterdam weisen, trifft er wieder auf eine Welt, die er genau kennt: Container, Spediteure, Zollkontrollen und Handelswege, auf denen täglich enorme Mengen an Fracht nahezu unbemerkt passieren.",
+        "Im Eemhaven entdeckt er, dass hinter scheinbar gewöhnlicher Ladung ein Netz steckt, in dem Waffen, militärische Elektronik und internationale Interessen zusammenlaufen. Die Papiere stimmen. Die Container sind verplombt. Die Systeme schlagen keinen Alarm. Und trotzdem stimmt etwas nicht.",
+        "Während die Ermittlung von der zeeländischen Küste an die dunklen Ränder des Rotterdamer Hafens wandert, wird es immer schwerer zu sagen, wer die Wahrheit spricht und wer gerade so viel Wahrheit preisgibt, dass er unsichtbar bleibt.",
+        "Schatten über Domburg ist ein zeitgenössischer niederländischer Thriller über Macht, internationalen Schmuggel, Technik und die Verletzlichkeit einer Welt, die Daten, Verfahren und Systemen vertraut. Eine Geschichte, in der die Fakten klar sein können, die Fragen logisch wirken und die Antworten alles andere als eindeutig sind.",
+      ],
+      coverAlt:
+        "Buchcover von Schatten über Domburg, ein literarischer Thriller von Ard Breure: dunkler Strand, Wasserturm und Skyline",
+      formatNote:
+        "Schatten über Domburg erscheint voraussichtlich im Herbst 2026. Schreiben Sie sich für den Newsletter ein, damit Sie zuerst vom genauen Erscheinungstermin, dem Preis und einer exklusiven Vorveröffentlichung erfahren.",
+      setting: "Domburg, Zeeland: die niederländische Küste",
+      themes: [
+        "Stille und Spannung",
+        "Moralische Entscheidungen",
+        "Psychologische Tiefe",
+        "Schauplatz an der niederländischen Küste",
+      ],
+      keywords: [
+        "literarischer Thriller",
+        "Zeeland Krimi",
+        "Domburg Roman",
+        "Küstenkrimi Niederlande",
+        "Domburg Krimi",
+        "niederländischer Thriller",
+        "Schatten über Domburg",
+        "Ard Breure",
+      ],
+      faq: [
+        {
+          question: "Was ist ein literarischer Thriller?",
+          answer:
+            "Ein literarischer Thriller verbindet Spannung mit sorgfältiger Sprache, Figuren mit Tiefe und Themen, die über die Tat hinausreichen. Der Schwerpunkt liegt auf Psychologie, Atmosphäre und moralischen Fragen, nicht nur darauf, wer der Täter ist.",
+        },
+        {
+          question: "Wo spielt Schatten über Domburg?",
+          answer:
+            "Die Geschichte spielt an der niederländischen Küste, in und um Domburg in Zeeland. Das Meer, der Nebel und die Stille des Badeortes gehören zur Spannung dazu.",
+        },
+        {
+          question:
+            "Worin unterscheidet sich ein literarischer Thriller von einem gewöhnlichen Thriller?",
+          answer:
+            "Bei einem gewöhnlichen Thriller stehen Plot und Handlung im Vordergrund. Ein literarischer Thriller nimmt sich Zeit für Figuren, Atmosphäre und Sprache. Sie lesen nicht nur, um zu erfahren, was geschieht, sondern um die Menschen und ihre Entscheidungen zu verstehen.",
+        },
+        {
+          question: "Für wen ist dieses Buch geeignet?",
+          answer:
+            "Für Leserinnen und Leser, die Thriller mit psychologischer Tiefe suchen. Wenn Sie Autoren wie Thomas Ammich oder Bernd Stelter kennen und eine Geschichte schätzen, die sich langsam aufbaut statt sofort zu eskalieren, passt dieses Buch zu Ihnen.",
+        },
+        {
+          question: "Wie kann ich Schatten über Domburg bestellen?",
+          answer:
+            "Schatten über Domburg erscheint voraussichtlich im Herbst 2026. Die Bestellung öffnet, sobald der Erscheinungstermin feststeht. Schreiben Sie sich über das Formular auf dieser Seite ein oder mailen Sie an info@breuremedia.com, damit Sie zuerst benachrichtigt werden.",
+        },
+        {
+          question: "Was kostet das Buch?",
+          answer:
+            "Der Richtpreis beträgt 29,95 €. Das Buch erscheint voraussichtlich im Herbst 2026. Die endgültige Ausgabe, Paperback oder Hardcover, und der genaue Termin werden später bekanntgegeben.",
         },
       ],
     },
@@ -377,4 +450,18 @@ export function getBookByEnglishSlug(
   enSlug: string
 ): (Book & { en: BookTranslation }) | undefined {
   return getEnglishBooks().find((book) => book.en.slug === enSlug);
+}
+
+/** Books that also have a German edition (i.e. carry a `de` block). */
+export function getGermanBooks(): (Book & { de: BookTranslation })[] {
+  return books.filter(
+    (book): book is Book & { de: BookTranslation } => book.de !== undefined
+  );
+}
+
+/** Find a book by its German slug (the segment used under /de/<slug>). */
+export function getBookByGermanSlug(
+  deSlug: string
+): (Book & { de: BookTranslation }) | undefined {
+  return getGermanBooks().find((book) => book.de.slug === deSlug);
 }

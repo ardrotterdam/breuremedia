@@ -16,7 +16,7 @@ interface PublicationsHeroProps {
   eyebrow: string;
   brand: string;
   lead: string;
-  publications: [PublicationShowcaseItem, PublicationShowcaseItem];
+  publications: PublicationShowcaseItem[];
 }
 
 export function PublicationsHero({
@@ -36,7 +36,9 @@ export function PublicationsHero({
           <p className="publications-hero-lead">{lead}</p>
         </header>
 
-        <div className="publications-grid">
+        <div
+          className={`publications-grid${publications.length === 1 ? " publications-grid--single" : ""}`}
+        >
           {publications.map((item) => (
             <article key={item.href} className="publication-feature">
               <Link

@@ -51,6 +51,24 @@ export const authorEn = {
     "Dutch author of literary thrillers. His debut, Shadows over Domburg, is published by Breure Media.",
 } as const;
 
+/** German counterparts of the site-level strings, used in the /de section. */
+export const siteDe = {
+  tagline: "Label für literarische Thriller",
+  description:
+    "Breure Media ist ein unabhängiges niederländisches Label für literarische Thriller. Hier berührt die zeeländische Küste den Rotterdamer Hafen.",
+  motto: "Geschichten, die die Stille durchbrechen.",
+} as const;
+
+/** German author copy, used on /de/ueber-den-autor and the German home. */
+export const authorDe = {
+  bio: [
+    "Ard Breure wuchs in Zeeland auf, der Provinz, die in Schatten über Domburg zum Schauplatz wird. Mit fünfundzwanzig Jahren tauschte er Zeeland gegen Rotterdam, wo er seither lebt. Eine Stadt, die er vom alten Zentrum bis zum äußersten Rand der Maasvlakte kennt.",
+    "Diese beiden Landschaften, die Stille der zeeländischen Küste und die Rauheit des Hafens, bilden das Rückgrat seiner Arbeit. Seine Bücher erscheinen unter dem Label Breure Media: ein Haus für Geschichten, die nachklingen, lange nachdem die letzte Seite umgeschlagen ist.",
+  ],
+  shortBio:
+    "Niederländischer Autor literarischer Thriller. Sein Debüt Schatten über Domburg erscheint bei Breure Media.",
+} as const;
+
 /** Leaf link inside the main nav (top-level or dropdown child). */
 export interface NavLinkItem {
   type: "link";

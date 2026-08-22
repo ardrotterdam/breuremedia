@@ -1,8 +1,27 @@
+import type { Locale } from "@/lib/i18n";
+
 interface AffiliateButtonProps {
   amazonUrl?: string;
   naam?: string;
   label?: string;
   compact?: boolean;
+  locale?: Locale;
+}
+
+const fallbackLabels: Record<Locale, string> = {
+  nl: "Bekijk op Amazon",
+  en: "View on Amazon",
+  de: "Bei Amazon ansehen",
+};
+
+function namedLabel(naam: string, locale: Locale): string {
+  if (locale === "en") {
+    return `View ${naam} on Amazon`;
+  }
+  if (locale === "de") {
+    return `${naam} bei Amazon ansehen`;
+  }
+  return `Bekijk ${naam} op Amazon`;
 }
 
 export function AffiliateButton({
@@ -10,13 +29,14 @@ export function AffiliateButton({
   naam,
   label,
   compact = false,
+  locale = "nl",
 }: AffiliateButtonProps) {
   if (!amazonUrl) {
     return null;
   }
 
   const buttonLabel =
-    label ?? (naam ? `Bekijk ${naam} op Amazon` : "Bekijk op Amazon");
+    label ?? (naam ? namedLabel(naam, locale) : fallbackLabels[locale]);
 
   return (
     <a
