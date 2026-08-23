@@ -234,8 +234,9 @@ export const books: Book[] = [
         "Während die Ermittlung von der zeeländischen Küste an die dunklen Ränder des Rotterdamer Hafens wandert, wird es immer schwerer zu sagen, wer die Wahrheit spricht und wer gerade so viel Wahrheit preisgibt, dass er unsichtbar bleibt.",
         "Schatten über Domburg ist ein zeitgenössischer niederländischer Thriller über Macht, internationalen Schmuggel, Technik und die Verletzlichkeit einer Welt, die Daten, Verfahren und Systemen vertraut. Eine Geschichte, in der die Fakten klar sein können, die Fragen logisch wirken und die Antworten alles andere als eindeutig sind.",
       ],
+      coverImage: "/assets/schatten-ueber-domburg-cover.webp",
       coverAlt:
-        "Buchcover von Schatten über Domburg, ein literarischer Thriller von Ard Breure: dunkler Strand, Wasserturm und Skyline",
+        "Buchcover Schatten über Domburg von Ard Breure: einsame Gestalt am Strand von Domburg, Wasserturm und Rotterdamer Hafenskyline unter Gewitterhimmel",
       formatNote:
         "Schatten über Domburg erscheint voraussichtlich im Herbst 2026. Schreiben Sie sich für den Newsletter ein, damit Sie zuerst vom genauen Erscheinungstermin, dem Preis und einer exklusiven Vorveröffentlichung erfahren.",
       setting: "Domburg, Zeeland: die niederländische Küste",
