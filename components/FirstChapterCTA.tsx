@@ -44,7 +44,7 @@ function copyFor(locale: Locale) {
   if (locale === "de") {
     return {
       heading: `Lesen Sie das erste Kapitel von ${title} kostenlos`,
-      body: `Die zeeländische Küste ist der Schauplatz von ${title}. Beginnen Sie mit dem ersten Kapitel. Wir senden es per E-Mail.`,
+      body: `Die zeeländische Küste ist der Schauplatz von ${title}. Beginnen Sie mit dem ersten Kapitel. Wir senden es per E-Mail. Sie erfahren außerdem als Erster den Erscheinungstermin.`,
       book: title,
       form: {
         ...germanNewsletterCopy,

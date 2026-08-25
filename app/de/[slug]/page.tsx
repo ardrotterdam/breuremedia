@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
-import { NewsletterSection } from "@/components/NewsletterSection";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { getBookByGermanSlug, getGermanBooks, type Book } from "@/data/books";
 import { buildMetadata } from "@/lib/seo";
 import { author, siteConfig } from "@/lib/site";
@@ -138,15 +138,7 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
         </div>
       </section>
 
-      <NewsletterSection
-        id="wachtlijst"
-        source={`de-${de.slug}`}
-        book={de.title}
-        locale="de"
-        eyebrow="Warteliste"
-        title="Zuerst erfahren, wann das Buch erscheint?"
-        description={`Wenn ${de.title} Sie interessiert, hinterlassen Sie Ihre E-Mail-Adresse. Sie erfahren zuerst den Erscheinungstermin und erhalten eine Vorveröffentlichung.`}
-      />
+      <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
 
       <FaqSection
         items={de.faq}
