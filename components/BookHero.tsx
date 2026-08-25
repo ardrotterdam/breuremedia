@@ -8,6 +8,8 @@ interface BookHeroProps {
   priority?: boolean;
   /** Label for the order/sign-up CTA; defaults to Dutch inside OrderButton. */
   orderLabel?: string;
+  /** Anchor for the CTA; defaults to #newsletter-heading inside OrderButton. */
+  orderHref?: string;
   locale?: Locale;
 }
 
@@ -15,6 +17,7 @@ export function BookHero({
   book,
   priority = false,
   orderLabel,
+  orderHref,
   locale = "nl",
 }: BookHeroProps) {
   return (
@@ -46,7 +49,7 @@ export function BookHero({
             <p className="hero-format">
               {book.format} · {book.priceFormatted}
             </p>
-            <OrderButton label={orderLabel} locale={locale} />
+            <OrderButton href={orderHref} label={orderLabel} locale={locale} />
           </div>
         </div>
       </div>

@@ -90,7 +90,13 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
   return (
     <main lang="de">
       <JsonLd data={jsonLd} />
-      <BookHero book={localizedBook} priority locale="de" />
+      <BookHero
+        book={localizedBook}
+        priority
+        locale="de"
+        orderLabel="ERSTES KAPITEL LESEN"
+        orderHref="#erstes-kapitel"
+      />
 
       <section className="book-detail" aria-labelledby="book-about-heading">
         <div className="container book-detail-inner">
@@ -138,7 +144,9 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
         </div>
       </section>
 
-      <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
+      <div id="erstes-kapitel">
+        <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
+      </div>
 
       <FaqSection
         items={de.faq}
