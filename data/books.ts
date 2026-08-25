@@ -276,7 +276,7 @@ export const books: Book[] = [
         {
           question: "Für wen ist dieses Buch geeignet?",
           answer:
-            "Für Leserinnen und Leser, die Thriller mit psychologischer Tiefe suchen. Wenn Sie Autoren wie Thomas Ammich oder Bernd Stelter kennen und eine Geschichte schätzen, die sich langsam aufbaut statt sofort zu eskalieren, passt dieses Buch zu Ihnen.",
+            "Für Leserinnen und Leser, die Thriller mit psychologischer Tiefe suchen. Wenn Sie die zeeländische Küste aus den Krimis von Thomas Ammich oder Bernd Stelter kennen, aber eine Geschichte suchen, die sich langsam aufbaut und tiefer geht, passt dieses Buch zu Ihnen.",
         },
         {
           question: "Wie kann ich Schatten über Domburg bestellen?",
