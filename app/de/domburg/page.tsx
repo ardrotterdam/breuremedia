@@ -99,11 +99,11 @@ const articleImages = {
   },
   golf: {
     src: imageSrc(imageFiles.golf),
-    alt: "Das narbige Gelände der Domburgsche Golfclub, deren Bunker aus Bombenkratern entstanden",
+    alt: "Das narbige Gelände der Domburgsche Golfclub, dessen Bunker aus Bombenkratern entstanden",
     width: 1672,
     height: 941,
     caption:
-      "Die Bahn der Domburgsche, wo 437 Bombenkrater Narben im Land hinterließen",
+      "Die Bahn des Domburgsche Golfclub, wo 437 Bombenkrater Narben im Land hinterließen",
   },
   beach: {
     src: imageSrc(imageFiles.beach),
@@ -348,11 +348,11 @@ export default function GermanDomburgPage() {
           aria-labelledby="boulevard-heading"
         >
           <h2 id="boulevard-heading" className="content-heading">
-            Die Boulevard van Schagen und der Wasserturm
+            Der Boulevard van Schagen und der Wasserturm
           </h2>
           <p className="content-paragraph">
             Domburg hat keinen Boulevard wie Vlissingen, keine breite
-            Strandpromenade. Was es hat, ist die Boulevard van Schagen: ein
+            Strandpromenade. Was es hat, ist der Boulevard van Schagen: ein
             schmaler Dünenpfad mit einem vornehmen Namen, der oben über die
             Dünen windet, mit dem Dorf auf der einen Seite und über die Düne das
             Meer. Unterwegs passieren Sie die Bank der Nehalennia und blicken
