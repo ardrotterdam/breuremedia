@@ -144,7 +144,7 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
         </div>
       </section>
 
-      <div id="erstes-kapitel">
+      <div className="container">
         <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
       </div>
 

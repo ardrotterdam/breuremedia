@@ -1,17 +1,31 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { getChapter1 } from "@/data/chapter-1";
+import { getAllBooks } from "@/data/books";
+import { chapter1Url } from "@/lib/chapter-1";
+import { upsertContact } from "@/lib/contacts";
+import {
+  getResendClient,
+  LEAD_TO,
+  RESEND_FROM,
+  unsubscribeMailto,
+} from "@/lib/email";
+import type { Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 type Language = "NL" | "EN" | "DE";
+type LeadMagnet = "chapter-1";
 
-interface NewsletterPayload {
-  email: string;
-  book?: string;
-  language?: string;
-  page_url?: string;
-  source?: string;
-  botcheck?: boolean;
-}
+const ALLOWED_LANGUAGES = new Set<string>(["NL", "EN", "DE"]);
+const MAX_EMAIL_LENGTH = 254;
+const MAX_SOURCE_LENGTH = 120;
+const MAX_PAGE_URL_LENGTH = 500;
+const MAX_BOOK_LENGTH = 120;
+
+const GENERAL_BOOK_TITLES: Record<Language, string> = {
+  NL: "Algemeen",
+  EN: "General",
+  DE: "Allgemein",
+};
 
 function isGeneralBook(book: string): boolean {
   const normalized = book.trim().toLowerCase();
@@ -23,14 +37,101 @@ function isGeneralBook(book: string): boolean {
   );
 }
 
-function normalizeLanguage(value: string | undefined): Language {
-  const upper = value?.toUpperCase();
-  if (upper === "EN") return "EN";
-  if (upper === "DE") return "DE";
-  return "NL";
+/**
+ * Accepts only NL/EN/DE (any case). Missing or unsupported values are rejected.
+ */
+function normalizeLanguage(value: unknown): Language | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+  const upper = value.trim().toUpperCase();
+  if (ALLOWED_LANGUAGES.has(upper)) {
+    return upper as Language;
+  }
+  return null;
 }
 
-function buildConfirmation(book: string, language: Language) {
+function toLocale(language: Language): Locale {
+  if (language === "EN") return "en";
+  if (language === "DE") return "de";
+  return "nl";
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function sanitizeMeta(value: unknown, maxLength: number): string {
+  if (typeof value !== "string") {
+    return "";
+  }
+  return value.replace(/[\u0000\r\n]+/g, " ").trim().slice(0, maxLength);
+}
+
+function isHoneypotTriggered(value: unknown): boolean {
+  if (value === true || value === 1) {
+    return true;
+  }
+  if (typeof value === "string") {
+    const normalized = value.trim().toLowerCase();
+    return (
+      normalized !== "" &&
+      normalized !== "false" &&
+      normalized !== "0" &&
+      normalized !== "off"
+    );
+  }
+  return false;
+}
+
+const ALLOWED_LEAD_MAGNETS = new Set<LeadMagnet>(["chapter-1"]);
+
+function parseLeadMagnet(
+  value: unknown
+): { ok: true; chapterRequested: boolean } | { ok: false } {
+  if (value === undefined || value === null || value === "") {
+    return { ok: true, chapterRequested: false };
+  }
+  if (typeof value === "string" && ALLOWED_LEAD_MAGNETS.has(value as LeadMagnet)) {
+    return { ok: true, chapterRequested: true };
+  }
+  return { ok: false };
+}
+
+function allowedBookTitles(): Set<string> {
+  const titles = new Set<string>(Object.values(GENERAL_BOOK_TITLES));
+  for (const book of getAllBooks()) {
+    titles.add(book.title);
+    if (book.en?.title) {
+      titles.add(book.en.title);
+    }
+    if (book.de?.title) {
+      titles.add(book.de.title);
+    }
+  }
+  return titles;
+}
+
+function trustedBookTitle(
+  raw: unknown,
+  language: Language,
+  chapterRequested: boolean
+): string {
+  if (chapterRequested) {
+    return getChapter1(toLocale(language)).bookTitle;
+  }
+  const candidate = sanitizeMeta(raw, MAX_BOOK_LENGTH);
+  if (candidate && allowedBookTitles().has(candidate)) {
+    return candidate;
+  }
+  return GENERAL_BOOK_TITLES[language];
+}
+
+function buildWaitlistConfirmation(book: string, language: Language) {
   const bookTitle = book.trim() || "Algemeen";
   const general = isGeneralBook(bookTitle);
 
@@ -73,17 +174,51 @@ function buildConfirmation(book: string, language: Language) {
   };
 }
 
-function buildConfirmationHtml(body: string, language: Language): string {
+function buildChapterConfirmation(book: string, language: Language, url: string) {
+  if (language === "EN") {
+    return {
+      subject: `Your first chapter of ${book}`,
+      body: `Thank you for your interest in ${book}. You can read the first chapter here:`,
+      cta: "Read chapter 1",
+      url,
+    };
+  }
+
+  if (language === "DE") {
+    return {
+      subject: `Ihr erstes Kapitel von ${book}`,
+      body: `Vielen Dank für Ihr Interesse an ${book}. Das erste Kapitel lesen Sie hier:`,
+      cta: "Kapitel 1 lesen",
+      url,
+    };
+  }
+
+  return {
+    subject: `Je eerste hoofdstuk van ${book}`,
+    body: `Hartelijk dank voor je belangstelling voor ${book}. Het eerste hoofdstuk lees je hier:`,
+    cta: "Lees hoofdstuk 1",
+    url,
+  };
+}
+
+function wrapEmailHtml(options: {
+  language: Language;
+  bodyHtml: string;
+}): string {
   const greeting =
-    language === "EN" ? "Hello," : language === "DE" ? "Guten Tag," : "Hallo,";
+    options.language === "EN"
+      ? "Hello,"
+      : options.language === "DE"
+        ? "Guten Tag,"
+        : "Hallo,";
   const signOff =
-    language === "EN"
+    options.language === "EN"
       ? "Kind regards,<br />Breure Media"
-      : language === "DE"
+      : options.language === "DE"
         ? "Mit freundlichen Grüßen,<br />Breure Media"
         : "Met vriendelijke groet,<br />Breure Media";
   const htmlLang =
-    language === "EN" ? "en" : language === "DE" ? "de" : "nl";
+    options.language === "EN" ? "en" : options.language === "DE" ? "de" : "nl";
 
   return `<!DOCTYPE html>
 <html lang="${htmlLang}">
@@ -96,8 +231,8 @@ function buildConfirmationHtml(body: string, language: Language): string {
               <td>
                 <p style="margin:0 0 8px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#6b6358;">Breure Media</p>
                 <p style="margin:0 0 20px;font-size:18px;line-height:1.5;">${greeting}</p>
-                <p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${body}</p>
-                <p style="margin:0;font-size:16px;line-height:1.65;">${signOff}</p>
+                ${options.bodyHtml}
+                <p style="margin:24px 0 0;font-size:16px;line-height:1.65;">${signOff}</p>
               </td>
             </tr>
           </table>
@@ -114,25 +249,38 @@ function buildLeadNotificationText(fields: {
   language: Language;
   pageUrl: string;
   source: string;
+  leadMagnet: string;
+  marketingIntent: boolean;
+  confirmMarketing: boolean;
+  marketingSignupAt?: string;
+  chapterRequested: boolean;
 }): string {
   return [
-    "New newsletter sign-up",
+    fields.chapterRequested ? "New Chapter 1 request" : "New newsletter sign-up",
     `Email: ${fields.email}`,
     `Book: ${fields.book}`,
     `Language: ${fields.language}`,
     `Page: ${fields.pageUrl}`,
     `Source: ${fields.source}`,
+    `Lead magnet: ${fields.leadMagnet || "none"}`,
+    `Chapter requested: ${fields.chapterRequested ? "yes" : "no"}`,
+    `Marketing intent: ${fields.marketingIntent ? "yes" : "no"}`,
+    `Waitlist/newsletter signup: ${fields.confirmMarketing ? "yes" : "no"}`,
+    `marketing_signup_at: ${fields.marketingSignupAt ?? "n/a"}`,
   ].join("\n");
 }
 
-function buildDashboardSubject(book: string, language: Language): string {
+function buildDashboardSubject(book: string, language: Language, chapter: boolean): string {
+  const kind = chapter ? "Chapter 1" : "sign-up";
   if (language === "EN") {
-    return `New sign-up: ${book} (EN)`;
+    return `New ${kind}: ${book} (EN)`;
   }
   if (language === "DE") {
-    return `New sign-up: ${book} (DE)`;
+    return `New ${kind}: ${book} (DE)`;
   }
-  return `Nieuwe inschrijving: ${book} (NL)`;
+  return chapter
+    ? `Nieuw hoofdstuk 1: ${book} (NL)`
+    : `Nieuwe inschrijving: ${book} (NL)`;
 }
 
 function isValidEmail(email: string): boolean {
@@ -155,35 +303,60 @@ function jsonFail(message: string, status: 400 | 500) {
   );
 }
 
-const RESEND_FROM = "Breure Media <wachtlijst@breuremedia.com>";
-const LEAD_TO = "info@breuremedia.com";
-
 export async function POST(request: Request) {
   try {
-    let payload: NewsletterPayload;
+    let rawBody: unknown;
 
     try {
-      payload = (await request.json()) as NewsletterPayload;
+      rawBody = await request.json();
     } catch (error) {
       console.error("[newsletter] Invalid JSON body:", error);
       return jsonFail("Invalid JSON body.", 400);
     }
 
-    const email = payload.email?.trim() ?? "";
-    const book = (payload.book ?? "Algemeen").trim() || "Algemeen";
-    const language = normalizeLanguage(payload.language);
-    const pageUrl = payload.page_url?.trim() || siteConfig.url;
-    const source = payload.source?.trim() || "website";
-
-    if (!email || !isValidEmail(email)) {
-      console.error("[newsletter] Invalid email:", { email, book, source });
-      return jsonFail("Invalid email address.", 400);
+    if (
+      rawBody === null ||
+      typeof rawBody !== "object" ||
+      Array.isArray(rawBody)
+    ) {
+      return jsonFail("Invalid JSON body.", 400);
     }
 
-    // Honeypot: pretend success without emailing.
-    if (payload.botcheck) {
+    const payload = rawBody as Record<string, unknown>;
+
+    if (isHoneypotTriggered(payload.botcheck)) {
       console.info("[newsletter] Honeypot triggered; skipping send.");
       return jsonOk();
+    }
+
+    const email =
+      typeof payload.email === "string" ? payload.email.trim() : "";
+    const language = normalizeLanguage(payload.language);
+    if (!language) {
+      return jsonFail("Invalid request.", 400);
+    }
+    const locale = toLocale(language);
+    const magnet = parseLeadMagnet(payload.leadMagnet);
+
+    if (!magnet.ok) {
+      return jsonFail("Invalid request.", 400);
+    }
+
+    const chapterRequested = magnet.chapterRequested;
+    const book = trustedBookTitle(payload.book, language, chapterRequested);
+    const pageUrl =
+      sanitizeMeta(payload.page_url, MAX_PAGE_URL_LENGTH) || siteConfig.url;
+    const source = sanitizeMeta(payload.source, MAX_SOURCE_LENGTH) || "website";
+    const marketingIntent = !chapterRequested;
+    const confirmMarketing = !chapterRequested;
+
+    if (
+      !email ||
+      email.length > MAX_EMAIL_LENGTH ||
+      !isValidEmail(email)
+    ) {
+      console.error("[newsletter] Invalid email:", { email, book, source });
+      return jsonFail("Invalid email address.", 400);
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
@@ -193,14 +366,46 @@ export async function POST(request: Request) {
       return jsonFail("Server configuration error.", 500);
     }
 
-    const resend = new Resend(resendApiKey);
-    const confirmation = buildConfirmation(book, language);
+    const resend = getResendClient(resendApiKey);
+
+    let marketingSignupAt: string | undefined;
+
+    try {
+      const stored = await upsertContact(resend, {
+        email,
+        confirmMarketing,
+        marketingIntent,
+        language: locale,
+        source,
+        leadMagnet: chapterRequested ? "chapter-1" : "",
+        chapterRequested,
+      });
+      marketingSignupAt = stored.marketingSignupAt;
+
+      if (!stored.stored) {
+        console.error("[newsletter] Contact was not stored:", {
+          email,
+          source,
+          chapterRequested,
+          marketingIntent,
+          confirmMarketing,
+        });
+      }
+    } catch (error) {
+      console.error("[newsletter] Contact upsert error:", { error, email });
+    }
+
     const leadText = buildLeadNotificationText({
       email,
       book,
       language,
       pageUrl,
       source,
+      leadMagnet: chapterRequested ? "chapter-1" : "",
+      marketingIntent,
+      confirmMarketing,
+      marketingSignupAt,
+      chapterRequested,
     });
 
     try {
@@ -208,7 +413,7 @@ export async function POST(request: Request) {
         from: RESEND_FROM,
         to: LEAD_TO,
         replyTo: email,
-        subject: buildDashboardSubject(book, language),
+        subject: buildDashboardSubject(book, language, chapterRequested),
         text: leadText,
       });
 
@@ -221,7 +426,9 @@ export async function POST(request: Request) {
           source,
           page_url: pageUrl,
         });
-        return jsonFail("Failed to send subscription notification.", 500);
+        if (!chapterRequested) {
+          return jsonFail("Failed to send subscription notification.", 500);
+        }
       }
     } catch (error) {
       console.error("[newsletter] Lead notification request error:", {
@@ -232,17 +439,44 @@ export async function POST(request: Request) {
         source,
         page_url: pageUrl,
       });
-      return jsonFail("Failed to send subscription notification.", 500);
+      if (!chapterRequested) {
+        return jsonFail("Failed to send subscription notification.", 500);
+      }
     }
 
-    // Confirmation is best-effort: lead already captured, so always succeed to the client.
+    const readingUrl = chapter1Url(locale);
+    let subject: string;
+    let textBody: string;
+    let bodyHtml: string;
+
+    if (chapterRequested) {
+      const chapterMail = buildChapterConfirmation(book, language, readingUrl);
+      subject = chapterMail.subject;
+      textBody = `${chapterMail.body}\n${readingUrl}`;
+      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(chapterMail.body)}</p>
+                <p style="margin:0 0 24px;">
+                  <a href="${escapeHtml(readingUrl)}" style="display:inline-block;padding:12px 20px;background:#1a1a1a;color:#f7f4ef;text-decoration:none;font-size:15px;letter-spacing:0.04em;">${escapeHtml(chapterMail.cta)}</a>
+                </p>
+                <p style="margin:0;font-size:14px;line-height:1.65;color:#6b6358;">${escapeHtml(readingUrl)}</p>`;
+    } else {
+      const waitlistMail = buildWaitlistConfirmation(book, language);
+      subject = waitlistMail.subject;
+      textBody = waitlistMail.body;
+      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(waitlistMail.body)}</p>`;
+    }
+
     try {
       const confirmationResult = await resend.emails.send({
         from: RESEND_FROM,
         to: email,
-        subject: confirmation.subject,
-        html: buildConfirmationHtml(confirmation.body, language),
-        text: confirmation.body,
+        subject,
+        html: wrapEmailHtml({ language, bodyHtml }),
+        text: textBody,
+        ...(confirmMarketing && {
+          headers: {
+            "List-Unsubscribe": `<${unsubscribeMailto()}>`,
+          },
+        }),
       });
 
       if (confirmationResult.error) {
@@ -251,7 +485,11 @@ export async function POST(request: Request) {
           email,
           book,
           language,
+          chapterRequested,
         });
+        if (chapterRequested) {
+          return jsonFail("Failed to send the chapter email.", 500);
+        }
       }
     } catch (error) {
       console.error("[newsletter] Confirmation email request error:", {
@@ -259,7 +497,11 @@ export async function POST(request: Request) {
         email,
         book,
         language,
+        chapterRequested,
       });
+      if (chapterRequested) {
+        return jsonFail("Failed to send the chapter email.", 500);
+      }
     }
 
     return jsonOk();

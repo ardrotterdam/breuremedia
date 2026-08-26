@@ -95,7 +95,7 @@ export const contentPages: ContentPageEntry[] = [
   },
   {
     path: "/privacy",
-    lastModified: "2026-08-18",
+    lastModified: "2026-08-26",
     priority: 0.3,
     changeFrequency: "yearly",
   },

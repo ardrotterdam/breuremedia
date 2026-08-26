@@ -238,7 +238,7 @@ export const books: Book[] = [
       coverAlt:
         "Buchcover Schatten über Domburg von Ard Breure: einsame Gestalt am Strand von Domburg, Wasserturm und Rotterdamer Hafenskyline unter Gewitterhimmel",
       formatNote:
-        "Schatten über Domburg erscheint voraussichtlich im Herbst 2026. Lesen Sie jetzt kostenlos das erste Kapitel. Sie erfahren außerdem als Erster den Erscheinungstermin und den Preis.",
+        "Schatten über Domburg erscheint voraussichtlich im Herbst 2026. Lesen Sie jetzt kostenlos das erste Kapitel.",
       setting: "Domburg, Zeeland: die niederländische Küste",
       themes: [
         "Stille und Spannung",

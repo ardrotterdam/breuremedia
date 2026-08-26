@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import {
   getAllBookSlugs,
@@ -76,10 +77,17 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
     faqSchema(book.faq)
   );
 
+  const isChapterBook = book.slug === "schaduwen-over-domburg";
+
   return (
     <main>
       <JsonLd data={jsonLd} />
-      <BookHero book={book} priority />
+      <BookHero
+        book={book}
+        priority
+        orderLabel={isChapterBook ? "LEES HET EERSTE HOOFDSTUK" : undefined}
+        orderHref={isChapterBook ? "#eerste-hoofdstuk" : undefined}
+      />
 
       <section className="book-detail" aria-labelledby="book-about-heading">
         <div className="container book-detail-inner">
@@ -129,6 +137,12 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
           )}
         </div>
       </section>
+
+      {isChapterBook ? (
+        <div className="container">
+          <FirstChapterCTA source={`boekpagina-${book.slug}`} />
+        </div>
+      ) : null}
 
       <NewsletterSection
         id="wachtlijst"

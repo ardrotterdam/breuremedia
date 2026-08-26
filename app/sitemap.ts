@@ -99,7 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/en/privacy",
-      lastModified: "2026-08-18",
+      lastModified: "2026-08-26",
       priority: 0.3,
       changeFrequency: "yearly",
     },
@@ -152,6 +152,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: "/de/kontakt",
       lastModified: "2026-08-23",
       priority: 0.5,
+      changeFrequency: "yearly",
+    },
+    {
+      path: "/de/datenschutz",
+      lastModified: "2026-08-26",
+      priority: 0.3,
       changeFrequency: "yearly",
     },
   ];

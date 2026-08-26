@@ -103,8 +103,13 @@ const localizedRoutes: Record<string, Partial<Record<Locale, string>>> = {
     de: "/de/ueber-den-autor",
   },
   contact: { nl: "/contact", en: "/en/contact", de: "/de/kontakt" },
-  privacy: { nl: "/privacy", en: "/en/privacy" },
+  privacy: { nl: "/privacy", en: "/en/privacy", de: "/de/datenschutz" },
   affiliate: { nl: "/affiliate", en: "/en/affiliate" },
+  chapter1: {
+    nl: "/boeken/schaduwen-over-domburg/hoofdstuk-1",
+    en: "/en/shadows-over-domburg/chapter-1",
+    de: "/de/schatten-ueber-domburg/kapitel-1",
+  },
 };
 
 function normalizePath(pathname: string): string {
@@ -225,6 +230,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/de/domburg", label: "Domburg" },
       { type: "link", href: "/de/ueber-den-autor", label: "Über den Autor" },
       { type: "link", href: "/de/kontakt", label: "Kontakt" },
+      { type: "link", href: "/de/datenschutz", label: "Datenschutz" },
     ],
     rights: "Alle Rechte vorbehalten.",
     navLabel: "Fußzeilennavigation",
@@ -246,6 +252,8 @@ export const englishNewsletterCopy = {
     "Something went wrong. Please try again later or email info@breuremedia.com.",
   privacy:
     "Your email address is used only for updates about Breure Media publications. No spam; you can unsubscribe at any time.",
+  marketingConsent:
+    "Also keep me informed about the release date and news about the book.",
 };
 
 /** German copy for the newsletter form, shared across /de pages. */
@@ -259,6 +267,8 @@ export const germanNewsletterCopy = {
     "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut oder schreiben Sie an info@breuremedia.com.",
   privacy:
     "Ihre E-Mail-Adresse verwenden wir nur für Nachrichten zu Veröffentlichungen von Breure Media. Kein Spam; abmelden können Sie sich jederzeit.",
+  marketingConsent:
+    "Informieren Sie mich auch über den Erscheinungstermin und Neuigkeiten zum Buch.",
 };
 
 /** UI strings for the header, per locale. */

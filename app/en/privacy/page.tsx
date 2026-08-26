@@ -13,11 +13,12 @@ export const metadata: Metadata = buildMetadata({
     "Privacy policy of Breure Media. Read how we handle your data when you use our website and newsletter.",
   path: "/en/privacy",
   locale: "en_US",
-  languages: {
-    nl: "/privacy",
-    en: "/en/privacy",
-    "x-default": "/en/privacy",
-  },
+    languages: {
+      nl: "/privacy",
+      en: "/en/privacy",
+      de: "/de/datenschutz",
+      "x-default": "/en/privacy",
+    },
 });
 
 const breadcrumbs = [
@@ -92,13 +93,22 @@ export default function EnglishPrivacyPage() {
             your consent, the email address you enter, the title or topic you
             signed up for, the language of the page, the URL of the page where
             you subscribed, and the source of the subscription (for example the
-            homepage or a book page).
+            homepage or a book page), and the time of that sign-up. We store
+            these details as a contact in Resend, the email service we use to
+            send messages.
           </p>
           <p className="content-paragraph">
-            We use this information to send you updates about {siteConfig.name}{" "}
-            publications. Messages are sent through Resend, an email service. We
-            do not share your data with third parties for their own marketing.
-            You can unsubscribe at any time.
+            If you request the first chapter, we send that chapter because you
+            asked for it. That is not a subscription to future book news. We
+            only send publication updates if you sign up separately through the
+            newsletter or waitlist form. Contacts without that sign-up do not
+            receive marketing messages.
+          </p>
+          <p className="content-paragraph">
+            We do not share your data with third parties for their own
+            marketing. You can unsubscribe at any time via the link in a
+            message or via{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
         </section>
 

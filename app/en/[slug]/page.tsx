@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { getBookByEnglishSlug, getEnglishBooks, type Book } from "@/data/books";
 import { bookPageTitle, buildMetadata } from "@/lib/seo";
@@ -93,13 +94,21 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
     faqSchema(en.faq)
   );
 
+  const isChapterBook = book.slug === "schaduwen-over-domburg";
+
   return (
     <main lang="en">
       <JsonLd data={jsonLd} />
       <BookHero
         book={localizedBook}
         priority
-        orderLabel="Sign up to be notified on release"
+        locale="en"
+        orderLabel={
+          isChapterBook
+            ? "READ THE FIRST CHAPTER"
+            : "Sign up to be notified on release"
+        }
+        orderHref={isChapterBook ? "#first-chapter" : undefined}
       />
 
       <section className="book-detail" aria-labelledby="book-about-heading">
@@ -142,10 +151,17 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
         </div>
       </section>
 
+      {isChapterBook ? (
+        <div className="container">
+          <FirstChapterCTA source={`en-${en.slug}`} locale="en" />
+        </div>
+      ) : null}
+
       <NewsletterSection
         id="wachtlijst"
         source={`en-${en.slug}`}
         book={en.title}
+        locale="en"
         eyebrow="Waiting list"
         title="Be the first to know when the book is released"
         description={`Leave your email address and we'll let you know the moment ${en.title} is available — including the release date and an exclusive preview.`}

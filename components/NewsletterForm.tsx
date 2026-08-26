@@ -20,6 +20,7 @@ export interface NewsletterFormCopy {
   invalidEmail: string;
   error: string;
   privacy: string;
+  marketingConsent: string;
 }
 
 const dutchCopy: NewsletterFormCopy = {
@@ -32,6 +33,8 @@ const dutchCopy: NewsletterFormCopy = {
     "Er ging iets mis. Probeer het later opnieuw of mail naar info@breuremedia.com.",
   privacy:
     "Je inschrijving is volledig vrijblijvend. We gebruiken je e-mailadres alleen voor berichten van Breure Media. Geen spam, en uitschrijven kan altijd.",
+  marketingConsent:
+    "Houd mij ook op de hoogte van de verschijningsdatum en nieuws over het boek.",
 };
 
 const copyByLocale: Record<Locale, NewsletterFormCopy> = {
@@ -43,18 +46,22 @@ const copyByLocale: Record<Locale, NewsletterFormCopy> = {
 const privacyLink: Record<Locale, { href: string; label: string }> = {
   nl: { href: "/privacy", label: "Privacybeleid" },
   en: { href: "/en/privacy", label: "Privacy policy" },
-  de: { href: "/privacy", label: "Datenschutz" },
+  de: { href: "/de/datenschutz", label: "Datenschutz" },
 };
 
 type NewsletterFormProps = {
-  /** Herkomst van de inschrijving, wordt meegestuurd naar Web3Forms. */
+  /** Origin of the signup, sent with the request. */
   source?: string;
-  /** Boektitel voor metadata; standaard "Algemeen". */
+  /** Book title for metadata; default "Algemeen". */
   book?: string;
-  /** Compacte variant voor gebruik binnen tekstkolommen. */
+  /** Compact variant for text columns. */
   compact?: boolean;
-  /** Overschrijf losse teksten (bijv. Engels op /en-pagina's). */
+  /** Override individual strings (e.g. English on /en pages). */
   copy?: Partial<NewsletterFormCopy>;
+  /** When set to chapter-1, the API sends the Chapter 1 reading link. */
+  leadMagnet?: "chapter-1";
+  /** Show an optional checkbox for future book/news emails. */
+  showMarketingConsent?: boolean;
 };
 
 function isGeneralBook(book: string): boolean {
@@ -92,6 +99,8 @@ export function NewsletterForm({
   book = "Algemeen",
   compact = false,
   copy,
+  leadMagnet,
+  showMarketingConsent = false,
 }: NewsletterFormProps) {
   const pathname = usePathname() ?? "/";
   const locale = localeFromPathname(pathname);
@@ -104,6 +113,7 @@ export function NewsletterForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const emailId = useId();
   const messageId = useId();
+  const consentId = useId();
 
   function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -114,6 +124,7 @@ export function NewsletterForm({
     const form = e.currentTarget;
     const emailField = form.elements.namedItem("email");
     const botcheckField = form.elements.namedItem("botcheck");
+    const consentField = form.elements.namedItem("marketingConsent");
 
     if (!(emailField instanceof HTMLInputElement)) {
       console.error("[newsletter] Email input is missing from the form.");
@@ -125,6 +136,9 @@ export function NewsletterForm({
     const email = emailField.value.trim();
     const botcheck =
       botcheckField instanceof HTMLInputElement && botcheckField.checked;
+    const marketingConsent = showMarketingConsent
+      ? consentField instanceof HTMLInputElement && consentField.checked
+      : leadMagnet !== "chapter-1";
     const pageUrl =
       typeof window !== "undefined" ? window.location.href : pathname;
 
@@ -153,6 +167,8 @@ export function NewsletterForm({
       page_url: pageUrl,
       source: source ?? "website",
       botcheck,
+      leadMagnet,
+      marketingConsent,
     };
 
     try {
@@ -220,6 +236,7 @@ export function NewsletterForm({
       <input type="hidden" name="book" value={book} />
       <input type="hidden" name="language" value={language} />
       <input type="hidden" name="page_url" value={pathname} />
+      {leadMagnet ? <input type="hidden" name="leadMagnet" value={leadMagnet} /> : null}
       <input
         type="checkbox"
         name="botcheck"
@@ -250,6 +267,17 @@ export function NewsletterForm({
           {t.submit}
         </button>
       </div>
+      {showMarketingConsent ? (
+        <label className="form-consent" htmlFor={consentId}>
+          <input
+            type="checkbox"
+            id={consentId}
+            name="marketingConsent"
+            value="true"
+          />
+          <span>{t.marketingConsent}</span>
+        </label>
+      ) : null}
       <p
         id={messageId}
         className={`form-message${status ? ` ${status}` : ""}`}

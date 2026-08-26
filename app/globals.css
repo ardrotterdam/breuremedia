@@ -909,6 +909,31 @@ input:focus-visible {
   color: var(--color-gold-deep);
 }
 
+.form-consent {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-top: 0.75rem;
+  max-width: 52ch;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-secondary);
+}
+
+.form-consent input[type="checkbox"] {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--color-gold-deep);
+}
+
+.chapter-title {
+  margin-bottom: 0.5rem;
+}
+
+.chapter-prose .editorial-rule {
+  margin: 2rem auto;
+}
+
 /* Compacte formuliervariant voor tekstkolommen (content-pagina's):
    veld en knop naast elkaar op één regel binnen de tekstkolom. De
    introzin erboven (.content-paragraph) levert de verticale marge. */

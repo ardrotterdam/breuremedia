@@ -11,11 +11,12 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Privacybeleid van Breure Media. Lees hoe wij omgaan met uw gegevens bij het gebruik van onze website en nieuwsbrief.",
   path: "/privacy",
-  languages: {
-    nl: "/privacy",
-    en: "/en/privacy",
-    "x-default": "/en/privacy",
-  },
+    languages: {
+      nl: "/privacy",
+      en: "/en/privacy",
+      de: "/de/datenschutz",
+      "x-default": "/en/privacy",
+    },
 });
 
 const breadcrumbs = [
@@ -85,13 +86,24 @@ export default function PrivacyPage() {
             wij met uw toestemming het e-mailadres dat u invult, de titel of het
             onderwerp waarop u zich inschrijft, de taal van de pagina, de URL
             van de pagina waarop u zich inschrijft, en de bron van de
-            inschrijving (bijvoorbeeld de homepage of een boekpagina).
+            inschrijving (bijvoorbeeld de homepage of een boekpagina), en het
+            tijdstip van die inschrijving. Die gegevens slaan wij op als contact
+            in Resend, de e-maildienst die wij gebruiken om berichten te
+            versturen.
           </p>
           <p className="content-paragraph">
-            Wij gebruiken deze gegevens om u te informeren over publicaties van{" "}
-            {siteConfig.name}. De berichten worden verzonden via Resend, een
-            e-maildienst. Wij delen uw gegevens niet met derden voor hun eigen
-            marketing. U kunt zich op elk moment uitschrijven.
+            Als u het eerste hoofdstuk aanvraagt, sturen wij u dat hoofdstuk
+            omdat u erom vraagt. Dat is geen inschrijving voor toekomstige
+            berichten over boeken. Nieuws over publicaties sturen wij alleen
+            als u zich daar apart voor inschrijft via de nieuwsbrief of
+            wachtlijst. Contacten zonder die inschrijving ontvangen geen
+            marketingberichten.
+          </p>
+          <p className="content-paragraph">
+            Wij delen uw gegevens niet met derden voor hun eigen marketing. U
+            kunt zich op elk moment uitschrijven via de link in een bericht of
+            via{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
         </section>
 
