@@ -13,3 +13,5 @@ out/
 _shots/
 scripts/
 _tmp-verify/
+
+.cursor/
