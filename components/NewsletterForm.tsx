@@ -119,8 +119,13 @@ export function NewsletterForm({
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
+  const submitted = status === "success";
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitted || isSubmitting) {
+      return;
+    }
     const form = e.currentTarget;
     const emailField = form.elements.namedItem("email");
     const botcheckField = form.elements.namedItem("botcheck");
@@ -245,39 +250,43 @@ export function NewsletterForm({
         autoComplete="off"
         aria-hidden="true"
       />
-      <div className="form-group">
-        <label htmlFor={emailId} className="visually-hidden">
-          {t.emailLabel}
-        </label>
-        <input
-          type="email"
-          id={emailId}
-          name="email"
-          placeholder={t.placeholder}
-          required
-          autoComplete="email"
-          aria-invalid={status === "error" || undefined}
-          aria-describedby={messageId}
-        />
-        <button
-          type="submit"
-          className="btn btn-submit btn-shine"
-          disabled={isSubmitting}
-        >
-          {t.submit}
-        </button>
-      </div>
-      {showMarketingConsent ? (
-        <label className="form-consent" htmlFor={consentId}>
-          <input
-            type="checkbox"
-            id={consentId}
-            name="marketingConsent"
-            value="true"
-          />
-          <span>{t.marketingConsent}</span>
-        </label>
-      ) : null}
+      {submitted ? null : (
+        <>
+          <div className="form-group">
+            <label htmlFor={emailId} className="visually-hidden">
+              {t.emailLabel}
+            </label>
+            <input
+              type="email"
+              id={emailId}
+              name="email"
+              placeholder={t.placeholder}
+              required
+              autoComplete="email"
+              aria-invalid={status === "error" || undefined}
+              aria-describedby={messageId}
+            />
+            <button
+              type="submit"
+              className="btn btn-submit btn-shine"
+              disabled={isSubmitting}
+            >
+              {t.submit}
+            </button>
+          </div>
+          {showMarketingConsent ? (
+            <label className="form-consent" htmlFor={consentId}>
+              <input
+                type="checkbox"
+                id={consentId}
+                name="marketingConsent"
+                value="true"
+              />
+              <span>{t.marketingConsent}</span>
+            </label>
+          ) : null}
+        </>
+      )}
       <p
         id={messageId}
         className={`form-message${status ? ` ${status}` : ""}`}

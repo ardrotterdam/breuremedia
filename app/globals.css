@@ -880,6 +880,7 @@ input:focus-visible {
 .form-message.success {
   color: #7a5f2e;
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .form-message.error {
