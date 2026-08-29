@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import { ContactForm } from "@/components/ContactForm";
 import { PageHeader } from "@/components/PageHeader";
 import { operator, siteConfig } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
@@ -72,6 +73,32 @@ export default function EnglishContactPage() {
             <li>Collaboration and distribution</li>
             <li>General questions about Breure Media</li>
           </ul>
+        </section>
+
+        <section className="content-section" aria-labelledby="contact-form-heading">
+          <h2 id="contact-form-heading" className="content-heading">
+            Send a message
+          </h2>
+          <p className="content-paragraph">
+            Fill in the form and I will usually reply within two working days.
+          </p>
+          <ContactForm
+            language="EN"
+            nameLabel="Name"
+            emailLabel="Email address"
+            subjectLabel="What is this about?"
+            messageLabel="Your message"
+            submitLabel="Send message"
+            successMessage="Thank you. Your message has been sent and I will reply as soon as I can."
+            errorMessage="Something went wrong while sending. Please try again or email me directly."
+            privacy="I only use your details to reply to this message."
+            subjects={[
+              { value: "pers", label: "Press and interviews" },
+              { value: "samenwerking", label: "Collaboration and distribution" },
+              { value: "lezersvraag", label: "Question about a book" },
+              { value: "overig", label: "Something else" },
+            ]}
+          />
         </section>
 
         <section className="content-section" aria-labelledby="contact-company-heading">
