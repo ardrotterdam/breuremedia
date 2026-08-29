@@ -8,6 +8,8 @@
   --color-charcoal-mid: #333333;
   --color-warm-white: #f5f0e8;
   --color-warm-white-muted: #e8e2d8;
+  --color-header-warm: #f0e7d6;
+  --color-hairline: #e0d6c4;
   --color-gold: #b8975a;
   --color-gold-light: #d4b87a;
   --color-gold-pale: #e8c79a;
@@ -1178,8 +1180,8 @@ input:focus-visible {
 .page-header {
   padding-top: calc(var(--header-height) + 4rem);
   padding-bottom: 3rem;
-  background-color: var(--color-warm-white-muted);
-  border-bottom: 1px solid var(--color-warm-white-muted);
+  background-color: var(--color-header-warm);
+  border-bottom: 1px solid var(--color-hairline);
 }
 
 .page-header-inner {
