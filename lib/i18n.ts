@@ -110,6 +110,11 @@ const localizedRoutes: Record<string, Partial<Record<Locale, string>>> = {
     en: "/en/shadows-over-domburg/chapter-1",
     de: "/de/schatten-ueber-domburg/kapitel-1",
   },
+  authors: {
+    nl: "/voor-auteurs",
+    en: "/en/for-authors",
+    de: "/de/fuer-autoren",
+  },
 };
 
 function normalizePath(pathname: string): string {
@@ -199,6 +204,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/boeken-over-zeeland", label: "Boeken over Zeeland" },
       { type: "link", href: "/over-de-auteur", label: "Over de auteur" },
       { type: "link", href: "/contact", label: "Contact" },
+      { type: "link", href: "/voor-auteurs", label: "Voor auteurs" },
       { type: "link", href: "/privacy", label: "Privacy" },
       { type: "link", href: "/affiliate", label: "Affiliate" },
     ],
@@ -215,6 +221,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/en/blog", label: "Blog" },
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },
+      { type: "link", href: "/en/for-authors", label: "For authors" },
       { type: "link", href: "/en/privacy", label: "Privacy" },
       { type: "link", href: "/en/affiliate", label: "Affiliate" },
     ],
@@ -230,6 +237,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
       { type: "link", href: "/de/domburg", label: "Domburg" },
       { type: "link", href: "/de/ueber-den-autor", label: "Über den Autor" },
       { type: "link", href: "/de/kontakt", label: "Kontakt" },
+      { type: "link", href: "/de/fuer-autoren", label: "Für Autoren" },
       { type: "link", href: "/de/datenschutz", label: "Datenschutz" },
     ],
     rights: "Alle Rechte vorbehalten.",

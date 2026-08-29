@@ -127,6 +127,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "monthly",
     },
+    {
+      path: "/en/for-authors",
+      lastModified: "2026-08-29",
+      priority: 0.5,
+      changeFrequency: "monthly",
+    },
   ];
 
   const germanStaticPages: ContentPageEntry[] = [
@@ -159,6 +165,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-08-26",
       priority: 0.3,
       changeFrequency: "yearly",
+    },
+    {
+      path: "/de/fuer-autoren",
+      lastModified: "2026-08-29",
+      priority: 0.5,
+      changeFrequency: "monthly",
     },
   ];
 

@@ -58,8 +58,8 @@ type NewsletterFormProps = {
   compact?: boolean;
   /** Override individual strings (e.g. English on /en pages). */
   copy?: Partial<NewsletterFormCopy>;
-  /** When set to chapter-1, the API sends the Chapter 1 reading link. */
-  leadMagnet?: "chapter-1";
+  /** When set, the API treats this as a lead magnet rather than a newsletter signup. */
+  leadMagnet?: "chapter-1" | "authors-waitlist";
   /** Show an optional checkbox for future book/news emails. */
   showMarketingConsent?: boolean;
 };
@@ -138,7 +138,7 @@ export function NewsletterForm({
       botcheckField instanceof HTMLInputElement && botcheckField.checked;
     const marketingConsent = showMarketingConsent
       ? consentField instanceof HTMLInputElement && consentField.checked
-      : leadMagnet !== "chapter-1";
+      : !leadMagnet;
     const pageUrl =
       typeof window !== "undefined" ? window.location.href : pathname;
 

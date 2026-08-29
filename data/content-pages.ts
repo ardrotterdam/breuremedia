@@ -6,7 +6,7 @@ export type ChangeFrequency = "weekly" | "monthly" | "yearly";
 
 export interface ContentPageEntry {
   path: string;
-  /** ISO date YYYY-MM-DD — last substantive editorial update */
+  /** ISO date YYYY-MM-DD: last substantive editorial update */
   lastModified: string;
   priority: number;
   changeFrequency: ChangeFrequency;
@@ -104,6 +104,12 @@ export const contentPages: ContentPageEntry[] = [
     lastModified: "2026-08-18",
     priority: 0.3,
     changeFrequency: "yearly",
+  },
+  {
+    path: "/voor-auteurs",
+    lastModified: "2026-08-29",
+    priority: 0.5,
+    changeFrequency: "monthly",
   },
 ];
 

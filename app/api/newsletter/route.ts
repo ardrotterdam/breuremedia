@@ -13,7 +13,7 @@ import type { Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 type Language = "NL" | "EN" | "DE";
-type LeadMagnet = "chapter-1";
+type LeadMagnet = "chapter-1" | "authors-waitlist";
 
 const ALLOWED_LANGUAGES = new Set<string>(["NL", "EN", "DE"]);
 const MAX_EMAIL_LENGTH = 254;
@@ -88,16 +88,19 @@ function isHoneypotTriggered(value: unknown): boolean {
   return false;
 }
 
-const ALLOWED_LEAD_MAGNETS = new Set<LeadMagnet>(["chapter-1"]);
+const ALLOWED_LEAD_MAGNETS = new Set<LeadMagnet>([
+  "chapter-1",
+  "authors-waitlist",
+]);
 
 function parseLeadMagnet(
   value: unknown
-): { ok: true; chapterRequested: boolean } | { ok: false } {
+): { ok: true; leadMagnet: LeadMagnet | "" } | { ok: false } {
   if (value === undefined || value === null || value === "") {
-    return { ok: true, chapterRequested: false };
+    return { ok: true, leadMagnet: "" };
   }
   if (typeof value === "string" && ALLOWED_LEAD_MAGNETS.has(value as LeadMagnet)) {
-    return { ok: true, chapterRequested: true };
+    return { ok: true, leadMagnet: value as LeadMagnet };
   }
   return { ok: false };
 }
@@ -138,13 +141,13 @@ function buildWaitlistConfirmation(book: string, language: Language) {
   if (language === "EN") {
     if (general) {
       return {
-        subject: "Subscription confirmation — Breure Media",
+        subject: "Subscription confirmation: Breure Media",
         body: "Thank you for subscribing! As soon as there is news about new books from Breure Media, you'll be the first to hear from us.",
       };
     }
     return {
       subject: `Confirmation: ${bookTitle}`,
-      body: `Thank you for subscribing — we're glad you're interested in ${bookTitle}! As soon as there is news about the release date and the exclusive preview, you'll be the first to hear from us.`,
+      body: `Thank you for subscribing. We're glad you're interested in ${bookTitle}! As soon as there is news about the release date and the exclusive preview, you'll be the first to hear from us.`,
     };
   }
 
@@ -171,6 +174,33 @@ function buildWaitlistConfirmation(book: string, language: Language) {
   return {
     subject: `Bevestiging: ${bookTitle}`,
     body: `Hartelijk dank voor je inschrijving. Leuk dat je belangstelling hebt voor ${bookTitle}! Zodra er nieuws is over de verschijningsdatum en de exclusieve voorpublicatie, hoor je als eerste van ons.`,
+  };
+}
+
+function buildAuthorsWaitlistConfirmation(language: Language) {
+  if (language === "EN") {
+    return {
+      subject: "You are on the list",
+      body: "Thank you. I have noted your email address for Breure Media for authors. As soon as the label opens to other thriller authors, I will let you know. I will not send you anything else.",
+      text: "Thank you. I have noted your email address for Breure Media for authors. As soon as the label opens to other thriller authors, I will let you know. I will not send you anything else. Kind regards, Ard Breure",
+      signOff: "Kind regards,<br />Ard Breure",
+    };
+  }
+
+  if (language === "DE") {
+    return {
+      subject: "Sie stehen auf der Liste",
+      body: "Vielen Dank. Ich habe Ihre E-Mail-Adresse für Breure Media für Autoren notiert. Sobald sich das Label für andere Thrillerautoren öffnet, melde ich mich. Etwas anderes schicke ich Ihnen nicht.",
+      text: "Vielen Dank. Ich habe Ihre E-Mail-Adresse für Breure Media für Autoren notiert. Sobald sich das Label für andere Thrillerautoren öffnet, melde ich mich. Etwas anderes schicke ich Ihnen nicht. Mit freundlichen Grüßen, Ard Breure",
+      signOff: "Mit freundlichen Grüßen,<br />Ard Breure",
+    };
+  }
+
+  return {
+    subject: "Je staat op de lijst",
+    body: "Dank je. Ik heb je e-mailadres genoteerd voor Breure Media voor auteurs. Zodra het label opengaat voor andere thrillerauteurs, laat ik het je weten. Verder stuur ik je niets.",
+    text: "Dank je. Ik heb je e-mailadres genoteerd voor Breure Media voor auteurs. Zodra het label opengaat voor andere thrillerauteurs, laat ik het je weten. Verder stuur ik je niets. Met vriendelijke groet, Ard Breure",
+    signOff: "Met vriendelijke groet,<br />Ard Breure",
   };
 }
 
@@ -204,6 +234,7 @@ function buildChapterConfirmation(book: string, language: Language, url: string)
 function wrapEmailHtml(options: {
   language: Language;
   bodyHtml: string;
+  signOff?: string;
 }): string {
   const greeting =
     options.language === "EN"
@@ -212,11 +243,12 @@ function wrapEmailHtml(options: {
         ? "Guten Tag,"
         : "Hallo,";
   const signOff =
-    options.language === "EN"
+    options.signOff ??
+    (options.language === "EN"
       ? "Kind regards,<br />Breure Media"
       : options.language === "DE"
         ? "Mit freundlichen Grüßen,<br />Breure Media"
-        : "Met vriendelijke groet,<br />Breure Media";
+        : "Met vriendelijke groet,<br />Breure Media");
   const htmlLang =
     options.language === "EN" ? "en" : options.language === "DE" ? "de" : "nl";
 
@@ -256,7 +288,11 @@ function buildLeadNotificationText(fields: {
   chapterRequested: boolean;
 }): string {
   return [
-    fields.chapterRequested ? "New Chapter 1 request" : "New newsletter sign-up",
+    fields.leadMagnet === "chapter-1"
+      ? "New Chapter 1 request"
+      : fields.leadMagnet === "authors-waitlist"
+        ? "New authors waitlist"
+        : "New newsletter sign-up",
     `Email: ${fields.email}`,
     `Book: ${fields.book}`,
     `Language: ${fields.language}`,
@@ -270,7 +306,22 @@ function buildLeadNotificationText(fields: {
   ].join("\n");
 }
 
-function buildDashboardSubject(book: string, language: Language, chapter: boolean): string {
+function buildDashboardSubject(
+  book: string,
+  language: Language,
+  leadMagnet: LeadMagnet | ""
+): string {
+  if (leadMagnet === "authors-waitlist") {
+    if (language === "EN") {
+      return "New authors waitlist (EN)";
+    }
+    if (language === "DE") {
+      return "New authors waitlist (DE)";
+    }
+    return "Nieuwe auteurswachtlijst (NL)";
+  }
+
+  const chapter = leadMagnet === "chapter-1";
   const kind = chapter ? "Chapter 1" : "sign-up";
   if (language === "EN") {
     return `New ${kind}: ${book} (EN)`;
@@ -342,13 +393,15 @@ export async function POST(request: Request) {
       return jsonFail("Invalid request.", 400);
     }
 
-    const chapterRequested = magnet.chapterRequested;
+    const leadMagnet = magnet.leadMagnet;
+    const chapterRequested = leadMagnet === "chapter-1";
+    const authorsWaitlist = leadMagnet === "authors-waitlist";
     const book = trustedBookTitle(payload.book, language, chapterRequested);
     const pageUrl =
       sanitizeMeta(payload.page_url, MAX_PAGE_URL_LENGTH) || siteConfig.url;
     const source = sanitizeMeta(payload.source, MAX_SOURCE_LENGTH) || "website";
-    const marketingIntent = !chapterRequested;
-    const confirmMarketing = !chapterRequested;
+    const marketingIntent = !chapterRequested && !authorsWaitlist;
+    const confirmMarketing = !chapterRequested && !authorsWaitlist;
 
     if (
       !email ||
@@ -377,7 +430,7 @@ export async function POST(request: Request) {
         marketingIntent,
         language: locale,
         source,
-        leadMagnet: chapterRequested ? "chapter-1" : "",
+        leadMagnet,
         chapterRequested,
       });
       marketingSignupAt = stored.marketingSignupAt;
@@ -401,7 +454,7 @@ export async function POST(request: Request) {
       language,
       pageUrl,
       source,
-      leadMagnet: chapterRequested ? "chapter-1" : "",
+      leadMagnet,
       marketingIntent,
       confirmMarketing,
       marketingSignupAt,
@@ -413,7 +466,7 @@ export async function POST(request: Request) {
         from: RESEND_FROM,
         to: LEAD_TO,
         replyTo: email,
-        subject: buildDashboardSubject(book, language, chapterRequested),
+        subject: buildDashboardSubject(book, language, leadMagnet),
         text: leadText,
       });
 
@@ -426,7 +479,7 @@ export async function POST(request: Request) {
           source,
           page_url: pageUrl,
         });
-        if (!chapterRequested) {
+        if (!chapterRequested && !authorsWaitlist) {
           return jsonFail("Failed to send subscription notification.", 500);
         }
       }
@@ -439,7 +492,7 @@ export async function POST(request: Request) {
         source,
         page_url: pageUrl,
       });
-      if (!chapterRequested) {
+      if (!chapterRequested && !authorsWaitlist) {
         return jsonFail("Failed to send subscription notification.", 500);
       }
     }
@@ -448,6 +501,7 @@ export async function POST(request: Request) {
     let subject: string;
     let textBody: string;
     let bodyHtml: string;
+    let signOff: string | undefined;
 
     if (chapterRequested) {
       const chapterMail = buildChapterConfirmation(book, language, readingUrl);
@@ -458,6 +512,12 @@ export async function POST(request: Request) {
                   <a href="${escapeHtml(readingUrl)}" style="display:inline-block;padding:12px 20px;background:#1a1a1a;color:#f7f4ef;text-decoration:none;font-size:15px;letter-spacing:0.04em;">${escapeHtml(chapterMail.cta)}</a>
                 </p>
                 <p style="margin:0;font-size:14px;line-height:1.65;color:#6b6358;">${escapeHtml(readingUrl)}</p>`;
+    } else if (authorsWaitlist) {
+      const authorsMail = buildAuthorsWaitlistConfirmation(language);
+      subject = authorsMail.subject;
+      textBody = authorsMail.text;
+      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(authorsMail.body)}</p>`;
+      signOff = authorsMail.signOff;
     } else {
       const waitlistMail = buildWaitlistConfirmation(book, language);
       subject = waitlistMail.subject;
@@ -470,7 +530,7 @@ export async function POST(request: Request) {
         from: RESEND_FROM,
         to: email,
         subject,
-        html: wrapEmailHtml({ language, bodyHtml }),
+        html: wrapEmailHtml({ language, bodyHtml, signOff }),
         text: textBody,
         ...(confirmMarketing && {
           headers: {
@@ -486,9 +546,13 @@ export async function POST(request: Request) {
           book,
           language,
           chapterRequested,
+          authorsWaitlist,
         });
         if (chapterRequested) {
           return jsonFail("Failed to send the chapter email.", 500);
+        }
+        if (authorsWaitlist) {
+          return jsonFail("Failed to send the confirmation email.", 500);
         }
       }
     } catch (error) {
@@ -498,9 +562,13 @@ export async function POST(request: Request) {
         book,
         language,
         chapterRequested,
+        authorsWaitlist,
       });
       if (chapterRequested) {
         return jsonFail("Failed to send the chapter email.", 500);
+      }
+      if (authorsWaitlist) {
+        return jsonFail("Failed to send the confirmation email.", 500);
       }
     }
 
