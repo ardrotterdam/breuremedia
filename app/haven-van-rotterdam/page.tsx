@@ -13,6 +13,8 @@ import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 
 const pagePath = "/haven-van-rotterdam";
+const englishPath = "/en/port-of-rotterdam";
+const germanPath = "/de/hafen-von-rotterdam";
 const pageHeadline = "De haven van Rotterdam vanaf het water";
 const pageTitle = `${pageHeadline} | ${siteConfig.name}`;
 const pageDescription =
@@ -61,6 +63,8 @@ export const metadata: Metadata = buildMetadata({
   ],
   languages: {
     nl: pagePath,
+    en: englishPath,
+    de: germanPath,
     "x-default": pagePath,
   },
 });

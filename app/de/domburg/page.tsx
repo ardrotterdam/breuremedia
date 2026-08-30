@@ -412,7 +412,12 @@ export default function GermanDomburgPage() {
             Geschichte, die Dünenpfade außerhalb der Saison: das sind die Orte,
             an denen mein Protagonist merkt, dass die Ruhe eines Badeorts
             täuschen kann, und dass die Linien zwischen der zeeländischen Küste
-            und dem Rotterdamer Hafen kürzer sind, als sie scheinen.
+            und dem Rotterdamer Hafen kürzer sind, als sie scheinen. Wie dieser
+            Hafen vom Wasser aus aussieht, habe ich in{" "}
+            <Link href="/de/hafen-von-rotterdam">
+              Der Hafen von Rotterdam, vom Wasser aus gesehen
+            </Link>{" "}
+            beschrieben.
           </p>
         </section>
       </div>

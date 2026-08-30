@@ -95,6 +95,15 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-08-18",
   },
   {
+    href: "/en/port-of-rotterdam",
+    title: "The Port of Rotterdam, seen from the water",
+    excerpt:
+      "I drove a taxi in the Port of Rotterdam for seven years. What you see if you go and look, what you don't see, and why my thriller begins here.",
+    category: "Rotterdam",
+    locale: "en",
+    publishedAt: "2026-08-30",
+  },
+  {
     href: "/en/domburg",
     title: "Domburg: the seaside village behind Shadows over Domburg",
     excerpt:

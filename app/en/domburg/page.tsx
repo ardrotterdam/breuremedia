@@ -414,7 +414,12 @@ export default function DomburgPage() {
             with its history, the dune paths out of season: these are the
             places where my protagonist discovers that the calm of a seaside
             resort can be deceptive, and that the lines between the Zeeland
-            coast and the port of Rotterdam are shorter than they seem.
+            coast and the port of Rotterdam are shorter than they seem. How
+            that port looks from the water, I wrote about in{" "}
+            <Link href="/en/port-of-rotterdam">
+              The Port of Rotterdam, seen from the water
+            </Link>
+            .
           </p>
         </section>
       </div>

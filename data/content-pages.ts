@@ -64,6 +64,18 @@ export const contentPages: ContentPageEntry[] = [
     changeFrequency: "monthly",
   },
   {
+    path: "/en/port-of-rotterdam",
+    lastModified: "2026-08-30",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/de/hafen-von-rotterdam",
+    lastModified: "2026-08-30",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/lengte-van-ebook",
     lastModified: "2026-08-18",
     priority: 0.8,

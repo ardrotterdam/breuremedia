@@ -96,6 +96,11 @@ const localizedRoutes: Record<string, Partial<Record<Locale, string>>> = {
     nl: "/kubuswoningen-rotterdam",
     en: "/en/cube-houses-rotterdam",
   },
+  portOfRotterdam: {
+    nl: "/haven-van-rotterdam",
+    en: "/en/port-of-rotterdam",
+    de: "/de/hafen-von-rotterdam",
+  },
   domburg: { nl: "/domburg", en: "/en/domburg", de: "/de/domburg" },
   about: {
     nl: "/over-de-auteur",

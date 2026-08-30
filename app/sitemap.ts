@@ -81,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/en/blog",
-      lastModified: "2026-08-21",
+      lastModified: "2026-08-30",
       priority: 0.8,
       changeFrequency: "weekly",
     },
