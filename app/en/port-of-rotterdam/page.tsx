@@ -1,8 +1,6 @@
-// TODO: BlogImagePlaceholder vervangen door next/image zodra de afbeeldingen er zijn.
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BlogImagePlaceholder } from "@/components/BlogImagePlaceholder";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
@@ -31,10 +29,10 @@ const articleImages = {
     height: 941,
   },
   kranen: {
-    src: "/images/blog/haven-rotterdam-kranen-maasvlakte.jpg",
-    alt: "The flat reclaimed land of Maasvlakte 2, with wind turbines along the sea defence and container terminals on the horizon",
-    width: 1536,
-    height: 1021,
+    src: "/images/blog/haven-rotterdam-kranen-maasvlakte.webp",
+    alt: "Aerial view of the Maasvlakte, with wind turbines along the sea defence and container terminals",
+    width: 1672,
+    height: 941,
   },
   scan: {
     src: "/images/blog/haven-rotterdam-containerscan.webp",
@@ -201,12 +199,17 @@ export default function PortOfRotterdamPage() {
           </p>
         </section>
 
-        <BlogImagePlaceholder
-          src={articleImages.kranen.src}
-          alt={articleImages.kranen.alt}
-          width={articleImages.kranen.width}
-          height={articleImages.kranen.height}
-        />
+        <figure className="content-section">
+          <Image
+            src={articleImages.kranen.src}
+            alt={articleImages.kranen.alt}
+            width={articleImages.kranen.width}
+            height={articleImages.kranen.height}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+          />
+        </figure>
 
         <section
           className="content-section"

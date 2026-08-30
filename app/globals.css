@@ -1346,34 +1346,6 @@ input:focus-visible {
   text-align: center;
 }
 
-.blog-image-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  min-height: 12rem;
-  padding: 1.5rem;
-  background-color: #c8c4bc;
-  border-radius: 2px;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-caption);
-  line-height: 1.45;
-  text-align: center;
-}
-
-.blog-image-placeholder-path {
-  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
-  color: var(--color-text);
-  overflow-wrap: anywhere;
-}
-
-.blog-image-placeholder-alt {
-  font-family: var(--font-serif), Georgia, serif;
-  max-width: 36rem;
-}
-
 /*
  * Brede sectie voor vergelijkingstabellen die niet in de smalle leeskolom
  * passen. Op desktop mag de tabel buiten de tekstbreedte komen (gangbaar
