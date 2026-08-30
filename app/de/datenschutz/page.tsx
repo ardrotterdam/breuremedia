@@ -88,8 +88,11 @@ export default function GermanPrivacyPage() {
             Welche Daten erheben wir?
           </h2>
           <p className="content-paragraph">
-            Diese Website verwendet kein Google Analytics und keine vergleichbare
-            Tracking-Analyse.
+            Diese Website verwendet Google Analytics, um zu messen, wie viele
+            Menschen die Seiten besuchen und welche Artikel gelesen werden. Ich
+            nutze diese Daten ausschließlich, um zu sehen, was funktioniert und
+            was nicht. Es werden keine Werbeprofile erstellt und es werden keine
+            Daten weiterverkauft.
           </p>
           <p className="content-paragraph">
             Wenn Sie sich für den Newsletter oder die Warteliste anmelden,
@@ -144,9 +147,9 @@ export default function GermanPrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            Diese Website setzt keine Tracking-Cookies und verwendet keine
-            Werbenetzwerke. Technisch notwendige Cookies können für den Betrieb
-            der Website verwendet werden.
+            Google Analytics verwendet Cookies, um Besuche zu messen. Diese
+            Website verwendet keine Werbenetzwerke. Technisch notwendige Cookies
+            können für den Betrieb der Website verwendet werden.
           </p>
         </section>
 

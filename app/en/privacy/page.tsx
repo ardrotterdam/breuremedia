@@ -85,8 +85,10 @@ export default function EnglishPrivacyPage() {
             What data do we collect?
           </h2>
           <p className="content-paragraph">
-            This website does not use Google Analytics or comparable tracking
-            analytics.
+            This site uses Google Analytics to measure how many people visit the
+            pages and which articles get read. I use that data only to see what
+            works and what does not. No advertising profiles are built and
+            nothing is sold on.
           </p>
           <p className="content-paragraph">
             If you subscribe to the newsletter or waitlist, we process, with
@@ -140,9 +142,9 @@ export default function EnglishPrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            This website does not set tracking cookies and does not use
-            advertising networks. Technically necessary cookies may be used for
-            the site to function.
+            Google Analytics uses cookies to measure visits. This website does
+            not use advertising networks. Technically necessary cookies may be
+            used for the site to function.
           </p>
         </section>
 

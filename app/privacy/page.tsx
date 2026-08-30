@@ -78,8 +78,10 @@ export default function PrivacyPage() {
             Welke gegevens verzamelen wij?
           </h2>
           <p className="content-paragraph">
-            Deze website gebruikt geen Google Analytics en geen vergelijkbare
-            trackinganalytics.
+            Deze site gebruikt Google Analytics om te meten hoeveel mensen de
+            pagina&apos;s bezoeken en welke artikelen gelezen worden. Ik gebruik
+            die gegevens alleen om te zien wat werkt en wat niet. Er worden geen
+            advertentieprofielen opgebouwd en er wordt niets doorverkocht.
           </p>
           <p className="content-paragraph">
             Als u zich inschrijft voor de nieuwsbrief of wachtlijst, verwerken
@@ -135,9 +137,9 @@ export default function PrivacyPage() {
             Cookies
           </h2>
           <p className="content-paragraph">
-            Deze website plaatst geen trackingcookies en gebruikt geen
-            advertentienetwerken. Technisch noodzakelijke cookies kunnen worden
-            gebruikt voor het functioneren van de site.
+            Google Analytics gebruikt cookies om bezoeken te meten. Deze website
+            gebruikt geen advertentienetwerken. Technisch noodzakelijke cookies
+            kunnen worden gebruikt voor het functioneren van de site.
           </p>
         </section>
 
