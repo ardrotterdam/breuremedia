@@ -27,6 +27,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Zeven jaar reed ik taxi in de Rotterdamse haven. Wat je ziet als je zelf gaat kijken, wat je niet ziet, en waarom mijn thriller hier begint.",
     category: "Rotterdam",
+    image: "/images/blog/haven-rotterdam-hero.webp",
+    imageAlt:
+      "Een rij containerkranen langs de kade in de haven van Rotterdam tijdens het blauwe uur",
     locale: "nl",
     publishedAt: "2026-08-30",
   },
@@ -100,6 +103,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "I drove a taxi in the Port of Rotterdam for seven years. What you see if you go and look, what you don't see, and why my thriller begins here.",
     category: "Rotterdam",
+    image: "/images/blog/haven-rotterdam-hero.webp",
+    imageAlt:
+      "A row of container cranes along the quay in the Port of Rotterdam at blue hour",
     locale: "en",
     publishedAt: "2026-08-30",
   },
