@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { buildMetadata } from "@/lib/seo";
 import { buildJsonLd, organizationSchema, webSiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -62,6 +64,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
       </body>
     </html>
   );
