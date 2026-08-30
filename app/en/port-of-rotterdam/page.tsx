@@ -43,10 +43,10 @@ const articleImages = {
     height: 969,
   },
   kering: {
-    src: "/images/blog/haven-rotterdam-maeslantkering.jpg",
-    alt: "The closed Maeslantkering storm surge barrier at Hoek van Holland, sealing the Nieuwe Waterweg from the North Sea",
-    width: 1668,
-    height: 943,
+    src: "/images/blog/haven-rotterdam-maeslantkering.webp",
+    alt: "The closed Maeslantkering storm surge barrier at Hoek van Holland, sealing the Nieuwe Waterweg from the sea",
+    width: 1535,
+    height: 1024,
   },
 } as const;
 
@@ -398,12 +398,17 @@ export default function PortOfRotterdamPage() {
           </p>
         </section>
 
-        <BlogImagePlaceholder
-          src={articleImages.kering.src}
-          alt={articleImages.kering.alt}
-          width={articleImages.kering.width}
-          height={articleImages.kering.height}
-        />
+        <figure className="content-section">
+          <Image
+            src={articleImages.kering.src}
+            alt={articleImages.kering.alt}
+            width={articleImages.kering.width}
+            height={articleImages.kering.height}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+          />
+        </figure>
 
         <section className="content-section">
           <p className="content-paragraph">
