@@ -35,7 +35,7 @@ export const contentPages: ContentPageEntry[] = [
   },
   {
     path: "/blog",
-    lastModified: "2026-08-21",
+    lastModified: "2026-08-30",
     priority: 0.8,
     changeFrequency: "weekly",
   },
@@ -54,6 +54,12 @@ export const contentPages: ContentPageEntry[] = [
   {
     path: "/domburg",
     lastModified: "2026-08-21",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/haven-van-rotterdam",
+    lastModified: "2026-08-30",
     priority: 0.7,
     changeFrequency: "monthly",
   },

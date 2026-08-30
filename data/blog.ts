@@ -22,6 +22,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    href: "/haven-van-rotterdam",
+    title: "De haven van Rotterdam vanaf het water",
+    excerpt:
+      "Zeven jaar reed ik taxi in de Rotterdamse haven. Wat je ziet als je zelf gaat kijken, wat je niet ziet, en waarom mijn thriller hier begint.",
+    category: "Rotterdam",
+    locale: "nl",
+    publishedAt: "2026-08-30",
+  },
+  {
     href: "/domburg",
     title: "Domburg: het badplaatsje achter Schaduwen over Domburg",
     excerpt:

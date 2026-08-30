@@ -229,7 +229,13 @@ export default function BoekenOverRotterdamPage() {
             <Link href="/boeken/schaduwen-over-domburg">
               Schaduwen over Domburg
             </Link>
-            , voor een groot deel in de Rotterdamse haven speelt.
+            , voor een groot deel in de Rotterdamse haven speelt. Hoe die haven
+            eruitziet vanaf het water, en waarom het boek daar begint, schreef
+            ik in{" "}
+            <Link href="/haven-van-rotterdam">
+              De haven van Rotterdam vanaf het water
+            </Link>
+            .
           </p>
         </section>
 
