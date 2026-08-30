@@ -25,8 +25,8 @@ const dateModified = "2026-08-30";
 
 const articleImages = {
   hero: {
-    src: "/images/blog/haven-rotterdam-hero.jpg",
-    alt: "Containerkräne im Hafen von Rotterdam in der Dämmerung, mit einem Seeschiff am Kai an der Nieuwe Maas",
+    src: "/images/blog/haven-rotterdam-hero.webp",
+    alt: "Eine Reihe von Containerkränen am Kai im Hafen von Rotterdam zur blauen Stunde",
     width: 1672,
     height: 941,
   },
@@ -112,13 +112,17 @@ export default function HafenVonRotterdamPage() {
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} locale="de" />
 
-        <BlogImagePlaceholder
-          src={articleImages.hero.src}
-          alt={articleImages.hero.alt}
-          width={articleImages.hero.width}
-          height={articleImages.hero.height}
-          priority
-        />
+        <figure className="content-section">
+          <Image
+            src={articleImages.hero.src}
+            alt={articleImages.hero.alt}
+            width={articleImages.hero.width}
+            height={articleImages.hero.height}
+            priority
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+          />
+        </figure>
 
         <section className="content-section">
           <p className="content-paragraph">
