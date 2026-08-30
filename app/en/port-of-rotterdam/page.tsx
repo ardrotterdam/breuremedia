@@ -1,5 +1,6 @@
 // TODO: BlogImagePlaceholder vervangen door next/image zodra de afbeeldingen er zijn.
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { BlogImagePlaceholder } from "@/components/BlogImagePlaceholder";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -36,10 +37,10 @@ const articleImages = {
     height: 1021,
   },
   scan: {
-    src: "/images/blog/haven-rotterdam-containerscan.jpg",
-    alt: "A shipping container passing through a Customs X-ray scanner in the Port of Rotterdam",
-    width: 1672,
-    height: 941,
+    src: "/images/blog/haven-rotterdam-containerscan.webp",
+    alt: "A shipping container inside a Customs X-ray scanner in the Port of Rotterdam",
+    width: 1622,
+    height: 969,
   },
   kering: {
     src: "/images/blog/haven-rotterdam-maeslantkering.jpg",
@@ -318,12 +319,17 @@ export default function PortOfRotterdamPage() {
           </p>
         </section>
 
-        <BlogImagePlaceholder
-          src={articleImages.scan.src}
-          alt={articleImages.scan.alt}
-          width={articleImages.scan.width}
-          height={articleImages.scan.height}
-        />
+        <figure className="content-section">
+          <Image
+            src={articleImages.scan.src}
+            alt={articleImages.scan.alt}
+            width={articleImages.scan.width}
+            height={articleImages.scan.height}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 48rem"
+            style={{ width: "100%", height: "auto", borderRadius: "2px" }}
+          />
+        </figure>
 
         <section className="content-section">
           <p className="content-paragraph">
