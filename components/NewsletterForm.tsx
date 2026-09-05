@@ -60,6 +60,11 @@ type NewsletterFormProps = {
   copy?: Partial<NewsletterFormCopy>;
   /** When set, the API treats this as a lead magnet rather than a newsletter signup. */
   leadMagnet?: "chapter-1" | "authors-waitlist";
+  /**
+   * Intentional newsletter/waitlist signup. Sends marketingConsent: true.
+   * Ignored when a checkbox is shown or a lead magnet is set.
+   */
+  newsletterSignup?: boolean;
   /** Show an optional checkbox for future book/news emails. */
   showMarketingConsent?: boolean;
 };
@@ -94,12 +99,23 @@ function buildSuccessMessage(book: string, locale: Locale): string {
   return `Bedankt voor je inschrijving! Je staat nu op de wachtlijst. Zodra er nieuws is over ${book}, hoor je als eerste van ons.`;
 }
 
+function buildReceivedWithoutConsentMessage(locale: Locale): string {
+  if (locale === "en") {
+    return "Thank you. We have received your email address. You are not subscribed to book news.";
+  }
+  if (locale === "de") {
+    return "Danke. Wir haben Ihre E-Mail-Adresse erhalten. Sie sind nicht für Buchneuigkeiten angemeldet.";
+  }
+  return "Bedankt. We hebben je e-mailadres ontvangen. Je bent niet ingeschreven voor nieuws over het boek.";
+}
+
 export function NewsletterForm({
   source,
   book = "Algemeen",
   compact = false,
   copy,
   leadMagnet,
+  newsletterSignup = false,
   showMarketingConsent = false,
 }: NewsletterFormProps) {
   const pathname = usePathname() ?? "/";
@@ -143,7 +159,7 @@ export function NewsletterForm({
       botcheckField instanceof HTMLInputElement && botcheckField.checked;
     const marketingConsent = showMarketingConsent
       ? consentField instanceof HTMLInputElement && consentField.checked
-      : !leadMagnet;
+      : !leadMagnet && newsletterSignup;
     const pageUrl =
       typeof window !== "undefined" ? window.location.href : pathname;
 
@@ -206,7 +222,11 @@ export function NewsletterForm({
       }
 
       if (response.ok && data?.success === true) {
-        setMessage(successMessage);
+        setMessage(
+          showMarketingConsent && !marketingConsent
+            ? buildReceivedWithoutConsentMessage(locale)
+            : successMessage
+        );
         setStatus("success");
         form.reset();
         return;

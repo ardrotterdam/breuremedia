@@ -70,7 +70,7 @@ export function NewsletterSection({
         <p className="newsletter-description">
           {description ?? defaults.description}
         </p>
-        <NewsletterForm source={source} book={book} copy={formCopy} />
+        <NewsletterForm source={source} book={book} copy={formCopy} newsletterSignup />
       </div>
     </section>
   );

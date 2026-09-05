@@ -324,6 +324,7 @@ export default function BoekenOverZeelandPage() {
             source="boeken-over-zeeland"
             book="Schaduwen over Domburg"
             compact
+            newsletterSignup
           />
         </section>
 

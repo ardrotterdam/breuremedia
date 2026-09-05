@@ -88,6 +88,10 @@ function isHoneypotTriggered(value: unknown): boolean {
   return false;
 }
 
+function isExplicitMarketingConsent(value: unknown): boolean {
+  return value === true;
+}
+
 const ALLOWED_LEAD_MAGNETS = new Set<LeadMagnet>([
   "chapter-1",
   "authors-waitlist",
@@ -284,15 +288,21 @@ function buildLeadNotificationText(fields: {
   leadMagnet: string;
   marketingIntent: boolean;
   confirmMarketing: boolean;
+  marketingConsent: "true" | "false";
   marketingSignupAt?: string;
   chapterRequested: boolean;
 }): string {
-  return [
+  const kind =
     fields.leadMagnet === "chapter-1"
       ? "New Chapter 1 request"
       : fields.leadMagnet === "authors-waitlist"
         ? "New authors waitlist"
-        : "New newsletter sign-up",
+        : fields.confirmMarketing
+          ? "New newsletter sign-up"
+          : "Form without marketing consent";
+
+  return [
+    kind,
     `Email: ${fields.email}`,
     `Book: ${fields.book}`,
     `Language: ${fields.language}`,
@@ -302,6 +312,7 @@ function buildLeadNotificationText(fields: {
     `Chapter requested: ${fields.chapterRequested ? "yes" : "no"}`,
     `Marketing intent: ${fields.marketingIntent ? "yes" : "no"}`,
     `Waitlist/newsletter signup: ${fields.confirmMarketing ? "yes" : "no"}`,
+    `marketing_consent: ${fields.marketingConsent}`,
     `marketing_signup_at: ${fields.marketingSignupAt ?? "n/a"}`,
   ].join("\n");
 }
@@ -309,7 +320,8 @@ function buildLeadNotificationText(fields: {
 function buildDashboardSubject(
   book: string,
   language: Language,
-  leadMagnet: LeadMagnet | ""
+  leadMagnet: LeadMagnet | "",
+  confirmMarketing: boolean
 ): string {
   if (leadMagnet === "authors-waitlist") {
     if (language === "EN") {
@@ -321,17 +333,33 @@ function buildDashboardSubject(
     return "Nieuwe auteurswachtlijst (NL)";
   }
 
-  const chapter = leadMagnet === "chapter-1";
-  const kind = chapter ? "Chapter 1" : "sign-up";
+  if (leadMagnet === "chapter-1") {
+    if (language === "EN") {
+      return `New Chapter 1: ${book} (EN)`;
+    }
+    if (language === "DE") {
+      return `New Chapter 1: ${book} (DE)`;
+    }
+    return `Nieuw hoofdstuk 1: ${book} (NL)`;
+  }
+
+  if (!confirmMarketing) {
+    if (language === "EN") {
+      return `Form without marketing consent: ${book} (EN)`;
+    }
+    if (language === "DE") {
+      return `Form without marketing consent: ${book} (DE)`;
+    }
+    return `Formulier zonder marketingtoestemming: ${book} (NL)`;
+  }
+
   if (language === "EN") {
-    return `New ${kind}: ${book} (EN)`;
+    return `New sign-up: ${book} (EN)`;
   }
   if (language === "DE") {
-    return `New ${kind}: ${book} (DE)`;
+    return `New sign-up: ${book} (DE)`;
   }
-  return chapter
-    ? `Nieuw hoofdstuk 1: ${book} (NL)`
-    : `Nieuwe inschrijving: ${book} (NL)`;
+  return `Nieuwe inschrijving: ${book} (NL)`;
 }
 
 function isValidEmail(email: string): boolean {
@@ -396,12 +424,17 @@ export async function POST(request: Request) {
     const leadMagnet = magnet.leadMagnet;
     const chapterRequested = leadMagnet === "chapter-1";
     const authorsWaitlist = leadMagnet === "authors-waitlist";
+    const explicitMarketingConsent = isExplicitMarketingConsent(
+      payload.marketingConsent
+    );
+    const marketingContextAllowed = !chapterRequested && !authorsWaitlist;
+    const confirmMarketing =
+      marketingContextAllowed && explicitMarketingConsent;
+    const marketingIntent = confirmMarketing;
     const book = trustedBookTitle(payload.book, language, chapterRequested);
     const pageUrl =
       sanitizeMeta(payload.page_url, MAX_PAGE_URL_LENGTH) || siteConfig.url;
     const source = sanitizeMeta(payload.source, MAX_SOURCE_LENGTH) || "website";
-    const marketingIntent = !chapterRequested && !authorsWaitlist;
-    const confirmMarketing = !chapterRequested && !authorsWaitlist;
 
     if (
       !email ||
@@ -457,6 +490,7 @@ export async function POST(request: Request) {
       leadMagnet,
       marketingIntent,
       confirmMarketing,
+      marketingConsent: confirmMarketing ? "true" : "false",
       marketingSignupAt,
       chapterRequested,
     });
@@ -466,7 +500,12 @@ export async function POST(request: Request) {
         from: RESEND_FROM,
         to: LEAD_TO,
         replyTo: email,
-        subject: buildDashboardSubject(book, language, leadMagnet),
+        subject: buildDashboardSubject(
+          book,
+          language,
+          leadMagnet,
+          confirmMarketing
+        ),
         text: leadText,
       });
 
@@ -479,7 +518,7 @@ export async function POST(request: Request) {
           source,
           page_url: pageUrl,
         });
-        if (!chapterRequested && !authorsWaitlist) {
+        if (confirmMarketing) {
           return jsonFail("Failed to send subscription notification.", 500);
         }
       }
@@ -492,61 +531,83 @@ export async function POST(request: Request) {
         source,
         page_url: pageUrl,
       });
-      if (!chapterRequested && !authorsWaitlist) {
+      if (confirmMarketing) {
         return jsonFail("Failed to send subscription notification.", 500);
       }
     }
 
-    const readingUrl = chapter1Url(locale);
-    let subject: string;
-    let textBody: string;
-    let bodyHtml: string;
-    let signOff: string | undefined;
+    const sendVisitorEmail =
+      chapterRequested || authorsWaitlist || confirmMarketing;
 
-    if (chapterRequested) {
-      const chapterMail = buildChapterConfirmation(book, language, readingUrl);
-      subject = chapterMail.subject;
-      textBody = `${chapterMail.body}\n${readingUrl}`;
-      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(chapterMail.body)}</p>
+    if (sendVisitorEmail) {
+      const readingUrl = chapter1Url(locale);
+      let subject: string;
+      let textBody: string;
+      let bodyHtml: string;
+      let signOff: string | undefined;
+
+      if (chapterRequested) {
+        const chapterMail = buildChapterConfirmation(book, language, readingUrl);
+        subject = chapterMail.subject;
+        textBody = `${chapterMail.body}\n${readingUrl}`;
+        bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(chapterMail.body)}</p>
                 <p style="margin:0 0 24px;">
                   <a href="${escapeHtml(readingUrl)}" style="display:inline-block;padding:12px 20px;background:#1a1a1a;color:#f7f4ef;text-decoration:none;font-size:15px;letter-spacing:0.04em;">${escapeHtml(chapterMail.cta)}</a>
                 </p>
                 <p style="margin:0;font-size:14px;line-height:1.65;color:#6b6358;">${escapeHtml(readingUrl)}</p>`;
-    } else if (authorsWaitlist) {
-      const authorsMail = buildAuthorsWaitlistConfirmation(language);
-      subject = authorsMail.subject;
-      textBody = authorsMail.text;
-      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(authorsMail.body)}</p>`;
-      signOff = authorsMail.signOff;
-    } else {
-      const waitlistMail = buildWaitlistConfirmation(book, language);
-      subject = waitlistMail.subject;
-      textBody = waitlistMail.body;
-      bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(waitlistMail.body)}</p>`;
-    }
+      } else if (authorsWaitlist) {
+        const authorsMail = buildAuthorsWaitlistConfirmation(language);
+        subject = authorsMail.subject;
+        textBody = authorsMail.text;
+        bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(authorsMail.body)}</p>`;
+        signOff = authorsMail.signOff;
+      } else {
+        const waitlistMail = buildWaitlistConfirmation(book, language);
+        subject = waitlistMail.subject;
+        textBody = waitlistMail.body;
+        bodyHtml = `<p style="margin:0 0 24px;font-size:16px;line-height:1.65;">${escapeHtml(waitlistMail.body)}</p>`;
+      }
 
-    try {
-      const confirmationResult = await resend.emails.send({
-        from: RESEND_FROM,
-        to: email,
-        subject,
-        html: wrapEmailHtml({ language, bodyHtml, signOff }),
-        text: textBody,
-        ...(confirmMarketing && {
-          headers: {
-            "List-Unsubscribe": `<${unsubscribeMailto()}>`,
-          },
-        }),
-      });
+      try {
+        const confirmationResult = await resend.emails.send({
+          from: RESEND_FROM,
+          to: email,
+          subject,
+          html: wrapEmailHtml({ language, bodyHtml, signOff }),
+          text: textBody,
+          ...(confirmMarketing && {
+            headers: {
+              "List-Unsubscribe": `<${unsubscribeMailto()}>`,
+            },
+          }),
+        });
 
-      if (confirmationResult.error) {
-        console.error("[newsletter] Confirmation email failed:", {
-          error: confirmationResult.error,
+        if (confirmationResult.error) {
+          console.error("[newsletter] Confirmation email failed:", {
+            error: confirmationResult.error,
+            email,
+            book,
+            language,
+            chapterRequested,
+            authorsWaitlist,
+            confirmMarketing,
+          });
+          if (chapterRequested) {
+            return jsonFail("Failed to send the chapter email.", 500);
+          }
+          if (authorsWaitlist) {
+            return jsonFail("Failed to send the confirmation email.", 500);
+          }
+        }
+      } catch (error) {
+        console.error("[newsletter] Confirmation email request error:", {
+          error,
           email,
           book,
           language,
           chapterRequested,
           authorsWaitlist,
+          confirmMarketing,
         });
         if (chapterRequested) {
           return jsonFail("Failed to send the chapter email.", 500);
@@ -554,21 +615,6 @@ export async function POST(request: Request) {
         if (authorsWaitlist) {
           return jsonFail("Failed to send the confirmation email.", 500);
         }
-      }
-    } catch (error) {
-      console.error("[newsletter] Confirmation email request error:", {
-        error,
-        email,
-        book,
-        language,
-        chapterRequested,
-        authorsWaitlist,
-      });
-      if (chapterRequested) {
-        return jsonFail("Failed to send the chapter email.", 500);
-      }
-      if (authorsWaitlist) {
-        return jsonFail("Failed to send the confirmation email.", 500);
       }
     }
 

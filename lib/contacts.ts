@@ -6,6 +6,7 @@ const PROPERTY_KEYS = [
   "lead_magnet",
   "chapter_requested",
   "marketing_intent",
+  "marketing_consent",
   "marketing_signup_at",
 ] as const;
 
@@ -69,18 +70,26 @@ type StoredProperties = {
   lead_magnet: string;
   chapter_requested: string;
   marketing_intent: string;
+  marketing_consent?: string;
   marketing_signup_at?: string;
 };
 
-function readExistingSignupAt(
+type ExistingConsentState = {
+  signupAt?: string;
+  consent?: string;
+  intent?: string;
+};
+
+function readStringProperty(
   properties:
     | Record<
         string,
         { type: "string"; value: string } | { type: "number"; value: number }
       >
-    | undefined
+    | undefined,
+  key: string
 ): string | undefined {
-  const raw = properties?.marketing_signup_at;
+  const raw = properties?.[key];
   if (!raw || raw.type !== "string") {
     return undefined;
   }
@@ -90,20 +99,32 @@ function readExistingSignupAt(
 
 function contactProperties(
   input: UpsertContactInput,
-  existingSignupAt?: string
+  existing?: ExistingConsentState
 ): StoredProperties {
+  const existingConsentTrue = existing?.consent === "true";
+  const existingIntentTrue = existing?.intent === "true";
   const properties: StoredProperties = {
     language: input.language.toLowerCase(),
     source: input.source,
     lead_magnet: input.leadMagnet,
     chapter_requested: input.chapterRequested ? "true" : "false",
-    marketing_intent: input.marketingIntent ? "true" : "false",
+    marketing_intent:
+      (input.marketingIntent || existingIntentTrue) ? "true" : "false",
   };
 
-  // Waitlist/newsletter signup time only. Not a double-opt-in confirmation.
+  if (input.confirmMarketing || existingConsentTrue) {
+    properties.marketing_consent = "true";
+  } else if (existing?.consent === "false") {
+    properties.marketing_consent = "false";
+  } else if (!existing) {
+    properties.marketing_consent = "false";
+  }
+
   if (input.confirmMarketing) {
     properties.marketing_signup_at =
-      existingSignupAt ?? new Date().toISOString();
+      existing?.signupAt ?? new Date().toISOString();
+  } else if (existing?.signupAt) {
+    properties.marketing_signup_at = existing.signupAt;
   }
 
   return properties;
@@ -113,7 +134,9 @@ function contactProperties(
  * Store the visitor in Resend Contacts.
  * `unsubscribed: false` means they used the waitlist/newsletter form.
  * Chapter-only contacts stay `unsubscribed: true`.
- * An existing subscriber is never opted out by a later chapter-only request.
+ * An existing subscriber is never opted out by a later request without consent.
+ * Historical contacts without `marketing_consent` stay unknown; this request
+ * does not backfill them as consented or declined.
  */
 export async function upsertContact(
   resend: Resend,
@@ -146,8 +169,15 @@ export async function upsertContact(
     const unsubscribed = input.confirmMarketing
       ? false
       : existing.data.unsubscribed;
-    const existingSignupAt = readExistingSignupAt(existing.data.properties);
-    const updatedProperties = contactProperties(input, existingSignupAt);
+    const existingState: ExistingConsentState = {
+      signupAt: readStringProperty(
+        existing.data.properties,
+        "marketing_signup_at"
+      ),
+      consent: readStringProperty(existing.data.properties, "marketing_consent"),
+      intent: readStringProperty(existing.data.properties, "marketing_intent"),
+    };
+    const updatedProperties = contactProperties(input, existingState);
 
     const updated = await resend.contacts.update({
       email: input.email,
