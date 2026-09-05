@@ -51,6 +51,7 @@ export async function generateMetadata({
     languages: {
       nl: `/boeken/${book.slug}`,
       en: `/en/${en.slug}`,
+      ...(book.de && { de: `/de/${book.de.slug}` }),
       "x-default": `/en/${en.slug}`,
     },
   });
@@ -91,10 +92,12 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
     englishBookSchema(book),
     personSchema("Author"),
     breadcrumbSchema(breadcrumbs),
-    faqSchema(en.faq)
+    ...(en.faq.length > 0 ? [faqSchema(en.faq)] : [])
   );
 
   const isChapterBook = book.slug === "schaduwen-over-domburg";
+  const hasAbout = en.longDescription.length > 0;
+  const hasSetting = Boolean(en.setting) || en.themes.length > 0;
 
   return (
     <main lang="en">
@@ -111,7 +114,10 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
         orderHref={isChapterBook ? "#first-chapter" : undefined}
       />
 
-      <section className="book-detail" aria-labelledby="book-about-heading">
+      <section
+        className="book-detail"
+        aria-labelledby={hasAbout ? "book-about-heading" : undefined}
+      >
         <div className="container book-detail-inner">
           <Breadcrumbs items={breadcrumbs} />
 
@@ -121,33 +127,49 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
             </Link>
           </p>
 
-          <h2 id="book-about-heading" className="section-title">
-            About this book
-          </h2>
-          {en.longDescription.map((paragraph) => (
-            <p key={paragraph} className="content-paragraph">
-              {paragraph}
-            </p>
-          ))}
+          {hasAbout ? (
+            <>
+              <h2 id="book-about-heading" className="section-title">
+                About this book
+              </h2>
+              {en.longDescription.map((paragraph) => (
+                <p key={paragraph} className="content-paragraph">
+                  {paragraph}
+                </p>
+              ))}
+            </>
+          ) : null}
 
-          <h2 className="content-heading">Setting and themes</h2>
-          <p className="content-paragraph">
-            <strong>Setting:</strong> {en.setting}
-          </p>
-          <ul className="theme-list">
-            {en.themes.map((theme) => (
-              <li key={theme}>{theme}</li>
-            ))}
-          </ul>
+          {hasSetting ? (
+            <>
+              <h2 className="content-heading">Setting and themes</h2>
+              {en.setting ? (
+                <p className="content-paragraph">
+                  <strong>Setting:</strong> {en.setting}
+                </p>
+              ) : null}
+              {en.themes.length > 0 ? (
+                <ul className="theme-list">
+                  {en.themes.map((theme) => (
+                    <li key={theme}>{theme}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </>
+          ) : null}
 
-          <h2 className="content-heading">About the author</h2>
-          <p className="content-paragraph">
-            {author.name} grew up in Zeeland — the province he turns into the
-            setting of <em>{en.title}</em>. At twenty-five he traded Zeeland for
-            Rotterdam, where he has lived ever since. The stillness of the
-            Zeeland coast and the rawness of the harbour form the backbone of
-            his work, published under the {siteConfig.name} imprint.
-          </p>
+          {isChapterBook ? (
+            <>
+              <h2 className="content-heading">About the author</h2>
+              <p className="content-paragraph">
+                {author.name} grew up in Zeeland — the province he turns into the
+                setting of <em>{en.title}</em>. At twenty-five he traded Zeeland for
+                Rotterdam, where he has lived ever since. The stillness of the
+                Zeeland coast and the rawness of the harbour form the backbone of
+                his work, published under the {siteConfig.name} imprint.
+              </p>
+            </>
+          ) : null}
         </div>
       </section>
 

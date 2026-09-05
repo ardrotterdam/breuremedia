@@ -6,8 +6,9 @@ import { BookHero } from "@/components/BookHero";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { FirstChapterCTA } from "@/components/FirstChapterCTA";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { getBookByGermanSlug, getGermanBooks, type Book } from "@/data/books";
-import { buildMetadata } from "@/lib/seo";
+import { bookPageTitle, buildMetadata } from "@/lib/seo";
 import { author, siteConfig } from "@/lib/site";
 import { localeAlternates } from "@/lib/i18n";
 import {
@@ -37,11 +38,15 @@ export async function generateMetadata({
   }
 
   const de = book.de;
+  const isChapterBook = book.slug === "schaduwen-over-domburg";
 
   return buildMetadata({
-    title: "Schatten über Domburg | Zeeland Krimi",
-    description:
-      "Ein Körper treibt an den Strand von Domburg. Schatten über Domburg, ein Zeeland Krimi zwischen der zeeländischen Küste und dem Rotterdamer Hafen.",
+    title: isChapterBook
+      ? "Schatten über Domburg | Zeeland Krimi"
+      : bookPageTitle(de.title, book.author),
+    description: isChapterBook
+      ? "Ein Körper treibt an den Strand von Domburg. Schatten über Domburg, ein Zeeland Krimi zwischen der zeeländischen Küste und dem Rotterdamer Hafen."
+      : de.description,
     path: `/de/${de.slug}`,
     image: de.coverImage ?? book.coverImage,
     imageAlt: de.coverAlt,
@@ -61,6 +66,9 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
   }
 
   const de = book.de;
+  const isChapterBook = book.slug === "schaduwen-over-domburg";
+  const hasAbout = de.longDescription.length > 0;
+  const hasSetting = Boolean(de.setting) || de.themes.length > 0;
 
   const localizedBook: Book = {
     ...book,
@@ -72,7 +80,7 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
     coverImage: de.coverImage ?? book.coverImage,
     coverAlt: de.coverAlt,
     formatNote: de.formatNote,
-    priceFormatted: "€29,95",
+    priceFormatted: book.priceFormatted,
   };
 
   const breadcrumbs = [
@@ -84,7 +92,7 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
     germanBookSchema(book),
     personSchema("Autor", "de"),
     breadcrumbSchema(breadcrumbs),
-    faqSchema(de.faq)
+    ...(de.faq.length > 0 ? [faqSchema(de.faq)] : [])
   );
 
   return (
@@ -94,11 +102,14 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
         book={localizedBook}
         priority
         locale="de"
-        orderLabel="ERSTES KAPITEL LESEN"
-        orderHref="#erstes-kapitel"
+        orderLabel={isChapterBook ? "ERSTES KAPITEL LESEN" : undefined}
+        orderHref={isChapterBook ? "#erstes-kapitel" : undefined}
       />
 
-      <section className="book-detail" aria-labelledby="book-about-heading">
+      <section
+        className="book-detail"
+        aria-labelledby={hasAbout ? "book-about-heading" : undefined}
+      >
         <div className="container book-detail-inner">
           <Breadcrumbs items={breadcrumbs} locale="de" />
 
@@ -114,39 +125,64 @@ export default async function GermanBookPage({ params }: GermanBookPageProps) {
             ) : null}
           </p>
 
-          <h2 id="book-about-heading" className="section-title">
-            Über dieses Buch
-          </h2>
-          {de.longDescription.map((paragraph) => (
-            <p key={paragraph} className="content-paragraph">
-              {paragraph}
-            </p>
-          ))}
+          {hasAbout ? (
+            <>
+              <h2 id="book-about-heading" className="section-title">
+                Über dieses Buch
+              </h2>
+              {de.longDescription.map((paragraph) => (
+                <p key={paragraph} className="content-paragraph">
+                  {paragraph}
+                </p>
+              ))}
+            </>
+          ) : null}
 
-          <h2 className="content-heading">Schauplatz und Themen</h2>
-          <p className="content-paragraph">
-            <strong>Schauplatz:</strong> {de.setting}
-          </p>
-          <ul className="theme-list">
-            {de.themes.map((theme) => (
-              <li key={theme}>{theme}</li>
-            ))}
-          </ul>
+          {hasSetting ? (
+            <>
+              <h2 className="content-heading">Schauplatz und Themen</h2>
+              {de.setting ? (
+                <p className="content-paragraph">
+                  <strong>Schauplatz:</strong> {de.setting}
+                </p>
+              ) : null}
+              {de.themes.length > 0 ? (
+                <ul className="theme-list">
+                  {de.themes.map((theme) => (
+                    <li key={theme}>{theme}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </>
+          ) : null}
 
-          <h2 className="content-heading">Über den Autor</h2>
-          <p className="content-paragraph">
-            {author.name} wuchs in Zeeland auf, der Provinz, die in{" "}
-            <em>{de.title}</em> zum Schauplatz wird. Mit fünfundzwanzig Jahren
-            tauschte er Zeeland gegen Rotterdam. Die Stille der zeeländischen
-            Küste und die Rauheit des Hafens bilden das Rückgrat seiner Arbeit,
-            die unter {siteConfig.name} erscheint.
-          </p>
+          {isChapterBook ? (
+            <>
+              <h2 className="content-heading">Über den Autor</h2>
+              <p className="content-paragraph">
+                {author.name} wuchs in Zeeland auf, der Provinz, die in{" "}
+                <em>{de.title}</em> zum Schauplatz wird. Mit fünfundzwanzig Jahren
+                tauschte er Zeeland gegen Rotterdam. Die Stille der zeeländischen
+                Küste und die Rauheit des Hafens bilden das Rückgrat seiner Arbeit,
+                die unter {siteConfig.name} erscheint.
+              </p>
+            </>
+          ) : null}
         </div>
       </section>
 
-      <div className="container">
-        <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
-      </div>
+      {isChapterBook ? (
+        <div className="container">
+          <FirstChapterCTA source={`de-${de.slug}`} locale="de" />
+        </div>
+      ) : (
+        <NewsletterSection
+          id="wachtlijst"
+          source={`de-${de.slug}`}
+          book={de.title}
+          locale="de"
+        />
+      )}
 
       <FaqSection
         items={de.faq}

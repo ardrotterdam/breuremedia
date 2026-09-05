@@ -179,6 +179,8 @@ export function Header() {
     (item): item is NavDropdownItem => item.type === "dropdown"
   );
   const mega = booksItem ? splitMegaChildren(booksItem.children) : null;
+  const isBooksOnlyMega =
+    mega !== null && mega.explore.length === 0 && mega.themes.length === 0;
 
   const closeBooks = useCallback(() => setIsBooksOpen(false), []);
 
@@ -417,7 +419,9 @@ export function Header() {
   } as CSSProperties;
 
   const renderMegaExplore = (onNavigate?: () => void) => {
-    if (!mega) return null;
+    if (!mega || (mega.explore.length === 0 && mega.themes.length === 0)) {
+      return null;
+    }
     return (
       <div className="mega-col mega-col--explore">
         <p className="mega-kicker">{t.exploreLabel}</p>
@@ -585,7 +589,7 @@ export function Header() {
         </button>
         <div
           id={booksMenuMobileId}
-          className={`mega-menu mega-menu--drawer${isBooksOpen ? " is-open" : ""}`}
+          className={`mega-menu mega-menu--drawer${isBooksOpen ? " is-open" : ""}${isBooksOnlyMega ? " mega-menu--books-only" : ""}`}
           role="menu"
           aria-label={t.booksMenu}
           aria-hidden={!isBooksOpen}
@@ -647,7 +651,7 @@ export function Header() {
           <div
             ref={megaRef}
             id={booksMenuId}
-            className={`mega-menu mega-menu--desktop${isBooksOpen ? " is-open" : ""}`}
+            className={`mega-menu mega-menu--desktop${isBooksOpen ? " is-open" : ""}${isBooksOnlyMega ? " mega-menu--books-only" : ""}`}
             role="menu"
             aria-label={t.booksMenu}
             aria-hidden={!isBooksOpen}

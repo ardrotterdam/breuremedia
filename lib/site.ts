@@ -130,6 +130,16 @@ export const navLinks: readonly NavItem[] = [
         coverImage: "/assets/zero-day-directive.webp",
         coverAlt: "Cover van Zero Day Directive",
       },
+      {
+        type: "link",
+        href: "/boeken/de-laatste-ingreep",
+        label: "De Laatste Ingreep",
+        subtitle: "Geopolitieke AI-thriller",
+        coverImage:
+          "/assets/de-laatste-ingreep-ard-breure-geopolitieke-ai-thriller.webp",
+        coverAlt:
+          "De Laatste Ingreep van Ard Breure, geopolitieke AI-thriller over Europa, Amerika en kunstmatige intelligentie",
+      },
       { type: "divider" },
       { type: "label", label: "Thema's" },
       {

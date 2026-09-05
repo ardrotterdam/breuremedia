@@ -29,6 +29,10 @@ export function FaqSection({
   const baseId = useId();
   const [openItems, setOpenItems] = useState<Set<number>>(() => new Set());
 
+  if (items.length === 0) {
+    return null;
+  }
+
   function toggleItem(index: number) {
     setOpenItems((current) => {
       const next = new Set(current);

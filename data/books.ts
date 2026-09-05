@@ -425,6 +425,114 @@ export const books: Book[] = [
       ],
     },
   },
+  {
+    slug: "de-laatste-ingreep",
+    title: "De Laatste Ingreep",
+    subtitle: "Geopolitieke AI-thriller",
+    genre: "Geopolitieke AI-thriller",
+    author: "Ard Breure",
+    tagline:
+      "Het grootste gevaar is misschien niet dat machines slimmer worden dan mensen. Maar dat de mens, op het moment dat het er echt toe doet, niet langer het laatste woord heeft.",
+    description:
+      "Kunstmatige intelligentie verandert de machtsverhoudingen sneller dan regeringen haar kunnen beheersen.",
+    longDescription: [
+      "Kunstmatige intelligentie verandert de machtsverhoudingen sneller dan regeringen haar kunnen beheersen.",
+      "In Europa en de Verenigde Staten geven algoritmes allang niet meer alleen advies. Ze sturen beslissingen, beïnvloeden instituties en bepalen steeds vaker welke informatie wordt vertrouwd — en welke wordt genegeerd.",
+      "Wanneer een reeks gebeurtenissen blootlegt hoe diep geautomatiseerde systemen zijn doorgedrongen in politiek, veiligheid en het dagelijks bestuur, dringt één vraag zich onvermijdelijk op: wie heeft er werkelijk de controle?",
+      "Het grootste gevaar is misschien niet dat machines slimmer worden dan mensen.",
+      "Maar dat de mens, op het moment dat het er echt toe doet, niet langer het laatste woord heeft.",
+      "De Laatste Ingreep is een geopolitieke AI-thriller over macht, technologie en het gevaarlijke kantelpunt waarop menselijk oordeel en machinelogica met elkaar botsen.",
+    ],
+    coverImage:
+      "/assets/de-laatste-ingreep-ard-breure-geopolitieke-ai-thriller.webp",
+    coverAlt:
+      "De Laatste Ingreep van Ard Breure, geopolitieke AI-thriller over Europa, Amerika en kunstmatige intelligentie",
+    price: 29.95,
+    priceFormatted: "€29,95",
+    currency: "EUR",
+    language: "nl",
+    format: "Paperback",
+    formatNote: "",
+    setting: "",
+    themes: [],
+    keywords: [
+      "De Laatste Ingreep",
+      "geopolitieke AI-thriller",
+      "Europa",
+      "Amerika",
+      "kunstmatige intelligentie",
+      "Ard Breure",
+    ],
+    faq: [],
+    en: {
+      slug: "the-final-override",
+      title: "The Final Override",
+      subtitle: "Geopolitical AI thriller",
+      genre: "Geopolitical AI thriller",
+      tagline:
+        "The greatest threat may not be that machines become smarter than humans. It may be that, at the moment that matters most, humanity no longer gets the final say.",
+      description:
+        "Artificial intelligence is changing the balance of power faster than governments can control it.",
+      longDescription: [
+        "Artificial intelligence is changing the balance of power faster than governments can control it.",
+        "Across Europe and the United States, algorithms are no longer just advising people. They are shaping decisions, influencing institutions and quietly determining which information is trusted — and which is ignored.",
+        "When a series of events exposes how deeply automated systems have entered politics, security and public life, one question becomes impossible to avoid: who is really in control?",
+        "The greatest threat may not be that machines become smarter than humans.",
+        "It may be that, at the moment that matters most, humanity no longer gets the final say.",
+        "The Final Override is a geopolitical AI thriller about power, technology and the dangerous point where human judgment and machine logic collide.",
+      ],
+      coverImage:
+        "/assets/the-final-override-ard-breure-geopolitical-ai-thriller.webp",
+      coverAlt:
+        "The Final Override by Ard Breure, geopolitical AI thriller about Europe, America and artificial intelligence",
+      formatNote: "",
+      setting: "",
+      themes: [],
+      keywords: [
+        "The Final Override",
+        "geopolitical AI thriller",
+        "Europe",
+        "America",
+        "artificial intelligence",
+        "Ard Breure",
+      ],
+      faq: [],
+    },
+    de: {
+      slug: "der-letzte-eingriff",
+      title: "Der Letzte Eingriff",
+      subtitle: "Geopolitischer KI-Thriller",
+      genre: "Geopolitischer KI-Thriller",
+      tagline:
+        "Die größte Gefahr besteht vielleicht nicht darin, dass Maschinen intelligenter werden als Menschen. Sondern darin, dass der Mensch in dem Moment, in dem es darauf ankommt, nicht mehr das letzte Wort hat.",
+      description:
+        "Künstliche Intelligenz verändert die Machtverhältnisse schneller, als Regierungen sie kontrollieren können.",
+      longDescription: [
+        "Künstliche Intelligenz verändert die Machtverhältnisse schneller, als Regierungen sie kontrollieren können.",
+        "In Europa und den Vereinigten Staaten beraten Algorithmen längst nicht mehr nur Menschen. Sie beeinflussen Entscheidungen, prägen Institutionen und bestimmen zunehmend, welchen Informationen vertraut wird — und welchen nicht.",
+        "Als eine Reihe von Ereignissen offenlegt, wie tief automatisierte Systeme bereits in Politik, Sicherheit und öffentliche Entscheidungsprozesse eingedrungen sind, lässt sich eine Frage nicht länger verdrängen: Wer hat wirklich die Kontrolle?",
+        "Die größte Gefahr besteht vielleicht nicht darin, dass Maschinen intelligenter werden als Menschen.",
+        "Sondern darin, dass der Mensch in dem Moment, in dem es darauf ankommt, nicht mehr das letzte Wort hat.",
+        "Der Letzte Eingriff ist ein geopolitischer KI-Thriller über Macht, Technologie und den gefährlichen Punkt, an dem menschliches Urteilsvermögen und Maschinenlogik aufeinanderprallen.",
+      ],
+      coverImage:
+        "/assets/der-letzte-eingriff-ard-breure-geopolitischer-ki-thriller.webp",
+      coverAlt:
+        "Der Letzte Eingriff von Ard Breure, geopolitischer KI-Thriller über Europa, Amerika und künstliche Intelligenz",
+      formatNote: "",
+      setting: "",
+      themes: [],
+      keywords: [
+        "Der Letzte Eingriff",
+        "geopolitischer KI-Thriller",
+        "Europa",
+        "Amerika",
+        "künstliche Intelligenz",
+        "Ard Breure",
+      ],
+      faq: [],
+    },
+  },
 ];
 
 export function getAllBooks(): Book[] {

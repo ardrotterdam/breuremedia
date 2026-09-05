@@ -41,10 +41,14 @@ export function BookHero({
             <p className="hero-eyebrow">{book.subtitle}</p>
             <h1 className="hero-title">{book.title}</h1>
             <p className="hero-author">{book.author}</p>
-            <p className="hero-tagline">{book.tagline}</p>
+            {book.tagline ? (
+              <p className="hero-tagline">{book.tagline}</p>
+            ) : null}
             <div className="hero-meta">
               <span className="hero-price">{book.priceFormatted}</span>
-              <span className="hero-format">{book.formatNote}</span>
+              {book.formatNote ? (
+                <span className="hero-format">{book.formatNote}</span>
+              ) : null}
             </div>
             <p className="hero-format">
               {book.format} · {book.priceFormatted}

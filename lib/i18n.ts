@@ -46,6 +46,16 @@ export const enNavLinks: readonly NavItem[] = [
         coverImage: "/assets/zero-day-directive.webp",
         coverAlt: "Cover of Zero Day Directive",
       },
+      {
+        type: "link",
+        href: "/en/the-final-override",
+        label: "The Final Override",
+        subtitle: "Geopolitical AI thriller",
+        coverImage:
+          "/assets/the-final-override-ard-breure-geopolitical-ai-thriller.webp",
+        coverAlt:
+          "The Final Override by Ard Breure, geopolitical AI thriller about Europe, America and artificial intelligence",
+      },
     ],
   },
   { type: "link", href: "/en/e-readers", label: "Reading" },
@@ -56,13 +66,36 @@ export const enNavLinks: readonly NavItem[] = [
 
 /**
  * Navigation shown in the German (/de) section. Only routes that exist in DE:
- * home (logo), the one translated book, Domburg, author, contact.
+ * home (logo), translated titles, Domburg, author, contact.
+ * No German catalogue page yet; Bücher is a dropdown of the titles that exist.
  */
 export const deNavLinks: readonly NavItem[] = [
   {
-    type: "link",
+    type: "dropdown",
     href: "/de/schatten-ueber-domburg",
     label: "Bücher",
+    children: [
+      { type: "label", label: "Titel" },
+      {
+        type: "link",
+        href: "/de/schatten-ueber-domburg",
+        label: "Schatten über Domburg",
+        subtitle: "Literarischer Thriller",
+        coverImage: "/assets/schatten-ueber-domburg-cover.webp",
+        coverAlt:
+          "Buchcover Schatten über Domburg von Ard Breure: einsame Gestalt am Strand von Domburg, Wasserturm und Rotterdamer Hafenskyline unter Gewitterhimmel",
+      },
+      {
+        type: "link",
+        href: "/de/der-letzte-eingriff",
+        label: "Der Letzte Eingriff",
+        subtitle: "Geopolitischer KI-Thriller",
+        coverImage:
+          "/assets/der-letzte-eingriff-ard-breure-geopolitischer-ki-thriller.webp",
+        coverAlt:
+          "Der Letzte Eingriff von Ard Breure, geopolitischer KI-Thriller über Europa, Amerika und künstliche Intelligenz",
+      },
+    ],
   },
   { type: "link", href: "/de/domburg", label: "Domburg" },
   { type: "link", href: "/de/ueber-den-autor", label: "Über den Autor" },
@@ -85,6 +118,11 @@ const localizedRoutes: Record<string, Partial<Record<Locale, string>>> = {
   zeroDay: {
     nl: "/boeken/zero-day-directive",
     en: "/en/zero-day-directive",
+  },
+  finalOverride: {
+    nl: "/boeken/de-laatste-ingreep",
+    en: "/en/the-final-override",
+    de: "/de/der-letzte-eingriff",
   },
   eReaders: { nl: "/e-readers", en: "/en/e-readers" },
   blog: { nl: "/blog", en: "/en/blog" },
@@ -238,7 +276,16 @@ export const footerCopy: Record<Locale, FooterCopy> = {
   de: {
     tagline: "Unabhängiges Label für Bücher und originale Geschichten.",
     nav: [
-      { type: "link", href: "/de/schatten-ueber-domburg", label: "Bücher" },
+      {
+        type: "link",
+        href: "/de/schatten-ueber-domburg",
+        label: "Schatten über Domburg",
+      },
+      {
+        type: "link",
+        href: "/de/der-letzte-eingriff",
+        label: "Der Letzte Eingriff",
+      },
       { type: "link", href: "/de/domburg", label: "Domburg" },
       { type: "link", href: "/de/ueber-den-autor", label: "Über den Autor" },
       { type: "link", href: "/de/kontakt", label: "Kontakt" },

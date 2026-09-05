@@ -50,6 +50,7 @@ export async function generateMetadata({
       languages: {
         nl: `/boeken/${book.slug}`,
         en: `/en/${book.en.slug}`,
+        ...(book.de && { de: `/de/${book.de.slug}` }),
         "x-default": `/en/${book.en.slug}`,
       },
     }),
@@ -74,10 +75,12 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
     bookSchema(book),
     personSchema(),
     breadcrumbSchema(breadcrumbs),
-    faqSchema(book.faq)
+    ...(book.faq.length > 0 ? [faqSchema(book.faq)] : [])
   );
 
   const isChapterBook = book.slug === "schaduwen-over-domburg";
+  const hasAbout = book.longDescription.length > 0;
+  const hasSetting = Boolean(book.setting) || book.themes.length > 0;
 
   return (
     <main>
@@ -89,7 +92,10 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
         orderHref={isChapterBook ? "#eerste-hoofdstuk" : undefined}
       />
 
-      <section className="book-detail" aria-labelledby="book-about-heading">
+      <section
+        className="book-detail"
+        aria-labelledby={hasAbout ? "book-about-heading" : undefined}
+      >
         <div className="container book-detail-inner">
           <Breadcrumbs items={breadcrumbs} />
 
@@ -101,24 +107,36 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
             </p>
           )}
 
-          <h2 id="book-about-heading" className="section-title">
-            Over dit boek
-          </h2>
-          {book.longDescription.map((paragraph) => (
-            <p key={paragraph} className="content-paragraph">
-              {paragraph}
-            </p>
-          ))}
+          {hasAbout ? (
+            <>
+              <h2 id="book-about-heading" className="section-title">
+                Over dit boek
+              </h2>
+              {book.longDescription.map((paragraph) => (
+                <p key={paragraph} className="content-paragraph">
+                  {paragraph}
+                </p>
+              ))}
+            </>
+          ) : null}
 
-          <h2 className="content-heading">Setting en thema&apos;s</h2>
-          <p className="content-paragraph">
-            <strong>Setting:</strong> {book.setting}
-          </p>
-          <ul className="theme-list">
-            {book.themes.map((theme) => (
-              <li key={theme}>{theme}</li>
-            ))}
-          </ul>
+          {hasSetting ? (
+            <>
+              <h2 className="content-heading">Setting en thema&apos;s</h2>
+              {book.setting ? (
+                <p className="content-paragraph">
+                  <strong>Setting:</strong> {book.setting}
+                </p>
+              ) : null}
+              {book.themes.length > 0 ? (
+                <ul className="theme-list">
+                  {book.themes.map((theme) => (
+                    <li key={theme}>{theme}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </>
+          ) : null}
 
           {book.relatedReadingLists && book.relatedReadingLists.length > 0 && (
             <>
