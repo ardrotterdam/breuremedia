@@ -342,7 +342,7 @@ input:focus-visible {
 
 /* Header / navigation — see app/nav.css */
 
-/* Homepage publications hero (2-book showcase) */
+/* Homepage publications hero */
 
 .publications-hero {
   padding-top: calc(var(--header-height) + 3.5rem);
@@ -388,14 +388,25 @@ input:focus-visible {
 
 .publications-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(2rem, 5vw, 3.5rem);
   align-items: start;
+  justify-content: center;
 }
 
 .publications-grid--single {
   grid-template-columns: minmax(0, 20rem);
-  justify-content: center;
+}
+
+.publications-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.publications-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.publications-grid--three .publication-cover-link {
+  max-width: 240px;
 }
 
 .publication-feature {
@@ -1134,18 +1145,12 @@ input:focus-visible {
     margin-bottom: 2.5rem;
   }
 
-  .publications-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    justify-items: center;
+  .publications-grid--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .publication-cover-link {
     max-width: 220px;
-  }
-
-  .publication-badge--empty {
-    display: none;
   }
 
   .hero {
@@ -1216,6 +1221,17 @@ input:focus-visible {
   :root {
     --header-height: 72px;
     --header-height-scrolled: 64px;
+  }
+
+  .publications-grid--two,
+  .publications-grid--three {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    justify-items: center;
+  }
+
+  .publication-badge--empty {
+    display: none;
   }
 
   .hero-cover-pane {

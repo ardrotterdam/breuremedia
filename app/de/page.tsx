@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { PublicationsHero } from "@/components/PublicationsHero";
-import { getBookByGermanSlug, type Book } from "@/data/books";
+import { getBookByGermanSlug, getGermanBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteDe, authorDe } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { localeAlternates } from "@/lib/i18n";
@@ -17,6 +17,22 @@ function requireGermanFeaturedBook() {
 
 const featuredBook = requireGermanFeaturedBook();
 const de = featuredBook.de;
+const germanBooks = getGermanBooks();
+
+function localizeGermanBook(book: (typeof germanBooks)[number]): Book {
+  const edition = book.de;
+  return {
+    ...book,
+    title: edition.title,
+    subtitle: edition.subtitle,
+    tagline: edition.tagline,
+    description: edition.description,
+    longDescription: edition.longDescription,
+    coverImage: edition.coverImage ?? book.coverImage,
+    coverAlt: edition.coverAlt,
+    formatNote: edition.formatNote,
+  };
+}
 
 export const metadata: Metadata = buildMetadata({
   title: "Breure Media | Literarische Thriller",
@@ -32,33 +48,22 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function GermanHomePage() {
-  const featuredLocalized: Book = {
-    ...featuredBook,
-    title: de.title,
-    subtitle: de.subtitle,
-    tagline: de.tagline,
-    description: de.description,
-    longDescription: de.longDescription,
-    coverImage: de.coverImage ?? featuredBook.coverImage,
-    coverAlt: de.coverAlt,
-    formatNote: de.formatNote,
-  };
-
   return (
     <main lang="de">
       <PublicationsHero
         eyebrow="Unsere Bücher"
         brand={siteConfig.name}
         lead="Literarische Thriller, wo die zeeländische Küste den Rotterdamer Hafen berührt."
-        publications={[
-          {
-            book: featuredLocalized,
-            href: `/de/${de.slug}`,
-            pitch: de.tagline,
+        publications={germanBooks.map((book) => {
+          const edition = book.de;
+          return {
+            book: localizeGermanBook(book),
+            href: `/de/${edition.slug}`,
+            pitch: edition.tagline,
             ctaLabel: "Zum Buch",
             priority: true,
-          },
-        ]}
+          };
+        })}
       />
 
       <section className="synopsis" aria-labelledby="synopsis-heading">

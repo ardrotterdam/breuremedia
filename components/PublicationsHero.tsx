@@ -37,7 +37,13 @@ export function PublicationsHero({
         </header>
 
         <div
-          className={`publications-grid${publications.length === 1 ? " publications-grid--single" : ""}`}
+          className={`publications-grid${
+            publications.length === 1
+              ? " publications-grid--single"
+              : publications.length === 2
+                ? " publications-grid--two"
+                : " publications-grid--three"
+          }`}
         >
           {publications.map((item) => (
             <article key={item.href} className="publication-feature">
@@ -53,7 +59,7 @@ export function PublicationsHero({
                   width={400}
                   height={600}
                   priority={item.priority}
-                  sizes="(max-width: 640px) 220px, (max-width: 900px) 260px, 320px"
+                  sizes="(max-width: 640px) 220px, (max-width: 960px) 240px, 240px"
                 />
               </Link>
 

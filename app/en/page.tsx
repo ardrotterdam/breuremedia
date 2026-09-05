@@ -3,15 +3,31 @@ import type { Metadata } from "next";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { PublicationsHero } from "@/components/PublicationsHero";
 import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
-import { getBookBySlug, getEnglishBooks } from "@/data/books";
+import { getBookBySlug, getEnglishBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteEn, authorEn } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { englishNewsletterCopy } from "@/lib/i18n";
 
-const featuredBook = getEnglishBooks()[0];
+const englishBooks = getEnglishBooks();
+const featuredBook = englishBooks[0];
 const en = featuredBook.en;
 const upcomingBook = getBookBySlug("zero-day-directive");
 const upcomingEn = upcomingBook?.en;
+
+function localizeEnglishBook(book: (typeof englishBooks)[number]): Book {
+  const edition = book.en;
+  return {
+    ...book,
+    title: edition.title,
+    subtitle: edition.subtitle,
+    tagline: edition.tagline,
+    description: edition.description,
+    longDescription: edition.longDescription,
+    coverImage: edition.coverImage ?? book.coverImage,
+    coverAlt: edition.coverAlt,
+    formatNote: edition.formatNote,
+  };
+}
 
 export const metadata: Metadata = buildMetadata({
   title: "Breure Media | Literary Thrillers",
@@ -31,18 +47,6 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function EnglishHomePage() {
-  const featuredLocalized = {
-    ...featuredBook,
-    title: en.title,
-    subtitle: en.subtitle,
-    tagline: en.tagline,
-    description: en.description,
-    longDescription: en.longDescription,
-    coverImage: en.coverImage ?? featuredBook.coverImage,
-    coverAlt: en.coverAlt,
-    formatNote: en.formatNote,
-  };
-
   const upcomingLocalized =
     upcomingBook && upcomingEn
       ? {
@@ -58,30 +62,24 @@ export default function EnglishHomePage() {
 
   return (
     <main lang="en">
-      {upcomingLocalized && upcomingEn ? (
-        <PublicationsHero
-          eyebrow="Our Publications"
-          brand={siteConfig.name}
-          lead={siteEn.tagline}
-          publications={[
-            {
-              book: featuredLocalized,
-              href: `/en/${en.slug}`,
-              pitch: en.tagline,
-              ctaLabel: "View book",
-              priority: true,
-            },
-            {
-              book: upcomingLocalized,
-              href: `/en/${upcomingEn.slug}`,
-              pitch: upcomingEn.tagline,
-              ctaLabel: "View book",
-              badge: "Expected Jan 2027",
-              priority: true,
-            },
-          ]}
-        />
-      ) : null}
+      <PublicationsHero
+        eyebrow="Our Publications"
+        brand={siteConfig.name}
+        lead={siteEn.tagline}
+        publications={englishBooks.map((book) => {
+          const edition = book.en;
+          return {
+            book: localizeEnglishBook(book),
+            href: `/en/${edition.slug}`,
+            pitch: edition.tagline,
+            ctaLabel: "View book",
+            ...(book.slug === "zero-day-directive"
+              ? { badge: "Expected Jan 2027" }
+              : {}),
+            priority: true,
+          };
+        })}
+      />
 
       <section className="synopsis" aria-labelledby="synopsis-heading">
         <div className="container synopsis-inner">

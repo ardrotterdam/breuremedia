@@ -34,23 +34,16 @@ export default function HomePage() {
         eyebrow="Onze Publicaties"
         brand={siteConfig.name}
         lead={siteConfig.tagline}
-        publications={[
-          {
-            book: featuredBook,
-            href: `/boeken/${featuredBook.slug}`,
-            pitch: featuredBook.tagline,
-            ctaLabel: "Bekijk boek",
-            priority: true,
-          },
-          {
-            book: upcomingBook,
-            href: `/boeken/${upcomingBook.slug}`,
-            pitch: upcomingBook.tagline,
-            ctaLabel: "Bekijk boek",
-            badge: "Verwacht jan 2027",
-            priority: true,
-          },
-        ]}
+        publications={allBooks.map((book) => ({
+          book,
+          href: `/boeken/${book.slug}`,
+          pitch: book.tagline,
+          ctaLabel: "Bekijk boek",
+          ...(book.slug === "zero-day-directive"
+            ? { badge: "Verwacht jan 2027" }
+            : {}),
+          priority: true,
+        }))}
       />
 
       <section className="synopsis" aria-labelledby="synopsis-heading">
