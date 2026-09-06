@@ -44,8 +44,8 @@ export const author = {
 /** English author copy, used on /en/about and the English home. */
 export const authorEn = {
   bio: [
-    "Ard Breure grew up in Zeeland, the province he turns into the setting of Shadows over Domburg. At twenty-five he traded Zeeland for Rotterdam, where he has lived ever since — a city he knows from its old centre to the far edge of the Maasvlakte docks.",
-    "Those two landscapes — the stillness of the Zeeland coast and the rawness of the harbour — form the backbone of his work. His books appear under the Breure Media imprint: a home for stories that keep resonating long after the final page.",
+    "Ard Breure grew up in Zeeland, the province he turns into the setting of Shadows over Domburg. At twenty-five he traded Zeeland for Rotterdam, where he has lived ever since, a city he knows from its old centre to the far edge of the Maasvlakte docks.",
+    "Those two landscapes, the stillness of the Zeeland coast and the rawness of the harbour, form the backbone of his work. His books appear under the Breure Media imprint: a home for stories that keep resonating long after the final page.",
   ],
   shortBio:
     "Dutch author of literary thrillers. His debut, Shadows over Domburg, is published by Breure Media.",

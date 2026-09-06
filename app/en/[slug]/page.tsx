@@ -162,7 +162,7 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
             <>
               <h2 className="content-heading">About the author</h2>
               <p className="content-paragraph">
-                {author.name} grew up in Zeeland — the province he turns into the
+                {author.name} grew up in Zeeland, the province he turns into the
                 setting of <em>{en.title}</em>. At twenty-five he traded Zeeland for
                 Rotterdam, where he has lived ever since. The stillness of the
                 Zeeland coast and the rawness of the harbour form the backbone of
@@ -186,7 +186,7 @@ export default async function EnglishBookPage({ params }: EnglishBookPageProps) 
         locale="en"
         eyebrow="Waiting list"
         title="Be the first to know when the book is released"
-        description={`Leave your email address and we'll let you know the moment ${en.title} is available — including the release date and an exclusive preview.`}
+        description={`Leave your email address and we'll let you know the moment ${en.title} is available, including the release date and an exclusive preview.`}
         formCopy={englishNewsletterCopy}
       />
 

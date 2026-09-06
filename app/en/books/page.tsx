@@ -10,7 +10,7 @@ import { breadcrumbSchema, buildJsonLd } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Books"),
   description:
-    "Literary thrillers from Breure Media — Dutch stories with psychological depth, careful prose and atmospheric settings.",
+    "Literary thrillers from Breure Media: Dutch stories with psychological depth, careful prose and atmospheric settings.",
   path: "/en/books",
   locale: "en_US",
   languages: {
@@ -51,7 +51,7 @@ export default function EnglishBooksOverviewPage() {
       <PageHeader
         eyebrow="Catalogue"
         title="Books"
-        description="Literary thrillers from Breure Media — stories where suspense, language and psychology meet."
+        description="Literary thrillers from Breure Media: stories where suspense, language and psychology meet."
       />
       <div className="container content-page">
         <Breadcrumbs items={breadcrumbs} />

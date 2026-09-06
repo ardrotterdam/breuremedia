@@ -249,8 +249,8 @@ export default function MarkthalRotterdamPage() {
             Rotterdam is een stad die zichzelf moest uitvinden nadat het
             centrum was verwoest. De Markthal is een van de duidelijkste recente
             antwoorden op die geschiedenis: wonen, eten en een plein gestapeld
-            tot één idee. Hoe je het gebouw als architectuur leest — en niet als
-            een eethal met een muurschildering — volgt hieronder.
+            tot één idee. Hoe je het gebouw als architectuur leest, en niet als
+            een eethal met een muurschildering, volgt hieronder.
           </p>
         </section>
 

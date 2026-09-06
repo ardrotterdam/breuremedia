@@ -31,7 +31,7 @@ export const metadata: Metadata = buildMetadata({
     "Independent Dutch imprint for literary thrillers. Discover publications by Ard Breure.",
   path: "/en",
   image: "/images/og-breure-media-general.jpg",
-  imageAlt: "Breure Media — literary thrillers",
+  imageAlt: "Breure Media: literary thrillers",
   imageWidth: 1200,
   imageHeight: 630,
   locale: "en_US",

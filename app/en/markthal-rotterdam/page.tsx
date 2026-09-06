@@ -256,8 +256,8 @@ export default function MarkthalRotterdamPage() {
             Rotterdam is a city that had to invent itself after the centre was
             destroyed. Markthal is one of the clearest recent answers to that
             history: housing, food and a square stacked into a single idea.
-            How to read the building as architecture — and not as a food court
-            with a mural — follows below.
+            How to read the building as architecture, and not as a food court
+            with a mural, follows below.
           </p>
         </section>
 

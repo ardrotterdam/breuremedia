@@ -67,9 +67,9 @@ export default function EnglishAboutPage() {
           <p className="content-paragraph">
             {siteConfig.name} is an independent Dutch imprint for literary
             thrillers. It focuses on books where suspense, language and
-            psychological depth come together — stories that keep resonating
+            psychological depth come together: stories that keep resonating
             long after the final page. The site also publishes reading lists
-            and guides — about books, places such as Rotterdam and Zeeland,
+            and guides about books, places such as Rotterdam and Zeeland,
             and e-readers.
           </p>
           <p className="content-paragraph">

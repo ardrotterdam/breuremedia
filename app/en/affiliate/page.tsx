@@ -51,7 +51,7 @@ export default function EnglishAffiliatePage() {
           </h2>
           <p className="content-paragraph">
             {siteConfig.name} publishes editorial content about books,
-            e-readers and related reading — from its own publications to reading
+            e-readers and related reading, from its own publications to reading
             lists and buying guides.
           </p>
         </section>
