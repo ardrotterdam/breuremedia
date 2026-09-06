@@ -1,22 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FeaturedBookSection } from "@/components/FeaturedBookSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { PublicationsHero } from "@/components/PublicationsHero";
-import { getBookByGermanSlug, getGermanBooks, type Book } from "@/data/books";
+import { getGermanBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteDe, authorDe } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { localeAlternates } from "@/lib/i18n";
 
-function requireGermanFeaturedBook() {
-  const book = getBookByGermanSlug("schatten-ueber-domburg");
-  if (!book) {
-    throw new Error("German edition of Schatten über Domburg is missing.");
-  }
-  return book;
-}
-
-const featuredBook = requireGermanFeaturedBook();
-const de = featuredBook.de;
 const germanBooks = getGermanBooks();
 
 function localizeGermanBook(book: (typeof germanBooks)[number]): Book {
@@ -66,20 +57,19 @@ export default function GermanHomePage() {
         })}
       />
 
-      <section className="synopsis" aria-labelledby="synopsis-heading">
-        <div className="container synopsis-inner">
-          <hr className="editorial-rule" aria-hidden="true" />
-          <p className="section-eyebrow">Über das Buch</p>
-          <h2 id="synopsis-heading" className="section-title">
-            {de.tagline}
-          </h2>
-          {de.longDescription.map((paragraph) => (
-            <p key={paragraph} className="synopsis-paragraph">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </section>
+      {germanBooks.map((book) => {
+        const edition = book.de;
+        return (
+          <FeaturedBookSection
+            key={edition.slug}
+            eyebrow="Buch im Fokus"
+            title={edition.title}
+            hook={edition.tagline}
+            paragraphs={edition.longDescription}
+            headingId={`featured-book-${edition.slug}`}
+          />
+        );
+      })}
 
       <section className="author" aria-labelledby="home-author-heading">
         <div className="container author-inner">

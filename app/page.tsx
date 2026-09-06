@@ -1,15 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FeaturedBookSection } from "@/components/FeaturedBookSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { PublicationsHero } from "@/components/PublicationsHero";
-import { UpcomingBookPromo } from "@/components/UpcomingBookPromo";
-import { getAllBooks, getBookBySlug } from "@/data/books";
+import { getAllBooks } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 
 const allBooks = getAllBooks();
-const featuredBook = allBooks[0];
-const upcomingBook = getBookBySlug("zero-day-directive") ?? allBooks[1];
 
 export const metadata: Metadata = buildMetadata({
   title: "Breure Media | Literaire Thrillers",
@@ -46,34 +44,16 @@ export default function HomePage() {
         }))}
       />
 
-      <section className="synopsis" aria-labelledby="synopsis-heading">
-        <div className="container synopsis-inner">
-          <hr className="editorial-rule" aria-hidden="true" />
-          <p className="section-eyebrow">Over het boek</p>
-          <h2 id="synopsis-heading" className="section-title">
-            {featuredBook.tagline}
-          </h2>
-          {featuredBook.longDescription.map((paragraph) => (
-            <p key={paragraph} className="synopsis-paragraph">{paragraph}</p>
-          ))}
-        </div>
-      </section>
-
-      {upcomingBook && (
-        <UpcomingBookPromo
-          book={upcomingBook}
-          copy={{
-            eyebrow: "Aankomend",
-            subtitle: upcomingBook.subtitle,
-            blurb: upcomingBook.description,
-            expected: "Verwacht: januari 2027",
-            primaryLabel: "Meer over dit boek",
-            secondaryLabel: "Inschrijven wachtlijst",
-            bookHref: `/boeken/${upcomingBook.slug}`,
-            waitlistHref: `/boeken/${upcomingBook.slug}#wachtlijst`,
-          }}
+      {allBooks.map((book) => (
+        <FeaturedBookSection
+          key={book.slug}
+          eyebrow="Uitgelicht boek"
+          title={book.title}
+          hook={book.tagline}
+          paragraphs={book.longDescription}
+          headingId={`featured-book-${book.slug}`}
         />
-      )}
+      ))}
 
       <section className="author" aria-labelledby="home-author-heading">
         <div className="container author-inner">

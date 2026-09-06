@@ -619,6 +619,9 @@ input:focus-visible {
   padding: 7rem 0;
   background-color: var(--color-warm-white);
 }
+.synopsis + .synopsis {
+  padding-top: 0;
+}
 .synopsis-inner {
   max-width: var(--text-column);
   margin-inline: auto;
