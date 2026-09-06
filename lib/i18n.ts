@@ -60,7 +60,6 @@ export const enNavLinks: readonly NavItem[] = [
       },
     ],
   },
-  { type: "link", href: "/en/e-readers", label: "Reading" },
   { type: "link", href: "/en/blog", label: "Blog" },
   { type: "link", href: "/en/about", label: "Author" },
   { type: "link", href: "/en/contact", label: "Contact" },
@@ -293,7 +292,6 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     tagline: "Independent imprint for thrillers about power, ports and Europe.",
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
-      { type: "link", href: "/en/e-readers", label: "Reading" },
       { type: "link", href: "/en/blog", label: "Blog" },
       { type: "link", href: "/en/about", label: "Author" },
       { type: "link", href: "/en/contact", label: "Contact" },
