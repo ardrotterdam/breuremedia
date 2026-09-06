@@ -160,7 +160,19 @@ export const navLinks: readonly NavItem[] = [
     type: "dropdown",
     href: "/e-readers",
     label: "Lezen",
-    children: [{ type: "link", href: "/e-readers", label: "E-readers" }],
+    children: [
+      { type: "link", href: "/e-readers", label: "E-readers" },
+      {
+        type: "link",
+        href: "/waterdichte-e-reader",
+        label: "Waterdichte e-reader",
+      },
+      {
+        type: "link",
+        href: "/lengte-van-ebook",
+        label: "Lengte van een ebook",
+      },
+    ],
   },
   { type: "link", href: "/blog", label: "Blog" },
   { type: "link", href: "/over-de-auteur", label: "Auteur" },
