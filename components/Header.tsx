@@ -78,6 +78,23 @@ function isDropdownActive(pathname: string, item: NavDropdownItem): boolean {
   return childLinkHrefs(item.children).some((href) => isPathActive(pathname, href));
 }
 
+function isBooksDropdown(item: NavItem): item is NavDropdownItem {
+  return (
+    item.type === "dropdown" &&
+    item.children.some((child) => child.type === "link" && child.coverImage)
+  );
+}
+
+function hasBookCovers(item: NavDropdownItem): boolean {
+  return item.children.some((child) => child.type === "link" && child.coverImage);
+}
+
+function simpleChildLinks(item: NavDropdownItem): NavLinkChild[] {
+  return item.children.filter(
+    (child): child is NavLinkChild => child.type === "link"
+  );
+}
+
 function splitMegaChildren(children: readonly NavChild[]): MegaGroups {
   const explore: NavLinkChild[] = [];
   const featured: NavLinkChild[] = [];
@@ -151,16 +168,22 @@ function LangSwitch({
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isBooksOpen, setIsBooksOpen] = useState(false);
+  const [openSimpleHref, setOpenSimpleHref] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [track, setTrack] = useState({ x: 0, w: 0, visible: false });
   const [trackReady, setTrackReady] = useState(false);
   const pathname = usePathname();
   const booksMenuId = useId();
   const booksMenuMobileId = useId();
+  const simpleMenuId = useId();
+  const simpleMenuMobileId = useId();
   const navListRef = useRef<HTMLDivElement>(null);
   const megaRef = useRef<HTMLDivElement>(null);
+  const simpleMenuRef = useRef<HTMLDivElement>(null);
   const booksButtonDesktopRef = useRef<HTMLButtonElement>(null);
   const booksButtonMobileRef = useRef<HTMLButtonElement>(null);
+  const simpleButtonDesktopRef = useRef<HTMLButtonElement>(null);
+  const simpleButtonMobileRef = useRef<HTMLButtonElement>(null);
   const navToggleRef = useRef<HTMLButtonElement>(null);
   const openTimer = useRef<number>(0);
   const closeTimer = useRef<number>(0);
@@ -175,14 +198,13 @@ export function Header() {
   const links = navByLocale[locale];
   const t = headerCopy[locale];
   const homeHref = homePaths[locale];
-  const booksItem = links.find(
-    (item): item is NavDropdownItem => item.type === "dropdown"
-  );
+  const booksItem = links.find(isBooksDropdown);
   const mega = booksItem ? splitMegaChildren(booksItem.children) : null;
   const isBooksOnlyMega =
     mega !== null && mega.explore.length === 0 && mega.themes.length === 0;
 
   const closeBooks = useCallback(() => setIsBooksOpen(false), []);
+  const closeSimple = useCallback(() => setOpenSimpleHref(null), []);
 
   const focusBooksButton = useCallback(() => {
     if (typeof window !== "undefined" && isDesktopNav()) {
@@ -240,6 +262,7 @@ export function Header() {
   useEffect(() => {
     setIsOpen(false);
     setIsBooksOpen(false);
+    setOpenSimpleHref(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -252,22 +275,38 @@ export function Header() {
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isBooksOpen) return;
+    if (!isBooksOpen && !openSimpleHref) return;
 
     const onPointerDown = (event: MouseEvent | TouchEvent) => {
       if (!isDesktopNav()) return;
       const target = event.target as Node;
-      if (
-        megaRef.current?.contains(target) ||
-        booksButtonDesktopRef.current?.contains(target)
-      ) {
-        return;
+      if (isBooksOpen) {
+        if (
+          megaRef.current?.contains(target) ||
+          booksButtonDesktopRef.current?.contains(target)
+        ) {
+          return;
+        }
+        setIsBooksOpen(false);
       }
-      setIsBooksOpen(false);
+      if (openSimpleHref) {
+        if (
+          simpleMenuRef.current?.contains(target) ||
+          simpleButtonDesktopRef.current?.contains(target)
+        ) {
+          return;
+        }
+        setOpenSimpleHref(null);
+      }
     };
 
     const onKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape") {
+        if (openSimpleHref) {
+          setOpenSimpleHref(null);
+          simpleButtonDesktopRef.current?.focus();
+          return;
+        }
         setIsBooksOpen(false);
         focusBooksButton();
       }
@@ -281,7 +320,7 @@ export function Header() {
       document.removeEventListener("touchstart", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [isBooksOpen, focusBooksButton]);
+  }, [isBooksOpen, openSimpleHref, focusBooksButton]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -290,6 +329,7 @@ export function Header() {
       if (event.key === "Escape") {
         setIsOpen(false);
         setIsBooksOpen(false);
+        setOpenSimpleHref(null);
         navToggleRef.current?.focus();
       }
     };
@@ -335,19 +375,39 @@ export function Header() {
   const closeMobile = () => {
     setIsOpen(false);
     setIsBooksOpen(false);
+    setOpenSimpleHref(null);
   };
 
   const scheduleBooksOpen = () => {
     if (!isHoverNav()) return;
     window.clearTimeout(closeTimer.current);
     window.clearTimeout(openTimer.current);
-    openTimer.current = window.setTimeout(() => setIsBooksOpen(true), 40);
+    openTimer.current = window.setTimeout(() => {
+      setOpenSimpleHref(null);
+      setIsBooksOpen(true);
+    }, 40);
   };
 
   const scheduleBooksClose = () => {
     if (!isHoverNav()) return;
     window.clearTimeout(openTimer.current);
     closeTimer.current = window.setTimeout(() => setIsBooksOpen(false), 160);
+  };
+
+  const scheduleSimpleOpen = (href: string) => {
+    if (!isHoverNav()) return;
+    window.clearTimeout(closeTimer.current);
+    window.clearTimeout(openTimer.current);
+    openTimer.current = window.setTimeout(() => {
+      setIsBooksOpen(false);
+      setOpenSimpleHref(href);
+    }, 40);
+  };
+
+  const scheduleSimpleClose = () => {
+    if (!isHoverNav()) return;
+    window.clearTimeout(openTimer.current);
+    closeTimer.current = window.setTimeout(() => setOpenSimpleHref(null), 160);
   };
 
   const onNavItemEnter = (el: HTMLElement) => {
@@ -372,14 +432,79 @@ export function Header() {
   const onBooksButtonKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
       event.preventDefault();
+      setOpenSimpleHref(null);
       setIsBooksOpen(true);
       requestAnimationFrame(() => focusChildLink(0));
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
+      setOpenSimpleHref(null);
       setIsBooksOpen(true);
       requestAnimationFrame(() => focusChildLink(-1));
     } else if (event.key === "Escape") {
       closeBooks();
+    }
+  };
+
+  const focusSimpleChildLink = (index: number) => {
+    const panel = isDesktopNav()
+      ? simpleMenuRef.current
+      : document.getElementById(simpleMenuMobileId);
+    const items = panel?.querySelectorAll<HTMLElement>("a[role='menuitem']");
+    if (!items || items.length === 0) return;
+    const clamped = ((index % items.length) + items.length) % items.length;
+    items[clamped]?.focus();
+  };
+
+  const onSimpleButtonKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    href: string
+  ) => {
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsBooksOpen(false);
+      setOpenSimpleHref(href);
+      requestAnimationFrame(() => focusSimpleChildLink(0));
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setIsBooksOpen(false);
+      setOpenSimpleHref(href);
+      requestAnimationFrame(() => focusSimpleChildLink(-1));
+    } else if (event.key === "Escape") {
+      closeSimple();
+    }
+  };
+
+  const onSimplePanelKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const items = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>("a[role='menuitem']")
+    );
+    const currentIndex = items.indexOf(document.activeElement as HTMLElement);
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      const next = currentIndex < 0 ? 0 : (currentIndex + 1) % items.length;
+      items[next]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      const next =
+        currentIndex < 0
+          ? items.length - 1
+          : (currentIndex - 1 + items.length) % items.length;
+      items[next]?.focus();
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      items[0]?.focus();
+    } else if (event.key === "End") {
+      event.preventDefault();
+      items[items.length - 1]?.focus();
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeSimple();
+      if (typeof window !== "undefined" && isDesktopNav()) {
+        simpleButtonDesktopRef.current?.focus();
+      } else {
+        simpleButtonMobileRef.current?.focus();
+      }
     }
   };
 
@@ -506,6 +631,27 @@ export function Header() {
     );
   };
 
+  const renderSimpleLinks = (
+    item: NavDropdownItem,
+    onNavigate?: () => void
+  ) => (
+    <ul className="mega-list">
+      {simpleChildLinks(item).map((child) => (
+        <li key={child.href}>
+          <Link
+            href={child.href}
+            role="menuitem"
+            aria-current={isPathActive(pathname, child.href) ? "page" : undefined}
+            className="mega-link"
+            onClick={onNavigate}
+          >
+            {child.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
   const renderDesktopItem = (item: NavItem) => {
     if (item.type === "link") {
       const active = isPathActive(pathname, item.href);
@@ -524,6 +670,53 @@ export function Header() {
     }
 
     const active = isDropdownActive(pathname, item);
+
+    if (!hasBookCovers(item)) {
+      const isSimpleOpen = openSimpleHref === item.href;
+      return (
+        <div
+          key={item.label}
+          className={`nav-dropdown${isSimpleOpen ? " is-open" : ""}${active ? " is-active" : ""}`}
+          onMouseEnter={() => scheduleSimpleOpen(item.href)}
+          onMouseLeave={scheduleSimpleClose}
+        >
+          <button
+            ref={simpleButtonDesktopRef}
+            type="button"
+            className="nav-dropdown-trigger"
+            aria-expanded={isSimpleOpen}
+            aria-haspopup="menu"
+            aria-controls={simpleMenuId}
+            aria-current={active ? "true" : undefined}
+            onClick={() => {
+              setIsBooksOpen(false);
+              setOpenSimpleHref((prev) => (prev === item.href ? null : item.href));
+            }}
+            onKeyDown={(event) => onSimpleButtonKeyDown(event, item.href)}
+            onMouseEnter={(event) => onNavItemEnter(event.currentTarget)}
+            onFocus={(event) => onNavItemEnter(event.currentTarget)}
+          >
+            <span className="nav-dropdown-trigger-label">{item.label}</span>
+            <span className="nav-dropdown-caret" aria-hidden="true" />
+          </button>
+          <div
+            ref={simpleMenuRef}
+            id={simpleMenuId}
+            className={`nav-simple-menu${isSimpleOpen ? " is-open" : ""}`}
+            role="menu"
+            aria-label={item.label}
+            aria-hidden={!isSimpleOpen}
+            inert={!isSimpleOpen ? true : undefined}
+            onKeyDown={onSimplePanelKeyDown}
+            onMouseEnter={() => scheduleSimpleOpen(item.href)}
+            onMouseLeave={scheduleSimpleClose}
+          >
+            {renderSimpleLinks(item)}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div
         key={item.label}
@@ -539,7 +732,10 @@ export function Header() {
           aria-haspopup="menu"
           aria-controls={booksMenuId}
           aria-current={active ? "true" : undefined}
-          onClick={() => setIsBooksOpen((prev) => !prev)}
+          onClick={() => {
+            setOpenSimpleHref(null);
+            setIsBooksOpen((prev) => !prev);
+          }}
           onKeyDown={onBooksButtonKeyDown}
           onMouseEnter={(event) => onNavItemEnter(event.currentTarget)}
           onFocus={(event) => onNavItemEnter(event.currentTarget)}
@@ -568,6 +764,46 @@ export function Header() {
     }
 
     const active = isDropdownActive(pathname, item);
+
+    if (!hasBookCovers(item)) {
+      const isSimpleOpen = openSimpleHref === item.href;
+      return (
+        <div
+          key={item.label}
+          className={`nav-dropdown${isSimpleOpen ? " is-open" : ""}${active ? " is-active" : ""}`}
+        >
+          <button
+            ref={simpleButtonMobileRef}
+            type="button"
+            className="nav-dropdown-trigger"
+            aria-expanded={isSimpleOpen}
+            aria-haspopup="menu"
+            aria-controls={simpleMenuMobileId}
+            aria-current={active ? "true" : undefined}
+            onClick={() => {
+              setIsBooksOpen(false);
+              setOpenSimpleHref((prev) => (prev === item.href ? null : item.href));
+            }}
+            onKeyDown={(event) => onSimpleButtonKeyDown(event, item.href)}
+          >
+            <span className="nav-dropdown-trigger-label">{item.label}</span>
+            <span className="nav-dropdown-caret" aria-hidden="true" />
+          </button>
+          <div
+            id={simpleMenuMobileId}
+            className={`mega-menu mega-menu--drawer${isSimpleOpen ? " is-open" : ""}`}
+            role="menu"
+            aria-label={item.label}
+            aria-hidden={!isSimpleOpen}
+            inert={!isSimpleOpen ? true : undefined}
+            onKeyDown={onSimplePanelKeyDown}
+          >
+            {renderSimpleLinks(item, closeMobile)}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div
         key={item.label}
@@ -581,7 +817,10 @@ export function Header() {
           aria-haspopup="menu"
           aria-controls={booksMenuMobileId}
           aria-current={active ? "true" : undefined}
-          onClick={() => setIsBooksOpen((prev) => !prev)}
+          onClick={() => {
+            setOpenSimpleHref(null);
+            setIsBooksOpen((prev) => !prev);
+          }}
           onKeyDown={onBooksButtonKeyDown}
         >
           <span className="nav-dropdown-trigger-label">{item.label}</span>
@@ -637,7 +876,10 @@ export function Header() {
           aria-controls="mobile-nav-drawer"
           onClick={() => {
             setIsOpen((prev) => {
-              if (prev) setIsBooksOpen(false);
+              if (prev) {
+                setIsBooksOpen(false);
+                setOpenSimpleHref(null);
+              }
               return !prev;
             });
           }}

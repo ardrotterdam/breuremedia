@@ -209,6 +209,49 @@ body.is-nav-locked {
     border-top-color 200ms ease;
 }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-simple-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 30;
+  min-width: 12.5rem;
+  padding: 0.7rem 1rem;
+  background: var(--nav-mega);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  border-radius: var(--nav-radius);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(197, 160, 89, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-simple-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 14px;
+}
+
+.nav-simple-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 .nav-dropdown.is-open .nav-dropdown-caret {
   transform: rotate(180deg);
   border-top-color: var(--color-gold-light);
@@ -755,6 +798,7 @@ body.is-nav-locked {
 
   .mega-menu--desktop,
   .mega-menu--drawer,
+  .nav-simple-menu,
   .nav-drawer,
   .nav-scrim {
     transition: none;
