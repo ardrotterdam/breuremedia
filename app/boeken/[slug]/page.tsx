@@ -79,6 +79,9 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
   );
 
   const isChapterBook = book.slug === "schaduwen-over-domburg";
+  const CROSS_SELL_SLUGS = ["zero-day-directive"];
+  const showCrossSellChapter =
+    !isChapterBook && CROSS_SELL_SLUGS.includes(book.slug);
   const hasAbout = book.longDescription.length > 0;
   const hasSetting = Boolean(book.setting) || book.themes.length > 0;
 
@@ -88,8 +91,18 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
       <BookHero
         book={book}
         priority
-        orderLabel={isChapterBook ? "LEES HET EERSTE HOOFDSTUK" : undefined}
-        orderHref={isChapterBook ? "#eerste-hoofdstuk" : undefined}
+        orderLabel={
+          isChapterBook
+            ? "LEES HET EERSTE HOOFDSTUK"
+            : showCrossSellChapter
+              ? "Lees het eerste hoofdstuk van Domburg"
+              : undefined
+        }
+        orderHref={
+          isChapterBook || showCrossSellChapter
+            ? "#eerste-hoofdstuk"
+            : undefined
+        }
       />
 
       <section
@@ -162,14 +175,23 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
         </div>
       ) : null}
 
-      <NewsletterSection
-        id="wachtlijst"
-        source={`boekpagina-${book.slug}`}
-        book={book.title}
-        eyebrow="Wachtlijst"
-        title="Als eerste weten wanneer het boek verschijnt?"
-        description={`Leuk dat je nieuwsgierig bent naar ${book.title}. Laat je e-mailadres achter, dan ontvang je als eerste nieuws over de verschijningsdatum en een exclusieve voorpublicatie.`}
-      />
+      {showCrossSellChapter ? (
+        <div className="container">
+          <FirstChapterCTA
+            source={`boekpagina-${book.slug}-crosssell`}
+            intro="Zero Day Directive verschijnt naar verwachting januari 2027. Lees intussen het eerste hoofdstuk van mijn eerste thriller."
+          />
+        </div>
+      ) : (
+        <NewsletterSection
+          id="wachtlijst"
+          source={`boekpagina-${book.slug}`}
+          book={book.title}
+          eyebrow="Wachtlijst"
+          title="Als eerste weten wanneer het boek verschijnt?"
+          description={`Leuk dat je nieuwsgierig bent naar ${book.title}. Laat je e-mailadres achter, dan ontvang je als eerste nieuws over de verschijningsdatum en een exclusieve voorpublicatie.`}
+        />
+      )}
 
       <FaqSection items={book.faq} title={`Veelgestelde vragen over ${book.title}`} />
     </main>

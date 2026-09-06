@@ -9,6 +9,7 @@ import { getBookBySlug } from "@/data/books";
 interface FirstChapterCTAProps {
   source: string;
   locale?: Locale;
+  intro?: string;
 }
 
 const FEATURED_BOOK_SLUG = "schaduwen-over-domburg";
@@ -90,6 +91,7 @@ function copyFor(locale: Locale) {
 export function FirstChapterCTA({
   source,
   locale = "nl",
+  intro,
 }: FirstChapterCTAProps) {
   const t = copyFor(locale);
 
@@ -99,6 +101,7 @@ export function FirstChapterCTA({
       className="content-section"
       aria-labelledby="first-chapter-heading"
     >
+      {intro ? <p className="content-paragraph">{intro}</p> : null}
       <h2 id="first-chapter-heading" className="content-heading">
         {t.heading}
       </h2>
