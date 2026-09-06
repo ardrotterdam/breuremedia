@@ -585,9 +585,9 @@ export const books: Book[] = [
         "Der Letzte Eingriff ist ein geopolitischer KI-Thriller über Macht, Technologie und den gefährlichen Punkt, an dem menschliches Urteilsvermögen und Maschinenlogik aufeinanderprallen.",
       ],
       coverImage:
-        "/assets/der-letzte-eingriff-ard-breure-geopolitischer-ki-thriller.webp",
+        "/assets/der-letzte-eingriff-ard-breure-deutsche-cover.webp",
       coverAlt:
-        "Der Letzte Eingriff von Ard Breure, geopolitischer KI-Thriller über Europa, Amerika und künstliche Intelligenz",
+        "Der Letzte Eingriff von Ard Breure, deutsche Buchcover eines geopolitischen KI-Thrillers über Mensch und Maschine",
       formatNote: "",
       setting: "",
       themes: [],

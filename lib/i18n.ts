@@ -103,9 +103,9 @@ export const deNavLinks: readonly NavItem[] = [
         label: "Der Letzte Eingriff",
         subtitle: "Geopolitischer KI-Thriller",
         coverImage:
-          "/assets/der-letzte-eingriff-ard-breure-geopolitischer-ki-thriller.webp",
+          "/assets/der-letzte-eingriff-ard-breure-deutsche-cover.webp",
         coverAlt:
-          "Der Letzte Eingriff von Ard Breure, geopolitischer KI-Thriller über Europa, Amerika und künstliche Intelligenz",
+          "Der Letzte Eingriff von Ard Breure, deutsche Buchcover eines geopolitischen KI-Thrillers über Mensch und Maschine",
       },
     ],
   },
