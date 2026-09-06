@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { getAllBooks } from "@/data/books";
 import { author, siteConfig, authorDe, siteDe } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { localeAlternates } from "@/lib/i18n";
@@ -74,8 +75,9 @@ export default function GermanAboutPage() {
             und der Rotterdamer Hafen gehören zu diesem Werk dazu.
           </p>
           <p className="content-paragraph">
-            Nach dem Debüt <em>Schatten über Domburg</em> erscheint unter diesem
-            Label auch <em>Zero Day Directive</em>, ein Techno-Thriller.
+            Nach dem Debüt <em>Schatten über Domburg</em> erscheinen unter diesem
+            Label die Titel unten. Wo noch keine deutsche Ausgabe besteht, führt
+            der Link zur englischen Seite.
           </p>
         </section>
 
@@ -83,18 +85,24 @@ export default function GermanAboutPage() {
           <h2 id="author-books-heading" className="content-heading">
             Veröffentlichungen
           </h2>
-          <p className="content-paragraph">
-            <Link href="/de/schatten-ueber-domburg">
-              <em>Schatten über Domburg</em>
-            </Link>
-            : literarischer Thriller, erscheint bei {siteConfig.name}.
-          </p>
-          <p className="content-paragraph">
-            <Link href="/en/zero-day-directive">
-              <em>Zero Day Directive</em>
-            </Link>
-            : Techno-Thriller, erscheint bei {siteConfig.name}.
-          </p>
+          {getAllBooks().map((book) => {
+            const href = book.de
+              ? `/de/${book.de.slug}`
+              : book.en
+                ? `/en/${book.en.slug}`
+                : `/boeken/${book.slug}`;
+            const title = book.de?.title ?? book.en?.title ?? book.title;
+            const genre = book.de?.genre ?? book.en?.genre ?? book.genre;
+
+            return (
+              <p key={book.slug} className="content-paragraph">
+                <Link href={href}>
+                  <em>{title}</em>
+                </Link>
+                : {genre.toLowerCase()}, erscheint bei {siteConfig.name}.
+              </p>
+            );
+          })}
         </section>
 
         <aside className="author-accent author-accent--inline" aria-label="Motto">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { getEnglishBooks } from "@/data/books";
 import { author, siteConfig, authorEn } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
 import { breadcrumbSchema, buildJsonLd, personSchema } from "@/lib/schema";
@@ -72,9 +73,8 @@ export default function EnglishAboutPage() {
             and e-readers.
           </p>
           <p className="content-paragraph">
-            Following the debut novel <em>Shadows over Domburg</em>,{" "}
-            <em>Zero Day Directive</em> marks the second high-stakes
-            techno-thriller released under this imprint.
+            Following the debut novel <em>Shadows over Domburg</em>, the titles
+            below appear under this imprint.
           </p>
         </section>
 
@@ -82,18 +82,14 @@ export default function EnglishAboutPage() {
           <h2 id="author-books-heading" className="content-heading">
             Publications
           </h2>
-          <p className="content-paragraph">
-            <Link href="/en/shadows-over-domburg">
-              <em>Shadows over Domburg</em>
-            </Link>{" "}
-            — literary thriller, published by {siteConfig.name}.
-          </p>
-          <p className="content-paragraph">
-            <Link href="/en/zero-day-directive">
-              <em>Zero Day Directive</em>
-            </Link>{" "}
-            — high-stakes cyber thriller, published by {siteConfig.name}.
-          </p>
+          {getEnglishBooks().map((book) => (
+            <p key={book.slug} className="content-paragraph">
+              <Link href={`/en/${book.en.slug}`}>
+                <em>{book.en.title}</em>
+              </Link>
+              : {book.en.genre.toLowerCase()}, published by {siteConfig.name}.
+            </p>
+          ))}
         </section>
 
         <aside className="author-accent author-accent--inline" aria-label="Motto">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
+import { getAllBooks } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata, sitePageTitle } from "@/lib/seo";
 import {
@@ -69,9 +70,8 @@ export default function AboutAuthorPage() {
             als Rotterdam en Zeeland, en over e-readers.
           </p>
           <p className="content-paragraph">
-            Na het debuut <em>Schaduwen over Domburg</em> verschijnt met{" "}
-            <em>Zero Day Directive</em> de tweede literaire techno-thriller
-            onder dit label.
+            Na het debuut <em>Schaduwen over Domburg</em> verschijnen onder dit
+            label de titels hieronder.
           </p>
         </section>
 
@@ -79,16 +79,14 @@ export default function AboutAuthorPage() {
           <h2 id="author-books-heading" className="content-heading">
             Publicaties
           </h2>
-          <p className="content-paragraph">
-            <Link href="/boeken/schaduwen-over-domburg">
-              <em>Schaduwen over Domburg</em>
-            </Link>: literaire thriller, verschijnt bij {siteConfig.name}.
-          </p>
-          <p className="content-paragraph">
-            <Link href="/boeken/zero-day-directive">
-              <em>Zero Day Directive</em>
-            </Link>: cyberthriller / techno-thriller, verschijnt bij {siteConfig.name}.
-          </p>
+          {getAllBooks().map((book) => (
+            <p key={book.slug} className="content-paragraph">
+              <Link href={`/boeken/${book.slug}`}>
+                <em>{book.title}</em>
+              </Link>
+              : {book.genre.toLowerCase()}, verschijnt bij {siteConfig.name}.
+            </p>
+          ))}
         </section>
 
         <aside className="author-accent author-accent--inline" aria-label="Motto">
