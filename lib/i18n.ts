@@ -239,7 +239,7 @@ export interface FooterCopy {
 
 export const footerCopy: Record<Locale, FooterCopy> = {
   nl: {
-    tagline: "Onafhankelijk label voor boeken en oorspronkelijke verhalen.",
+    tagline: "Onafhankelijk label voor literaire thrillers.",
     nav: [
       { type: "link", href: "/boeken", label: "Boeken" },
       { type: "link", href: "/e-readers", label: "Lezen" },
@@ -258,7 +258,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     operator: "Breure Media wordt geëxploiteerd door ABshops.nl · KvK 72037628",
   },
   en: {
-    tagline: "Independent imprint for books and original stories.",
+    tagline: "Independent imprint for literary thrillers.",
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
       { type: "link", href: "/en/e-readers", label: "Reading" },
@@ -275,7 +275,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     operator: "Breure Media is operated by ABshops.nl · KvK 72037628",
   },
   de: {
-    tagline: "Unabhängiges Label für Bücher und originale Geschichten.",
+    tagline: "Unabhängiges Label für literarische Thriller.",
     nav: [
       {
         type: "link",
