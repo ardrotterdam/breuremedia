@@ -19,7 +19,7 @@ import {
 
 const pageTitle = sitePageTitle("Best e-readers 2026: Kindle or Kobo?");
 const pageDescription =
-  "A writer’s comparison of the six e-readers that matter in 2026 — and which one I’d buy, depending on how you read.";
+  "A writer’s comparison of the six e-readers that matter in 2026, and which one I’d buy, depending on how you read.";
 const pagePath = "/en/e-readers";
 const heroImage =
   "/assets/kindle-paperwhite-schaduwen-over-domburg-zeeuwse-kust.webp";
@@ -58,19 +58,19 @@ const models: readonly {
 }[] = [
   {
     slug: "kindle-paperwhite",
-    title: "Kindle Paperwhite — the best pick for most readers",
-    forWhom: "Most readers — best buy",
+    title: "Kindle Paperwhite: the best pick for most readers",
+    forWhom: "Most readers, best buy",
     screen: '7", black & white',
     waterproof: "Yes",
     body: [
       "If someone asks me which e-reader to buy, this is the answer nine times out of ten. The 7-inch screen is large enough to read comfortably and small enough to hold in one hand. Warm adjustable lighting means evening reading without that phone-screen glare. It’s waterproof, and the battery lasts weeks, not hours.",
-      "The trade-off: you’re in the Amazon ecosystem. Books come from the Kindle Store — huge and convenient — but EPUB files from elsewhere don’t transfer as easily. For novels and thrillers, that’s usually a feature, not a bug.",
+      "The trade-off: you’re in the Amazon ecosystem. Books come from the Kindle Store, which is huge and convenient, but EPUB files from elsewhere don’t transfer as easily. For novels and thrillers, that’s usually a feature, not a bug.",
     ],
     bestFor: "Anyone who wants to read a lot and make one solid choice.",
   },
   {
     slug: "kindle-basis",
-    title: "Kindle (basic) — the smartest entry point",
+    title: "Kindle (basic): the smartest entry point",
     forWhom: "Smallest budget",
     screen: '6", black & white',
     waterproof: "No",
@@ -82,31 +82,31 @@ const models: readonly {
   },
   {
     slug: "kobo-libra-colour",
-    title: "Kobo Libra Colour — freedom, colour, page-turn buttons",
+    title: "Kobo Libra Colour: freedom, colour, page-turn buttons",
     forWhom: "Colour and buttons, without Amazon",
     screen: '7", colour',
     waterproof: "Yes",
     body: [
-      "Kobo is the brand for readers who want freedom: EPUB files, library loans via Adobe Digital Editions, and no locked-in store. The Libra Colour adds a colour screen and physical page-turn buttons — a pleasure if you read with one hand on the train.",
+      "Kobo is the brand for readers who want freedom: EPUB files, library loans via Adobe Digital Editions, and no locked-in store. The Libra Colour adds a colour screen and physical page-turn buttons: a pleasure if you read with one hand on the train.",
       "Colour e-ink is still a little greyer than the best black-and-white panels. For novels alone, black and white stays sharper and cheaper. For comics, magazines, or illustrated books, colour earns its keep.",
     ],
     bestFor: "Readers who want EPUB, libraries, and life outside Amazon.",
   },
   {
     slug: "kobo-clara-bw",
-    title: "Kobo Clara BW — compact Kobo without Amazon",
+    title: "Kobo Clara BW: compact Kobo without Amazon",
     forWhom: "Compact and affordable, without Amazon",
     screen: '6", black & white',
     waterproof: "Yes",
     body: [
-      "The Clara BW is the smaller sibling: 6 inches, black and white, with a very sharp modern screen. Waterproof, light, and open to EPUB and library books — without Amazon’s store.",
+      "The Clara BW is the smaller sibling: 6 inches, black and white, with a very sharp modern screen. Waterproof, light, and open to EPUB and library books, without Amazon’s store.",
       "Choose this when you want Kobo freedom in a pocketable size and don’t need colour or physical buttons.",
     ],
     bestFor: "Travel readers who want a small open e-reader.",
   },
   {
     slug: "kindle-scribe",
-    title: "Kindle Scribe — large screen with a pen",
+    title: "Kindle Scribe: large screen with a pen",
     forWhom: "Notes on a large screen",
     screen: '10.2", with pen',
     waterproof: "No",
@@ -118,7 +118,7 @@ const models: readonly {
   },
   {
     slug: "kindle-colorsoft",
-    title: "Kindle Colorsoft — colour inside Kindle",
+    title: "Kindle Colorsoft: colour inside Kindle",
     forWhom: "Colour within the Kindle ecosystem",
     screen: '7", colour',
     waterproof: "Yes",
@@ -134,7 +134,7 @@ const faqItems = [
   {
     question: "Is an e-reader better for your eyes than a tablet?",
     answer:
-      "Yes. E-ink reflects light like paper instead of shining light into your eyes like a phone or tablet. That’s why you can read for hours without eye strain — including outdoors in sunlight.",
+      "Yes. E-ink reflects light like paper instead of shining light into your eyes like a phone or tablet. That’s why you can read for hours without eye strain, including outdoors in sunlight.",
   },
   {
     question: "How long does the battery last?",
@@ -144,7 +144,7 @@ const faqItems = [
   {
     question: "Can I read library books on an e-reader?",
     answer:
-      "On Kobo, yes — via Adobe Digital Editions and many public library systems. Kindle does not support those protected library loans the same way; Kindle shines if you buy or borrow inside Amazon’s ecosystem.",
+      "On Kobo, yes: via Adobe Digital Editions and many public library systems. Kindle does not support those protected library loans the same way; Kindle shines if you buy or borrow inside Amazon’s ecosystem.",
   },
   {
     question: "Kindle or Kobo?",
@@ -161,7 +161,7 @@ export default function EnglishEReadersPage() {
   const jsonLd = buildJsonLd(
     {
       "@type": "Article",
-      headline: "The best e-reader of 2026 — chosen by a writer who reads on one",
+      headline: "The best e-reader of 2026, chosen by a writer who reads on one",
       description: pageDescription,
       image: absoluteUrl(heroImage),
       inLanguage: "en",
@@ -201,7 +201,7 @@ export default function EnglishEReadersPage() {
       <JsonLd data={jsonLd} />
       <PageHeader
         eyebrow="Guide"
-        title="The best e-reader of 2026 — chosen by a writer who reads on one"
+        title="The best e-reader of 2026, chosen by a writer who reads on one"
         description="By Ard Breure, author of Shadows over Domburg"
       />
       <div className="container content-page">
@@ -215,7 +215,7 @@ export default function EnglishEReadersPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            I read a lot. As a writer that comes with the job — but I was
+            I read a lot. As a writer that comes with the job. But I was
             reading long before I published a word. Over the past years much of
             that reading moved to e-readers: on the train, on the sofa at night,
             on holiday with thirty books in a jacket pocket. This guide compares
@@ -244,7 +244,7 @@ export default function EnglishEReadersPage() {
             style={{ width: "100%", height: "auto" }}
           />
           <figcaption className="content-meta">
-            Shadows over Domburg on the Kindle Paperwhite — the e-reader I
+            Shadows over Domburg on the Kindle Paperwhite, the e-reader I
             recommend as the best buy below.
           </figcaption>
         </figure>
@@ -257,7 +257,7 @@ export default function EnglishEReadersPage() {
             className="content-meta"
             style={{ marginBottom: "0.875rem", maxWidth: "none" }}
           >
-            My number-one recommendation — read why below, or open it now:
+            My number-one recommendation. Read why below, or open it now:
           </p>
           <AffiliateButton
             amazonUrl={getEreaderUrl("kindle-paperwhite")}
@@ -284,7 +284,7 @@ export default function EnglishEReadersPage() {
                 {models.map((model) => (
                   <tr key={model.slug}>
                     <td>
-                      <a href={`#${model.slug}`}>{model.title.split(" — ")[0]}</a>
+                      <a href={`#${model.slug}`}>{model.title.split(": ")[0]}</a>
                     </td>
                     <td>{model.forWhom}</td>
                     <td>{model.screen}</td>
@@ -344,7 +344,7 @@ export default function EnglishEReadersPage() {
           </h2>
           <p className="content-paragraph">
             <strong>1. Where do your books come from?</strong> Buy from a major
-            store: Kindle. Prefer EPUB files or library loans: Kobo — Kindle
+            store: Kindle. Prefer EPUB files or library loans: Kobo. Kindle
             does not support those protected library books the same way.
           </p>
           <p className="content-paragraph">

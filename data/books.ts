@@ -169,7 +169,7 @@ export const books: Book[] = [
         "English book cover of Shadows over Domburg by Ard Breure",
       formatNote:
         "Shadows over Domburg is expected in autumn 2026. Sign up for the newsletter to be the first to hear the exact release date, price and an exclusive preview.",
-      setting: "Domburg, Zeeland — the Dutch coast",
+      setting: "Domburg, Zeeland: the Dutch coast",
       themes: [
         "Silence and suspense",
         "Moral choices",
@@ -188,7 +188,7 @@ export const books: Book[] = [
         {
           question: "What is a literary thriller?",
           answer:
-            "A literary thriller combines suspense with careful prose, deeply drawn characters and themes that reach beyond the crime itself. The emphasis lies on psychology, atmosphere and moral dilemmas — not only on who did it.",
+            "A literary thriller combines suspense with careful prose, deeply drawn characters and themes that reach beyond the crime itself. The emphasis lies on psychology, atmosphere and moral dilemmas, not only on who did it.",
         },
         {
           question: "Where is Shadows over Domburg set?",
@@ -366,12 +366,12 @@ export const books: Book[] = [
       subtitle: "A technothriller",
       genre: "Technothriller",
       tagline:
-        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking, and the line between loyalty and betrayal is fading.",
       description:
-        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking, and the line between loyalty and betrayal is fading.",
       longDescription: [
-        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking—and the line between loyalty and betrayal is fading.",
-        "When a devastating cyberattack paralyzes the European Parliament, Europe is forced into a corner. As Brussels prepares for a historic vote on digital sovereignty—choosing between its traditional alliance with America and an independent future—Iran claims the attack, threatening to shut down the Strait of Hormuz to force European neutrality.",
+        "A zero-day exploit strikes at the heart of European democracy. The clock is ticking, and the line between loyalty and betrayal is fading.",
+        "When a devastating cyberattack paralyzes the European Parliament, Europe is forced into a corner. As Brussels prepares for a historic vote on digital sovereignty, choosing between its traditional alliance with America and an independent future, Iran claims the attack, threatening to shut down the Strait of Hormuz to force European neutrality.",
         "Only one cybersecurity analyst in Brussels stumbles upon the dangerous truth hidden within the code. But as he races through a labyrinth of state-sponsored hacking, political espionage, and digital warfare, the vote itself is being secretly manipulated. If the result flips, the geopolitical balance of power will shift forever.",
         "Packed with authentic tech suspense, pulse-pounding action, and realistic geopolitics, Zero Day Directive is a gripping techno-thriller for fans of Tom Clancy, Daniel Silva, and William Gibson.",
         "Will the truth emerge before democracy is rewritten?",
@@ -381,7 +381,7 @@ export const books: Book[] = [
       formatNote:
         "Zero Day Directive is expected to be published in January 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
       setting:
-        "The Netherlands — the border between physical and digital reality",
+        "The Netherlands: the border between physical and digital reality",
       themes: [
         "Technology and vulnerability",
         "Silence and secrets",
@@ -437,7 +437,7 @@ export const books: Book[] = [
       "Kunstmatige intelligentie verandert de machtsverhoudingen sneller dan regeringen haar kunnen beheersen.",
     longDescription: [
       "Kunstmatige intelligentie verandert de machtsverhoudingen sneller dan regeringen haar kunnen beheersen.",
-      "In Europa en de Verenigde Staten geven algoritmes allang niet meer alleen advies. Ze sturen beslissingen, beïnvloeden instituties en bepalen steeds vaker welke informatie wordt vertrouwd — en welke wordt genegeerd.",
+      "In Europa en de Verenigde Staten geven algoritmes allang niet meer alleen advies. Ze sturen beslissingen, beïnvloeden instituties en bepalen steeds vaker welke informatie wordt vertrouwd, en welke wordt genegeerd.",
       "Wanneer een reeks gebeurtenissen blootlegt hoe diep geautomatiseerde systemen zijn doorgedrongen in politiek, veiligheid en het dagelijks bestuur, dringt één vraag zich onvermijdelijk op: wie heeft er werkelijk de controle?",
       "Het grootste gevaar is misschien niet dat machines slimmer worden dan mensen.",
       "Maar dat de mens, op het moment dat het er echt toe doet, niet langer het laatste woord heeft.",
@@ -475,7 +475,7 @@ export const books: Book[] = [
         "Artificial intelligence is changing the balance of power faster than governments can control it.",
       longDescription: [
         "Artificial intelligence is changing the balance of power faster than governments can control it.",
-        "Across Europe and the United States, algorithms are no longer just advising people. They are shaping decisions, influencing institutions and quietly determining which information is trusted — and which is ignored.",
+        "Across Europe and the United States, algorithms are no longer just advising people. They are shaping decisions, influencing institutions and quietly determining which information is trusted, and which is ignored.",
         "When a series of events exposes how deeply automated systems have entered politics, security and public life, one question becomes impossible to avoid: who is really in control?",
         "The greatest threat may not be that machines become smarter than humans.",
         "It may be that, at the moment that matters most, humanity no longer gets the final say.",
@@ -509,7 +509,7 @@ export const books: Book[] = [
         "Künstliche Intelligenz verändert die Machtverhältnisse schneller, als Regierungen sie kontrollieren können.",
       longDescription: [
         "Künstliche Intelligenz verändert die Machtverhältnisse schneller, als Regierungen sie kontrollieren können.",
-        "In Europa und den Vereinigten Staaten beraten Algorithmen längst nicht mehr nur Menschen. Sie beeinflussen Entscheidungen, prägen Institutionen und bestimmen zunehmend, welchen Informationen vertraut wird — und welchen nicht.",
+        "In Europa und den Vereinigten Staaten beraten Algorithmen längst nicht mehr nur Menschen. Sie beeinflussen Entscheidungen, prägen Institutionen und bestimmen zunehmend, welchen Informationen vertraut wird, und welchen nicht.",
         "Als eine Reihe von Ereignissen offenlegt, wie tief automatisierte Systeme bereits in Politik, Sicherheit und öffentliche Entscheidungsprozesse eingedrungen sind, lässt sich eine Frage nicht länger verdrängen: Wer hat wirklich die Kontrolle?",
         "Die größte Gefahr besteht vielleicht nicht darin, dass Maschinen intelligenter werden als Menschen.",
         "Sondern darin, dass der Mensch in dem Moment, in dem es darauf ankommt, nicht mehr das letzte Wort hat.",
