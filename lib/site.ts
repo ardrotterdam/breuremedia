@@ -127,8 +127,10 @@ export const navLinks: readonly NavItem[] = [
         href: "/boeken/zero-day-directive",
         label: "Zero Day Directive",
         subtitle: "Technothriller",
-        coverImage: "/assets/zero-day-directive.webp",
-        coverAlt: "Cover van Zero Day Directive",
+        coverImage:
+          "/assets/zero-day-directive-ard-breure-nederlandse-cover.webp",
+        coverAlt:
+          "Zero Day Directive van Ard Breure, Nederlandse boekcover van een politieke technothriller over een digitale dreiging voor de Europese democratie",
       },
       {
         type: "link",

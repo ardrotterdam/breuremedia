@@ -308,9 +308,10 @@ export const books: Book[] = [
       "Boordevol authentieke tech-spanning, zenuwslopende actie en realistische geopolitiek is Zero Day Directive een meeslepende techno-thriller voor liefhebbers van Tom Clancy, Daniel Silva en William Gibson.",
       "Komt de waarheid boven tafel voordat de democratie wordt herschreven?",
     ],
-    coverImage: "/assets/zero-day-directive.webp",
+    coverImage:
+      "/assets/zero-day-directive-ard-breure-nederlandse-cover.webp",
     coverAlt:
-      "Zero Day Directive - cyberthriller van Ard Breure, boekomslag met digitaal glitch-effect, binary code en het Europees Parlement",
+      "Zero Day Directive van Ard Breure, Nederlandse boekcover van een politieke technothriller over een digitale dreiging voor de Europese democratie",
     price: 29.95,
     priceFormatted: "€29,95",
     currency: "EUR",
@@ -376,8 +377,10 @@ export const books: Book[] = [
         "Packed with authentic tech suspense, pulse-pounding action, and realistic geopolitics, Zero Day Directive is a gripping techno-thriller for fans of Tom Clancy, Daniel Silva, and William Gibson.",
         "Will the truth emerge before democracy is rewritten?",
       ],
+      coverImage:
+        "/assets/zero-day-directive-ard-breure-english-cover.webp",
       coverAlt:
-        "Zero Day Directive - cyber thriller by Ard Breure, book cover with digital glitch effect, binary code and the European Parliament",
+        "Zero Day Directive by Ard Breure, English book cover for a political techno-thriller about a digital threat to European democracy",
       formatNote:
         "Zero Day Directive is expected to be published in January 2027. Sign up for the newsletter to be the first to receive updates on the exact publication date, price, and an exclusive preview.",
       setting:
@@ -430,18 +433,20 @@ export const books: Book[] = [
       subtitle: "Ein Technothriller",
       genre: "Technothriller",
       tagline:
-        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+        "Eine bislang unbekannte Sicherheitslücke bedroht das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
       description:
-        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+        "Eine bislang unbekannte Sicherheitslücke bedroht das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
       longDescription: [
-        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+        "Eine bislang unbekannte Sicherheitslücke bedroht das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
         "Als ein verheerender Cyberangriff das Europäische Parlament lähmt, wird Europa in die Enge getrieben. Während Brüssel sich auf eine historische Abstimmung über digitale Souveränität vorbereitet, in der zwischen dem traditionellen Bündnis mit Amerika und einem unabhängigen Kurs gewählt werden muss, beansprucht Iran den Angriff für sich und droht, die Straße von Hormus zu schließen, um europäische Neutralität zu erzwingen.",
         "Nur ein Cybersicherheitsanalyst in Brüssel stößt auf die gefährliche Wahrheit, die im Code verborgen liegt. Doch während er sich durch ein Labyrinth aus staatlich gelenktem Hacking, politischer Spionage und digitaler Kriegsführung kämpft, wird die Abstimmung selbst im Geheimen manipuliert. Kippt das Ergebnis, verschiebt sich das geopolitische Machtgleichgewicht für immer.",
         "Authentische Tech-Spannung, atemlose Handlung und realistische Geopolitik: Zero Day Directive ist ein Techno-Thriller für Leserinnen und Leser von Tom Clancy, Daniel Silva und William Gibson.",
         "Kommt die Wahrheit ans Licht, bevor die Demokratie neu geschrieben wird?",
       ],
+      coverImage:
+        "/assets/zero-day-directive-ard-breure-deutsche-cover.webp",
       coverAlt:
-        "Zero Day Directive, Cyberthriller von Ard Breure: Buchcover mit digitalem Glitch-Effekt, Binärcode und dem Europäischen Parlament",
+        "Zero Day Directive von Ard Breure, deutsche Buchcover-Ausgabe eines politischen Technothrillers über eine digitale Bedrohung der europäischen Demokratie",
       formatNote:
         "Zero Day Directive erscheint voraussichtlich im Januar 2027. Schreiben Sie sich für den Newsletter ein, um als Erste vom genauen Erscheinungstermin, vom Preis und von einer exklusiven Vorabveröffentlichung zu erfahren.",
       setting:

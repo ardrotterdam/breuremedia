@@ -43,8 +43,10 @@ export const enNavLinks: readonly NavItem[] = [
         href: "/en/zero-day-directive",
         label: "Zero Day Directive",
         subtitle: "Technothriller",
-        coverImage: "/assets/zero-day-directive.webp",
-        coverAlt: "Cover of Zero Day Directive",
+        coverImage:
+          "/assets/zero-day-directive-ard-breure-english-cover.webp",
+        coverAlt:
+          "Zero Day Directive by Ard Breure, English book cover for a political techno-thriller about a digital threat to European democracy",
       },
       {
         type: "link",
@@ -90,9 +92,10 @@ export const deNavLinks: readonly NavItem[] = [
         href: "/de/zero-day-directive",
         label: "Zero Day Directive",
         subtitle: "Technothriller",
-        coverImage: "/assets/zero-day-directive.webp",
+        coverImage:
+          "/assets/zero-day-directive-ard-breure-deutsche-cover.webp",
         coverAlt:
-          "Zero Day Directive, Cyberthriller von Ard Breure: Buchcover mit digitalem Glitch-Effekt, Binärcode und dem Europäischen Parlament",
+          "Zero Day Directive von Ard Breure, deutsche Buchcover-Ausgabe eines politischen Technothrillers über eine digitale Bedrohung der europäischen Demokratie",
       },
       {
         type: "link",
