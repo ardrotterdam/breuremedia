@@ -14,6 +14,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getBookBySlug } from "@/data/books";
+import { CHAPTER_1_PATHS, CHAPTER_1_SLUG } from "@/lib/chapter-1";
 import {
   navLinks,
   siteConfig,
@@ -30,6 +32,46 @@ import {
   localeFromPathname,
   type Locale,
 } from "@/lib/i18n";
+
+const FEATURED_BOOK = getBookBySlug(CHAPTER_1_SLUG);
+
+function featuredBookForLocale(locale: Locale): {
+  title: string;
+  coverImage: string;
+  coverAlt: string;
+  chapterHref: string;
+} {
+  const book = FEATURED_BOOK;
+  if (locale === "en" && book?.en) {
+    return {
+      title: book.en.title,
+      coverImage: book.en.coverImage ?? book.coverImage,
+      coverAlt: book.en.coverAlt,
+      chapterHref: CHAPTER_1_PATHS.en,
+    };
+  }
+  if (locale === "de" && book?.de) {
+    return {
+      title: book.de.title,
+      coverImage: book.de.coverImage ?? book.coverImage,
+      coverAlt: book.de.coverAlt,
+      chapterHref: CHAPTER_1_PATHS.de,
+    };
+  }
+  return {
+    title: book?.title ?? "Schaduwen over Domburg",
+    coverImage: book?.coverImage ?? "/assets/schaduwen-over-domburg-cover.webp",
+    coverAlt: book?.coverAlt ?? "Cover van Schaduwen over Domburg",
+    chapterHref: CHAPTER_1_PATHS.nl,
+  };
+}
+
+function formatNavIndex(index: number): string {
+  return String(index + 1).padStart(2, "0");
+}
+
+const DRAWER_FOCUSABLE =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /*
  * Kalme sinusachtige golf: één kwadratische curve gevolgd door
@@ -131,11 +173,44 @@ function LangSwitch({
   locale,
   pathname,
   onNavigate,
+  segmented = false,
 }: {
   locale: Locale;
   pathname: string;
   onNavigate?: () => void;
+  segmented?: boolean;
 }) {
+  if (segmented) {
+    return (
+      <span
+        className="lang-switch lang-switch--segmented"
+        aria-label="Taal / Language / Sprache"
+      >
+        {LANG_SWITCH_ITEMS.map((item, index) => (
+          <Fragment key={item.code}>
+            {index > 0 ? (
+              <span className="lang-seg-rule" aria-hidden="true" />
+            ) : null}
+            {locale === item.code ? (
+              <span className="lang-current" aria-current="true">
+                {item.label}
+              </span>
+            ) : (
+              <Link
+                href={counterpartPath(pathname, item.code)}
+                hrefLang={item.code}
+                className="lang-link"
+                onClick={onNavigate}
+              >
+                {item.label}
+              </Link>
+            )}
+          </Fragment>
+        ))}
+      </span>
+    );
+  }
+
   return (
     <span className="lang-switch" aria-label="Taal / Language / Sprache">
       {LANG_SWITCH_ITEMS.map((item, index) => (
@@ -177,6 +252,7 @@ export function Header() {
   const booksMenuMobileId = useId();
   const simpleMenuId = useId();
   const simpleMenuMobileId = useId();
+  const noiseFilterId = useId().replace(/:/g, "");
   const navListRef = useRef<HTMLDivElement>(null);
   const megaRef = useRef<HTMLDivElement>(null);
   const simpleMenuRef = useRef<HTMLDivElement>(null);
@@ -185,6 +261,9 @@ export function Header() {
   const simpleButtonDesktopRef = useRef<HTMLButtonElement>(null);
   const simpleButtonMobileRef = useRef<HTMLButtonElement>(null);
   const navToggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
+  const scrollLockY = useRef(0);
+  const scrollWasLocked = useRef(false);
   const openTimer = useRef<number>(0);
   const closeTimer = useRef<number>(0);
   const hoveredItem = useRef<HTMLElement | null>(null);
@@ -198,6 +277,7 @@ export function Header() {
   const links = navByLocale[locale];
   const t = headerCopy[locale];
   const homeHref = homePaths[locale];
+  const featuredBook = featuredBookForLocale(locale);
   const booksItem = links.find(isBooksDropdown);
   const mega = booksItem ? splitMegaChildren(booksItem.children) : null;
   const isBooksOnlyMega =
@@ -266,13 +346,44 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("is-nav-locked", isOpen);
-    document.body.classList.toggle("is-nav-locked", isOpen);
+    if (isOpen) {
+      scrollWasLocked.current = true;
+      scrollLockY.current = window.scrollY;
+      document.documentElement.classList.add("is-nav-locked");
+      document.body.classList.add("is-nav-locked");
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollLockY.current}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      return;
+    }
+
+    if (!scrollWasLocked.current) return;
+    scrollWasLocked.current = false;
+
+    const y = scrollLockY.current;
+    document.documentElement.classList.remove("is-nav-locked");
+    document.body.classList.remove("is-nav-locked");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, y);
+  }, [isOpen]);
+
+  useEffect(() => {
     return () => {
       document.documentElement.classList.remove("is-nav-locked");
       document.body.classList.remove("is-nav-locked");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
     };
-  }, [isOpen]);
+  }, []);
 
   useEffect(() => {
     if (!isBooksOpen && !openSimpleHref) return;
@@ -325,12 +436,57 @@ export function Header() {
   useEffect(() => {
     if (!isOpen) return;
 
+    const panel = drawerRef.current;
+    const getFocusable = () => {
+      if (!panel) return [] as HTMLElement[];
+      return Array.from(
+        panel.querySelectorAll<HTMLElement>(DRAWER_FOCUSABLE)
+      ).filter(
+        (el) =>
+          !el.hasAttribute("disabled") &&
+          el.getAttribute("aria-hidden") !== "true" &&
+          el.tabIndex !== -1
+      );
+    };
+
+    const focusables = getFocusable();
+    if (focusables[0]) {
+      focusables[0].focus();
+    } else {
+      panel?.focus();
+    }
+
     const onKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setIsOpen(false);
         setIsBooksOpen(false);
         setOpenSimpleHref(null);
-        navToggleRef.current?.focus();
+        requestAnimationFrame(() => navToggleRef.current?.focus());
+        return;
+      }
+
+      if (event.key !== "Tab" || !panel) return;
+
+      const items = getFocusable();
+      if (items.length === 0) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey) {
+        if (active === first || !panel.contains(active)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !panel.contains(active)) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
@@ -372,11 +528,12 @@ export function Header() {
     };
   }, []);
 
-  const closeMobile = () => {
+  const closeMobile = useCallback(() => {
     setIsOpen(false);
     setIsBooksOpen(false);
     setOpenSimpleHref(null);
-  };
+    requestAnimationFrame(() => navToggleRef.current?.focus());
+  }, []);
 
   const scheduleBooksOpen = () => {
     if (!isHoverNav()) return;
@@ -747,96 +904,113 @@ export function Header() {
     );
   };
 
-  const renderDrawerItem = (item: NavItem) => {
+  const renderDrawerSubmenu = (item: NavDropdownItem) => (
+    <ul className="nav-drawer-submenu-list">
+      {simpleChildLinks(item).map((child) => (
+        <li key={child.href} role="none">
+          <Link
+            href={child.href}
+            role="menuitem"
+            className="nav-drawer-sublink"
+            aria-current={isPathActive(pathname, child.href) ? "page" : undefined}
+            onClick={closeMobile}
+          >
+            {child.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const renderDrawerItem = (item: NavItem, index: number) => {
+    const indexLabel = formatNavIndex(index);
+
     if (item.type === "link") {
       const active = isPathActive(pathname, item.href);
       return (
         <Link
           key={item.href}
           href={item.href}
-          className="nav-link"
+          className="nav-drawer-item"
           aria-current={active ? "page" : undefined}
           onClick={closeMobile}
+          style={{ "--nav-stagger": String(index) } as CSSProperties}
         >
-          {item.label}
+          <span className="nav-drawer-item-label">{item.label}</span>
+          <span className="nav-drawer-item-index" aria-hidden="true">
+            {indexLabel}
+          </span>
         </Link>
       );
     }
 
     const active = isDropdownActive(pathname, item);
-
-    if (!hasBookCovers(item)) {
-      const isSimpleOpen = openSimpleHref === item.href;
-      return (
-        <div
-          key={item.label}
-          className={`nav-dropdown${isSimpleOpen ? " is-open" : ""}${active ? " is-active" : ""}`}
-        >
-          <button
-            ref={simpleButtonMobileRef}
-            type="button"
-            className="nav-dropdown-trigger"
-            aria-expanded={isSimpleOpen}
-            aria-haspopup="menu"
-            aria-controls={simpleMenuMobileId}
-            aria-current={active ? "true" : undefined}
-            onClick={() => {
-              setIsBooksOpen(false);
-              setOpenSimpleHref((prev) => (prev === item.href ? null : item.href));
-            }}
-            onKeyDown={(event) => onSimpleButtonKeyDown(event, item.href)}
-          >
-            <span className="nav-dropdown-trigger-label">{item.label}</span>
-            <span className="nav-dropdown-caret" aria-hidden="true" />
-          </button>
-          <div
-            id={simpleMenuMobileId}
-            className={`mega-menu mega-menu--drawer${isSimpleOpen ? " is-open" : ""}`}
-            role="menu"
-            aria-label={item.label}
-            aria-hidden={!isSimpleOpen}
-            inert={!isSimpleOpen ? true : undefined}
-            onKeyDown={onSimplePanelKeyDown}
-          >
-            {renderSimpleLinks(item, closeMobile)}
-          </div>
-        </div>
-      );
-    }
+    const isBooks = hasBookCovers(item);
+    const isExpanded = isBooks
+      ? isBooksOpen
+      : openSimpleHref === item.href;
+    const menuId = isBooks ? booksMenuMobileId : simpleMenuMobileId;
+    const buttonRef = isBooks ? booksButtonMobileRef : simpleButtonMobileRef;
 
     return (
       <div
         key={item.label}
-        className={`nav-dropdown${isBooksOpen ? " is-open" : ""}${active ? " is-active" : ""}`}
+        className={`nav-drawer-group${isExpanded ? " is-open" : ""}${active ? " is-active" : ""}`}
+        style={{ "--nav-stagger": String(index) } as CSSProperties}
       >
         <button
-          ref={booksButtonMobileRef}
+          ref={buttonRef}
           type="button"
-          className="nav-dropdown-trigger"
-          aria-expanded={isBooksOpen}
+          className="nav-drawer-item nav-drawer-item--trigger"
+          aria-expanded={isExpanded}
           aria-haspopup="menu"
-          aria-controls={booksMenuMobileId}
+          aria-controls={menuId}
           aria-current={active ? "true" : undefined}
           onClick={() => {
-            setOpenSimpleHref(null);
-            setIsBooksOpen((prev) => !prev);
+            if (isBooks) {
+              setOpenSimpleHref(null);
+              setIsBooksOpen((prev) => !prev);
+            } else {
+              setIsBooksOpen(false);
+              setOpenSimpleHref((prev) =>
+                prev === item.href ? null : item.href
+              );
+            }
           }}
-          onKeyDown={onBooksButtonKeyDown}
+          onKeyDown={
+            isBooks
+              ? onBooksButtonKeyDown
+              : (event) => onSimpleButtonKeyDown(event, item.href)
+          }
         >
-          <span className="nav-dropdown-trigger-label">{item.label}</span>
-          <span className="nav-dropdown-caret" aria-hidden="true" />
+          <span className="nav-drawer-item-label">{item.label}</span>
+          <span className="nav-drawer-item-trailing">
+            <span className="nav-drawer-item-index" aria-hidden="true">
+              {indexLabel}
+            </span>
+            <span className="nav-drawer-chevron" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M3.25 5.25L7 9l3.75-3.75"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </span>
         </button>
         <div
-          id={booksMenuMobileId}
-          className={`mega-menu mega-menu--drawer${isBooksOpen ? " is-open" : ""}${isBooksOnlyMega ? " mega-menu--books-only" : ""}`}
+          id={menuId}
+          className={`nav-drawer-submenu${isExpanded ? " is-open" : ""}`}
           role="menu"
-          aria-label={t.booksMenu}
-          aria-hidden={!isBooksOpen}
-          inert={!isBooksOpen ? true : undefined}
-          onKeyDown={onPanelKeyDown}
+          aria-label={isBooks ? t.booksMenu : item.label}
+          aria-hidden={!isExpanded}
+          inert={!isExpanded ? true : undefined}
+          onKeyDown={isBooks ? onPanelKeyDown : onSimplePanelKeyDown}
         >
-          {renderMegaExplore(closeMobile)}
-          {renderMegaBooks(closeMobile)}
+          {renderDrawerSubmenu(item)}
         </div>
       </div>
     );
@@ -927,20 +1101,70 @@ export function Header() {
       />
 
       <nav
+        ref={drawerRef}
         id="mobile-nav-drawer"
         className={`nav-drawer${isOpen ? " is-open" : ""}`}
         aria-label={t.navLabel}
         lang={locale}
         aria-hidden={!isOpen}
         inert={!isOpen ? true : undefined}
+        tabIndex={-1}
       >
+        <div className="nav-drawer-ground" aria-hidden="true" />
+        <div className="nav-drawer-noise" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <filter id={noiseFilterId}>
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.85"
+                numOctaves="4"
+                stitchTiles="stitch"
+              />
+            </filter>
+            <rect
+              width="100%"
+              height="100%"
+              filter={`url(#${noiseFilterId})`}
+            />
+          </svg>
+        </div>
         <div className="nav-drawer-inner">
-          {links.map(renderDrawerItem)}
-          <LangSwitch
-            locale={locale}
-            pathname={pathname}
-            onNavigate={closeMobile}
-          />
+          <div className="nav-drawer-list">
+            {links.map((item, index) => renderDrawerItem(item, index))}
+          </div>
+
+          <div className="nav-drawer-bottom">
+            <div className="nav-drawer-rule" aria-hidden="true" />
+            <p className="nav-drawer-eyebrow">{t.outNow}</p>
+            <div className="nav-drawer-book">
+              <Image
+                src={featuredBook.coverImage}
+                alt={featuredBook.coverAlt}
+                width={64}
+                height={96}
+                className="nav-drawer-cover"
+              />
+              <div className="nav-drawer-book-copy">
+                <p className="nav-drawer-book-title">{featuredBook.title}</p>
+                <Link
+                  href={featuredBook.chapterHref}
+                  className="nav-drawer-chapter-link"
+                  onClick={closeMobile}
+                >
+                  {t.chapterLink}
+                </Link>
+              </div>
+            </div>
+            <p className="nav-drawer-coords" aria-hidden="true">
+              51°33′N 3°30′E
+            </p>
+            <LangSwitch
+              locale={locale}
+              pathname={pathname}
+              onNavigate={closeMobile}
+              segmented
+            />
+          </div>
         </div>
       </nav>
     </header>

@@ -380,6 +380,10 @@ export const headerCopy: Record<
     themesLabel: string;
     featuredLabel: string;
     exploreLead: string;
+    /** Mobile panel book block eyebrow. Exact locale copy. */
+    outNow: string;
+    /** Link label to the existing first-chapter route (matches chapter reader eyebrow). */
+    chapterLink: string;
   }
 > = {
   nl: {
@@ -392,6 +396,8 @@ export const headerCopy: Record<
     themesLabel: "Thema's",
     featuredLabel: "Uitgelicht",
     exploreLead: "Thrillers over macht, havens en Europa.",
+    outNow: "NU VERKRIJGBAAR",
+    chapterLink: "Hoofdstuk 1",
   },
   en: {
     navLabel: "Main navigation",
@@ -403,6 +409,8 @@ export const headerCopy: Record<
     themesLabel: "Themes",
     featuredLabel: "Featured",
     exploreLead: "Thrillers about power, ports and Europe.",
+    outNow: "OUT NOW",
+    chapterLink: "Chapter 1",
   },
   de: {
     navLabel: "Hauptnavigation",
@@ -414,5 +422,7 @@ export const headerCopy: Record<
     themesLabel: "Themen",
     featuredLabel: "Empfohlen",
     exploreLead: "Thriller über Macht, Häfen und Europa.",
+    outNow: "JETZT ERHAELTLICH",
+    chapterLink: "Kapitel 1",
   },
 };
