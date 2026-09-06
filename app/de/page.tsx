@@ -26,12 +26,12 @@ function localizeGermanBook(book: (typeof germanBooks)[number]): Book {
 }
 
 export const metadata: Metadata = buildMetadata({
-  title: "Breure Media | Literarische Thriller",
+  title: "Breure Media | Thriller über Macht, Häfen und Europa",
   description:
-    "Unabhängiges niederländisches Label für literarische Thriller. Zeeländische Küste, Rotterdamer Hafen. Schatten über Domburg, ein Zeeland Krimi.",
+    "Unabhängiges niederländisches Label für Thriller über Macht, Häfen und Europa. Zeeländische Küste, Rotterdamer Hafen. Schatten über Domburg, ein Zeeland Krimi.",
   path: "/de",
   image: "/images/og-breure-media-general.jpg",
-  imageAlt: "Breure Media: literarische Thriller an der zeeländischen Küste",
+  imageAlt: "Breure Media: Thriller über Macht, Häfen und Europa",
   imageWidth: 1200,
   imageHeight: 630,
   locale: "de_DE",
@@ -44,7 +44,7 @@ export default function GermanHomePage() {
       <PublicationsHero
         eyebrow="Unsere Bücher"
         brand={siteConfig.name}
-        lead="Literarische Thriller, wo die zeeländische Küste den Rotterdamer Hafen berührt."
+        lead="Thriller über Macht, Häfen und Europa. Von der zeeländischen Küste bis in den Rotterdamer Hafen."
         publications={germanBooks.map((book) => {
           const edition = book.de;
           const badge = publicationBadge(book.slug, "de");

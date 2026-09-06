@@ -24,6 +24,20 @@ interface BookDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
+function firstChapterCrossSellIntro(book: {
+  title: string;
+  formatNote: string;
+}): string {
+  const match = book.formatNote.match(
+    /verschijnt naar verwachting\s+([^.]+)/i
+  );
+  const when = match?.[1]?.trim();
+  if (when) {
+    return `${book.title} verschijnt naar verwachting ${when}. Lees intussen het eerste hoofdstuk van mijn eerste thriller.`;
+  }
+  return `${book.title} is nog niet verschenen. Lees intussen het eerste hoofdstuk van mijn eerste thriller.`;
+}
+
 export async function generateStaticParams() {
   return getAllBookSlugs().map((slug) => ({ slug }));
 }
@@ -79,7 +93,7 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
   );
 
   const isChapterBook = book.slug === "schaduwen-over-domburg";
-  const CROSS_SELL_SLUGS = ["zero-day-directive"];
+  const CROSS_SELL_SLUGS = ["zero-day-directive", "de-laatste-ingreep"];
   const showCrossSellChapter =
     !isChapterBook && CROSS_SELL_SLUGS.includes(book.slug);
   const hasAbout = book.longDescription.length > 0;
@@ -179,7 +193,7 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
         <div className="container">
           <FirstChapterCTA
             source={`boekpagina-${book.slug}-crosssell`}
-            intro="Zero Day Directive verschijnt naar verwachting januari 2027. Lees intussen het eerste hoofdstuk van mijn eerste thriller."
+            intro={firstChapterCrossSellIntro(book)}
           />
         </div>
       ) : (

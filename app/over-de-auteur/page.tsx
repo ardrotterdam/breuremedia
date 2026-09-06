@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Over de auteur"),
   description:
-    "Lees meer over Ard Breure, auteur van Schaduwen over Domburg en oprichter van het literaire thrillerlabel Breure Media.",
+    "Lees meer over Ard Breure, auteur van Schaduwen over Domburg en oprichter van Breure Media, een label voor thrillers over macht, havens en Europa.",
   path: "/over-de-auteur",
   languages: {
     nl: "/over-de-auteur",
@@ -63,7 +63,7 @@ export default function AboutAuthorPage() {
           </h2>
           <p className="content-paragraph">
             {siteConfig.name} is een onafhankelijk Nederlands label voor
-            literaire thrillers. Het richt zich op boeken waarin spanning,
+            thrillers over macht, havens en Europa. Het richt zich op boeken waarin spanning,
             taal en psychologische diepgang samenkomen, verhalen die blijven
             nazinderen, lang nadat de laatste pagina is omgeslagen. Daarnaast
             verschijnen hier leeslijsten en gidsen over boeken, over plekken

@@ -271,7 +271,7 @@ export interface FooterCopy {
 
 export const footerCopy: Record<Locale, FooterCopy> = {
   nl: {
-    tagline: "Onafhankelijk label voor literaire thrillers.",
+    tagline: "Onafhankelijk label voor thrillers over macht, havens en Europa.",
     nav: [
       { type: "link", href: "/boeken", label: "Boeken" },
       { type: "link", href: "/e-readers", label: "Lezen" },
@@ -290,7 +290,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     operator: "Breure Media wordt geëxploiteerd door ABshops.nl · KvK 72037628",
   },
   en: {
-    tagline: "Independent imprint for literary thrillers.",
+    tagline: "Independent imprint for thrillers about power, ports and Europe.",
     nav: [
       { type: "link", href: "/en/books", label: "Books" },
       { type: "link", href: "/en/e-readers", label: "Reading" },
@@ -307,7 +307,7 @@ export const footerCopy: Record<Locale, FooterCopy> = {
     operator: "Breure Media is operated by ABshops.nl · KvK 72037628",
   },
   de: {
-    tagline: "Unabhängiges Label für literarische Thriller.",
+    tagline: "Unabhängiges Label für Thriller über Macht, Häfen und Europa.",
     nav: [
       {
         type: "link",
@@ -393,7 +393,7 @@ export const headerCopy: Record<
     exploreLabel: "Ontdekken",
     themesLabel: "Thema's",
     featuredLabel: "Uitgelicht",
-    exploreLead: "Literaire thrillers en oorspronkelijke verhalen.",
+    exploreLead: "Thrillers over macht, havens en Europa.",
   },
   en: {
     navLabel: "Main navigation",
@@ -404,7 +404,7 @@ export const headerCopy: Record<
     exploreLabel: "Explore",
     themesLabel: "Themes",
     featuredLabel: "Featured",
-    exploreLead: "Literary thrillers and original stories.",
+    exploreLead: "Thrillers about power, ports and Europe.",
   },
   de: {
     navLabel: "Hauptnavigation",
@@ -415,6 +415,6 @@ export const headerCopy: Record<
     exploreLabel: "Entdecken",
     themesLabel: "Themen",
     featuredLabel: "Empfohlen",
-    exploreLead: "Literarische Thriller und originale Geschichten.",
+    exploreLead: "Thriller über Macht, Häfen und Europa.",
   },
 };

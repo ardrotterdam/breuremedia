@@ -11,7 +11,7 @@ import { breadcrumbSchema, buildJsonLd, personSchema } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("About the author"),
   description:
-    "About Ard Breure, author of Shadows over Domburg and founder of the literary thriller imprint Breure Media.",
+    "About Ard Breure, author of Shadows over Domburg and founder of Breure Media, an imprint for thrillers about power, ports and Europe.",
   path: "/en/about",
   locale: "en_US",
   languages: {
@@ -65,12 +65,12 @@ export default function EnglishAboutPage() {
             Breure Media
           </h2>
           <p className="content-paragraph">
-            {siteConfig.name} is an independent Dutch imprint for literary
-            thrillers. It focuses on books where suspense, language and
-            psychological depth come together: stories that keep resonating
-            long after the final page. The site also publishes reading lists
-            and guides about books, places such as Rotterdam and Zeeland,
-            and e-readers.
+            {siteConfig.name} is an independent Dutch imprint for thrillers
+            about power, ports and Europe. It focuses on books where suspense,
+            language and psychological depth come together: stories that keep
+            resonating long after the final page. The site also publishes
+            reading lists and guides about books, places such as Rotterdam and
+            Zeeland, and e-readers.
           </p>
           <p className="content-paragraph">
             Following the debut novel <em>Shadows over Domburg</em>, the titles

@@ -29,11 +29,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   ...buildMetadata({
-    title: `${siteConfig.name} | Literaire Thrillers`,
+    title: `${siteConfig.name} | Thrillers over macht, havens en Europa`,
     description: siteConfig.description,
     path: "/",
     image: "/images/og-breure-media-general.jpg",
-    imageAlt: "Breure Media: literaire thrillers",
+    imageAlt: "Breure Media: thrillers over macht, havens en Europa",
     imageWidth: 1200,
     imageHeight: 630,
   }),

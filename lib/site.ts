@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Breure Media",
-  tagline: "Uitgeverij van literaire thrillers",
+  tagline: "Thrillers over macht, havens en Europa",
   description:
-    "Breure Media is een onafhankelijk Nederlands label voor literaire thrillers en oorspronkelijke verhalen.",
+    "Breure Media is een onafhankelijk Nederlands label voor thrillers over macht, havens en Europa.",
   url: "https://breuremedia.com",
   locale: "nl_NL",
   language: "nl",
@@ -24,9 +24,9 @@ export const operator = {
 
 /** English counterparts of the site-level strings, used in the /en section. */
 export const siteEn = {
-  tagline: "Publisher of literary thrillers",
+  tagline: "Thrillers about power, ports and Europe",
   description:
-    "Breure Media is an independent Dutch imprint for literary thrillers and original stories.",
+    "Breure Media is an independent Dutch imprint for thrillers about power, ports and Europe.",
   motto: "Stories that break the silence.",
 } as const;
 
@@ -38,7 +38,7 @@ export const author = {
     "Die twee landschappen, de stilte van de Zeeuwse kust en de ruwheid van de haven, vormen de ruggengraat van zijn werk. Zijn werk verschijnt onder de vlag van Breure Media, een label voor boeken die blijven nazinderen, lang nadat de laatste pagina is omgeslagen.",
   ],
   shortBio:
-    "Nederlandse auteur van literaire thrillers. Zijn debuut Schaduwen over Domburg verschijnt bij Breure Media.",
+    "Nederlandse auteur van thrillers over macht, havens en Europa. Zijn debuut Schaduwen over Domburg verschijnt bij Breure Media.",
 } as const;
 
 /** English author copy, used on /en/about and the English home. */
@@ -48,14 +48,14 @@ export const authorEn = {
     "Those two landscapes, the stillness of the Zeeland coast and the rawness of the harbour, form the backbone of his work. His books appear under the Breure Media imprint: a home for stories that keep resonating long after the final page.",
   ],
   shortBio:
-    "Dutch author of literary thrillers. His debut, Shadows over Domburg, is published by Breure Media.",
+    "Dutch author of thrillers about power, ports and Europe. His debut, Shadows over Domburg, is published by Breure Media.",
 } as const;
 
 /** German counterparts of the site-level strings, used in the /de section. */
 export const siteDe = {
-  tagline: "Label für literarische Thriller",
+  tagline: "Thriller über Macht, Häfen und Europa",
   description:
-    "Breure Media ist ein unabhängiges niederländisches Label für literarische Thriller. Hier berührt die zeeländische Küste den Rotterdamer Hafen.",
+    "Breure Media ist ein unabhängiges niederländisches Label für Thriller über Macht, Häfen und Europa. Hier berührt die zeeländische Küste den Rotterdamer Hafen.",
   motto: "Geschichten, die die Stille durchbrechen.",
 } as const;
 
@@ -66,7 +66,7 @@ export const authorDe = {
     "Diese beiden Landschaften, die Stille der zeeländischen Küste und die Rauheit des Hafens, bilden das Rückgrat seiner Arbeit. Seine Bücher erscheinen unter dem Label Breure Media: ein Haus für Geschichten, die nachklingen, lange nachdem die letzte Seite umgeschlagen ist.",
   ],
   shortBio:
-    "Niederländischer Autor literarischer Thriller. Sein Debüt Schatten über Domburg erscheint bei Breure Media.",
+    "Niederländischer Autor von Thrillern über Macht, Häfen und Europa. Sein Debüt Schatten über Domburg erscheint bei Breure Media.",
 } as const;
 
 /** Leaf link inside the main nav (top-level or dropdown child). */

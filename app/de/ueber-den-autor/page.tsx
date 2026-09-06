@@ -69,7 +69,7 @@ export default function GermanAboutPage() {
           </h2>
           <p className="content-paragraph">
             {siteConfig.name} ist ein unabhängiges niederländisches Label für
-            literarische Thriller. Hier kommen Spannung, Sprache und
+            Thriller über Macht, Häfen und Europa. Hier kommen Spannung, Sprache und
             psychologische Tiefe zusammen: Geschichten, die nachklingen, lange
             nachdem die letzte Seite umgeschlagen ist. Die zeeländische Küste
             und der Rotterdamer Hafen gehören zu diesem Werk dazu.

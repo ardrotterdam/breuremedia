@@ -12,7 +12,7 @@ const pagePath = "/en/for-authors";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("For authors"),
   description:
-    "Breure Media is becoming a label for literary thrillers from the Netherlands, Belgium and Germany. Write thrillers? Leave your email address.",
+    "Breure Media is becoming a label for thrillers about power, ports and Europe, by authors from the Netherlands, Belgium and Germany. Write thrillers? Leave your email address.",
   path: pagePath,
   locale: "en_US",
   languages: localeAlternates(pagePath),
@@ -35,7 +35,7 @@ export default function EnglishAuthorsPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Breure Media is an independent label for literary thrillers. Right
+            Breure Media is an independent label for thrillers about power, ports and Europe. Right
             now it publishes my own work. In 2027 I want to open the label to
             other thriller authors.
           </p>
@@ -47,7 +47,7 @@ export default function EnglishAuthorsPage() {
           </h2>
           <p className="content-paragraph">
             Not a general bookshelf, but a narrow list. Everything here is a
-            literary thriller. A reader who arrives is here for exactly that.
+            thriller about power, ports and Europe. A reader who arrives is here for exactly that.
             That is the difference with a large store where your book sits
             between everything and nothing.
           </p>

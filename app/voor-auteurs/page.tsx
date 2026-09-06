@@ -13,7 +13,7 @@ const germanPath = "/de/fuer-autoren";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Voor auteurs"),
   description:
-    "Breure Media wordt een label voor literaire thrillers uit Nederland, België en Duitsland. Schrijf je thrillers? Laat je e-mailadres achter.",
+    "Breure Media wordt een label voor thrillers over macht, havens en Europa, van auteurs uit Nederland, België en Duitsland. Schrijf je thrillers? Laat je e-mailadres achter.",
   path: pagePath,
   languages: {
     nl: pagePath,
@@ -40,7 +40,7 @@ export default function AuthorsPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Breure Media is een onafhankelijk label voor literaire thrillers.
+            Breure Media is een onafhankelijk label voor thrillers over macht, havens en Europa.
             Op dit moment verschijnt hier mijn eigen werk. In 2027 wil ik het
             label openstellen voor andere thrillerauteurs.
           </p>
@@ -52,7 +52,7 @@ export default function AuthorsPage() {
           </h2>
           <p className="content-paragraph">
             Geen algemene boekenplank, maar een smal fonds. Alles wat hier
-            staat is een literaire thriller. Een lezer die binnenkomt, komt
+            staat is een thriller over macht, havens en Europa. Een lezer die binnenkomt, komt
             voor precies dat. Dat is het verschil met een grote winkel waar je
             boek tussen alles en niets ligt.
           </p>

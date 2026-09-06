@@ -11,12 +11,12 @@ import { publicationBadge } from "@/lib/i18n";
 const allBooks = getAllBooks();
 
 export const metadata: Metadata = buildMetadata({
-  title: "Breure Media | Literaire Thrillers",
+  title: "Breure Media | Thrillers over macht, havens en Europa",
   description:
-    "Onafhankelijk Nederlands label voor literaire thrillers. Ontdek onze publicaties van Ard Breure.",
+    "Onafhankelijk Nederlands label voor thrillers over macht, havens en Europa. Ontdek onze publicaties van Ard Breure.",
   path: "/",
   image: "/images/og-breure-media-general.jpg",
-  imageAlt: "Breure Media: literaire thrillers",
+  imageAlt: "Breure Media: thrillers over macht, havens en Europa",
   imageWidth: 1200,
   imageHeight: 630,
   languages: {

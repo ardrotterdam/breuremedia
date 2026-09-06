@@ -12,7 +12,7 @@ const pagePath = "/de/fuer-autoren";
 export const metadata: Metadata = buildMetadata({
   title: sitePageTitle("Für Autoren"),
   description:
-    "Breure Media wird ein Label für literarische Thriller aus den Niederlanden, Belgien und Deutschland. Schreiben Sie Thriller? Hinterlassen Sie Ihre E-Mail-Adresse.",
+    "Breure Media wird ein Label für Thriller über Macht, Häfen und Europa, von Autoren aus den Niederlanden, Belgien und Deutschland. Schreiben Sie Thriller? Hinterlassen Sie Ihre E-Mail-Adresse.",
   path: pagePath,
   locale: "de_DE",
   languages: localeAlternates(pagePath),
@@ -35,7 +35,7 @@ export default function GermanAuthorsPage() {
 
         <section className="content-section">
           <p className="content-paragraph">
-            Breure Media ist ein unabhängiges Label für literarische Thriller.
+            Breure Media ist ein unabhängiges Label für Thriller über Macht, Häfen und Europa.
             Zurzeit erscheint hier mein eigenes Werk. Im Jahr 2027 möchte ich
             das Label für andere Thrillerautoren öffnen.
           </p>
@@ -47,7 +47,7 @@ export default function GermanAuthorsPage() {
           </h2>
           <p className="content-paragraph">
             Kein allgemeines Bücherregal, sondern ein schmales Programm.
-            Alles, was hier steht, ist ein literarischer Thriller. Wer
+            Alles, was hier steht, ist ein Thriller über Macht, Häfen und Europa. Wer
             hierherkommt, kommt genau dafür. Das ist der Unterschied zu einem
             großen Shop, in dem Ihr Buch zwischen allem und nichts liegt.
           </p>
