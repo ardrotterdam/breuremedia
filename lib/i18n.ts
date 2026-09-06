@@ -66,7 +66,7 @@ export const enNavLinks: readonly NavItem[] = [
 
 /**
  * Navigation shown in the German (/de) section. Only routes that exist in DE:
- * home (logo), translated titles, Domburg, author, contact.
+ * home (logo), translated titles, Domburg, Hafen, author, contact.
  * No German catalogue page yet; Bücher is a dropdown of the titles that exist.
  */
 export const deNavLinks: readonly NavItem[] = [
@@ -98,6 +98,7 @@ export const deNavLinks: readonly NavItem[] = [
     ],
   },
   { type: "link", href: "/de/domburg", label: "Domburg" },
+  { type: "link", href: "/de/hafen-von-rotterdam", label: "Hafen von Rotterdam" },
   { type: "link", href: "/de/ueber-den-autor", label: "Über den Autor" },
   { type: "link", href: "/de/kontakt", label: "Kontakt" },
 ];
