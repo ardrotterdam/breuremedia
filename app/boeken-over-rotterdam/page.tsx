@@ -5,6 +5,7 @@ import { AffiliateButton } from "@/components/AffiliateButton";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
+import { FirstChapterCTA } from "@/components/FirstChapterCTA";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { PageHeader } from "@/components/PageHeader";
@@ -531,6 +532,8 @@ export default function BoekenOverRotterdamPage() {
             },
           ]}
         />
+
+        <FirstChapterCTA source="boeken-over-rotterdam" />
       </div>
 
       <FaqSection
