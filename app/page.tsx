@@ -6,6 +6,7 @@ import { PublicationsHero } from "@/components/PublicationsHero";
 import { getAllBooks } from "@/data/books";
 import { author, siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
+import { publicationBadge } from "@/lib/i18n";
 
 const allBooks = getAllBooks();
 
@@ -32,16 +33,17 @@ export default function HomePage() {
         eyebrow="Onze Publicaties"
         brand={siteConfig.name}
         lead={siteConfig.tagline}
-        publications={allBooks.map((book) => ({
-          book,
-          href: `/boeken/${book.slug}`,
-          pitch: book.tagline,
-          ctaLabel: "Bekijk boek",
-          ...(book.slug === "zero-day-directive"
-            ? { badge: "Verwacht jan 2027" }
-            : {}),
-          priority: true,
-        }))}
+        publications={allBooks.map((book) => {
+          const badge = publicationBadge(book.slug, "nl");
+          return {
+            book,
+            href: `/boeken/${book.slug}`,
+            pitch: book.tagline,
+            ctaLabel: "Bekijk boek",
+            ...(badge ? { badge } : {}),
+            priority: true,
+          };
+        })}
       />
 
       {allBooks.map((book) => (

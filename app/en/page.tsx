@@ -6,7 +6,7 @@ import { PublicationsHero } from "@/components/PublicationsHero";
 import { getEnglishBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteEn, authorEn } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { englishNewsletterCopy } from "@/lib/i18n";
+import { englishNewsletterCopy, publicationBadge } from "@/lib/i18n";
 
 const englishBooks = getEnglishBooks();
 
@@ -51,14 +51,13 @@ export default function EnglishHomePage() {
         lead={siteEn.tagline}
         publications={englishBooks.map((book) => {
           const edition = book.en;
+          const badge = publicationBadge(book.slug, "en");
           return {
             book: localizeEnglishBook(book),
             href: `/en/${edition.slug}`,
             pitch: edition.tagline,
             ctaLabel: "View book",
-            ...(book.slug === "zero-day-directive"
-              ? { badge: "Expected Jan 2027" }
-              : {}),
+            ...(badge ? { badge } : {}),
             priority: true,
           };
         })}

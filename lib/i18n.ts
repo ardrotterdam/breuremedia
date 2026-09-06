@@ -87,6 +87,15 @@ export const deNavLinks: readonly NavItem[] = [
       },
       {
         type: "link",
+        href: "/de/zero-day-directive",
+        label: "Zero Day Directive",
+        subtitle: "Technothriller",
+        coverImage: "/assets/zero-day-directive.webp",
+        coverAlt:
+          "Zero Day Directive, Cyberthriller von Ard Breure: Buchcover mit digitalem Glitch-Effekt, Binärcode und dem Europäischen Parlament",
+      },
+      {
+        type: "link",
         href: "/de/der-letzte-eingriff",
         label: "Der Letzte Eingriff",
         subtitle: "Geopolitischer KI-Thriller",
@@ -119,6 +128,7 @@ const localizedRoutes: Record<string, Partial<Record<Locale, string>>> = {
   zeroDay: {
     nl: "/boeken/zero-day-directive",
     en: "/en/zero-day-directive",
+    de: "/de/zero-day-directive",
   },
   finalOverride: {
     nl: "/boeken/de-laatste-ingreep",
@@ -189,6 +199,25 @@ export function pathForLocale(
   locale: Locale
 ): string | undefined {
   return findLocalizedRoute(pathname)?.[locale];
+}
+
+/**
+ * Homepage card badge for titles with a known upcoming release.
+ * Keyed by the parent (Dutch) book slug so all three locales stay in sync.
+ */
+export function publicationBadge(
+  slug: string,
+  locale: Locale
+): string | undefined {
+  if (slug !== "zero-day-directive") {
+    return undefined;
+  }
+  const badges: Record<Locale, string> = {
+    nl: "Verwacht jan 2027",
+    en: "Expected Jan 2027",
+    de: "ERWARTET JAN. 2027",
+  };
+  return badges[locale];
 }
 
 export function localeFromPathname(pathname: string): Locale {
@@ -281,6 +310,11 @@ export const footerCopy: Record<Locale, FooterCopy> = {
         type: "link",
         href: "/de/schatten-ueber-domburg",
         label: "Schatten über Domburg",
+      },
+      {
+        type: "link",
+        href: "/de/zero-day-directive",
+        label: "Zero Day Directive",
       },
       {
         type: "link",

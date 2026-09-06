@@ -6,7 +6,7 @@ import { PublicationsHero } from "@/components/PublicationsHero";
 import { getGermanBooks, type Book } from "@/data/books";
 import { author, siteConfig, siteDe, authorDe } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { localeAlternates } from "@/lib/i18n";
+import { localeAlternates, publicationBadge } from "@/lib/i18n";
 
 const germanBooks = getGermanBooks();
 
@@ -47,11 +47,13 @@ export default function GermanHomePage() {
         lead="Literarische Thriller, wo die zeeländische Küste den Rotterdamer Hafen berührt."
         publications={germanBooks.map((book) => {
           const edition = book.de;
+          const badge = publicationBadge(book.slug, "de");
           return {
             book: localizeGermanBook(book),
             href: `/de/${edition.slug}`,
             pitch: edition.tagline,
             ctaLabel: "Zum Buch",
+            ...(badge ? { badge } : {}),
             priority: true,
           };
         })}

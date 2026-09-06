@@ -424,6 +424,70 @@ export const books: Book[] = [
         },
       ],
     },
+    de: {
+      slug: "zero-day-directive",
+      title: "Zero Day Directive",
+      subtitle: "Ein Technothriller",
+      genre: "Technothriller",
+      tagline:
+        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+      description:
+        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+      longDescription: [
+        "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Die Uhr tickt. Und die Grenze zwischen Loyalität und Verrat verschwimmt.",
+        "Als ein verheerender Cyberangriff das Europäische Parlament lähmt, wird Europa in die Enge getrieben. Während Brüssel sich auf eine historische Abstimmung über digitale Souveränität vorbereitet, in der zwischen dem traditionellen Bündnis mit Amerika und einem unabhängigen Kurs gewählt werden muss, beansprucht Iran den Angriff für sich und droht, die Straße von Hormus zu schließen, um europäische Neutralität zu erzwingen.",
+        "Nur ein Cybersicherheitsanalyst in Brüssel stößt auf die gefährliche Wahrheit, die im Code verborgen liegt. Doch während er sich durch ein Labyrinth aus staatlich gelenktem Hacking, politischer Spionage und digitaler Kriegsführung kämpft, wird die Abstimmung selbst im Geheimen manipuliert. Kippt das Ergebnis, verschiebt sich das geopolitische Machtgleichgewicht für immer.",
+        "Authentische Tech-Spannung, atemlose Handlung und realistische Geopolitik: Zero Day Directive ist ein Techno-Thriller für Leserinnen und Leser von Tom Clancy, Daniel Silva und William Gibson.",
+        "Kommt die Wahrheit ans Licht, bevor die Demokratie neu geschrieben wird?",
+      ],
+      coverAlt:
+        "Zero Day Directive, Cyberthriller von Ard Breure: Buchcover mit digitalem Glitch-Effekt, Binärcode und dem Europäischen Parlament",
+      formatNote:
+        "Zero Day Directive erscheint voraussichtlich im Januar 2027. Schreiben Sie sich für den Newsletter ein, um als Erste vom genauen Erscheinungstermin, vom Preis und von einer exklusiven Vorabveröffentlichung zu erfahren.",
+      setting:
+        "Niederlande: die Grenze zwischen physischer und digitaler Wirklichkeit",
+      themes: [
+        "Technologie und Verletzlichkeit",
+        "Schweigen und Geheimnisse",
+        "Moralische Entscheidungen in einer digitalen Welt",
+      ],
+      keywords: [
+        "Technothriller",
+        "niederländischer Thriller",
+        "literarischer Thriller",
+        "Cyberthriller",
+        "Zero Day Directive",
+        "Ard Breure",
+      ],
+      faq: [
+        {
+          question: "Wann erscheint Zero Day Directive?",
+          answer:
+            "Zero Day Directive erscheint voraussichtlich im Januar 2027. Schreiben Sie sich in die Warteliste ein, um als Erste benachrichtigt zu werden.",
+        },
+        {
+          question: "Worum geht es in Zero Day Directive?",
+          answer:
+            "Ein Zero-Day-Exploit trifft das Herz der europäischen Demokratie. Als ein Cyberangriff das Europäische Parlament lähmt und eine Abstimmung über digitale Souveränität manipuliert wird, entdeckt ein Cybersicherheitsanalyst in Brüssel die gefährliche Wahrheit im Code.",
+        },
+        {
+          question:
+            "Ist Zero Day Directive eine Fortsetzung von Schatten über Domburg?",
+          answer:
+            "Nein, Zero Day Directive ist ein eigenständiger Thriller. Geschrieben in derselben literarischen Tradition.",
+        },
+        {
+          question: "Wie kann ich Zero Day Directive bestellen?",
+          answer:
+            "Zero Day Directive erscheint voraussichtlich im Januar 2027. Die Bestellung öffnet, sobald der Erscheinungstermin feststeht. Schreiben Sie sich über das Formular auf dieser Seite ein oder mailen Sie an info@breuremedia.com, damit Sie zuerst benachrichtigt werden.",
+        },
+        {
+          question: "Was kostet das Buch?",
+          answer:
+            "Der Richtpreis beträgt 29,95 €. Das Buch erscheint voraussichtlich im Januar 2027. Die endgültige Ausgabe, Paperback oder Hardcover, und der genaue Termin werden später bekanntgegeben.",
+        },
+      ],
+    },
   },
   {
     slug: "de-laatste-ingreep",
